@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="LuckiestGuy-Regular.ttf">
+            <string>LuckiestGuy-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="HomeViewController" customModule="Sudoku_Mole" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView verifyAmbiguity="off" opaque="NO" contentMode="scaleAspectFit" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="G0P-CA-6Hg">
+                                <rect key="frame" x="0.0" y="169" width="375" height="193"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAj-bQ-3kb">
+                                        <rect key="frame" x="103" y="0.0" width="169" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="dummyButtonForEasy">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="Q4f-5l-ECv" kind="presentation" identifier="" modalPresentationStyle="fullScreen" id="31m-Wf-acE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4Y-zF-ldB">
+                                        <rect key="frame" x="103" y="43" width="169" height="30"/>
+                                        <state key="normal" title="dummyButtonForNormal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="Q4f-5l-ECv" kind="presentation" identifier="normalSegue" modalPresentationStyle="fullScreen" id="Zqy-oN-hUF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mtd-FX-aNY">
+                                        <rect key="frame" x="111" y="83" width="153" height="30"/>
+                                        <state key="normal" title="dummyButtonForHard">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="Q4f-5l-ECv" kind="presentation" identifier="hardSegue" modalPresentationStyle="fullScreen" id="PxP-oN-UZQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACe-gJ-ezK">
+                                        <rect key="frame" x="105.66666666666669" y="123" width="164" height="30"/>
+                                        <state key="normal" title="dummyButtonForExpert">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="Q4f-5l-ECv" kind="presentation" identifier="expertSegue" modalPresentationStyle="fullScreen" id="Tu5-uH-Bgt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wTL-ph-4hq">
+                                        <rect key="frame" x="97" y="163" width="181" height="30"/>
+                                        <state key="normal" title="dummyButtonForContinue">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="Q4f-5l-ECv" kind="presentation" identifier="continueSegue" modalPresentationStyle="fullScreen" id="7zf-pf-OFf"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sudoji" translatesAutoresizingMaskIntoConstraints="NO" id="gMk-7I-0gW">
+                                <rect key="frame" x="-131" y="470" width="676" height="578"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.26355749369999998" green="0.59548795219999995" blue="0.35290139910000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="G0P-CA-6Hg" secondAttribute="trailing" id="2M1-kQ-TAu"/>
+                            <constraint firstItem="G0P-CA-6Hg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BM9-e5-3Pe"/>
+                            <constraint firstItem="G0P-CA-6Hg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="125" id="PhE-YS-FFF"/>
+                            <constraint firstItem="G0P-CA-6Hg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dGE-7c-GqC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="56A-IK-b0M"/>
+                    <connections>
+                        <outlet property="mainMenuSVOutlet" destination="G0P-CA-6Hg" id="flU-az-soa"/>
+                        <outlet property="sudojiOutlet" destination="gMk-7I-0gW" id="F7X-Gh-pUK"/>
+                        <outletCollection property="dummyButtons" destination="fAj-bQ-3kb" collectionClass="NSMutableArray" id="B8D-BB-44G"/>
+                        <outletCollection property="dummyButtons" destination="A4Y-zF-ldB" collectionClass="NSMutableArray" id="G2Y-Iu-gCM"/>
+                        <outletCollection property="dummyButtons" destination="Mtd-FX-aNY" collectionClass="NSMutableArray" id="fVf-Oj-Xjz"/>
+                        <outletCollection property="dummyButtons" destination="ACe-gJ-ezK" collectionClass="NSMutableArray" id="VEr-AB-pgY"/>
+                        <outletCollection property="dummyButtons" destination="wTL-ph-4hq" collectionClass="NSMutableArray" id="lDm-ty-ft3"/>
+                        <segue destination="Q4f-5l-ECv" kind="show" identifier="toPuzzle" id="aaY-rD-dLS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-294" y="63"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="RFd-fu-ZLX">
+            <objects>
+                <viewController modalPresentationStyle="currentContext" id="Q4f-5l-ECv" customClass="GameViewController" customModule="Sudoku_Mole" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kw1-4Y-Scs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zTr-Xg-qJG">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EIR-Vi-uaJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="55.666666666666664"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uf2-CT-ZAY">
+                                                <rect key="frame" x="14.999999999999996" y="0.0" width="42.666666666666657" height="55.666666666666664"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Uf2-CT-ZAY" secondAttribute="height" multiplier="23:30" id="NeA-ym-htI"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="17"/>
+                                                <state key="normal" title="Home ">
+                                                    <color key="titleColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="homeButtonTapped:" destination="Q4f-5l-ECv" eventType="touchUpInside" id="7bc-aI-HhN"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="BI" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZP-Gz-Zxx">
+                                                <rect key="frame" x="57.666666666666657" y="0.0" width="259.66666666666674" height="55.666666666666664"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="gZP-Gz-Zxx" secondAttribute="height" multiplier="14:3" id="N7L-x6-6j0"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="22"/>
+                                                <color key="textColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" red="0.62677108268832482" green="0.38761919326645833" blue="0.21173446043733232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <size key="shadowOffset" width="0.0" height="3"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mF8-AX-96m">
+                                                <rect key="frame" x="317.33333333333331" y="0.0" width="42.666666666666686" height="55.666666666666664"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="mF8-AX-96m" secondAttribute="height" multiplier="23:30" id="iJo-Ds-TNv"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="17"/>
+                                                <state key="normal" title="Menu">
+                                                    <color key="titleColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="menuButtonTapped:" destination="Q4f-5l-ECv" eventType="touchUpInside" id="jS6-o7-Dkx"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <edgeInsets key="layoutMargins" top="0.0" left="15" bottom="0.0" right="15"/>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kfA-5a-w22">
+                                        <rect key="frame" x="0.0" y="55.666666666666671" width="375" height="10"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="kfA-5a-w22" secondAttribute="height" multiplier="75:2" id="olg-4i-KaN"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ztv-nL-qXS">
+                                        <rect key="frame" x="0.0" y="65.666666666666686" width="375" height="375"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N4J-0r-IrW">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Va0-y9-I8l">
+                                                <rect key="frame" x="3" y="3" width="369" height="369"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="P1h-5a-oeO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="369" height="123"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WjF-rp-Qxn" userLabel="d1">
+                                                                <rect key="frame" x="0.0" y="0.0" width="123" height="123"/>
+                                                                <color key="backgroundColor" red="0.5490196078431373" green="0.32156862745098036" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKK-j3-Yay" userLabel="d2">
+                                                                <rect key="frame" x="123" y="0.0" width="123" height="123"/>
+                                                                <color key="backgroundColor" red="0.54749858380000005" green="0.32318294050000002" blue="0.23134854439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gaI-dx-d4R" userLabel="d3">
+                                                                <rect key="frame" x="246" y="0.0" width="123" height="123"/>
+                                                                <color key="backgroundColor" red="0.54749858380000005" green="0.32318294050000002" blue="0.23134854439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </view>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="BUi-cX-Xes">
+                                                        <rect key="frame" x="0.0" y="123" width="369" height="123"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MnX-pj-Cqe" userLabel="d4">
+                                                                <rect key="frame" x="0.0" y="0.0" width="123" height="123"/>
+                                                                <color key="backgroundColor" red="0.54749858380000005" green="0.32318294050000002" blue="0.23134854439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Px5-mx-oQV" userLabel="d5">
+                                                                <rect key="frame" x="123" y="0.0" width="123" height="123"/>
+                                                                <color key="backgroundColor" red="0.54749858380000005" green="0.32318294050000002" blue="0.23134854439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MlJ-sa-u5n" userLabel="d6">
+                                                                <rect key="frame" x="246" y="0.0" width="123" height="123"/>
+                                                                <color key="backgroundColor" red="0.54749858380000005" green="0.32318294050000002" blue="0.23134854439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </view>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WPI-eZ-tV7">
+                                                        <rect key="frame" x="0.0" y="246" width="369" height="123"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kps-5p-scj" userLabel="d7">
+                                                                <rect key="frame" x="0.0" y="0.0" width="123" height="123"/>
+                                                                <color key="backgroundColor" red="0.54749858380000005" green="0.32318294050000002" blue="0.23134854439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tkG-6u-Lfz" userLabel="d8">
+                                                                <rect key="frame" x="123" y="0.0" width="123" height="123"/>
+                                                                <color key="backgroundColor" red="0.54749858380000005" green="0.32318294050000002" blue="0.23134854439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gD-Fo-YRn" userLabel="d9">
+                                                                <rect key="frame" x="246" y="0.0" width="123" height="123"/>
+                                                                <color key="backgroundColor" red="0.54749858380000005" green="0.32318294050000002" blue="0.23134854439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </view>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vUh-Pe-BPX" customClass="SudokuView" customModule="Sudoku_Mole" customModuleProvider="target">
+                                                <rect key="frame" x="3" y="3" width="369" height="369"/>
+                                                <color key="backgroundColor" red="0.54749858380000005" green="0.32318294050000002" blue="0.23134854439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="vUh-Pe-BPX" secondAttribute="height" multiplier="1:1" id="g7o-yG-qV6"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="sPD-VK-Zpm" appends="YES" id="t9W-4M-Qf0"/>
+                                                </connections>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="vUh-Pe-BPX" firstAttribute="top" secondItem="ztv-nL-qXS" secondAttribute="top" constant="3" id="0Ru-uR-HXE"/>
+                                            <constraint firstAttribute="bottom" secondItem="N4J-0r-IrW" secondAttribute="bottom" id="NXE-lA-ON3"/>
+                                            <constraint firstAttribute="trailing" secondItem="vUh-Pe-BPX" secondAttribute="trailing" constant="3" id="PEp-GE-OBR"/>
+                                            <constraint firstAttribute="width" secondItem="ztv-nL-qXS" secondAttribute="height" multiplier="1:1" id="PIs-k5-ZJj"/>
+                                            <constraint firstItem="vUh-Pe-BPX" firstAttribute="bottom" secondItem="Va0-y9-I8l" secondAttribute="bottom" id="Rp2-1t-OoQ"/>
+                                            <constraint firstItem="N4J-0r-IrW" firstAttribute="top" secondItem="ztv-nL-qXS" secondAttribute="top" id="YB5-YJ-TJl"/>
+                                            <constraint firstItem="vUh-Pe-BPX" firstAttribute="leading" secondItem="ztv-nL-qXS" secondAttribute="leading" constant="3" id="czK-ZK-sCm"/>
+                                            <constraint firstItem="Va0-y9-I8l" firstAttribute="leading" secondItem="vUh-Pe-BPX" secondAttribute="leading" id="diZ-5l-MuI"/>
+                                            <constraint firstItem="vUh-Pe-BPX" firstAttribute="trailing" secondItem="Va0-y9-I8l" secondAttribute="trailing" id="iMf-Gx-ihC"/>
+                                            <constraint firstItem="N4J-0r-IrW" firstAttribute="leading" secondItem="ztv-nL-qXS" secondAttribute="leading" id="nhg-gL-wrb"/>
+                                            <constraint firstAttribute="bottom" secondItem="vUh-Pe-BPX" secondAttribute="bottom" constant="3" id="oWg-fw-kzU"/>
+                                            <constraint firstItem="Va0-y9-I8l" firstAttribute="top" secondItem="vUh-Pe-BPX" secondAttribute="top" id="p1v-jr-hga"/>
+                                            <constraint firstAttribute="trailing" secondItem="N4J-0r-IrW" secondAttribute="trailing" id="r0g-pD-QT8"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="s62-t2-yy0">
+                                        <rect key="frame" x="0.0" y="440.66666666666674" width="375" height="293.33333333333326"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08G-Ke-ce6">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="08G-Ke-ce6" secondAttribute="height" multiplier="15:1" id="j6b-kD-1VZ"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="T8s-v8-9D2">
+                                                <rect key="frame" x="0.0" y="25" width="375" height="49"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afU-Tb-Tly">
+                                                        <rect key="frame" x="7.9999999999999929" y="7.9999999999999432" width="116.33333333333331" height="33"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Difficulty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkZ-KN-5Mh">
+                                                        <rect key="frame" x="129.33333333333334" y="7.9999999999999432" width="116.33333333333334" height="33"/>
+                                                        <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="23"/>
+                                                        <color key="textColor" red="0.33226425977320684" green="0.75844004610862947" blue="0.45387420510273641" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUZ-ih-U84">
+                                                        <rect key="frame" x="250.66666666666666" y="7.9999999999999432" width="116.33333333333334" height="33"/>
+                                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.57647058823529407" green="0.91764705882352937" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="T8s-v8-9D2" secondAttribute="height" multiplier="375:49" id="ovC-st-ERB"/>
+                                                </constraints>
+                                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kLQ-sD-By6">
+                                                <rect key="frame" x="0.0" y="73.999999999999943" width="375" height="70"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="pel-Oz-fxa">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                                        <subviews>
+                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xj-5k-hGh">
+                                                                <rect key="frame" x="20.000000000000004" y="0.0" width="37.333333333333343" height="70"/>
+                                                                <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="45"/>
+                                                                <state key="normal" title="1">
+                                                                    <color key="titleColor" red="0.77647058820000003" green="0.92941176469999998" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="keypad:" destination="Q4f-5l-ECv" eventType="touchUpInside" id="1wq-Pa-TVY"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOQ-uV-gP2">
+                                                                <rect key="frame" x="57.333333333333343" y="0.0" width="37" height="70"/>
+                                                                <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="45"/>
+                                                                <state key="normal" title="2">
+                                                                    <color key="titleColor" red="0.77647058820000003" green="0.92941176469999998" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="keypad:" destination="Q4f-5l-ECv" eventType="touchUpInside" id="53o-go-IbO"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9i-MS-Bud">
+                                                                <rect key="frame" x="94.333333333333329" y="0.0" width="37.333333333333329" height="70"/>
+                                                                <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="45"/>
+                                                                <state key="normal" title="3">
+                                                                    <color key="titleColor" red="0.77647058820000003" green="0.92941176469999998" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="keypad:" destination="Q4f-5l-ECv" eventType="touchUpInside" id="KeT-gm-fwg"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qER-Jc-lli">
+                                                                <rect key="frame" x="131.66666666666666" y="0.0" width="37.333333333333343" height="70"/>
+                                                                <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="45"/>
+                                                                <state key="normal" title="4">
+                                                                    <color key="titleColor" red="0.77647058820000003" green="0.92941176469999998" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="keypad:" destination="Q4f-5l-ECv" eventType="touchUpInside" id="m2r-k8-LPA"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vb0-Gj-SJW">
+                                                                <rect key="frame" x="169" y="0.0" width="37" height="70"/>
+                                                                <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="45"/>
+                                                                <state key="normal" title="5">
+                                                                    <color key="titleColor" red="0.77647058820000003" green="0.92941176469999998" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="keypad:" destination="Q4f-5l-ECv" eventType="touchUpInside" id="WjQ-gJ-fXe"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="6" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rrb-cP-HKV">
+                                                                <rect key="frame" x="206" y="0.0" width="37.333333333333343" height="70"/>
+                                                                <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="45"/>
+                                                                <state key="normal" title="6">
+                                                                    <color key="titleColor" red="0.77647058820000003" green="0.92941176469999998" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="keypad:" destination="Q4f-5l-ECv" eventType="touchUpInside" id="c6c-f8-UW0"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="7" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIz-q5-Mwl">
+                                                                <rect key="frame" x="243.33333333333334" y="0.0" width="37.333333333333343" height="70"/>
+                                                                <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="45"/>
+                                                                <state key="normal" title="7">
+                                                                    <color key="titleColor" red="0.77647058820000003" green="0.92941176469999998" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="keypad:" destination="Q4f-5l-ECv" eventType="touchUpInside" id="gLN-w5-OIH"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="8" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSP-8Z-Bfu">
+                                                                <rect key="frame" x="280.66666666666669" y="0.0" width="37" height="70"/>
+                                                                <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="45"/>
+                                                                <state key="normal" title="8">
+                                                                    <color key="titleColor" red="0.77647058820000003" green="0.92941176469999998" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="keypad:" destination="Q4f-5l-ECv" eventType="touchUpInside" id="9CM-bh-9s4"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UjJ-en-I3B">
+                                                                <rect key="frame" x="317.66666666666669" y="0.0" width="37.333333333333314" height="70"/>
+                                                                <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="45"/>
+                                                                <state key="normal" title="9">
+                                                                    <color key="titleColor" red="0.77647058820000003" green="0.92941176469999998" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="keypad:" destination="Q4f-5l-ECv" eventType="touchUpInside" id="VeO-CR-Ole"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="pel-Oz-fxa" secondAttribute="height" multiplier="75:14" id="yN6-Ds-Ffu"/>
+                                                        </constraints>
+                                                        <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="0.0" right="20"/>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tM8-BE-hWn">
+                                                <rect key="frame" x="0.0" y="143.99999999999994" width="375" height="149.33333333333331"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rik-Oy-EuY">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="149.33333333333334"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUE-NN-HWa">
+                                                                <rect key="frame" x="10" y="9.9999999999999929" width="67" height="119.33333333333331"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <state key="normal" title="refresh">
+                                                                    <color key="titleColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDn-WU-SsO">
+                                                                <rect key="frame" x="82" y="9.9999999999999929" width="67" height="119.33333333333331"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <state key="normal" title="confirm">
+                                                                    <color key="titleColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="pencilOn:" destination="Q4f-5l-ECv" eventType="touchUpInside" id="5Ib-Zy-Jyn"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nie-sT-E6d">
+                                                                <rect key="frame" x="154" y="9.9999999999999929" width="67" height="119.33333333333331"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <state key="normal" title="chance">
+                                                                    <color key="titleColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3VW-sS-uXL">
+                                                                <rect key="frame" x="226" y="9.9999999999999929" width="67" height="119.33333333333331"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <state key="normal" title="back">
+                                                                    <color key="titleColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mz2-qP-ueT">
+                                                                <rect key="frame" x="298" y="9.9999999999999929" width="67" height="119.33333333333331"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <state key="normal" title="forward">
+                                                                    <color key="titleColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                            </button>
+                                                        </subviews>
+                                                        <edgeInsets key="layoutMargins" top="10" left="10" bottom="20" right="10"/>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="tM8-BE-hWn" secondAttribute="bottom" id="7Pn-W1-n8I"/>
+                                            <constraint firstItem="kLQ-sD-By6" firstAttribute="leading" secondItem="s62-t2-yy0" secondAttribute="leading" id="CLs-FZ-Ehu"/>
+                                            <constraint firstAttribute="trailing" secondItem="tM8-BE-hWn" secondAttribute="trailing" id="qvA-nr-M3Z"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.26355749369999998" green="0.59548795219999995" blue="0.35290139910000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="shp-wg-Ib7" firstAttribute="bottom" secondItem="zTr-Xg-qJG" secondAttribute="bottom" id="3sM-tK-9NO"/>
+                            <constraint firstItem="zTr-Xg-qJG" firstAttribute="leading" secondItem="shp-wg-Ib7" secondAttribute="leading" id="PfS-1N-5kb"/>
+                            <constraint firstItem="zTr-Xg-qJG" firstAttribute="top" secondItem="shp-wg-Ib7" secondAttribute="top" id="Qq2-cN-Zsn"/>
+                            <constraint firstItem="shp-wg-Ib7" firstAttribute="trailing" secondItem="zTr-Xg-qJG" secondAttribute="trailing" id="Sbw-S7-lg9"/>
+                            <constraint firstItem="zTr-Xg-qJG" firstAttribute="leading" secondItem="shp-wg-Ib7" secondAttribute="leading" id="clo-SV-4GX"/>
+                            <constraint firstItem="shp-wg-Ib7" firstAttribute="bottom" secondItem="zTr-Xg-qJG" secondAttribute="bottom" id="gJ4-ah-g5D"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="shp-wg-Ib7"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Df5-h8-Hla"/>
+                    <connections>
+                        <outlet property="biOutlet" destination="gZP-Gz-Zxx" id="y3H-vH-CR6"/>
+                        <outlet property="difficultyLabelOutlet" destination="mkZ-KN-5Mh" id="TuP-Yl-L4m"/>
+                        <outlet property="puzzleArea" destination="vUh-Pe-BPX" id="Xag-nu-UbS"/>
+                        <outlet property="sudokuView" destination="vUh-Pe-BPX" id="FJx-1D-faN"/>
+                        <outlet property="timerOulet" destination="eUZ-ih-U84" id="XlM-jg-PFU"/>
+                        <outlet property="yellowView" destination="N4J-0r-IrW" id="kUM-31-IYN"/>
+                        <outletCollection property="dummyCollection" destination="WjF-rp-Qxn" collectionClass="NSMutableArray" id="yzj-v1-uib"/>
+                        <outletCollection property="dummyCollection" destination="aKK-j3-Yay" collectionClass="NSMutableArray" id="j3S-Mu-hxs"/>
+                        <outletCollection property="dummyCollection" destination="gaI-dx-d4R" collectionClass="NSMutableArray" id="0gM-BF-Ojw"/>
+                        <outletCollection property="dummyCollection" destination="MnX-pj-Cqe" collectionClass="NSMutableArray" id="g2T-S6-oau"/>
+                        <outletCollection property="dummyCollection" destination="Px5-mx-oQV" collectionClass="NSMutableArray" id="KZl-px-hq2"/>
+                        <outletCollection property="dummyCollection" destination="MlJ-sa-u5n" collectionClass="NSMutableArray" id="vsR-Gw-YJH"/>
+                        <outletCollection property="dummyCollection" destination="Kps-5p-scj" collectionClass="NSMutableArray" id="pdy-2Q-sdx"/>
+                        <outletCollection property="dummyCollection" destination="tkG-6u-Lfz" collectionClass="NSMutableArray" id="eO1-Be-r8H"/>
+                        <outletCollection property="dummyCollection" destination="0gD-Fo-YRn" collectionClass="NSMutableArray" id="tBB-Lm-4S4"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="BackHomeSegue" id="ZAl-8u-nwI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KVq-vQ-5n0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="sPD-VK-Zpm">
+                    <connections>
+                        <action selector="handleTap:" destination="vUh-Pe-BPX" id="YDF-Ps-Xx7"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="801" y="63"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="sudoji" width="801.33331298828125" height="802.66668701171875"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="7zf-pf-OFf"/>
+    </inferredMetricsTieBreakers>
+</document>
