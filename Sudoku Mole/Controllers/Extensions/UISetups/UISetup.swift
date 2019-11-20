@@ -9,17 +9,15 @@
 import Foundation
 import UIKit
 
-// interface setup
 extension GameViewController {
- 
     func instantiatingCustomAlertView() {
-         customAlertView = self.storyboard?.instantiateViewController(withIdentifier: "CustomAlertID") as! CustomAlertViewController
-         customAlertView.providesPresentationContextTransitionStyle = true
-         customAlertView.definesPresentationContext = true
-         customAlertView.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-         customAlertView.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-         self.delegate = customAlertView
-     }
+        customAlertView = self.storyboard?.instantiateViewController(withIdentifier: "CustomAlertID") as! CustomAlertViewController
+        customAlertView.providesPresentationContextTransitionStyle = true
+        customAlertView.definesPresentationContext = true
+        customAlertView.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        customAlertView.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        self.delegate = customAlertView
+    }
     
     func biTitleSetup() {
         let attributedKeys = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 22.0)!, NSAttributedString.Key.foregroundColor: yellow] as [NSAttributedString.Key : Any]
@@ -31,17 +29,10 @@ extension GameViewController {
     }
     
     func timerSetup() {
-        
         let timerImage = UIImage(named: "timerBg.png")
         let timerImageView = UIImageView(image: timerImage)
-//        timerImageView.alpha = 1
         timerImageView.frame = timerView.bounds
         timerImageView.contentMode = .scaleToFill
-//        if UIDevice.modelName == "Simulator iPhone 11 Pro Max" || UIDevice.modelName == "Simulator iPhone 8 Plus" || UIDevice.modelName == "Simulator iPhone 11"  {//"iPhone 11 Pro Max" { //Simulator iPhone 11 Pro Max
-//            timerImageView.frame.size.width = timerView.frame.size.width * 1.07
-//            timerImageView.frame.size.height = timerView.frame.size.height * 1.09
-//        }
-        
         timerView.addSubview(timerImageView)
         timerView.bringSubviewToFront(timerOutlet)
         timerView.bringSubviewToFront(timerSwitch)
@@ -53,25 +44,12 @@ extension GameViewController {
         let trailingConstraints = NSLayoutConstraint(item: timerImageView, attribute: .trailing, relatedBy: .equal, toItem: timerView, attribute: .trailing, multiplier: 1, constant: 0)
         self.timerView.addConstraints([topConstraints, bottomConstraints, leadingConstraints, trailingConstraints])
         
-        
-//        timerView.layer.cornerRadius = timerView.frame.height/2
-//        timerView.layer.borderWidth = 0.0
-//        timerView.backgroundColor = .clear
-        
-        
         if let load = appDelegate.loadLocalStorage() {
             timerOutlet.text = load.savedOutletTime
             counter = load.savedTime
         } else {
             timerOutlet.text = "00:00:00"
         }
-        
-//        timerOulet.frame.inset(by: UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0))
-//        timerOutlet.layer.backgroundColor = UIColor.clear.cgColor
-
-//        timerView.layer.shadowOffset = CGSize(width: 20.0, height: 15.0)
-//        timerView.layer.shadowColor = UIColor(red: 105.0/255.0, green: 105.0/255.0, blue: 105.0/255.0, alpha: 0.5).cgColor
-        
         timerStateInAction()
     }
     

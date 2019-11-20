@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 
 extension String {
+    func localized(withComment comment: String? = nil) -> String {
+        return NSLocalizedString(self, comment: comment ?? "")
+    }
     /// stringToFind must be at least 1 character.
     func countInstances(of stringToFind: String) -> Int {
         assert(!stringToFind.isEmpty)
@@ -61,5 +64,17 @@ extension Substring {
         let start = index(startIndex, offsetBy: bounds.lowerBound)
         let end = index(startIndex, offsetBy: bounds.upperBound)
         return self[start ..< end]
+    }
+}
+
+extension Array where Element : Collection,
+Element.Iterator.Element : Equatable, Element.Index == Int {
+    func indices(of x: Element.Iterator.Element) -> (Int, Int)? {
+        for (i, row) in self.enumerated() {
+            if let j = row.firstIndex(of: x) {
+                return (i, j)
+            }
+        }
+        return nil
     }
 }

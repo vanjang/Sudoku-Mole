@@ -10,9 +10,8 @@ import Foundation
 import UIKit
 
 class GridView: UIView {
-
     private var path = UIBezierPath()
-    let borderColor = #colorLiteral(red: 0.5343368649, green: 0.2786505818, blue: 0.1829650402, alpha: 1) ///UIColor(red: 122/255, green: 63/255, blue: 40/255, alpha: 1)
+    let borderColor = #colorLiteral(red: 0.5343368649, green: 0.2786505818, blue: 0.1829650402, alpha: 1)
 
     fileprivate var gridWidthMultiple: CGFloat {
         return 7

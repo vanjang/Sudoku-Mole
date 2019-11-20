@@ -9,7 +9,6 @@
 import UIKit
 
 class PauseViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -17,7 +16,7 @@ class PauseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         var y:CGFloat = 0.0
-if UIDevice.modelName == "iPhone 6" || UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 7" || UIDevice.modelName == "iPhone 8" || UIDevice.modelName == "Simulator iPhone 8" || UIDevice.modelName == "Simulator iPhone 7" {
+        if UIDevice.modelName == "iPhone 6" || UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 7" || UIDevice.modelName == "iPhone 8" || UIDevice.modelName == "Simulator iPhone 8" || UIDevice.modelName == "Simulator iPhone 7" {
             y = 35.0
         } else {
             y = 20.0
@@ -31,16 +30,9 @@ if UIDevice.modelName == "iPhone 6" || UIDevice.modelName == "iPhone 6s" || UIDe
         pauseImage.animateXPosition(target: pauseImage, targetPosition: self.view.frame.origin.x-5)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        
-    }
-    
-    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    let pauseImage = UIImageView()
-    let image = UIImage(named: "smolePauseBlindTilt.png")
     
     @IBOutlet weak var pauseButton: UIButton!
     @IBAction func pauseButtonTapped(_ sender: Any) {
@@ -49,5 +41,7 @@ if UIDevice.modelName == "iPhone 6" || UIDevice.modelName == "iPhone 6s" || UIDe
         dismiss(animated: true, completion: nil)
     }
     
-
+    let pauseImage = UIImageView()
+    let image = UIImage(named: "smolePauseBlindTilt.png")
+    
 }

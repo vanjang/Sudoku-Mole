@@ -77,9 +77,9 @@ extension GameViewController {
         fadeView.frame = fadeFrame
         fadeView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.7)
         view.addSubview(fadeView)
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameViewController.dismissButtonTapped))
-//        tap.cancelsTouchesInView = false
-//        view.addGestureRecognizer(tap)
+        //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameViewController.dismissButtonTapped))
+        //        tap.cancelsTouchesInView = false
+        //        view.addGestureRecognizer(tap)
     }
     
     func makeMenuRewindButton() {
@@ -87,7 +87,6 @@ extension GameViewController {
         let yAlignedWithBILabel = biOutlet.frame.origin.y+self.view.safeAreaInsets.top
         let menuRewindFrame = CGRect(x: CGFloat(8), y: yAlignedWithBILabel, width: size, height: biOutlet.frame.size.height)
         let rewind = UIImage(named: "icSideBack.png")
-        print("view minx = \(view.frame.origin.x)")
         
         menuRewindButton.frame = menuRewindFrame
         menuRewindButton.setImage(rewind, for: .normal)
@@ -104,9 +103,7 @@ extension GameViewController {
         let frame = CGRect(x: x, y: y, width: width, height: height)
         
         bannerView.frame = frame
-//        bannerView.frame.size.width = width//*0.9
-//        bannerView.frame.size.height = height//*0.9
-        bannerView.layer.cornerRadius = height/2// bannerCase.layer.cornerRadius
+        bannerView.layer.cornerRadius = height/2
         
         let caseWidth = menuView.frame.size.width*0.69
         let caseFrame = CGRect(x: x, y: y, width: caseWidth, height: height)
@@ -121,70 +118,7 @@ extension GameViewController {
         let verticalConstraint = NSLayoutConstraint(item: bannerView!, attribute: .centerY, relatedBy: .equal, toItem: bannerCase, attribute: .centerY, multiplier: 1, constant: 0)
         let horizontalConstraint = NSLayoutConstraint(item: bannerView!, attribute: .centerX, relatedBy: .equal, toItem: bannerCase, attribute: .centerX, multiplier: 1, constant: 0)
         self.view.addConstraints([verticalConstraint, horizontalConstraint])
-        
-        print("banner view :\(bannerView.frame)")
-        print("banner CASE :\(bannerCase.frame)")
     }
-    
-//    func levelButtonConfig(_ sender: UIButton?) {
-//        levelButtonsCollection.append(recordEasyBttn)
-//        levelButtonsCollection.append(recordNormalBttn)
-//        levelButtonsCollection.append(recordHardBttn)
-//        levelButtonsCollection.append(recordExpertBttn)
-//        
-//        let level = appDelegate.sudoku.grid.gameDiff
-//        let empty = [Record(record: "", recordInSecond: 0, isNew: false)]
-//        
-//        if sender != nil {
-//            for (_, button) in levelButtonsCollection.enumerated() {
-//                if sender == button {
-//                    if sender!.tag == 0 {
-//                        if let records = Record.loadRecord(forKey: "easy") {
-//                            recordView.records = records
-//                        } else {
-//                            recordView.records = empty
-//                        }
-//                    } else if sender!.tag == 1 {
-//                        if let records = Record.loadRecord(forKey: "normal") {
-//                            recordView.records = records
-//                        } else {
-//                            recordView.records = empty
-//                        }
-//                    } else if sender!.tag == 2 {
-//                        if let records = Record.loadRecord(forKey: "hard") {
-//                            recordView.records = records
-//                        } else {
-//                            recordView.records = empty
-//                        }
-//                    } else if sender!.tag == 3 {
-//                        if let records = Record.loadRecord(forKey: "expert") {
-//                            recordView.records = records
-//                        } else {
-//                            recordView.records = empty
-//                        }
-//                    }
-//                    button.setTitleColor(pink, for: .normal)
-//                } else {
-//                    button.setTitleColor(yellow, for: .normal)
-//                }
-//            }
-//        } else {
-//            if let records = Record.loadRecord(forKey: level) {
-//                recordView.records = records
-//            } else {
-//                recordView.records = empty
-//            }
-//            for n in levelButtonsCollection {
-//                if n.title(for: .normal) == level {
-//                    n.setTitleColor(pink, for: .normal)
-//                } else {
-//                    n.setTitleColor(yellow, for: .normal)
-//                }
-//            }
-//        }
-//        levelButtonsCollection.removeAll()
-//        recordView.reloadData()
-//    }
     
     @objc func leftButtonTapped() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reverseVC"), object: nil, userInfo: nil)
@@ -217,7 +151,6 @@ extension GameViewController {
         menuView.addSubview(recordLabel)
         
         // Page View Container view constraints
-        
         func superViewForConst() -> UIView {
             var returningView = UIView()
             
@@ -238,18 +171,17 @@ extension GameViewController {
             } else {
                 attribute = .bottom
             }
-            
             return attribute
         }
         
         func constConstant() -> CGFloat {
             var constant = 0.0
-              
-              if !appDelegate.hasADRemoverBeenBought() {
-                  constant = -20
-              } else {
-                  constant = -60
-              }
+            
+            if !appDelegate.hasADRemoverBeenBought() {
+                constant = -20
+            } else {
+                constant = -60
+            }
             return CGFloat(constant)
         }
         
@@ -263,15 +195,11 @@ extension GameViewController {
         self.menuView.addConstraints([topConstraints, bottomConstraints, leadingConstraints, trailingConstraints])
         
         // Foward/Reward button setup
-//        let leftButtonFrame = CGRect(x: 0, y: view.frame.midY*0.9, width: 30, height: 30)
         let leftButtonImage = UIImage(named: "boardLeft.png")
         let rightButtonImage = UIImage(named: "boardRight.png")
-//        recordIndicatorButtonLeft.frame = leftButtonFrame
         recordIndicatorButtonLeft.setImage(leftButtonImage, for: .normal)
         recordIndicatorButtonLeft.addTarget(self, action: #selector(leftButtonTapped), for: .touchUpInside)
         
-//        let rightButtonFrame = CGRect(x: view.frame.maxX-30, y: view.frame.midY*0.9, width: 30, height: 30)
-//        recordIndicatorButtonRight.frame = rightButtonFrame
         recordIndicatorButtonRight.setImage(rightButtonImage, for: .normal)
         recordIndicatorButtonRight.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
         
@@ -294,18 +222,17 @@ extension GameViewController {
         let smoleImage = UIImage(named: "menuMyrecordSmolenote.png")
         recordViewSmoleImage.image = smoleImage
         menuView.addSubview(recordViewSmoleImage)
-        }
-
+    }
+    
     func makeInstructionView() {
         var frame = CGRect()
         
         if !appDelegate.hasADRemoverBeenBought() {
-          frame = CGRect(x: self.view.bounds.origin.x, y: (self.view.bounds.origin.y)+(dismissButton.frame.maxY), width: self.view.frame.size.width, height: self.view.frame.size.height-(bannerCase.frame.size.height+30))
+            frame = CGRect(x: self.view.bounds.origin.x, y: (self.view.bounds.origin.y)+(dismissButton.frame.maxY), width: self.view.frame.size.width, height: self.view.frame.size.height-(bannerCase.frame.size.height+30))
         } else {
             frame = CGRect(x: self.view.bounds.origin.x, y: (self.view.bounds.origin.y)+(dismissButton.frame.maxY), width: self.view.frame.size.width, height: self.view.frame.size.height-30)
         }
         
-//        let frame = CGRect(x: self.view.bounds.origin.x, y: (self.view.bounds.origin.y)+(dismissButton.frame.maxY), width: self.view.frame.size.width, height: self.view.frame.size.height-(bannerCase.frame.size.height+30))
         instructionView.frame = frame
         instructionView.backgroundColor = .clear
         menuView.addSubview(instructionView)
@@ -322,14 +249,14 @@ extension GameViewController {
         let featureLabel2 = InsetLabel()
         let featureLabel3 = InsetLabel()
         let featureLabel4 = InsetLabel()
-
+        
         let yellowAttribute = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 30.0)!, NSAttributedString.Key.foregroundColor: yellow] as [NSAttributedString.Key : Any]
         let mintAttribute = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 30.0)!, NSAttributedString.Key.foregroundColor: mint] as [NSAttributedString.Key : Any]
         
         let nameMutableAttribute = NSMutableAttributedString()
         let ageMutableAttribute = NSMutableAttributedString()
         let featureMutableAttribute = NSMutableAttributedString()
-
+        
         let nameAttributedString = NSAttributedString(string: "NAME : ", attributes: yellowAttribute)
         let smoleAttributedString = NSAttributedString(string: "SMOLE", attributes: mintAttribute)
         nameMutableAttribute.append(nameAttributedString)
@@ -389,7 +316,6 @@ extension GameViewController {
             iapView.frame.size.height = (self.view.frame.size.height-30)*0.8
         }
         
-//        iapView.frame.size.height = (self.view.frame.size.height-(bannerCase.frame.size.height+dismissButton.frame.maxY+30))*0.8
         let frame = CGRect(x: (self.view.frame.size.width-iapView.frame.size.width)/2, y: (self.view.frame.size.height-iapView.frame.size.height)/2, width: iapView.frame.size.width, height: iapView.frame.size.height)
         iapView.frame = frame
         iapView.backgroundColor = .clear
@@ -424,7 +350,4 @@ extension GameViewController {
             bannerCase.superview?.bringSubviewToFront(bannerCase)
         }
     }
-    
-
-    
 }

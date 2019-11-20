@@ -12,7 +12,6 @@ import UIKit
 @IBDesignable
 class CircularLabel: UILabel {
     // *******************************************************
-    // DEFINITIONS (Because I'm not brilliant and I'll forget most this tomorrow.)
     // Radius: A straight line from the center to the circumference of a circle.
     // Circumference: The distance around the edge (outer line) the circle.
     // Arc: A part of the circumference of a circle. Like a length or section of the circumference.

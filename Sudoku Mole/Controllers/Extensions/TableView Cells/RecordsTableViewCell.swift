@@ -9,24 +9,18 @@
 import UIKit
 
 class RecordsTableViewCell: UITableViewCell {
-
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var recordsLabel: UILabel!
     
     func cellUpdate(records: [Record], indexPath: IndexPath) {
-        
-        
         var number = 1
         var numbers = [String]()
         
@@ -47,13 +41,14 @@ class RecordsTableViewCell: UITableViewCell {
         numberLabel.sizeToFit()
         recordsLabel.sizeToFit()
         
-        numberLabel.text = numbers[indexPath.row]
-        recordsLabel.text = records[indexPath.row].record
-        
-        numberLabel.text = numbers[indexPath.row]
-        recordsLabel.text = records[indexPath.row].record
-        
-        
+            if records[0].record == "" {
+                numberLabel.text = ""
+                recordsLabel.text = ""
+        } else {
+            numberLabel.text = numbers[indexPath.row]
+            recordsLabel.text = records[indexPath.row].record
+        }
+
         if indexPath.row == 0 {
             numberLabel.textColor = #colorLiteral(red: 1, green: 0.9337611198, blue: 0.2692891061, alpha: 1)
             recordsLabel.textColor = #colorLiteral(red: 1, green: 0.9337611198, blue: 0.2692891061, alpha: 1)
@@ -61,9 +56,6 @@ class RecordsTableViewCell: UITableViewCell {
             numberLabel.textColor = #colorLiteral(red: 1, green: 0.7889312506, blue: 0.7353969216, alpha: 1)
             recordsLabel.textColor = #colorLiteral(red: 1, green: 0.7889312506, blue: 0.7353969216, alpha: 1)
         }
-        
     }
-    
-    
     
 }

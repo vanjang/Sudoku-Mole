@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 extension HomeViewController {
-    
     func makeStartButton() {
         startButton.frame.size.width = 250
         startButton.frame.size.height = 250
@@ -28,17 +27,16 @@ extension HomeViewController {
         
         view.addSubview(startButton)
     }
+    
     func makeLevelButtons() {
         let attribute = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 32.0)!, NSMutableAttributedString.Key.underlineStyle: NSUnderlineStyle.thick.rawValue, NSAttributedString.Key.underlineColor: yellow, NSAttributedString.Key.foregroundColor: yellow] as [NSAttributedString.Key : Any]
         let attributeForContinueButton = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 32.0)!, NSMutableAttributedString.Key.underlineStyle: NSUnderlineStyle.thick.rawValue, NSAttributedString.Key.underlineColor: mint, NSAttributedString.Key.foregroundColor: mint] as [NSAttributedString.Key : Any]
-  //      let attributeForArrow = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 50.0)!, NSAttributedString.Key.foregroundColor: pink] as [NSAttributedString.Key : Any]
-        
+
         let easy = NSAttributedString(string: "EASY", attributes: attribute as [NSAttributedString.Key : Any])
         let normal = NSAttributedString(string: "NORMAL", attributes: attribute as [NSAttributedString.Key : Any])
         let hard = NSAttributedString(string: "HARD", attributes: attribute as [NSAttributedString.Key : Any])
         let expert = NSAttributedString(string: "EXPERT", attributes: attribute as [NSAttributedString.Key : Any])
         let continueGame = NSAttributedString(string: "CONTINUE GAME", attributes: attributeForContinueButton as [NSAttributedString.Key : Any])
-//        let back = NSAttributedString(string: "⬅︎", attributes: attributeForArrow as [NSAttributedString.Key : Any])
         
         easyButton.setAttributedTitle(easy, for: .normal)
         easyButton.frame.size.height = 20
@@ -50,15 +48,12 @@ extension HomeViewController {
         expertButton.frame.size.height = 20
         continueButton.setAttributedTitle(continueGame, for: .normal)
         continueButton.frame.size.height = 20
-//        backButton.setAttributedTitle(back, for: .normal)
-//        backButton.frame.size.height = 20
         
         easyButton.addTarget(self, action: #selector(easyButtonTapped), for: .touchUpInside)
         normalButton.addTarget(self, action: #selector(normalButtonTapped), for: .touchUpInside)
         hardButton.addTarget(self, action: #selector(hardButtonTapped), for: .touchUpInside)
         expertButton.addTarget(self, action: #selector(expertButtonTapped), for: .touchUpInside)
         continueButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
-//        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         
         levelButtonsStackView.axis = .vertical
         levelButtonsStackView.distribution = .fill
@@ -71,13 +66,13 @@ extension HomeViewController {
         levelButtonsStackView.addArrangedSubview(hardButton)
         levelButtonsStackView.addArrangedSubview(expertButton)
         levelButtonsStackView.addArrangedSubview(continueButton)
-//        levelButtonsStackView.addArrangedSubview(backButton)
         view.addSubview(levelButtonsStackView)
         
         let topConstraint = NSLayoutConstraint(item: levelButtonsStackView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: view.frame.height*0.23)
         let horizontalConstraint = NSLayoutConstraint(item: levelButtonsStackView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
         self.view.addConstraints([topConstraint, horizontalConstraint])
     }
+    
     func makeInstructionView() {
         nameLabel.frame.size.height = 20
         nameLabel.numberOfLines = 0
@@ -87,7 +82,6 @@ extension HomeViewController {
         ageLabel.frame.size.height = 100
         ageLabel.numberOfLines = 0
         ageLabel.baselineAdjustment = .alignBaselines//.none
-//        ageLabel.sizeToFit()
         ageLabel.contentMode = .bottom //.center
         
         featureLabel1.frame.size.height = 20
@@ -110,14 +104,8 @@ extension HomeViewController {
         featureLabel4.sizeToFit()
         featureLabel4.contentMode = .center
         
-
-        
-        
-//        back2Button.frame.size.height = 20
-        
         let yellowAttribute = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 30.0)!, NSAttributedString.Key.foregroundColor: yellow] as [NSAttributedString.Key : Any]
         let mintAttribute = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 30.0)!, NSAttributedString.Key.foregroundColor: mint] as [NSAttributedString.Key : Any]
-//        let pinkAttribute = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 50.0)!, NSAttributedString.Key.foregroundColor: pink] as [NSAttributedString.Key : Any]
         
         let nameMutableAttribute = NSMutableAttributedString()
         let ageMutableAttribute = NSMutableAttributedString()
@@ -149,13 +137,7 @@ extension HomeViewController {
         
         let feature4AttributedString = NSAttributedString(string: "HEAVY EATER", attributes: mintAttribute)
         featureLabel4.attributedText = feature4AttributedString
-        
-//        let back = NSAttributedString(string: "⬅︎", attributes: pinkAttribute as [NSAttributedString.Key : Any])
-//        back2Button.setAttributedTitle(back, for: .normal)
-//        back2Button.addTarget(self, action: #selector(back2ButtonTapped), for: .touchUpInside)
-
-        
-//        count.frame.size.height = 400
+     
         count.contentMode = .center
         count.baselineAdjustment = .none
         count.alpha = 0.0
@@ -164,7 +146,6 @@ extension HomeViewController {
         let attribute = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 80.0)!, NSAttributedString.Key.foregroundColor: yellow] as [NSAttributedString.Key : Any]
         let attributedString = NSAttributedString(string: "3", attributes: attribute)
         count.attributedText = attributedString
-        
         
         instructionStackView.axis = .vertical
         instructionStackView.distribution = .fill//Equally//.fill
@@ -177,7 +158,6 @@ extension HomeViewController {
         instructionStackView.addArrangedSubview(featureLabel2)
         instructionStackView.addArrangedSubview(featureLabel3)
         instructionStackView.addArrangedSubview(featureLabel4)
-//        instructionStackView.addArrangedSubview(count)
         view.addSubview(instructionStackView)
         
         let topConstraint = NSLayoutConstraint(item: instructionStackView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: view.frame.height*0.24)
@@ -186,36 +166,36 @@ extension HomeViewController {
     }
     
     func makeCount() {
-        
+    
         let dummyView = UIView()
         dummyView.backgroundColor = .clear
         dummyView.frame.size.height = 60
         instructionStackView.addArrangedSubview(dummyView)
         instructionStackView.addArrangedSubview(count)
-        
+    
         count.font = UIFont(name: "LuckiestGuy-Regular", size: 150.0)
         DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: 0.1, delay: 0.5, options: .curveEaseIn, animations: {
                 self.count.alpha = 1.0
             }) { (action) in
-                UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
+                UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
                     self.count.alpha = 0.0
                 }) { (action) in
-                    UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
+                    UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
                         self.count.text = "2"
                         self.count.alpha = 1.0
                     }) { (action) in
-                        UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
+                        UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
                             self.count.alpha = 0.0
                         }) { (action) in
-                            UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
+                            UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
                                 self.count.text = "1"
                                 self.count.alpha = 1.0
                             }) { (action) in
-                                UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
+                                UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
                                     self.count.alpha = 0.0
                                 }) { (action) in
-                                    UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
+                                    UIView.animate(withDuration: 0.2, delay: 0.5, options: .curveEaseIn, animations: {
                                         let attribute = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 65.0)!, NSAttributedString.Key.foregroundColor: self.yellow] as [NSAttributedString.Key : Any]
                                         let attributedString = NSAttributedString(string: "start!", attributes: attribute)
                                         self.count.attributedText = attributedString
@@ -225,7 +205,7 @@ extension HomeViewController {
                                             self.startButton.isHidden = true
                                             self.levelButtonsStackView.isHidden = false
                                             self.instructionStackView.isHidden = true
-                                            
+    
                                         } else if self.homeViewControllerTransition == .sudoji {
                                             self.startButton.isHidden = true
                                             self.levelButtonsStackView.isHidden = true
@@ -241,8 +221,9 @@ extension HomeViewController {
             }
         }
     }
+
 }
-//
+
 //func makeCount() {
 //
 //    let dummyView = UIView()
@@ -253,27 +234,27 @@ extension HomeViewController {
 //
 //    count.font = UIFont(name: "LuckiestGuy-Regular", size: 150.0)
 //    DispatchQueue.main.async {
-//        UIView.animate(withDuration: 0.1, delay: 0.5, options: .curveEaseIn, animations: {
+//        UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
 //            self.count.alpha = 1.0
 //        }) { (action) in
-//            UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
+//            UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
 //                self.count.alpha = 0.0
 //            }) { (action) in
-//                UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
+//                UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
 //                    self.count.text = "2"
 //                    self.count.alpha = 1.0
 //                }) { (action) in
-//                    UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
+//                    UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
 //                        self.count.alpha = 0.0
 //                    }) { (action) in
-//                        UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
+//                        UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
 //                            self.count.text = "1"
 //                            self.count.alpha = 1.0
 //                        }) { (action) in
-//                            UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
+//                            UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
 //                                self.count.alpha = 0.0
 //                            }) { (action) in
-//                                UIView.animate(withDuration: 0.2, delay: 0.5, options: .curveEaseIn, animations: {
+//                                UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
 //                                    let attribute = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 65.0)!, NSAttributedString.Key.foregroundColor: self.yellow] as [NSAttributedString.Key : Any]
 //                                    let attributedString = NSAttributedString(string: "start!", attributes: attribute)
 //                                    self.count.attributedText = attributedString

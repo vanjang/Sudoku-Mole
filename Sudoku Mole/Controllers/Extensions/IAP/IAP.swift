@@ -10,58 +10,14 @@ import Foundation
 import StoreKit
 
 extension GameViewController: SKProductsRequestDelegate, SKPaymentTransactionObserver {
-    
-    enum PurchasingIAP {
-        case ADRemover
-        case Chances
-        case none
-    }
-    
-    @objc func ADFreeButtonTapped() {
-        if !transactionInProgress {
-            print("ad button tapped")
-            dump(productsArray)
-            let payment = SKPayment(product: self.productsArray[0] as SKProduct)
-            print("ad button tapped2")
-            SKPaymentQueue.default().add(payment)
-            self.transactionInProgress = true
-            IAPPurchase = .ADRemover
-        }
-    }
-    
-    @objc func getChanceButtonTapped() {
-        if !transactionInProgress {
-            print("chance tapped")
-            if (appDelegate.item?.chances.count)! > 5 {
-                // dialog to popup
-                instantiatingCustomAlertView()
-                self.delegate?.customAlertController(title: "There are enough chances!", message: "Max chance is 10. You can top chances up if it is below 6.", option: .oneButton)
-                self.delegate?.customAction1(title: "OK", action: { xx in
-                    DispatchQueue.main.async {
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                })
-                self.present(self.customAlertView, animated: true, completion: nil)
-                print("current number of items is \(String(describing: appDelegate.item?.chances.count)). You can have chances up to 10.")
-            } else {
-                let payment = SKPayment(product: self.productsArray[1] as SKProduct)
-                SKPaymentQueue.default().add(payment)
-                self.transactionInProgress = true
-                IAPPurchase = .Chances
-            }
-        }
-    }
-    
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        print("product request")
         if response.products.count != 0 {
-            print("there is product")
             for product in response.products {
                 productsArray.append(product)
             }
         }
         else {
-            print("There are no products.")
+            // There are no products
         }
         if response.invalidProductIdentifiers.count != 0 {
             print(response.invalidProductIdentifiers.description)
@@ -85,12 +41,10 @@ extension GameViewController: SKProductsRequestDelegate, SKPaymentTransactionObs
                     present(alert, animated: true)
                 }
             case SKPaymentTransactionState.purchased:
-                print("Transaction completed successfully.")
                 transactionInProgress = false
                 dismiss(animated: true, completion: nil)
                 SKPaymentQueue.default().finishTransaction(transaction)
             case SKPaymentTransactionState.failed:
-                print("Transaction Failed");
                 transactionInProgress = false
                 dismiss(animated: true, completion: nil)
                 SKPaymentQueue.default().finishTransaction(transaction)
@@ -102,15 +56,43 @@ extension GameViewController: SKProductsRequestDelegate, SKPaymentTransactionObs
     
     func requestProductInfo() {
         if SKPaymentQueue.canMakePayments() {
-            print("request product info")
             let productIdentifiers = Set(productIDs)
             let productRequest = SKProductsRequest(productIdentifiers: productIdentifiers)
             productRequest.delegate = self
             productRequest.start()
         }
         else {
-            print("Cannot perform In App Purchases.")
+            // Cannot perform In App Purchases
         }
     }
-
+    
+    @objc func ADFreeButtonTapped() {
+        if !transactionInProgress {
+            let payment = SKPayment(product: self.productsArray[0] as SKProduct)
+            SKPaymentQueue.default().add(payment)
+            self.transactionInProgress = true
+            IAPPurchase = .ADRemover
+        }
+    }
+    
+    @objc func getChanceButtonTapped() {
+        if !transactionInProgress {
+            if (appDelegate.item?.chances.count)! > 5 {
+                instantiatingCustomAlertView()
+                self.delegate?.customAlertController(title: "CHANCE SLOTS ARE FULL".localized(), message: "Max chance is 10. You can top up if it is below 6.".localized(), option: .oneButton)
+                self.delegate?.customAction1(title: "OK".localized(), action: { xx in
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
+                self.present(self.customAlertView, animated: true, completion: nil)
+            } else {
+                let payment = SKPayment(product: self.productsArray[1] as SKProduct)
+                SKPaymentQueue.default().add(payment)
+                self.transactionInProgress = true
+                IAPPurchase = .Chances
+            }
+        }
+    }
+    
 }

@@ -9,12 +9,14 @@
 import UIKit
 
 class GameSolvedTableViewCell: UITableViewCell {
-
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
+    
     @IBOutlet weak var numberLabel: InsetLabel!
     @IBOutlet weak var recordsLabel: InsetLabel!
     
@@ -29,8 +31,8 @@ class GameSolvedTableViewCell: UITableViewCell {
         }
         
         var size = CGFloat()
-        // iPhone 6S
-if UIDevice.modelName == "iPhone 6" || UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 7" || UIDevice.modelName == "iPhone 8" || UIDevice.modelName == "Simulator iPhone 8" || UIDevice.modelName == "Simulator iPhone 7" {
+        
+        if UIDevice.modelName == "iPhone 6" || UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 7" || UIDevice.modelName == "iPhone 8" || UIDevice.modelName == "Simulator iPhone 8" || UIDevice.modelName == "Simulator iPhone 7" {
             size = 28
         } else {
             size = 30
@@ -51,7 +53,6 @@ if UIDevice.modelName == "iPhone 6" || UIDevice.modelName == "iPhone 6s" || UIDe
         numberLabel.text = numbers[indexPath.row]
         recordsLabel.text = records[indexPath.row].record
         
-
         if records[indexPath.row].isNew {
             numberLabel.textColor = #colorLiteral(red: 1, green: 0.9337611198, blue: 0.2692891061, alpha: 1)
             recordsLabel.textColor = #colorLiteral(red: 1, green: 0.9337611198, blue: 0.2692891061, alpha: 1)
@@ -59,15 +60,6 @@ if UIDevice.modelName == "iPhone 6" || UIDevice.modelName == "iPhone 6s" || UIDe
             numberLabel.textColor = #colorLiteral(red: 1, green: 0.7889312506, blue: 0.7353969216, alpha: 1)
             recordsLabel.textColor = #colorLiteral(red: 1, green: 0.7889312506, blue: 0.7353969216, alpha: 1)
         }
-        
-        
     }
     
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

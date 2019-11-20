@@ -9,9 +9,7 @@
 import Foundation
 import UIKit
 
-// Animation
 extension UIView {
-    
     func fadeIn(object: UIView, withDuration: Double) {
         DispatchQueue.main.async {
             UIView.animate(withDuration: withDuration) {

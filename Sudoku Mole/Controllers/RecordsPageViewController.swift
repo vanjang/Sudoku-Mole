@@ -9,7 +9,6 @@
 import UIKit
 
 class RecordsPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
@@ -24,6 +23,20 @@ class RecordsPageViewController: UIPageViewController, UIPageViewControllerDataS
     }
     
     var pages = [UIViewController]()
+    
+    internal lazy var levelViewControllers: [UIViewController] = {
+        var viewControllers = [UIViewController]()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let easyViewController = storyboard.instantiateViewController(withIdentifier: "easyVC")
+        let normalViewController = storyboard.instantiateViewController(withIdentifier: "normalVC")
+        let hardViewController = storyboard.instantiateViewController(withIdentifier: "hardVC")
+        let expertViewController = storyboard.instantiateViewController(withIdentifier: "expertVC")
+        viewControllers.append(easyViewController)
+        viewControllers.append(normalViewController)
+        viewControllers.append(hardViewController)
+        viewControllers.append(expertViewController)
+        return viewControllers
+    }()
     
     @objc func forwardVC() {
         if GameViewController.index == 3 {
@@ -45,22 +58,7 @@ class RecordsPageViewController: UIPageViewController, UIPageViewControllerDataS
         pages.append(levelViewControllers[GameViewController.index])
         setViewControllers(pages, direction: .reverse, animated: true, completion: nil)
         self.pages.remove(at: 0)
-        
     }
-    
-    internal lazy var levelViewControllers: [UIViewController] = {
-        var viewControllers = [UIViewController]()
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let easyViewController = storyboard.instantiateViewController(withIdentifier: "easyVC")
-        let normalViewController = storyboard.instantiateViewController(withIdentifier: "normalVC")
-        let hardViewController = storyboard.instantiateViewController(withIdentifier: "hardVC")
-        let expertViewController = storyboard.instantiateViewController(withIdentifier: "expertVC")
-        viewControllers.append(easyViewController)
-        viewControllers.append(normalViewController)
-        viewControllers.append(hardViewController)
-        viewControllers.append(expertViewController)
-        return viewControllers
-    }()
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = levelViewControllers.firstIndex(of: viewController) else { return nil }
@@ -81,8 +79,6 @@ class RecordsPageViewController: UIPageViewController, UIPageViewControllerDataS
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         let pageContentViewController = pageViewController.viewControllers![0]
-        print(pageContentViewController)
-        print("did finish animating")
         GameViewController.index = levelViewControllers.firstIndex(of: pageContentViewController)!
     }
     

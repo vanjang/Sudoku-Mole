@@ -9,7 +9,6 @@
 import UIKit
 
 class NormalViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

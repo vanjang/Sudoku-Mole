@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class EasyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -9,7 +9,6 @@
 import UIKit
 
 class CustomTapGestureRecognizer: UITapGestureRecognizer {
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
         super.touchesBegan(touches, with: event)
         DispatchQueue.main.asyncAfter(deadline: .now() + tapMaxDelay) { [weak self] in
