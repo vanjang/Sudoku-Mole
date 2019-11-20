@@ -9,8 +9,21 @@
 import Foundation
 
 struct SudokuData: Codable {
-    var gameDiff: String = "simple" // this is from prepareForSegue() Main Menu
+    var gameDiff: String = "Easy" // this is from prepareForSegue() Main Menu
     var plistPuzzle: [[Int]] = [[Int]] (repeating: [Int] (repeating: 0, count: 9), count: 9) // the loaded puzzle
     var pencilPuzzle: [[[Bool]]] = [[[Bool]]] (repeating: [[Bool]] (repeating: [Bool] (repeating: false, count: 10), count: 9), count: 9) // penciled values - 3x array of booleans
     var userPuzzle: [[Int]] = [[Int]] (repeating: [Int] (repeating: 0, count: 9), count: 9) // user entries to puzzle
+    var puzzleStack: [[[Int]]] = [[[Int]]]()
+    var undonePuzzle: [[[Int]]] = [[[Int]]]()
+    var puzzleAnswer: [[Int]] = [[Int]]()
+    
+    var pencilStack: [[[[Bool]]]] = [[[[Bool]]]]()
+    var undonePencil: [[[[Bool]]]] = [[[[Bool]]]]()
+    
+    
+    var savedOutletTime = ""
+    var savedTime = Int()
 }
+
+
+

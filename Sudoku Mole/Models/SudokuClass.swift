@@ -10,7 +10,7 @@ import Foundation
 //import UIKit
 
 class SudokuClass {
-    var inProgress = false
+//    var inProgress = false
     var grid: SudokuData! = SudokuData()
     
     // REQUIRED METHOD: Number stored at given row and column, with 0 indicating an empty cell or cell with penciled in values
@@ -103,22 +103,7 @@ class SudokuClass {
         // no conflicts
         return false
     } // end isConflictingEntryAt
-    
-    // REQUIRED METHOD: Are the any penciled in values at the given cell?
-    func anyPencilSetAt(row : Int, column : Int) -> Bool {
-        for n in 0...9 {
-            if grid.pencilPuzzle[row][column][n] == true {
-                return true
-            }
-        }
-        return false
-    } // end anyPencilSetAt
-        
-    // REQUIRED METHOD: Is value n penciled in?
-    func isSetPencil(n : Int, row : Int, column : Int) -> Bool {
-        return grid.pencilPuzzle[row][column][n]
-    }
-    
+ 
     // load game from plist
     func plistToPuzzle(plist: String, toughness: String) -> [[Int]] {
         // init initial puzzle
@@ -140,26 +125,98 @@ class SudokuClass {
                 }
             }
         }
-        
         return puzzle
     }
     
     // setter
-    // 숫자를 setting
-    // 유저가 채워넣는 퍼즐판
+    // 유저값을 넣는 메소드
     func userGrid(n: Int, row: Int, col: Int) {
         grid.userPuzzle[row][col] = n
-    } // end userGrid
+        if !grid.undonePuzzle.isEmpty {
+            for i in grid.undonePuzzle {
+                grid.puzzleStack.append(i)
+            }
+            grid.puzzleStack.append(grid.userPuzzle)
+            grid.undonePuzzle.removeAll()
+        } else {
+            grid.puzzleStack.append(grid.userPuzzle)
+        }
+    }
     
     // Is the piece a user piece
-    // 유저가 채워넣은 숫자를 return
+    // 유저값을 가져오는 메소드
     func userEntry(row: Int, column: Int) -> Int {
         return grid.userPuzzle[row][column]
     } // end userEntry
     
+    // 유저가 언두하면 삭제/저장함
+    func undoGrid() {//row: Int, col: Int) {
+        if !grid.puzzleStack.isEmpty {
+            grid.undonePuzzle.insert(grid.puzzleStack.removeLast(), at: 0)
+            if !grid.puzzleStack.isEmpty {
+                grid.userPuzzle = grid.puzzleStack.last!
+            } else {
+                clearUserPuzzle()
+            }
+        }
+    }
+    
+    func redoGrid() -> [[[Int]]] {
+        let last = grid.undonePuzzle
+        return last
+    }
+    
+    // Penciling
+    
+    func undoPencil() {
+        if !grid.pencilStack.isEmpty {
+            grid.undonePencil.insert(grid.pencilStack.removeLast(), at: 0)
+            if !grid.pencilStack.isEmpty {
+                grid.pencilPuzzle = grid.pencilStack.last!
+            } else {
+                clearPencilPuzzle()
+            }
+        }
+    }
+        
+    func redoPencil() -> [[[[Bool]]]] {
+        let last = grid.undonePencil
+        return last
+    }
+    
+    // REQUIRED METHOD: Are the any penciled in values at the given cell?
+    func anyPencilSetAt(row : Int, column : Int) -> Bool {
+        for n in 0...9 {
+            if grid.pencilPuzzle[row][column][n] == true {
+                return true
+            }
+        }
+        return false
+    } // end anyPencilSetAt
+        
+    // REQUIRED METHOD: Is value n penciled in?
+    func isSetPencil(n : Int, row : Int, column : Int) -> Bool {
+        return grid.pencilPuzzle[row][column][n]
+    }
+
     // setter - reverse
     func pencilGrid(n: Int, row: Int, col: Int) {
         grid.pencilPuzzle[row][col][n] = !grid.pencilPuzzle[row][col][n]
+        
+        if !grid.undonePencil.isEmpty {
+
+            for i in grid.undonePencil {
+                grid.pencilStack.append(i)
+            }
+            grid.pencilStack.append(grid.pencilPuzzle)
+            grid.undonePencil.removeAll()
+
+        } else {
+            grid.pencilStack.append(grid.pencilPuzzle)
+        }
+//        grid.pencilStack.append(grid.pencilPuzzle)
+        
+        
     } // end userGrid
 
     // setter - blank
@@ -189,17 +246,19 @@ class SudokuClass {
         }
     }
     
-    func gameInProgress(set: Bool) {
-        inProgress = set
-    }
-    
-    func isGameSet(row : Int, column: Int) {
+//    func gameInProgress(set: Bool) {
+//        inProgress = set
+//    }
+//    
+    func isGameSet(row : Int, column: Int) -> Int {
+        // 1. 0 : game not finished / 1 : game finished but not correctly / 2 : game finished and correct
+        var gameChecker = 0
         
-        // 1. Instantiate current plist & user puzzle
+        // 2. Instantiate current plist & user puzzle
         let plist = grid.plistPuzzle
         var userPuzzle = grid.userPuzzle
         
-        // 2. userPuzzle에 plist puzzle값을 바꿔서 넣어주기
+        // 3. userPuzzle에 plist puzzle값을 바꿔서 넣어주기
         for r in 0 ..< 9 {
             for c in 0 ..< 9 {
                 if plist[r][c] != 0 {
@@ -208,7 +267,7 @@ class SudokuClass {
             }
         }
         
-        // 3. userPuzzle에 default값인 '0'이 있는지 check
+        // 4. userPuzzle에 default값인 '0'이 있는지 check
         // 모든 r/c값을 확인 후 bool값을 array에 추가함
         var isAllUserFieldFilled = [Bool]()
         for r in 0 ..< 9 {
@@ -221,24 +280,35 @@ class SudokuClass {
             }
         }
         
-        // 4. gameset check
+        // 5. gameset check
         if isAllUserFieldFilled.contains(false) {
+            print("not all field has not been filled")
+            gameChecker = 0
         } else {
-            var isAllSolved = [Bool]()
+            var isSolved = [Bool]()
             for r in 0 ..< 9 {
                 for c in 0 ..< 9 {
                     if !isConflictingEntryAt(row: r, column: c) {
-                        isAllSolved.append(true)
+                        isSolved.append(true)
                     } else {
-                        isAllSolved.append(false)
+                        isSolved.append(false)
                     }
                 }
-                print(isAllSolved)
-                if isAllSolved.contains(false) {
+               // print(isSolved)
+                if isSolved.contains(false) {
+                    print("it is not solved")
+                    gameChecker = 1
                 } else {
+                    print("it is solved")
+                    gameChecker = 2
                 }
             }
         }
+        return gameChecker
     }
 
+    func correctAnswerForSelectedBox(row: Int, col: Int) -> Int {
+        return grid.puzzleAnswer[row][col]
+    }
+    
 }
