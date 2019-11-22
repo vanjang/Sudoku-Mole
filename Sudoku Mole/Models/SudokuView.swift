@@ -11,6 +11,7 @@ import UIKit
 
 class SudokuView: UIView {
     var selected = (row : -1, column : -1)  // current selected cell in 9x9 puzzle (-1 => none)
+    var selectedFixed = (row : -1, column : -1)
     // For playing animation on the selected box
     var cgPointForSelectedBox = CGPoint()
     var sizeForSelectedBox = CGRect()
@@ -23,17 +24,17 @@ class SudokuView: UIView {
         let d = gridSize/9
         let col = Int((tapPoint.x - gridOrigin.x)/d)
         let row = Int((tapPoint.y - gridOrigin.y)/d)
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let puzzle = appDelegate.sudoku
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        let puzzle = appDelegate.sudoku
         
         if  0 <= col && col < 9 && 0 <= row && row < 9 {              // if inside puzzle bounds
-            if (!puzzle.numberIsFixedAt(row: row, column: col)) {       // and not a "fixed number"
+//            if (!puzzle.numberIsFixedAt(row: row, column: col)) {       // and not a "fixed number"
                 if (row != selected.row || col != selected.column) {  // and not already selected
                     selected.row = row                                // then select cell
                     selected.column = col
                     setNeedsDisplay()                                 // request redraw ***** PuzzleView
                 }
-            }
+//            }
         }
     }
     
@@ -57,25 +58,25 @@ class SudokuView: UIView {
         self.backgroundColor = UIColor(red: 149.0 / 255.0, green: 79.0 / 255.0, blue: 53.0 / 255.0, alpha: 1.0)//.clear
         
         // Draw color attribute information
-        let selectedCellColor = #colorLiteral(red: 102/255, green: 52/255, blue: 0/255, alpha: 1)
-        let selectedStrokeColor = #colorLiteral(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.5)
-        let neighboringColor = #colorLiteral(red: 135/255, green: 71/255, blue: 48/255, alpha: 1)
-        let majorBorderColor = #colorLiteral(red: 124.0 / 255.0, green: 63.0 / 255.0, blue: 41.0 / 255.0, alpha: 1.0)
-        let minorBorderColor = #colorLiteral(red: 122/255, green: 63/255, blue: 40/255, alpha: 1)
-        let sameNumberColor = #colorLiteral(red: 122/255, green: 66/255, blue: 45/255, alpha: 1)
-        let sameNumberStrokeColor = #colorLiteral(red: 100/255, green: 56/255, blue: 40/255, alpha: 1)
+        let selectedCellColor = UIColor(red: 102/255, green: 52/255, blue: 0/255, alpha: 1)
+        let selectedStrokeColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.5)
+        let neighboringColor = UIColor(red: 135/255, green: 71/255, blue: 48/255, alpha: 1)
+        let majorBorderColor = UIColor(red: 124.0 / 255.0, green: 63.0 / 255.0, blue: 41.0 / 255.0, alpha: 1.0)
+        let minorBorderColor = UIColor(red: 122/255, green: 63/255, blue: 40/255, alpha: 1)
+        let sameNumberColor = UIColor(red: 122/255, green: 66/255, blue: 45/255, alpha: 1)
+        let sameNumberStrokeColor = UIColor(red: 100/255, green: 56/255, blue: 40/255, alpha: 1)
         let conflictBoxColor = #colorLiteral(red: 0.8231359124, green: 0.2062529325, blue: 0.1228148416, alpha: 1)
         let conflictNeibourghBoxColor = #colorLiteral(red: 0.9053650498, green: 0.3585931063, blue: 0.2821154594, alpha: 1)
         
         // Fetch/compute font attribute information.
-        let fontName = "Helvetica-Light"
+        let fontName = "SFProDisplay-Light"//"SF Compact Display-Semibold"//"Helvetica-Light"
         let fixedFontColor = #colorLiteral(red: 241/255, green: 221/255, blue: 128/255, alpha: 1)
         let userFontColor = #colorLiteral(red: 195/255, green: 239/255, blue: 255/255, alpha: 1)
         let pencilFontColor = #colorLiteral(red: 1, green: 0.7889312506, blue: 0.7353969216, alpha: 1)
         
         // Box font attributes
         let fontSize = fontSizeFor("0", fontName: fontName, targetSize: CGSize(width: d, height: d))
-        let font = UIFont(name: fontName, size: fontSize)
+        let font = UIFont(name: fontName, size: 31  )//fontSize)
         let pencilFont = UIFont(name: fontName, size: fontSize/3.5)
         let fixedAttributes = [NSAttributedString.Key.font : font!, NSAttributedString.Key.foregroundColor : fixedFontColor]
         let userAttributes = [NSAttributedString.Key.font : font!, NSAttributedString.Key.foregroundColor : userFontColor]
@@ -85,7 +86,8 @@ class SudokuView: UIView {
         if selected.row >= 0 && selected.column >= 0 {
             let x = gridOrigin.x + CGFloat(selected.column)*d
             let y = gridOrigin.y + CGFloat(selected.row)*d
-            let numberAtSelectedBox = puzzle.userEntry(row: selected.row, column: selected.column)
+//            let numberAtSelectedBox = puzzle.userEntry(row: selected.row, column: selected.column)
+            let numberAtSelectedBox = puzzle.numberAt(row: selected.row, column: selected.column)
             var selectedThird = -1
             
             // Fill 3x3 boxes : from top left 3x3 in clock way
@@ -193,7 +195,7 @@ class SudokuView: UIView {
             for r in 0 ..< 9 {
                 for c in 0 ..< 9 {
                     let selectedBox = (row : r, column : c)
-                    if puzzle.isConflictingEntryAt(row: r, column: c) && selected == selectedBox {
+                    if puzzle.isConflictingEntryAt(row: r, column: c) && selected == selectedBox && puzzle.grid.plistPuzzle[r][c] == 0 {
                         conflictBoxColor.setFill()
                         sameNumberStrokeColor.setStroke()
                         context?.fill(CGRect(x: gridOrigin.x + CGFloat(c)*d, y: gridOrigin.y + CGFloat(r)*d, width: d, height: d))
@@ -215,7 +217,7 @@ class SudokuView: UIView {
                 }
             }
             
-            // Fill same numbers with the number drawn in selected cell
+            // Fill same numbers with the number drawn in selected cell - ### FILL THE OTHER BOXES - NOT THE SELECTED BOX
             for r in 0 ..< 9 {
                 for c in 0 ..< 9 {
                     let iteratingBox = (row : r, column : c)
@@ -258,22 +260,71 @@ class SudokuView: UIView {
                         iteratingThird = 8
                     }
                     
-                    if numberAtSelectedBox != 0 && selected != iteratingBox && (puzzle.userEntry(row: r, column: c) == numberAtSelectedBox || puzzle.grid.plistPuzzle[r][c] == numberAtSelectedBox) && (selected.row == iteratingBox.row || selected.column == iteratingBox.column || selectedThird == iteratingThird ) {
-                        
-                        // If neighbouring same numbers is making conflicts then set these box color to vermilion
-                        if puzzle.isConflictingEntryAt(row: r, column: c) {
+
+                    if numberAtSelectedBox != 0 && selected != iteratingBox && (puzzle.userEntry(row: r, column: c) == numberAtSelectedBox || puzzle.grid.plistPuzzle[r][c] == numberAtSelectedBox) {
+                        sameNumberColor.setFill()
+                        sameNumberStrokeColor.setStroke()
+                        context?.fill(CGRect(x: gridOrigin.x + CGFloat(c)*d, y: gridOrigin.y + CGFloat(r)*d, width: d, height: d))
+                        context?.stroke(CGRect(x: gridOrigin.x + CGFloat(c)*d, y: gridOrigin.y + CGFloat(r)*d, width: d, height: d))
+
+                        if (selected.row == iteratingBox.row || selected.column == iteratingBox.column || selectedThird == iteratingThird || puzzle.userEntry(row: r, column: c) != 0) && puzzle.isConflictingEntryAt(row: r, column: c) {
                             conflictNeibourghBoxColor.setFill()
                             sameNumberStrokeColor.setStroke()
                             context?.fill(CGRect(x: gridOrigin.x + CGFloat(c)*d, y: gridOrigin.y + CGFloat(r)*d, width: d, height: d))
                             context?.stroke(CGRect(x: gridOrigin.x + CGFloat(c)*d, y: gridOrigin.y + CGFloat(r)*d, width: d, height: d))
-                        } else {
-                            // If not making conflicts set to light brown
-                            sameNumberColor.setFill()
-                            sameNumberStrokeColor.setStroke()
-                            context?.fill(CGRect(x: gridOrigin.x + CGFloat(c)*d, y: gridOrigin.y + CGFloat(r)*d, width: d, height: d))
-                            context?.stroke(CGRect(x: gridOrigin.x + CGFloat(c)*d, y: gridOrigin.y + CGFloat(r)*d, width: d, height: d))
                         }
+//                        else if (selected.row == iteratingBox.row || selected.column == iteratingBox.column || selectedThird == iteratingThird ) && puzzle.isConflictingEntryAt(row: r, column: c) && puzzle.userEntry(row: r, column: c) != 0 {
+//                            conflictNeibourghBoxColor.setFill()
+//                            sameNumberStrokeColor.setStroke()
+//                            context?.fill(CGRect(x: gridOrigin.x + CGFloat(c)*d, y: gridOrigin.y + CGFloat(r)*d, width: d, height: d))
+//                            context?.stroke(CGRect(x: gridOrigin.x + CGFloat(c)*d, y: gridOrigin.y + CGFloat(r)*d, width: d, height: d))
+//                        }
                     }
+                    
+//                    // 1)선택한 칸에 숫자가 채워졌고
+//                    if numberAtSelectedBox != 0 &&
+//                        // 2) 선택한 칸이 아닌 다른 모든 칸이며(looping)(선택한 칸이 아닌 다른 칸을 draw해야 하므로)
+//                        selected != iteratingBox &&
+//                        // 3) 아래 creteria중 하나가 true이며
+//                        // - looping된 셀의 userEntry값이 '현재 선택한 셀 값(numberAtSelectedBox)'와 동일하거나
+//                        // - looping된 셀의 fix값이 '현재 선택한 셀 값(numberAtSelectedBox)'와 동일하거나
+//                        (puzzle.userEntry(row: r, column: c) == numberAtSelectedBox || puzzle.grid.plistPuzzle[r][c] == numberAtSelectedBox) {//} &&
+//                        sameNumberColor.setFill()
+//                        sameNumberStrokeColor.setStroke()
+//                        context?.fill(CGRect(x: gridOrigin.x + CGFloat(c)*d, y: gridOrigin.y + CGFloat(r)*d, width: d, height: d))
+//                        context?.stroke(CGRect(x: gridOrigin.x + CGFloat(c)*d, y: gridOrigin.y + CGFloat(r)*d, width: d, height: d))
+//                        // vv아래 creteria중 하나가 true일 때
+//                        // - 현재 선택한 셀의 row와 looping된 셀의 row가 같거나
+//                        // - 현재 선택한 셀의 col와 looping된 셀의 col이 같거나
+//                        // - 현재 선택한 3x3 값과 looping된 셀의 3x3 값이 같거나
+//                        if (selected.row == iteratingBox.row || selected.column == iteratingBox.column || selectedThird == iteratingThird ) && puzzle.isConflictingEntryAt(row: r, column: c) {
+////                            print("same num drawing")
+////                        print("number at selected cell = \(numberAtSelectedBox)")
+////                        sameNumberColor.setFill()
+////                        sameNumberStrokeColor.setStroke()
+////                        context?.fill(CGRect(x: gridOrigin.x + CGFloat(c)*d, y: gridOrigin.y + CGFloat(r)*d, width: d, height: d))
+////                        context?.stroke(CGRect(x: gridOrigin.x + CGFloat(c)*d, y: gridOrigin.y + CGFloat(r)*d, width: d, height: d))
+////                        print(selected)
+////                        print("not con")
+//                        // If neighbouring same numbers is making conflicts then set these box color to vermilion
+////                        if puzzle.isConflictingEntryAt(row: r, column: c) {
+//                            conflictNeibourghBoxColor.setFill()
+//                            sameNumberStrokeColor.setStroke()
+//                            context?.fill(CGRect(x: gridOrigin.x + CGFloat(c)*d, y: gridOrigin.y + CGFloat(r)*d, width: d, height: d))
+//                            context?.stroke(CGRect(x: gridOrigin.x + CGFloat(c)*d, y: gridOrigin.y + CGFloat(r)*d, width: d, height: d))
+//                            print(selected)
+//                            print("conflict dra")
+//                        }
+//                        else {
+//                            // If not making conflicts set to light brown
+////                            sameNumberColor.setFill()
+////                            sameNumberStrokeColor.setStroke()
+////                            context?.fill(CGRect(x: gridOrigin.x + CGFloat(c)*d, y: gridOrigin.y + CGFloat(r)*d, width: d, height: d))
+////                            context?.stroke(CGRect(x: gridOrigin.x + CGFloat(c)*d, y: gridOrigin.y + CGFloat(r)*d, width: d, height: d))
+////                            print(selected)
+////                            print("not con")
+//                        }
+//                    }
                 }
             }
         }

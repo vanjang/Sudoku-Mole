@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  Sudoku Mole
+
+  Created by 소명훈 on 2019/11/21.
+  Copyright © 2019 cochipcho. All rights reserved.
+*/
+
+// Home VC
+"No Saved Game." = "저장된 게임이 없습니다.";
+"Watch AD to get another life or leave the game." = "광고를 시청하시고 Free Life를 받으세요.";
+"Would you leave the game or save it for later?" = "게임을 종료하거나 저장 할 수 있습니다.";
+"You can continue the game later." = "저장 되었습니다.";
+"Tap OK to refresh." = "새로운 게임을 시작 하시겠습니까?";
+"Select a box you want to use your chance for!" = "빈 칸을 누르면 찬스를 사용할 수 있습니다.";
+"Share Record and get free chance!" = "SNS로 스도쿠몰을 공유하고 Free Chance를 받으세요!";
+"You earned a free chance." = "Free Chance가 추가 되었습니다.";
+"Processing" = "진헹 중";
+"You can top up if chance is below 6." = "찬스는 6개 이하로 남은 상태에서만 아이템 구매가 가능합니다.";
+"My Records" = "내 기록";

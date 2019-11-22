@@ -1,19 +1,19 @@
 {
   "images" : [
     {
+      "scale" : "1x",
       "filename" : "btnBottomResetLargeNormal.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "btnBottomResetLargeNormal@2x.png",
-      "scale" : "2x",
       "idiom" : "universal"
     },
     {
       "idiom" : "universal",
-      "filename" : "btnBottomResetLargeNormal@3x.png",
-      "scale" : "3x"
+      "scale" : "2x",
+      "filename" : "btnBottomResetLargeNormal@2x.png"
+    },
+    {
+      "scale" : "3x",
+      "idiom" : "universal",
+      "filename" : "btnBottomResetLargeNormal@3x.png"
     }
   ],
   "info" : {

@@ -1,19 +1,19 @@
 {
   "images" : [
     {
+      "scale" : "1x",
       "idiom" : "universal",
-      "filename" : "icSidemenuNormal.png",
-      "scale" : "1x"
+      "filename" : "icSidemenuNormal.png"
     },
     {
-      "scale" : "2x",
+      "filename" : "icSidemenuNormal@2x.png",
       "idiom" : "universal",
-      "filename" : "icSidemenuNormal@2x.png"
+      "scale" : "2x"
     },
     {
-      "filename" : "icSidemenuNormal@3x.png",
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "icSidemenuNormal@3x.png"
     }
   ],
   "info" : {

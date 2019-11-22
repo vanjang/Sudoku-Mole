@@ -21,7 +21,7 @@ extension GameViewController {
     
     func biTitleSetup() {
         let attributedKeys = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 22.0)!, NSAttributedString.Key.foregroundColor: yellow] as [NSAttributedString.Key : Any]
-        let attribute =  NSAttributedString(string: "SUDOKU\nMOLE", attributes: attributedKeys)
+        let attribute =  NSAttributedString(string: "SUDOKU\nMOLE".localized(), attributes: attributedKeys)
         
         biOutlet.attributedText = attribute
         biOutlet.layer.shadowColor = UIColor(red: 69.0/255.0, green: 99.0/255.0, blue: 54.0/255.0, alpha: 1.0).cgColor
@@ -29,20 +29,20 @@ extension GameViewController {
     }
     
     func timerSetup() {
-        let timerImage = UIImage(named: "timerBg.png")
-        let timerImageView = UIImageView(image: timerImage)
-        timerImageView.frame = timerView.bounds
-        timerImageView.contentMode = .scaleToFill
-        timerView.addSubview(timerImageView)
+//        let timerImage = UIImage(named: "timerBg.png")
+//        let timerImageView = UIImageView(image: timerImage)
+//        timerImageView.frame = timerView.bounds
+//        timerImageView.contentMode = .scaleToFill
+//        timerView.addSubview(timerImageView)
         timerView.bringSubviewToFront(timerOutlet)
         timerView.bringSubviewToFront(timerSwitch)
         
-        timerImageView.translatesAutoresizingMaskIntoConstraints = false
-        let topConstraints = NSLayoutConstraint(item: timerImageView, attribute: .top, relatedBy: .equal, toItem: timerView, attribute: .top, multiplier: 1, constant: 0)
-        let bottomConstraints = NSLayoutConstraint(item: timerImageView, attribute: .bottom, relatedBy: .equal, toItem: timerView, attribute: .bottom, multiplier: 1, constant: 0)
-        let leadingConstraints = NSLayoutConstraint(item: timerImageView, attribute: .leading, relatedBy: .equal, toItem: timerView, attribute: .leading, multiplier: 1, constant: 0)
-        let trailingConstraints = NSLayoutConstraint(item: timerImageView, attribute: .trailing, relatedBy: .equal, toItem: timerView, attribute: .trailing, multiplier: 1, constant: 0)
-        self.timerView.addConstraints([topConstraints, bottomConstraints, leadingConstraints, trailingConstraints])
+//        timerImageView.translatesAutoresizingMaskIntoConstraints = false
+//        let topConstraints = NSLayoutConstraint(item: timerImageView, attribute: .top, relatedBy: .equal, toItem: timerView, attribute: .top, multiplier: 1, constant: 0)
+//        let bottomConstraints = NSLayoutConstraint(item: timerImageView, attribute: .bottom, relatedBy: .equal, toItem: timerView, attribute: .bottom, multiplier: 1, constant: 0)
+//        let leadingConstraints = NSLayoutConstraint(item: timerImageView, attribute: .leading, relatedBy: .equal, toItem: timerView, attribute: .leading, multiplier: 1, constant: 0)
+//        let trailingConstraints = NSLayoutConstraint(item: timerImageView, attribute: .trailing, relatedBy: .equal, toItem: timerView, attribute: .trailing, multiplier: 1, constant: 0)
+//        self.timerView.addConstraints([topConstraints, bottomConstraints, leadingConstraints, trailingConstraints])
         
         if let load = appDelegate.loadLocalStorage() {
             timerOutlet.text = load.savedOutletTime

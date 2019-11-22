@@ -1,14 +1,14 @@
 {
   "images" : [
     {
-      "filename" : "smoleLife.png",
+      "idiom" : "universal",
       "scale" : "1x",
-      "idiom" : "universal"
+      "filename" : "smoleLife.png"
     },
     {
-      "scale" : "2x",
+      "idiom" : "universal",
       "filename" : "smoleLife@2x.png",
-      "idiom" : "universal"
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",

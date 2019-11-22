@@ -1,19 +1,19 @@
 {
   "images" : [
     {
-      "scale" : "1x",
       "filename" : "boardRecordNewHard.png",
+      "scale" : "1x",
       "idiom" : "universal"
     },
     {
+      "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "boardRecordNewHard@2x.png",
-      "idiom" : "universal"
+      "filename" : "boardRecordNewHard@2x.png"
     },
     {
       "scale" : "3x",
-      "filename" : "boardRecordNewHard@3x.png",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "boardRecordNewHard@3x.png"
     }
   ],
   "info" : {

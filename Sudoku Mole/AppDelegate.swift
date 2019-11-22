@@ -32,50 +32,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         
-        // retrieve items or nil
         if retrieveItems() != nil {
-            print("retrievednitems IS NOT nil")
             item = retrieveItems()
         } else {
-            print("retrievednitems IS nil")
             let iap = SudokuIAP()
-            //            iap.chances = []
             iap.chances = ["CHANCE", "CHANCE", "CHANCE", "CHANCE", "CHANCE"]
             item = iap
             storeItems(nil)
         }
         
-        //                window = UIWindow(frame: UIScreen.main.bounds)
-        //                let containerViewController = ContainerViewController()
-        //
-        //                window!.rootViewController = containerViewController
-        //
-        //                window!.makeKeyAndVisible()
-        
-        // Override point for customization after application launch.
         return true
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
     
@@ -122,35 +103,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let jsonEncoder = JSONEncoder()
         let data = try? jsonEncoder.encode(item)
         
-        print("will save")
         if let savingData = data {
-            print("data saved")
             userDefault.set(savingData, forKey: itemKey)
             dump(item?.chances)
         } else {
-            print("encoding failed")
+            // Encoding failed
         }
     }
-    //    func storeItems() {
-    //        let jsonEncoder = JSONEncoder()
-    //        let data = try? jsonEncoder.encode(item)
-    //
-    //        print("will save")
-    //        if let savingData = data {
-    //            print("data saved")
-    //            userDefault.set(savingData, forKey: key)
-    //            dump(item?.chances)
-    //        } else {
-    //            print("encoding failed")
-    //        }
-    //    }
+    
     // ---------------------[ Spend Items ]-----------------------------
     func spendItem() {
         if !item!.chances.isEmpty {
             item?.chances.removeLast()
             storeItems(nil)
         } else {
-            print("no chance to use")
+            // No chance to use
         }
     }
     
@@ -158,7 +125,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func retrieveItems() -> SudokuIAP? {
         let sudokuItem: SudokuIAP?
         guard let retrievedItem = userDefault.data(forKey: itemKey) else {
-            print("////////////")
             return nil }
         
         let jsonDecoder = JSONDecoder()
@@ -176,11 +142,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func hasADRemoverBeenBought() -> Bool {
         var bought = false
         guard let _ = userDefault.string(forKey: ADRemoverKey) else {
-            print("ad remover has not been bought")
             return false
         }
         bought = true
-//        var bought = true
         return bought
     }
     

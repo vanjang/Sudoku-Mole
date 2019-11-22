@@ -2,18 +2,18 @@
   "images" : [
     {
       "filename" : "icSideClose.png",
-      "scale" : "1x",
-      "idiom" : "universal"
-    },
-    {
-      "filename" : "icSideClose@2x.png",
-      "scale" : "2x",
-      "idiom" : "universal"
-    },
-    {
-      "filename" : "icSideClose@3x.png",
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "1x"
+    },
+    {
+      "scale" : "2x",
+      "idiom" : "universal",
+      "filename" : "icSideClose@2x.png"
+    },
+    {
+      "scale" : "3x",
+      "filename" : "icSideClose@3x.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {

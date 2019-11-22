@@ -3,7 +3,7 @@
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -221,10 +221,16 @@
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smoleLife" translatesAutoresizingMaskIntoConstraints="NO" id="JYw-pw-vsX">
                                                                 <rect key="frame" x="0.0" y="0.0" width="56.333333333333336" height="30"/>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0XJ-aW-ql5">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0XJ-aW-ql5">
                                                                 <rect key="frame" x="53.333333333333329" y="0.0" width="56.333333333333329" height="30"/>
-                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                                                <color key="textColor" red="0.49115824699999999" green="0.75134152170000001" blue="0.6039036512" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <attributedString key="attributedText">
+                                                                    <fragment content="3">
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="0.49115824699999999" green="0.75134152170000001" blue="0.6039036512" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                            <font key="NSFont" size="18" name="SFCompactDisplay-Semibold"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                </attributedString>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -238,10 +244,17 @@
                                                     <constraint firstAttribute="bottom" secondItem="eeX-Pi-cvi" secondAttribute="bottom" constant="-1" id="kKo-Ll-zWc"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Difficulty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkZ-KN-5Mh">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkZ-KN-5Mh">
                                                 <rect key="frame" x="132.66666666666666" y="8" width="109.66666666666666" height="28"/>
-                                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
-                                                <color key="textColor" red="0.49115824699999999" green="0.75134152170000001" blue="0.6039036512" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Difficulty">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.49115824699999999" green="0.75134152170000001" blue="0.6039036512" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <font key="NSFont" size="18" name="SFCompactDisplay-Semibold"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzc-O2-8j7">
@@ -250,33 +263,47 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W8f-sD-f9R">
                                                         <rect key="frame" x="7" y="-1" width="95.666666666666671" height="30"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3q-3z-BwU">
-                                                                <rect key="frame" x="3" y="3" width="20.333333333333332" height="24"/>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MAt-O2-LmQ">
+                                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" secondItem="b3q-3z-BwU" secondAttribute="height" multiplier="23:27" id="9P4-WT-SCo"/>
+                                                                    <constraint firstAttribute="width" secondItem="MAt-O2-LmQ" secondAttribute="height" id="kqc-9n-eaA"/>
                                                                 </constraints>
-                                                                <state key="normal" image="icTimeStop"/>
-                                                                <connections>
-                                                                    <action selector="timerTapped:" destination="Q4f-5l-ECv" eventType="touchUpInside" id="ENf-OM-hTz"/>
-                                                                </connections>
-                                                            </button>
-                                                            <label opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:10:15" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUZ-ih-U84">
-                                                                <rect key="frame" x="28.333333333333371" y="3" width="64.333333333333329" height="24"/>
+                                                            </imageView>
+                                                            <label opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUZ-ih-U84">
+                                                                <rect key="frame" x="35" y="3" width="57.666666666666657" height="24"/>
                                                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <color key="textColor" red="0.65492028000000002" green="0.90972119569999998" blue="0.65486443039999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <attributedString key="attributedText">
+                                                                    <fragment content="00:10:15">
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="0.65492028000000002" green="0.90972119569999998" blue="0.65486443039999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                            <font key="NSFont" size="14" name="SFCompactDisplay-Semibold"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                </attributedString>
                                                                 <nil key="highlightedColor"/>
                                                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                                                             </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ps3-at-MbQ">
+                                                                <rect key="frame" x="0.0" y="0.0" width="95.666666666666671" height="30"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <connections>
+                                                                    <action selector="timerTapped:" destination="Q4f-5l-ECv" eventType="touchUpInside" id="im5-ly-CN0"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstItem="eUZ-ih-U84" firstAttribute="leading" secondItem="b3q-3z-BwU" secondAttribute="trailing" constant="5" id="0dq-fJ-vIj"/>
-                                                            <constraint firstItem="b3q-3z-BwU" firstAttribute="leading" secondItem="W8f-sD-f9R" secondAttribute="leading" constant="3" id="3la-vU-wMs"/>
                                                             <constraint firstAttribute="trailing" secondItem="eUZ-ih-U84" secondAttribute="trailing" constant="3" id="Dhq-wo-fd6"/>
+                                                            <constraint firstItem="MAt-O2-LmQ" firstAttribute="top" secondItem="W8f-sD-f9R" secondAttribute="top" id="Eqo-zb-c36"/>
+                                                            <constraint firstItem="Ps3-at-MbQ" firstAttribute="leading" secondItem="W8f-sD-f9R" secondAttribute="leading" id="LuJ-HK-B8r"/>
                                                             <constraint firstItem="eUZ-ih-U84" firstAttribute="top" secondItem="W8f-sD-f9R" secondAttribute="top" constant="3" id="NtO-oU-nvK"/>
-                                                            <constraint firstItem="b3q-3z-BwU" firstAttribute="top" secondItem="W8f-sD-f9R" secondAttribute="top" constant="3" id="dXv-gA-il1"/>
-                                                            <constraint firstAttribute="bottom" secondItem="b3q-3z-BwU" secondAttribute="bottom" constant="3" id="f3u-Pp-zXJ"/>
+                                                            <constraint firstAttribute="bottom" secondItem="MAt-O2-LmQ" secondAttribute="bottom" id="SCW-de-cam"/>
+                                                            <constraint firstItem="Ps3-at-MbQ" firstAttribute="top" secondItem="W8f-sD-f9R" secondAttribute="top" id="ZiU-kD-3KP"/>
+                                                            <constraint firstItem="MAt-O2-LmQ" firstAttribute="leading" secondItem="W8f-sD-f9R" secondAttribute="leading" id="aeg-t8-W2h"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Ps3-at-MbQ" secondAttribute="trailing" id="ctX-uJ-DWD"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Ps3-at-MbQ" secondAttribute="bottom" id="lvb-XT-lS4"/>
+                                                            <constraint firstItem="eUZ-ih-U84" firstAttribute="leading" secondItem="MAt-O2-LmQ" secondAttribute="trailing" constant="5" id="oSS-38-fSO"/>
                                                             <constraint firstAttribute="bottom" secondItem="eUZ-ih-U84" secondAttribute="bottom" constant="3" id="sgE-dZ-AiV"/>
                                                         </constraints>
                                                     </view>
@@ -533,8 +560,9 @@
                         <outlet property="puzzleArea" destination="vUh-Pe-BPX" id="Xag-nu-UbS"/>
                         <outlet property="redoButtonOutlet" destination="mz2-qP-ueT" id="GTc-h3-ght"/>
                         <outlet property="sudokuView" destination="vUh-Pe-BPX" id="FJx-1D-faN"/>
+                        <outlet property="timerImageView" destination="MAt-O2-LmQ" id="KWt-Mr-Gek"/>
                         <outlet property="timerOutlet" destination="eUZ-ih-U84" id="2vl-tH-W16"/>
-                        <outlet property="timerSwitch" destination="b3q-3z-BwU" id="dFh-3y-UqG"/>
+                        <outlet property="timerSwitch" destination="Ps3-at-MbQ" id="Blg-Ri-l3x"/>
                         <outlet property="timerView" destination="W8f-sD-f9R" id="aCP-aS-sOx"/>
                         <outlet property="undoButtonOutlet" destination="3VW-sS-uXL" id="AAh-g9-UlM"/>
                         <outlet property="yellowView" destination="N4J-0r-IrW" id="kUM-31-IYN"/>
@@ -615,14 +643,20 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgj-DG-aAT" customClass="DialogLabel" customModule="Sudoku_Mole" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgj-DG-aAT" customClass="DialogLabel" customModule="Sudoku_Mole" customModuleProvider="target">
                                         <rect key="frame" x="32" y="57" width="266" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="266" id="IoM-uA-AV0"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="diL-lh-BV8"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                        <color key="textColor" red="0.63584631680000003" green="0.66185909509999996" blue="0.70588904620000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Label">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.63584631680000003" green="0.66185909509999996" blue="0.70588904620000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <font key="NSFont" size="20" name="SFProDisplay-LightItalic"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rkI-Cq-9OS">
@@ -664,15 +698,21 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hY0-K1-kCo">
                                 <rect key="frame" x="22.666666666666657" y="302.66666666666669" width="330" height="207"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6W-bD-Uof" customClass="DialogLabel" customModule="Sudoku_Mole" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6W-bD-Uof" customClass="DialogLabel" customModule="Sudoku_Mole" customModuleProvider="target">
                                         <rect key="frame" x="32" y="57" width="266" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="YCH-2g-41C"/>
                                             <constraint firstAttribute="width" constant="266" id="xpN-Dz-jzn"/>
                                         </constraints>
                                         <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="8" right="8"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                        <color key="textColor" red="0.63584631680000003" green="0.66185909509999996" blue="0.70588904620000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Label">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.63584631680000003" green="0.66185909509999996" blue="0.70588904620000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <font key="NSFont" size="20" name="SFProDisplay-LightItalic"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2us-Pl-YOA">
@@ -1018,8 +1058,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="561-42-WWn">
-                                <rect key="frame" x="151.66666666666666" y="680" width="72" height="72"/>
-                                <state key="normal" image="btnBottomHomeLargeNormal"/>
+                                <rect key="frame" x="87.666666666666686" y="508" width="200" height="200"/>
+                                <state key="normal" image="pausePlay"/>
                                 <connections>
                                     <action selector="pauseButtonTapped:" destination="vuJ-re-Hh3" eventType="touchUpInside" id="W2b-0G-eMc"/>
                                 </connections>
@@ -1027,7 +1067,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="rDy-Xp-oAJ" firstAttribute="bottom" secondItem="561-42-WWn" secondAttribute="bottom" constant="26" id="99n-Qr-uwg"/>
+                            <constraint firstItem="rDy-Xp-oAJ" firstAttribute="bottom" secondItem="561-42-WWn" secondAttribute="bottom" constant="70" id="99n-Qr-uwg"/>
                             <constraint firstItem="561-42-WWn" firstAttribute="centerX" secondItem="alR-bZ-s8L" secondAttribute="centerX" id="d1b-4a-Mpk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rDy-Xp-oAJ"/>
@@ -1149,7 +1189,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boardLabelEasy" translatesAutoresizingMaskIntoConstraints="NO" id="Fn6-HA-LGL">
-                                <rect key="frame" x="42" y="74" width="75" height="75"/>
+                                <rect key="frame" x="42" y="74" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Fn6-HA-LGL" secondAttribute="height" multiplier="1:1" id="BiB-W9-ELN"/>
                                 </constraints>
@@ -1637,7 +1677,7 @@
         <image name="chance1" width="96" height="86"/>
         <image name="icHomeNormal" width="32" height="32"/>
         <image name="icSidemenuNormal" width="32" height="32"/>
-        <image name="icTimeStop" width="22" height="22"/>
+        <image name="pausePlay" width="100" height="100"/>
         <image name="smoleLife" width="44" height="30"/>
     </resources>
 </document>

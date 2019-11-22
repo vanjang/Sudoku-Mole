@@ -61,7 +61,7 @@ extension GameViewController {
     }
     
     func makeConstToStackView() {
-        dummyView.frame.size.width = menuView.frame.size.width*0.8
+        dummyView.frame.size.width = menuView.frame.size.width*0.82
         dummyView.backgroundColor = .clear
         menuView.addSubview(dummyView)
         
@@ -77,9 +77,10 @@ extension GameViewController {
         fadeView.frame = fadeFrame
         fadeView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.7)
         view.addSubview(fadeView)
-        //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameViewController.dismissButtonTapped))
-        //        tap.cancelsTouchesInView = false
-        //        view.addGestureRecognizer(tap)
+                
+        let tap = UITapGestureRecognizer(target: self, action: #selector(GameViewController.dismissButtonTapped))
+        tap.cancelsTouchesInView = false
+        fadeView.addGestureRecognizer(tap)
     }
     
     func makeMenuRewindButton() {
@@ -97,20 +98,20 @@ extension GameViewController {
     func makeBannerCase() {
         bannerCase.addSubview(bannerView)
         let width = menuView.frame.size.width*0.70
-        let height = width*0.24
+        let height = width*0.23
         let x = (dummyView.frame.size.width-width)/2
         let y = menuView.bounds.maxY-height-20
         let frame = CGRect(x: x, y: y, width: width, height: height)
         
         bannerView.frame = frame
-        bannerView.layer.cornerRadius = height/2
+        bannerView.layer.cornerRadius = height/3.8
         
-        let caseWidth = menuView.frame.size.width*0.69
+        let caseWidth = menuView.frame.size.width*0.70
         let caseFrame = CGRect(x: x, y: y, width: caseWidth, height: height)
         bannerCase.frame = caseFrame
         bannerCase.backgroundColor = .white
         bannerCase.layer.borderWidth = 0
-        bannerCase.layer.cornerRadius = height/2
+        bannerCase.layer.cornerRadius = height/3.8
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         
         menuView.addSubview(bannerCase)
@@ -139,7 +140,7 @@ extension GameViewController {
         
         // Record label setup
         recordLabel.backgroundColor = .clear
-        recordLabel.text = "MY RECORDS"
+        recordLabel.text = "MY RECORDS".localized()
         recordLabel.contentMode = .center
         recordLabel.textAlignment = .center
         recordLabel.frame.size.width = menuView.frame.size.width*0.5
@@ -237,11 +238,15 @@ extension GameViewController {
         instructionView.backgroundColor = .clear
         menuView.addSubview(instructionView)
         
-        let image = UIImage(named: "sudoji.png")
-        let imageView = UIImageView(image: image)
-        let imageViewFrame = CGRect(x: self.view.frame.width/2, y: self.view.frame.height/2, width: instructionView.bounds.size.width/2, height: instructionView.bounds.size.height/2)
-        imageView.frame = imageViewFrame
-        instructionView.addSubview(imageView)
+        let image = UIImage(named: "menuSmoleIntroHi.png")
+        smoleMenuImage.image = image
+        
+//        smoleMenuImage.contentMode = .left//.scaleAspectFit//.scaleAspectFill//self.view.frame.origin.x
+        smoleMenuImage.contentMode = .scaleAspectFit
+//        let imageViewFrame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.height*0.38, width: menuView.bounds.size.width*0.73, height: menuView.bounds.size.height*0.62)
+//        smoleMenuImage.frame = imageViewFrame
+        menuView.addSubview(smoleMenuImage)
+        menuView.sendSubviewToBack(smoleMenuImage)
         
         let nameLabel = InsetLabel()
         let ageLabel = InsetLabel()
@@ -250,45 +255,45 @@ extension GameViewController {
         let featureLabel3 = InsetLabel()
         let featureLabel4 = InsetLabel()
         
-        let yellowAttribute = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 30.0)!, NSAttributedString.Key.foregroundColor: yellow] as [NSAttributedString.Key : Any]
-        let mintAttribute = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 30.0)!, NSAttributedString.Key.foregroundColor: mint] as [NSAttributedString.Key : Any]
+        let yellowAttribute = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 28.0)!, NSAttributedString.Key.foregroundColor: yellow] as [NSAttributedString.Key : Any]
+        let mintAttribute = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 28.0)!, NSAttributedString.Key.foregroundColor: mint] as [NSAttributedString.Key : Any]
         
         let nameMutableAttribute = NSMutableAttributedString()
         let ageMutableAttribute = NSMutableAttributedString()
         let featureMutableAttribute = NSMutableAttributedString()
         
-        let nameAttributedString = NSAttributedString(string: "NAME : ", attributes: yellowAttribute)
-        let smoleAttributedString = NSAttributedString(string: "SMOLE", attributes: mintAttribute)
+        let nameAttributedString = NSAttributedString(string: "NAME : ".localized(), attributes: yellowAttribute)
+        let smoleAttributedString = NSAttributedString(string: "SMOLE".localized(), attributes: mintAttribute)
         nameMutableAttribute.append(nameAttributedString)
         nameMutableAttribute.append(smoleAttributedString)
         nameLabel.attributedText = nameMutableAttribute
         
-        let ageAttributedString = NSAttributedString(string: "AGE : ", attributes: yellowAttribute)
-        let twoAttributedString = NSAttributedString(string: "2", attributes: mintAttribute)
+        let ageAttributedString = NSAttributedString(string: "AGE : ".localized(), attributes: yellowAttribute)
+        let twoAttributedString = NSAttributedString(string: "2".localized(), attributes: mintAttribute)
         ageMutableAttribute.append(ageAttributedString)
         ageMutableAttribute.append(twoAttributedString)
         ageLabel.attributedText = ageMutableAttribute
         
-        let feature1AttributedString = NSAttributedString(string: "FEATURE : ", attributes: yellowAttribute)
-        let sleepyHeadAttributedString = NSAttributedString(string: "SLEEPYHEAD,", attributes: mintAttribute)
+        let feature1AttributedString = NSAttributedString(string: "FEATURE : ".localized(), attributes: yellowAttribute)
+        let sleepyHeadAttributedString = NSAttributedString(string: "SLEEPYHEAD,".localized(), attributes: mintAttribute)
         featureMutableAttribute.append(feature1AttributedString)
         featureMutableAttribute.append(sleepyHeadAttributedString)
         featureLabel1.attributedText = featureMutableAttribute
         
-        let feature2AttributedString = NSAttributedString(string: "VERY CALM, CURLY HAIR,", attributes: mintAttribute)
+        let feature2AttributedString = NSAttributedString(string: "VERY CALM, CURLY HAIR,".localized(), attributes: mintAttribute)
         featureLabel2.attributedText = feature2AttributedString
         
-        let feature3AttributedString = NSAttributedString(string: "SMALL TEETH,", attributes: mintAttribute)
+        let feature3AttributedString = NSAttributedString(string: "SMALL TEETH,".localized(), attributes: mintAttribute)
         featureLabel3.attributedText = feature3AttributedString
         
-        let feature4AttributedString = NSAttributedString(string: "HEAVY EATER", attributes: mintAttribute)
+        let feature4AttributedString = NSAttributedString(string: "HEAVY EATER".localized(), attributes: mintAttribute)
         featureLabel4.attributedText = feature4AttributedString
         
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .trailing
-        stackView.spacing = 11
+        stackView.spacing = 9
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(nameLabel)
         stackView.addArrangedSubview(ageLabel)
@@ -298,8 +303,9 @@ extension GameViewController {
         stackView.addArrangedSubview(featureLabel4)
         instructionView.addSubview(stackView)
         
-        let topConstraint = NSLayoutConstraint(item: stackView, attribute: .top, relatedBy: .equal, toItem: menuView, attribute: .top, multiplier: 1, constant: instructionView.frame.size.height*0.20)
-        let horizontalConstraint = NSLayoutConstraint(item: stackView, attribute: .centerX, relatedBy: .equal, toItem: menuView, attribute: .centerX, multiplier: 1, constant: 0)
+        let topConstraint = NSLayoutConstraint(item: stackView, attribute: .top, relatedBy: .equal, toItem: menuView, attribute: .top, multiplier: 1, constant: instructionView.frame.size.height*0.16)
+//        let horizontalConstraint = NSLayoutConstraint(item: stackView, attribute: .centerX, relatedBy: .equal, toItem: menuView, attribute: .centerX, multiplier: 1, constant: 0)
+        let horizontalConstraint = NSLayoutConstraint(item: stackView, attribute: .right, relatedBy: .equal, toItem: menuView, attribute: .right, multiplier: 1, constant: -29)
         self.view.addConstraints([topConstraint, horizontalConstraint])
         
         if !appDelegate.hasADRemoverBeenBought() {
@@ -308,6 +314,20 @@ extension GameViewController {
     }
     
     func makeIAPView() {
+        // Record label setup
+        shopLabel.backgroundColor = .clear
+        shopLabel.text = "SHOP".localized()
+        shopLabel.contentMode = .center
+        shopLabel.textAlignment = .center
+        shopLabel.frame.size.width = menuView.frame.size.width*0.5
+        shopLabel.frame.size.height = dismissButton.frame.size.height
+        shopLabel.frame.origin.x = (menuView.frame.size.width-recordLabel.frame.width)/2
+        shopLabel.frame.origin.y = dismissButton.frame.origin.y+4
+        shopLabel.font = UIFont(name: "LuckiestGuy-Regular", size: 28.0)
+        shopLabel.textColor = #colorLiteral(red: 1, green: 0.9337611198, blue: 0.2692891061, alpha: 1)
+        menuView.addSubview(shopLabel)
+        
+        
         iapView.frame.size.width = (self.view.frame.size.width)*0.8
         
         if !appDelegate.hasADRemoverBeenBought() {
@@ -316,35 +336,56 @@ extension GameViewController {
             iapView.frame.size.height = (self.view.frame.size.height-30)*0.8
         }
         
-        let frame = CGRect(x: (self.view.frame.size.width-iapView.frame.size.width)/2, y: (self.view.frame.size.height-iapView.frame.size.height)/2, width: iapView.frame.size.width, height: iapView.frame.size.height)
+//        let frame = CGRect(x: (self.view.frame.size.width-iapView.frame.size.width)/2, y: (self.view.frame.size.height-iapView.frame.size.height)/2, width: iapView.frame.size.width, height: iapView.frame.size.height)
+        let frame = CGRect(x: view.frame.origin.x, y: view.frame.size.height*0.15, width: view.frame.size.width, height: iapView.frame.size.height)
         iapView.frame = frame
-        iapView.backgroundColor = .clear
+        iapView.backgroundColor = .clear//.red
         menuView.addSubview(iapView)
         
         let iap1 = UIButton()
         let iap2 = UIButton()
         
-        let image1 = UIImage(named: "placeholder.png")
-        let image2 = UIImage(named: "placeholder.png")
+        let image1 = UIImage(named: "itemClearAd.png")
+        let image2 = UIImage(named: "item5Chance.png")
         
         iap1.setImage(image1, for: .normal)
+        iap1.contentMode = .scaleAspectFit
         iap2.setImage(image2, for: .normal)
+        iap2.contentMode = .scaleAspectFit
         iap1.addTarget(self, action: #selector(ADFreeButtonTapped), for: .touchUpInside)
         iap2.addTarget(self, action: #selector(getChanceButtonTapped), for: .touchUpInside)
         
+        let iap1LabelFrame = CGRect(x: iap1.frame.origin.x, y: iap1.frame.origin.y, width: iap1.frame.size.width, height: 50)
+        iap1Label.frame = iap1LabelFrame
+        iap1Label.backgroundColor = #colorLiteral(red: 1, green: 0.9337611198, blue: 0.2692891061, alpha: 1)
+        iap1Label.text = "5 CHANCE\n0.99" // web 연결 해야함
+        iapView.addSubview(iap1Label)
+        
+        let smoleImage = UIImage(named: "smoleShop.png")
+        iapSmoleImageView.image = smoleImage
+        iapSmoleImageView.contentMode = .scaleAspectFit
+        iapView.addSubview(iapSmoleImageView)
+        iapSmoleImageView.translatesAutoresizingMaskIntoConstraints = false
+        
         let stackView = UIStackView()
-        stackView.axis = .vertical
+        stackView.axis = .horizontal
         stackView.distribution = .fillEqually
-        stackView.alignment = .trailing
-        stackView.spacing = 100
+        stackView.alignment = .top
+        stackView.spacing = 50
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.addArrangedSubview(iap1)
         stackView.addArrangedSubview(iap2)
+        stackView.addArrangedSubview(iap1)
         iapView.addSubview(stackView)
         
-        let verticalConstraint = NSLayoutConstraint(item: stackView, attribute: .centerY, relatedBy: .equal, toItem: iapView, attribute: .centerY, multiplier: 1, constant: -30)
+//        let verticalConstraint = NSLayoutConstraint(item: stackView, attribute: .centerY, relatedBy: .equal, toItem: iapView, attribute: .centerY, multiplier: 1, constant: 0)
         let horizontalConstraint = NSLayoutConstraint(item: stackView, attribute: .centerX, relatedBy: .equal, toItem: iapView, attribute: .centerX, multiplier: 1, constant: 0)
-        self.view.addConstraints([verticalConstraint, horizontalConstraint])
+        let topConstraint = NSLayoutConstraint(item: stackView, attribute: .top, relatedBy: .equal, toItem: iapView, attribute: .top, multiplier: 1, constant: view.frame.size.height*0.16)
+        
+        let smoleTopConstraint = NSLayoutConstraint(item: iapSmoleImageView, attribute: .top, relatedBy: .equal, toItem: stackView, attribute: .bottom, multiplier: 1, constant: view.frame.size.height*0.08)
+        let smoleCentreConstraint = NSLayoutConstraint(item: iapSmoleImageView, attribute: .centerX, relatedBy: .equal, toItem: iapView, attribute: .centerX, multiplier: 1, constant: 0)
+
+        
+        self.view.addConstraints([horizontalConstraint, topConstraint, smoleTopConstraint, smoleCentreConstraint])
         
         if !appDelegate.hasADRemoverBeenBought() {
             bannerCase.superview?.bringSubviewToFront(bannerCase)

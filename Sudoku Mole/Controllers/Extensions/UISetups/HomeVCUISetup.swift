@@ -32,11 +32,11 @@ extension HomeViewController {
         let attribute = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 32.0)!, NSMutableAttributedString.Key.underlineStyle: NSUnderlineStyle.thick.rawValue, NSAttributedString.Key.underlineColor: yellow, NSAttributedString.Key.foregroundColor: yellow] as [NSAttributedString.Key : Any]
         let attributeForContinueButton = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 32.0)!, NSMutableAttributedString.Key.underlineStyle: NSUnderlineStyle.thick.rawValue, NSAttributedString.Key.underlineColor: mint, NSAttributedString.Key.foregroundColor: mint] as [NSAttributedString.Key : Any]
 
-        let easy = NSAttributedString(string: "EASY", attributes: attribute as [NSAttributedString.Key : Any])
-        let normal = NSAttributedString(string: "NORMAL", attributes: attribute as [NSAttributedString.Key : Any])
-        let hard = NSAttributedString(string: "HARD", attributes: attribute as [NSAttributedString.Key : Any])
-        let expert = NSAttributedString(string: "EXPERT", attributes: attribute as [NSAttributedString.Key : Any])
-        let continueGame = NSAttributedString(string: "CONTINUE GAME", attributes: attributeForContinueButton as [NSAttributedString.Key : Any])
+        let easy = NSAttributedString(string: "EASY".localized(), attributes: attribute as [NSAttributedString.Key : Any])
+        let normal = NSAttributedString(string: "NORMAL".localized(), attributes: attribute as [NSAttributedString.Key : Any])
+        let hard = NSAttributedString(string: "HARD".localized(), attributes: attribute as [NSAttributedString.Key : Any])
+        let expert = NSAttributedString(string: "EXPERT".localized(), attributes: attribute as [NSAttributedString.Key : Any])
+        let continueGame = NSAttributedString(string: "CONTINUE GAME".localized(), attributes: attributeForContinueButton as [NSAttributedString.Key : Any])
         
         easyButton.setAttributedTitle(easy, for: .normal)
         easyButton.frame.size.height = 20
@@ -111,31 +111,31 @@ extension HomeViewController {
         let ageMutableAttribute = NSMutableAttributedString()
         let featureMutableAttribute = NSMutableAttributedString()
         
-        let nameAttributedString = NSAttributedString(string: "NAME : ", attributes: yellowAttribute)
-        let smoleAttributedString = NSAttributedString(string: "SMOLE", attributes: mintAttribute)
+        let nameAttributedString = NSAttributedString(string: "NAME : ".localized(), attributes: yellowAttribute)
+        let smoleAttributedString = NSAttributedString(string: "SMOLE".localized(), attributes: mintAttribute)
         nameMutableAttribute.append(nameAttributedString)
         nameMutableAttribute.append(smoleAttributedString)
         nameLabel.attributedText = nameMutableAttribute
         
-        let ageAttributedString = NSAttributedString(string: "AGE : ", attributes: yellowAttribute)
-        let twoAttributedString = NSAttributedString(string: "2", attributes: mintAttribute)
+        let ageAttributedString = NSAttributedString(string: "AGE : ".localized(), attributes: yellowAttribute)
+        let twoAttributedString = NSAttributedString(string: "2".localized(), attributes: mintAttribute)
         ageMutableAttribute.append(ageAttributedString)
         ageMutableAttribute.append(twoAttributedString)
         ageLabel.attributedText = ageMutableAttribute
         
-        let feature1AttributedString = NSAttributedString(string: "FEATURE : ", attributes: yellowAttribute)
-        let sleepyHeadAttributedString = NSAttributedString(string: "SLEEPYHEAD,", attributes: mintAttribute)
+        let feature1AttributedString = NSAttributedString(string: "FEATURE : ".localized(), attributes: yellowAttribute)
+        let sleepyHeadAttributedString = NSAttributedString(string: "SLEEPYHEAD,".localized(), attributes: mintAttribute)
         featureMutableAttribute.append(feature1AttributedString)
         featureMutableAttribute.append(sleepyHeadAttributedString)
         featureLabel1.attributedText = featureMutableAttribute
         
-        let feature2AttributedString = NSAttributedString(string: "VERY CALM, CURLY HAIR,", attributes: mintAttribute)
+        let feature2AttributedString = NSAttributedString(string: "VERY CALM, CURLY HAIR,".localized(), attributes: mintAttribute)
         featureLabel2.attributedText = feature2AttributedString
         
-        let feature3AttributedString = NSAttributedString(string: "SMALL TEETH,", attributes: mintAttribute)
+        let feature3AttributedString = NSAttributedString(string: "SMALL TEETH,".localized(), attributes: mintAttribute)
         featureLabel3.attributedText = feature3AttributedString
         
-        let feature4AttributedString = NSAttributedString(string: "HEAVY EATER", attributes: mintAttribute)
+        let feature4AttributedString = NSAttributedString(string: "HEAVY EATER".localized(), attributes: mintAttribute)
         featureLabel4.attributedText = feature4AttributedString
      
         count.contentMode = .center
@@ -164,113 +164,55 @@ extension HomeViewController {
         let horizontalConstraint = NSLayoutConstraint(item: instructionStackView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
         self.view.addConstraints([topConstraint, horizontalConstraint])
     }
-    
-    func makeCount() {
-    
-        let dummyView = UIView()
-        dummyView.backgroundColor = .clear
-        dummyView.frame.size.height = 60
-        instructionStackView.addArrangedSubview(dummyView)
-        instructionStackView.addArrangedSubview(count)
-    
-        count.font = UIFont(name: "LuckiestGuy-Regular", size: 150.0)
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.1, delay: 0.5, options: .curveEaseIn, animations: {
-                self.count.alpha = 1.0
-            }) { (action) in
-                UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
-                    self.count.alpha = 0.0
-                }) { (action) in
-                    UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
-                        self.count.text = "2"
-                        self.count.alpha = 1.0
-                    }) { (action) in
-                        UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
-                            self.count.alpha = 0.0
-                        }) { (action) in
-                            UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
-                                self.count.text = "1"
-                                self.count.alpha = 1.0
-                            }) { (action) in
-                                UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
-                                    self.count.alpha = 0.0
-                                }) { (action) in
-                                    UIView.animate(withDuration: 0.2, delay: 0.5, options: .curveEaseIn, animations: {
-                                        let attribute = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 65.0)!, NSAttributedString.Key.foregroundColor: self.yellow] as [NSAttributedString.Key : Any]
-                                        let attributedString = NSAttributedString(string: "start!", attributes: attribute)
-                                        self.count.attributedText = attributedString
-                                        self.count.alpha = 1.0
-                                    }) { (action) in
-                                        if self.homeViewControllerTransition == .level {
-                                            self.startButton.isHidden = true
-                                            self.levelButtonsStackView.isHidden = false
-                                            self.instructionStackView.isHidden = true
-    
-                                        } else if self.homeViewControllerTransition == .sudoji {
-                                            self.startButton.isHidden = true
-                                            self.levelButtonsStackView.isHidden = true
-                                            self.instructionStackView.isHidden = false
-                                        }
-                                        self.performSegue(withIdentifier: "toPuzzle", sender: self)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-}
-
-//func makeCount() {
 //
-//    let dummyView = UIView()
-//    dummyView.backgroundColor = .clear
-//    dummyView.frame.size.height = 60
-//    instructionStackView.addArrangedSubview(dummyView)
-//    instructionStackView.addArrangedSubview(count)
+//    func makeCount() {
 //
-//    count.font = UIFont(name: "LuckiestGuy-Regular", size: 150.0)
-//    DispatchQueue.main.async {
-//        UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
-//            self.count.alpha = 1.0
-//        }) { (action) in
-//            UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
-//                self.count.alpha = 0.0
+//        let dummyView = UIView()
+//        dummyView.backgroundColor = .clear
+//        dummyView.frame.size.height = 60
+//        instructionStackView.addArrangedSubview(dummyView)
+//        instructionStackView.addArrangedSubview(count)
+//
+//        count.font = UIFont(name: "LuckiestGuy-Regular", size: 150.0)
+//        DispatchQueue.main.async {
+//            UIView.animate(withDuration: 0.1, delay: 0.5, options: .curveEaseIn, animations: {
+//                self.count.alpha = 1.0
 //            }) { (action) in
-//                UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
-//                    self.count.text = "2"
-//                    self.count.alpha = 1.0
+//                UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
+//                    self.count.alpha = 0.0
 //                }) { (action) in
-//                    UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
-//                        self.count.alpha = 0.0
+//                    UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
+//                        self.count.text = "2"
+//                        self.count.alpha = 1.0
 //                    }) { (action) in
-//                        UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
-//                            self.count.text = "1"
-//                            self.count.alpha = 1.0
+//                        UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
+//                            self.count.alpha = 0.0
 //                        }) { (action) in
-//                            UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
-//                                self.count.alpha = 0.0
+//                            UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
+//                                self.count.text = "1"
+//                                self.count.alpha = 1.0
 //                            }) { (action) in
-//                                UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
-//                                    let attribute = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 65.0)!, NSAttributedString.Key.foregroundColor: self.yellow] as [NSAttributedString.Key : Any]
-//                                    let attributedString = NSAttributedString(string: "start!", attributes: attribute)
-//                                    self.count.attributedText = attributedString
-//                                    self.count.alpha = 1.0
+//                                UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
+//                                    self.count.alpha = 0.0
 //                                }) { (action) in
-//                                    if self.homeViewControllerTransition == .level {
-//                                        self.startButton.isHidden = true
-//                                        self.levelButtonsStackView.isHidden = false
-//                                        self.instructionStackView.isHidden = true
+//                                    UIView.animate(withDuration: 0.2, delay: 0.5, options: .curveEaseIn, animations: {
+//                                        let attribute = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 65.0)!, NSAttributedString.Key.foregroundColor: self.yellow] as [NSAttributedString.Key : Any]
+//                                        let attributedString = NSAttributedString(string: "start!", attributes: attribute)
+//                                        self.count.attributedText = attributedString
+//                                        self.count.alpha = 1.0
+//                                    }) { (action) in
+//                                        if self.homeViewControllerTransition == .level {
+//                                            self.startButton.isHidden = true
+//                                            self.levelButtonsStackView.isHidden = false
+//                                            self.instructionStackView.isHidden = true
 //
-//                                    } else if self.homeViewControllerTransition == .sudoji {
-//                                        self.startButton.isHidden = true
-//                                        self.levelButtonsStackView.isHidden = true
-//                                        self.instructionStackView.isHidden = false
+//                                        } else if self.homeViewControllerTransition == .sudoji {
+//                                            self.startButton.isHidden = true
+//                                            self.levelButtonsStackView.isHidden = true
+//                                            self.instructionStackView.isHidden = false
+//                                        }
+//                                        self.performSegue(withIdentifier: "toPuzzle", sender: self)
 //                                    }
-//                                    self.performSegue(withIdentifier: "toPuzzle", sender: self)
 //                                }
 //                            }
 //                        }
@@ -279,4 +221,63 @@ extension HomeViewController {
 //            }
 //        }
 //    }
+//
 //}
+
+func makeCount() {
+
+    let dummyView = UIView()
+    dummyView.backgroundColor = .clear
+    dummyView.frame.size.height = 60
+    instructionStackView.addArrangedSubview(dummyView)
+    instructionStackView.addArrangedSubview(count)
+
+    count.font = UIFont(name: "LuckiestGuy-Regular", size: 150.0)
+    DispatchQueue.main.async {
+        UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
+            self.count.alpha = 1.0
+        }) { (action) in
+            UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
+                self.count.alpha = 0.0
+            }) { (action) in
+                UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
+                    self.count.text = "2"
+                    self.count.alpha = 1.0
+                }) { (action) in
+                    UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
+                        self.count.alpha = 0.0
+                    }) { (action) in
+                        UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
+                            self.count.text = "1"
+                            self.count.alpha = 1.0
+                        }) { (action) in
+                            UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
+                                self.count.alpha = 0.0
+                            }) { (action) in
+                                UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveEaseIn, animations: {
+                                    let attribute = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 65.0)!, NSAttributedString.Key.foregroundColor: self.yellow] as [NSAttributedString.Key : Any]
+                                    let attributedString = NSAttributedString(string: "start!", attributes: attribute)
+                                    self.count.attributedText = attributedString
+                                    self.count.alpha = 1.0
+                                }) { (action) in
+                                    if self.homeViewControllerTransition == .level {
+                                        self.startButton.isHidden = true
+                                        self.levelButtonsStackView.isHidden = false
+                                        self.instructionStackView.isHidden = true
+
+                                    } else if self.homeViewControllerTransition == .sudoji {
+                                        self.startButton.isHidden = true
+                                        self.levelButtonsStackView.isHidden = true
+                                        self.instructionStackView.isHidden = false
+                                    }
+                                    self.performSegue(withIdentifier: "toPuzzle", sender: self)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+}

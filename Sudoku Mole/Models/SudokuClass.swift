@@ -242,7 +242,6 @@ class SudokuClass {
         
         // 5. gameset check
         if isAllUserFieldFilled.contains(false) {
-            print("not all field has not been filled")
             gameChecker = 0
         } else {
             var isSolved = [Bool]()
@@ -255,10 +254,8 @@ class SudokuClass {
                     }
                 }
                 if isSolved.contains(false) {
-                    print("it is not solved")
                     gameChecker = 1
                 } else {
-                    print("it is solved")
                     gameChecker = 2
                 }
             }

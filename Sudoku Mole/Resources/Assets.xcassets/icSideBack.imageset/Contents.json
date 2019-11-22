@@ -11,8 +11,8 @@
       "scale" : "2x"
     },
     {
-      "filename" : "icSideBack@3x.png",
       "scale" : "3x",
+      "filename" : "icSideBack@3x.png",
       "idiom" : "universal"
     }
   ],

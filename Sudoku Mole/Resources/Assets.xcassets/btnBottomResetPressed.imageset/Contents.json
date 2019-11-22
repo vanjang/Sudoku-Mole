@@ -1,14 +1,14 @@
 {
   "images" : [
     {
+      "scale" : "1x",
       "idiom" : "universal",
-      "filename" : "btnBottomResetPressed.png",
-      "scale" : "1x"
+      "filename" : "btnBottomResetPressed.png"
     },
     {
       "scale" : "2x",
-      "filename" : "btnBottomResetPressed@2x.png",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "btnBottomResetPressed@2x.png"
     },
     {
       "filename" : "btnBottomResetPressed@3x.png",

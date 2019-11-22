@@ -104,17 +104,19 @@ class HomeViewController: UIViewController {
     }
 
     @objc func easyButtonTapped(sender: UIButton) {
+        deleteIfGameSaved()
         homeViewControllerTransition = .sudoji
         let puzzle = appDelegate.sudoku
         puzzle.grid.gameDiff = "Easy"
         let array = appDelegate.getPuzzles(puzzle.grid.gameDiff)
         let answerArray = appDelegate.getPuzzles(puzzle.grid.gameDiff+"Answers")
         let puzzleIndex = random(array.count)
-        puzzle.grid.plistPuzzle = puzzle.plistToPuzzle(plist: array[random(array.count)], toughness: puzzle.grid.gameDiff)
+        puzzle.grid.plistPuzzle = puzzle.plistToPuzzle(plist: array[puzzleIndex], toughness: puzzle.grid.gameDiff)
         puzzle.grid.puzzleAnswer = puzzle.plistToPuzzle(plist: answerArray[puzzleIndex], toughness: puzzle.grid.gameDiff+"Answers")
     }
     
     @objc func normalButtonTapped(sender: UIButton) {
+        deleteIfGameSaved()
         homeViewControllerTransition = .sudoji
         let puzzle = appDelegate.sudoku
         puzzle.grid.gameDiff = "Normal"
@@ -126,19 +128,44 @@ class HomeViewController: UIViewController {
     }
     
     @objc func hardButtonTapped(sender: UIButton) {
+        deleteIfGameSaved()
         homeViewControllerTransition = .sudoji
         let puzzle = appDelegate.sudoku
         puzzle.grid.gameDiff = "Hard"
         let array = appDelegate.getPuzzles(puzzle.grid.gameDiff)
-        puzzle.grid.plistPuzzle = puzzle.plistToPuzzle(plist: array[random(array.count)], toughness: puzzle.grid.gameDiff)
+        let answerArray = appDelegate.getPuzzles(puzzle.grid.gameDiff+"Answers")
+        let puzzleIndex = random(array.count)
+        puzzle.grid.plistPuzzle = puzzle.plistToPuzzle(plist: array[puzzleIndex], toughness: puzzle.grid.gameDiff)
+        puzzle.grid.puzzleAnswer = puzzle.plistToPuzzle(plist: answerArray[puzzleIndex], toughness: puzzle.grid.gameDiff+"Answers")
     }
     
     @objc func expertButtonTapped(sender: UIButton) {
+        deleteIfGameSaved()
         homeViewControllerTransition = .sudoji
         let puzzle = appDelegate.sudoku
         puzzle.grid.gameDiff = "Expert"
         let array = appDelegate.getPuzzles(puzzle.grid.gameDiff)
-        puzzle.grid.plistPuzzle = puzzle.plistToPuzzle(plist: array[random(array.count)], toughness: puzzle.grid.gameDiff)
+        let answerArray = appDelegate.getPuzzles(puzzle.grid.gameDiff+"Answers")
+        let puzzleIndex = random(array.count)
+        puzzle.grid.plistPuzzle = puzzle.plistToPuzzle(plist: array[puzzleIndex], toughness: puzzle.grid.gameDiff)
+        puzzle.grid.puzzleAnswer = puzzle.plistToPuzzle(plist: answerArray[puzzleIndex], toughness: puzzle.grid.gameDiff+"Answers")
+    }
+    
+    func deleteIfGameSaved() {
+        var load = appDelegate.load
+        load = appDelegate.loadLocalStorage()
+        if load != nil {
+            // Game is currently saved
+            appDelegate.sudoku.grid = load
+            let puzzle = self.appDelegate.sudoku
+            puzzle.clearUserPuzzle()
+            puzzle.clearPlistPuzzle()
+            puzzle.clearPencilPuzzle()
+            puzzle.grid.undonePuzzle.removeAll()
+            puzzle.grid.puzzleStack.removeAll()
+        } else {
+            // Game is currently NOT saved
+        }
     }
     
     @objc func continueButtonTapped(sender: UIButton) {
@@ -150,7 +177,7 @@ class HomeViewController: UIViewController {
             performSegue(withIdentifier: "toPuzzle", sender: sender)
         } else {
             instantiatingCustomAlertView()
-            self.delegate?.customAlertController(title: "UH-OH".localized(), message: "No Game in Progress or No Saved Game".localized(), option: .oneButton)
+            self.delegate?.customAlertController(title: "UH-OH".localized(), message: "No Saved Game.".localized(), option: .oneButton)
             self.delegate?.customAction1(title: "OK", action: { xx in
                 DispatchQueue.main.async {
                     self.dismiss(animated: true, completion: nil)
@@ -170,7 +197,7 @@ class HomeViewController: UIViewController {
     }
     
     func lottieForHomeVC() {
-        let ani = AnimationView(name: "11282-bread-toaster")
+        let ani = AnimationView(name: "Chance1Side")
         ani.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
         ani.center = self.view.center
         ani.contentMode = .scaleAspectFill

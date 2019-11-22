@@ -20,7 +20,7 @@ extension GameViewController: SKProductsRequestDelegate, SKPaymentTransactionObs
             // There are no products
         }
         if response.invalidProductIdentifiers.count != 0 {
-            print(response.invalidProductIdentifiers.description)
+//            print(response.invalidProductIdentifiers.description)
         }
     }
     
@@ -29,7 +29,7 @@ extension GameViewController: SKProductsRequestDelegate, SKPaymentTransactionObs
             switch transaction.transactionState {
             case SKPaymentTransactionState.purchasing:
                 if transactionInProgress == true {
-                    let alert = UIAlertController(title: "Processing", message: nil, preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Processing".localized(), message: nil, preferredStyle: .alert)
                     let activityIndicator = UIActivityIndicatorView(style: .gray)
                     activityIndicator.translatesAutoresizingMaskIntoConstraints = false
                     activityIndicator.isUserInteractionEnabled = false
@@ -79,7 +79,7 @@ extension GameViewController: SKProductsRequestDelegate, SKPaymentTransactionObs
         if !transactionInProgress {
             if (appDelegate.item?.chances.count)! > 5 {
                 instantiatingCustomAlertView()
-                self.delegate?.customAlertController(title: "CHANCE SLOTS ARE FULL".localized(), message: "Max chance is 10. You can top up if it is below 6.".localized(), option: .oneButton)
+                self.delegate?.customAlertController(title: "CHANCE SLOTS ARE FULL".localized(), message: "You can top up if chance is below 6.".localized(), option: .oneButton)
                 self.delegate?.customAction1(title: "OK".localized(), action: { xx in
                     DispatchQueue.main.async {
                         self.dismiss(animated: true, completion: nil)

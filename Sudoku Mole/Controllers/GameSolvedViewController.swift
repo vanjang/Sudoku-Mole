@@ -9,6 +9,7 @@
 import UIKit
 import Lottie
 import GoogleMobileAds
+import LinkPresentation
 
 class GameSolvedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -94,6 +95,8 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
     var records: [Record]?
     var customAlertView = CustomAlertViewController()
     var delegate: GameViewControllerDelegate?
+    var thumbnailImage: URL?
+    var recordsImage: URL?
     
     func buttonSetup() {
         let refreshNormal = UIImage(named: "btnBottomResetLargeNormal.png")
@@ -144,6 +147,37 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
         self.delegate = customAlertView
     }
     
+    func saveImage(image: UIImage, compomentName: String) {
+        guard let data = image.jpegData(compressionQuality: 1) ?? image.pngData() else {
+            return
+        }
+        guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else {
+            return
+        }
+        do {
+            try data.write(to: directory.appendingPathComponent(compomentName)!)
+            return
+        } catch {
+            print(error.localizedDescription)
+            return
+        }
+    }
+    
+    func getSavedImageURL(named: String, from component: String) -> URL? {
+        if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
+            let archiveURL = dir.appendingPathComponent(component)//.appendingPathExtension("plist")
+            return archiveURL
+        }
+        return nil
+    }
+    
+    func getSavedImage(named: String) -> UIImage? {
+        if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
+            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
+        }
+        return nil
+    }
+    
     func tappedButton() {
         if selectedButton == .refreshTapped {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refresher"), object: nil, userInfo: nil)
@@ -153,16 +187,23 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "abandon"), object: nil, userInfo: nil)
             }
         } else if selectedButton == .SNSTapped {
-            let title = "Share Sudoku Mole through your SNS and get free chance!"
-            //            let url = URL(string: "https://apps.apple.com/kr/app/keep-password-diary/id1482176404")!
             let url = URL(string: "SudokuMole://test")!
-            let image = takeScreenshot()
+            //            let url = URL(string: "https://apps.apple.com/kr/app/keep-password-diary/id1482176404")!
+            
+            let recordComponentKey = "thumbnail.png"
+            let thumbnailCompenentKey = "MyRecords.png"
+            saveImage(image: UIImage(named: "icon.png")!, compomentName: thumbnailCompenentKey)
+            thumbnailImage = getSavedImageURL(named: "MyRecords.png", from: thumbnailCompenentKey)
+            
+            saveImage(image: takeScreenshot()!, compomentName: recordComponentKey)
+            recordsImage = getSavedImageURL(named: "MyRecords.png", from: recordComponentKey)
+            
             var items = [Any]()
             
             if UIApplication.shared.canOpenURL(url as URL) {
-                items = [title, image!]
+                items = [self]
             } else {
-                items = [image!, title, url]
+                items = [self, url]
             }
             
             let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
@@ -173,11 +214,10 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
                 } // User completed activity
                 self.appDelegate.storeItems(1)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userEarnedaChance"), object: nil, userInfo: nil)
-                
                 // dialog to pop
                 self.instantiatingCustomAlertView()
-                self.delegate?.customAlertController(title: "Thank you for sharing!", message: "You earned a free chance!", option: .oneButton)
-                self.delegate?.customAction1(title: "OK", action: { xx in
+                self.delegate?.customAlertController(title: "THANK YOU FOR SHARING!".localized(), message: "You earned a free chance.".localized(), option: .oneButton)
+                self.delegate?.customAction1(title: "OK".localized(), action: { xx in
                     DispatchQueue.main.async {
                         self.dismiss(animated: true, completion: nil)
                     }
@@ -222,12 +262,11 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
                         }
                         
                         flag.textColor = #colorLiteral(red: 1, green: 0.9337611198, blue: 0.2692891061, alpha: 1)
-                        let leftAni = AnimationView(name: "159-servishero-loading")
-                        let centreAni = AnimationView(name: "159-servishero-loading")
-                        let rightAni = AnimationView(name: "159-servishero-loading")
+                        let leftAni = AnimationView(name: "Chance1Side")
+                        let centreAni = AnimationView(name: "Chance1")
+                        let rightAni = AnimationView(name: "Chance2Side")
                         
                         let leftFrame = CGRect(x: view.frame.minX, y: view.frame.height*0.22, width: view.frame.size.width*0.18, height: view.frame.size.width*0.18)
-                        print(view.frame.minX)
                         let centreFrame = CGRect(x: view.frame.width*0.3, y: view.frame.height*0.01, width: view.frame.size.width*0.18, height: view.frame.size.width*0.18)
                         let rightFrame = CGRect(x: view.frame.width*0.75, y: view.frame.height*0.1, width: view.frame.size.width*0.24, height: view.frame.size.width*0.24)
                         
@@ -274,4 +313,28 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+}
+
+extension GameSolvedViewController: UIActivityItemSource {
+
+    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
+        return UIImage() // an empty UIImage is sufficient to ensure share sheet shows right actions
+    }
+
+    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
+        // returns record screenshot as an attached image
+        return recordsImage
+    }
+    
+    @available(iOS 13.0, *)
+    func activityViewControllerLinkMetadata(_ activityViewController: UIActivityViewController) -> LPLinkMetadata? {
+        let metadata = LPLinkMetadata()
+        DispatchQueue.main.async {
+            metadata.title = "Share Record and get free chance!".localized() // Preview Title
+            metadata.originalURL = self.thumbnailImage // determines the Preview Subtitle
+            metadata.url = self.thumbnailImage
+            metadata.iconProvider = NSItemProvider.init(contentsOf: self.thumbnailImage)
+        }
+        return metadata
+    }
 }

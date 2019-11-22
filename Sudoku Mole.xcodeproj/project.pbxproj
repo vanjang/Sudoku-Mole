@@ -34,12 +34,14 @@
 		F6512DE7237B271C003997BA /* HalfCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6512DE6237B271C003997BA /* HalfCircleView.swift */; };
 		F66E70A0238305FF0056528F /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E709F238305FF0056528F /* PauseViewController.swift */; };
 		F6784F3D23630E61008171AC /* SudokuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6784F3C23630E61008171AC /* SudokuData.swift */; };
+		F6A05A852387177F00ED0428 /* SFProDisplay-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6A05A842387177A00ED0428 /* SFProDisplay-Light.ttf */; };
+		F6A05A862387178300ED0428 /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6A05A832387177900ED0428 /* SFProDisplay-Semibold.ttf */; };
+		F6A05A892387183600ED0428 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6A05A8B2387183600ED0428 /* Localizable.strings */; };
 		F6A3409E237DB1AC00194C60 /* RecordsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A3409D237DB1AC00194C60 /* RecordsPageViewController.swift */; };
 		F6A340A0237DD56000194C60 /* EasyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A3409F237DD56000194C60 /* EasyViewController.swift */; };
 		F6A340A2237DD56E00194C60 /* NormalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A340A1237DD56E00194C60 /* NormalViewController.swift */; };
 		F6A340A4237DD57600194C60 /* HardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A340A3237DD57600194C60 /* HardViewController.swift */; };
 		F6A340A6237DD57E00194C60 /* ExpertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A340A5237DD57E00194C60 /* ExpertViewController.swift */; };
-		F6A608EE2380B26400560E19 /* 11282-bread-toaster.json in Resources */ = {isa = PBXBuildFile; fileRef = F6A608ED2380B26400560E19 /* 11282-bread-toaster.json */; };
 		F6A608F62381E00100560E19 /* GameSolvedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A608F52381E00100560E19 /* GameSolvedTableViewCell.swift */; };
 		F6A608F82381E9E800560E19 /* RecordsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A608F72381E9E800560E19 /* RecordsTableViewCell.swift */; };
 		F6BBAAE923722BAF008B6059 /* NormalAnswers.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6BBAAE823722BAF008B6059 /* NormalAnswers.plist */; };
@@ -48,9 +50,26 @@
 		F6CC944F237F08C900F585AC /* RecordsCircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CC944E237F08C900F585AC /* RecordsCircularView.swift */; };
 		F6FAD105237CAD7B006BD55B /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FAD104237CAD7B006BD55B /* UIDevice.swift */; };
 		F6FC487D2385676F0033E358 /* EasyAnswers.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6FC487C2385676F0033E358 /* EasyAnswers.plist */; };
+		F6FC48B82385F1D50033E358 /* Chance6.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48A62385F1D40033E358 /* Chance6.json */; };
+		F6FC48B92385F1D50033E358 /* Chance3.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48A72385F1D40033E358 /* Chance3.json */; };
+		F6FC48BA2385F1D50033E358 /* Chance9.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48A82385F1D40033E358 /* Chance9.json */; };
+		F6FC48BB2385F1D50033E358 /* Chance2Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48A92385F1D40033E358 /* Chance2Side.json */; };
+		F6FC48BC2385F1D50033E358 /* Chance1Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48AA2385F1D40033E358 /* Chance1Side.json */; };
+		F6FC48BD2385F1D50033E358 /* Chance5Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48AB2385F1D40033E358 /* Chance5Side.json */; };
+		F6FC48BE2385F1D50033E358 /* Chance6Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48AC2385F1D40033E358 /* Chance6Side.json */; };
+		F6FC48BF2385F1D50033E358 /* Chance7Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48AD2385F1D50033E358 /* Chance7Side.json */; };
+		F6FC48C02385F1D50033E358 /* Chance7.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48AE2385F1D50033E358 /* Chance7.json */; };
+		F6FC48C12385F1D50033E358 /* Chance4.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48AF2385F1D50033E358 /* Chance4.json */; };
+		F6FC48C22385F1D50033E358 /* Chance4Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48B02385F1D50033E358 /* Chance4Side.json */; };
+		F6FC48C32385F1D50033E358 /* Chance3Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48B12385F1D50033E358 /* Chance3Side.json */; };
+		F6FC48C42385F1D50033E358 /* Chance2.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48B22385F1D50033E358 /* Chance2.json */; };
+		F6FC48C52385F1D50033E358 /* Chance8.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48B32385F1D50033E358 /* Chance8.json */; };
+		F6FC48C62385F1D50033E358 /* Chance9Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48B42385F1D50033E358 /* Chance9Side.json */; };
+		F6FC48C72385F1D50033E358 /* Chance1.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48B52385F1D50033E358 /* Chance1.json */; };
+		F6FC48C82385F1D50033E358 /* Chance5.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48B62385F1D50033E358 /* Chance5.json */; };
+		F6FC48C92385F1D50033E358 /* Chance8Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48B72385F1D50033E358 /* Chance8Side.json */; };
 		F6FD9F8E2382288700A44649 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FD9F8D2382288700A44649 /* InsetLabel.swift */; };
 		F6FD9F902382B20A00A44649 /* DoubletapRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FD9F8F2382B20A00A44649 /* DoubletapRemover.swift */; };
-		F6FE3DCD2370ED0E0047FA09 /* 159-servishero-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FE3DCA2370E9B90047FA09 /* 159-servishero-loading.json */; };
 		F6FED28D2368542400D2BDD3 /* GAD.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FED28C2368542400D2BDD3 /* GAD.swift */; };
 		F6FED28F2368CF6A00D2BDD3 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FED28E2368CF6A00D2BDD3 /* CustomAlertViewController.swift */; };
 		F6FED291236A0D9900D2BDD3 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FED290236A0D9900D2BDD3 /* MenuView.swift */; };
@@ -93,12 +112,22 @@
 		F6512DE6237B271C003997BA /* HalfCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfCircleView.swift; sourceTree = "<group>"; };
 		F66E709F238305FF0056528F /* PauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewController.swift; sourceTree = "<group>"; };
 		F6784F3C23630E61008171AC /* SudokuData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuData.swift; sourceTree = "<group>"; };
+		F6A05A7F2387164600ED0428 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		F6A05A802387164700ED0428 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F6A05A812387168C00ED0428 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		F6A05A822387168C00ED0428 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		F6A05A832387177900ED0428 /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SFProDisplay-Semibold.ttf"; path = "Font/SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
+		F6A05A842387177A00ED0428 /* SFProDisplay-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SFProDisplay-Light.ttf"; path = "Font/SFProDisplay-Light.ttf"; sourceTree = "<group>"; };
+		F6A05A8A2387183600ED0428 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F6A05A9323871DF500ED0428 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		F6A05A9423871EFA00ED0428 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Main.strings"; sourceTree = "<group>"; };
+		F6A05A9523871EFB00ED0428 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		F6A05A9623871EFB00ED0428 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F6A3409D237DB1AC00194C60 /* RecordsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsPageViewController.swift; sourceTree = "<group>"; };
 		F6A3409F237DD56000194C60 /* EasyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyViewController.swift; sourceTree = "<group>"; };
 		F6A340A1237DD56E00194C60 /* NormalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalViewController.swift; sourceTree = "<group>"; };
 		F6A340A3237DD57600194C60 /* HardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardViewController.swift; sourceTree = "<group>"; };
 		F6A340A5237DD57E00194C60 /* ExpertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertViewController.swift; sourceTree = "<group>"; };
-		F6A608ED2380B26400560E19 /* 11282-bread-toaster.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "11282-bread-toaster.json"; path = "../../../../../Downloads/11282-bread-toaster.json"; sourceTree = "<group>"; };
 		F6A608F52381E00100560E19 /* GameSolvedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSolvedTableViewCell.swift; sourceTree = "<group>"; };
 		F6A608F72381E9E800560E19 /* RecordsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsTableViewCell.swift; sourceTree = "<group>"; };
 		F6BBAAE823722BAF008B6059 /* NormalAnswers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NormalAnswers.plist; sourceTree = "<group>"; };
@@ -107,9 +136,26 @@
 		F6CC944E237F08C900F585AC /* RecordsCircularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsCircularView.swift; sourceTree = "<group>"; };
 		F6FAD104237CAD7B006BD55B /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		F6FC487C2385676F0033E358 /* EasyAnswers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyAnswers.plist; sourceTree = "<group>"; };
+		F6FC48A62385F1D40033E358 /* Chance6.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance6.json; path = Lotties/Chance6.json; sourceTree = "<group>"; };
+		F6FC48A72385F1D40033E358 /* Chance3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance3.json; path = Lotties/Chance3.json; sourceTree = "<group>"; };
+		F6FC48A82385F1D40033E358 /* Chance9.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance9.json; path = Lotties/Chance9.json; sourceTree = "<group>"; };
+		F6FC48A92385F1D40033E358 /* Chance2Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance2Side.json; path = Lotties/Chance2Side.json; sourceTree = "<group>"; };
+		F6FC48AA2385F1D40033E358 /* Chance1Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance1Side.json; path = Lotties/Chance1Side.json; sourceTree = "<group>"; };
+		F6FC48AB2385F1D40033E358 /* Chance5Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance5Side.json; path = Lotties/Chance5Side.json; sourceTree = "<group>"; };
+		F6FC48AC2385F1D40033E358 /* Chance6Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance6Side.json; path = Lotties/Chance6Side.json; sourceTree = "<group>"; };
+		F6FC48AD2385F1D50033E358 /* Chance7Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance7Side.json; path = Lotties/Chance7Side.json; sourceTree = "<group>"; };
+		F6FC48AE2385F1D50033E358 /* Chance7.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance7.json; path = Lotties/Chance7.json; sourceTree = "<group>"; };
+		F6FC48AF2385F1D50033E358 /* Chance4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance4.json; path = Lotties/Chance4.json; sourceTree = "<group>"; };
+		F6FC48B02385F1D50033E358 /* Chance4Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance4Side.json; path = Lotties/Chance4Side.json; sourceTree = "<group>"; };
+		F6FC48B12385F1D50033E358 /* Chance3Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance3Side.json; path = Lotties/Chance3Side.json; sourceTree = "<group>"; };
+		F6FC48B22385F1D50033E358 /* Chance2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance2.json; path = Lotties/Chance2.json; sourceTree = "<group>"; };
+		F6FC48B32385F1D50033E358 /* Chance8.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance8.json; path = Lotties/Chance8.json; sourceTree = "<group>"; };
+		F6FC48B42385F1D50033E358 /* Chance9Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance9Side.json; path = Lotties/Chance9Side.json; sourceTree = "<group>"; };
+		F6FC48B52385F1D50033E358 /* Chance1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance1.json; path = Lotties/Chance1.json; sourceTree = "<group>"; };
+		F6FC48B62385F1D50033E358 /* Chance5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance5.json; path = Lotties/Chance5.json; sourceTree = "<group>"; };
+		F6FC48B72385F1D50033E358 /* Chance8Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance8Side.json; path = Lotties/Chance8Side.json; sourceTree = "<group>"; };
 		F6FD9F8D2382288700A44649 /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
 		F6FD9F8F2382B20A00A44649 /* DoubletapRemover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubletapRemover.swift; sourceTree = "<group>"; };
-		F6FE3DCA2370E9B90047FA09 /* 159-servishero-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "159-servishero-loading.json"; path = "../../../../../Downloads/159-servishero-loading.json"; sourceTree = "<group>"; };
 		F6FED28C2368542400D2BDD3 /* GAD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAD.swift; sourceTree = "<group>"; };
 		F6FED28E2368CF6A00D2BDD3 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		F6FED290236A0D9900D2BDD3 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -201,6 +247,7 @@
 		F62135DA23855C2300150686 /* Built-In Types Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F6FAD104237CAD7B006BD55B /* UIDevice.swift */,
 				F639B1ED233518F800CF921A /* UIViewAnimation.swift */,
 				F62135C92384B82300150686 /* UIButton.swift */,
 				F6512DE22376FE23003997BA /* Built-In Types Extensions.swift */,
@@ -243,8 +290,24 @@
 			isa = PBXGroup;
 			children = (
 				F639B1DB2334C3D500CF921A /* Assets.xcassets */,
-				F6FE3DCA2370E9B90047FA09 /* 159-servishero-loading.json */,
-				F6A608ED2380B26400560E19 /* 11282-bread-toaster.json */,
+				F6FC48B52385F1D50033E358 /* Chance1.json */,
+				F6FC48AA2385F1D40033E358 /* Chance1Side.json */,
+				F6FC48B22385F1D50033E358 /* Chance2.json */,
+				F6FC48A92385F1D40033E358 /* Chance2Side.json */,
+				F6FC48A72385F1D40033E358 /* Chance3.json */,
+				F6FC48B12385F1D50033E358 /* Chance3Side.json */,
+				F6FC48AF2385F1D50033E358 /* Chance4.json */,
+				F6FC48B02385F1D50033E358 /* Chance4Side.json */,
+				F6FC48B62385F1D50033E358 /* Chance5.json */,
+				F6FC48AB2385F1D40033E358 /* Chance5Side.json */,
+				F6FC48A62385F1D40033E358 /* Chance6.json */,
+				F6FC48AC2385F1D40033E358 /* Chance6Side.json */,
+				F6FC48AE2385F1D50033E358 /* Chance7.json */,
+				F6FC48AD2385F1D50033E358 /* Chance7Side.json */,
+				F6FC48B32385F1D50033E358 /* Chance8.json */,
+				F6FC48B72385F1D50033E358 /* Chance8Side.json */,
+				F6FC48A82385F1D40033E358 /* Chance9.json */,
+				F6FC48B42385F1D50033E358 /* Chance9Side.json */,
 				F64EBE5B235690AA0006094F /* Easy.plist */,
 				F6FC487C2385676F0033E358 /* EasyAnswers.plist */,
 				F619B9FB2370CD7200DCEDF2 /* Normal.plist */,
@@ -253,6 +316,8 @@
 				F6427E542375D63C0083C807 /* ExpertAnswers.plist */,
 				F64EBE5A235690AA0006094F /* Hard.plist */,
 				F6427E552375D63C0083C807 /* HardAnswers.plist */,
+				F6A05A842387177A00ED0428 /* SFProDisplay-Light.ttf */,
+				F6A05A832387177900ED0428 /* SFProDisplay-Semibold.ttf */,
 				F639B1E72334CA5E00CF921A /* LuckiestGuy-Regular.ttf */,
 			);
 			path = Resources;
@@ -280,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				F639B1D82334C3D300CF921A /* Main.storyboard */,
+				F6A05A8B2387183600ED0428 /* Localizable.strings */,
 				F639B1DD2334C3D500CF921A /* LaunchScreen.storyboard */,
 			);
 			path = Views;
@@ -305,7 +371,6 @@
 				F62135CD2384F0BB00150686 /* GlobalFunctions.swift */,
 				F62135D52385587800150686 /* Custom Classes */,
 				F62135D6238558AA00150686 /* TableView Cells */,
-				F6FAD104237CAD7B006BD55B /* UIDevice.swift */,
 				F62135D723855A7800150686 /* UISetups */,
 				F62135D823855A9100150686 /* IAP */,
 				F62135D923855B8900150686 /* Admob */,
@@ -358,6 +423,9 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
+				"zh-Hans",
+				"zh-HK",
 			);
 			mainGroup = F639B1C82334C3D300CF921A;
 			productRefGroup = F639B1D22334C3D300CF921A /* Products */;
@@ -374,20 +442,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6FC48C52385F1D50033E358 /* Chance8.json in Resources */,
 				F6427E572375D63D0083C807 /* ExpertAnswers.plist in Resources */,
+				F6FC48BB2385F1D50033E358 /* Chance2Side.json in Resources */,
+				F6FC48C32385F1D50033E358 /* Chance3Side.json in Resources */,
 				F619B9FE2370CD7900DCEDF2 /* Expert.plist in Resources */,
 				F639B1DF2334C3D500CF921A /* LaunchScreen.storyboard in Resources */,
-				F6FE3DCD2370ED0E0047FA09 /* 159-servishero-loading.json in Resources */,
+				F6FC48C12385F1D50033E358 /* Chance4.json in Resources */,
+				F6FC48C72385F1D50033E358 /* Chance1.json in Resources */,
 				F639B1DC2334C3D500CF921A /* Assets.xcassets in Resources */,
+				F6A05A852387177F00ED0428 /* SFProDisplay-Light.ttf in Resources */,
 				F64EBE5C235690AA0006094F /* Hard.plist in Resources */,
+				F6FC48C82385F1D50033E358 /* Chance5.json in Resources */,
+				F6FC48C42385F1D50033E358 /* Chance2.json in Resources */,
+				F6A05A892387183600ED0428 /* Localizable.strings in Resources */,
+				F6FC48BD2385F1D50033E358 /* Chance5Side.json in Resources */,
+				F6FC48C92385F1D50033E358 /* Chance8Side.json in Resources */,
 				F639B1DA2334C3D300CF921A /* Main.storyboard in Resources */,
+				F6FC48BE2385F1D50033E358 /* Chance6Side.json in Resources */,
+				F6A05A862387178300ED0428 /* SFProDisplay-Semibold.ttf in Resources */,
+				F6FC48B82385F1D50033E358 /* Chance6.json in Resources */,
 				F64EBE5D235690AA0006094F /* Easy.plist in Resources */,
+				F6FC48BC2385F1D50033E358 /* Chance1Side.json in Resources */,
 				F639B1E82334CA5E00CF921A /* LuckiestGuy-Regular.ttf in Resources */,
+				F6FC48C02385F1D50033E358 /* Chance7.json in Resources */,
+				F6FC48B92385F1D50033E358 /* Chance3.json in Resources */,
+				F6FC48C22385F1D50033E358 /* Chance4Side.json in Resources */,
+				F6FC48BF2385F1D50033E358 /* Chance7Side.json in Resources */,
 				F6BBAAE923722BAF008B6059 /* NormalAnswers.plist in Resources */,
-				F6A608EE2380B26400560E19 /* 11282-bread-toaster.json in Resources */,
 				F6427E582375D63D0083C807 /* HardAnswers.plist in Resources */,
 				F619B9FC2370CD7200DCEDF2 /* Normal.plist in Resources */,
+				F6FC48BA2385F1D50033E358 /* Chance9.json in Resources */,
 				F6FC487D2385676F0033E358 /* EasyAnswers.plist in Resources */,
+				F6FC48C62385F1D50033E358 /* Chance9Side.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +574,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				F639B1D92334C3D300CF921A /* Base */,
+				F6A05A7F2387164600ED0428 /* ko */,
+				F6A05A812387168C00ED0428 /* zh-Hans */,
+				F6A05A9423871EFA00ED0428 /* zh-HK */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -495,8 +585,21 @@
 			isa = PBXVariantGroup;
 			children = (
 				F639B1DE2334C3D500CF921A /* Base */,
+				F6A05A802387164700ED0428 /* ko */,
+				F6A05A822387168C00ED0428 /* zh-Hans */,
+				F6A05A9523871EFB00ED0428 /* zh-HK */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		F6A05A8B2387183600ED0428 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6A05A8A2387183600ED0428 /* ko */,
+				F6A05A9323871DF500ED0428 /* zh-Hans */,
+				F6A05A9623871EFB00ED0428 /* zh-HK */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -506,6 +609,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -567,6 +671,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -624,7 +729,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = RF525HK56L;
 				INFOPLIST_FILE = "Sudoku Mole/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -644,7 +749,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = RF525HK56L;
 				INFOPLIST_FILE = "Sudoku Mole/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -2,13 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "btnBottomChance2Normal.png"
+      "filename" : "btnBottomChance2Normal.png",
+      "scale" : "1x"
     },
     {
-      "scale" : "2x",
       "filename" : "btnBottomChance2Normal@2x.png",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "scale" : "2x"
     },
     {
       "filename" : "btnBottomChance2Normal@3x.png",

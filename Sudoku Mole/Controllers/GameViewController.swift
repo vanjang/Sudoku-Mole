@@ -40,7 +40,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
         
         // Admob setup
         if !appDelegate.hasADRemoverBeenBought() {
-            bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+            bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)//kGADAdSizeBanner)
             bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
             bannerView.rootViewController = self
             bannerView.load(GADRequest())
@@ -114,7 +114,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
                 recordButton.fadeOut(object: recordButton, withDuration: 0.3)
                 selfInstructionButton.fadeOut(object: selfInstructionButton, withDuration: 0.3)
                 iapButton.fadeOut(object: iapButton, withDuration: 0.3)
-                let menuWidth = self.view.frame.width*0.8
+                let menuWidth = self.view.frame.width*0.82
                 view.animateXPosition(target: menuView, targetPosition: self.view.frame.maxX-menuWidth)
                 view.animateXPosition(target: dismissButton, targetPosition: (menuView.bounds.maxX-40)-(self.view.frame.maxX-menuWidth))
                 view.animateXPosition(target: bannerCase, targetPosition: (dummyView.frame.size.width-bannerCase.frame.size.width)/2)
@@ -140,6 +140,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
         didSet {
             switch menuOptionSelected {
             case .none :
+                shopLabel.isHidden = true
                 recordLabel.isHidden = true
                 recordsContainerView.isHidden = true
                 recordIndicatorButtonLeft.isHidden = true
@@ -150,8 +151,10 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
                 recordStackView.isHidden = true
                 iapView.isHidden = true
                 instructionView.isHidden = true
+                smoleMenuImage.isHidden = true
             case .recordView :
-                menumConsts()
+                menuConsts()
+                shopLabel.isHidden = true
                 recordLabel.isHidden = false
                 recordsContainerView.isHidden = false
                 recordIndicatorButtonLeft.isHidden = false
@@ -162,7 +165,10 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
                 recordStackView.isHidden = false
                 iapView.isHidden = true
                 instructionView.isHidden = true
+                smoleMenuImage.isHidden = true
             case .instructionView :
+                menuConsts()
+                shopLabel.isHidden = true
                 recordLabel.isHidden = true
                 recordsContainerView.isHidden = true
                 recordIndicatorButtonLeft.isHidden = true
@@ -173,7 +179,10 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
                 recordStackView.isHidden = true
                 iapView.isHidden = true
                 instructionView.isHidden = false
+                smoleMenuImage.isHidden = false
             case .iapView :
+                menuConsts()
+                shopLabel.isHidden = false
                 recordLabel.isHidden = true
                 recordsContainerView.isHidden = true
                 recordIndicatorButtonLeft.isHidden = true
@@ -184,6 +193,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
                 recordStackView.isHidden = true
                 iapView.isHidden = false
                 instructionView.isHidden = true
+                smoleMenuImage.isHidden = true
             }
         }
     }
@@ -202,8 +212,12 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
     let selfInstructionButton = UIButton()
     let iapButton = UIButton()
     let menuRewindButton = UIButton()
-    let smole = AnimationView(name: "159-servishero-loading")
-    let smoleSide = AnimationView(name: "11282-bread-toaster")
+    let shopLabel = UILabel()
+    let iap1Label = UILabel()
+    let iap2Label = UILabel()
+    let iapSmoleImageView = UIImageView()
+//    let smole = AnimationView(name: "159-servishero-loading")
+//    let smoleSide = AnimationView(name: "11282-bread-toaster")
     let chanceView = UIView()
     let recordLabel = UILabel()
     let recordEasyBttn = UIButton()
@@ -218,6 +232,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
     let recordsContainerView = UIView()
     let recordsPageVC = RecordsPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     let recordViewSmoleImage = UIImageView()
+    let smoleMenuImage = UIImageView()
     let recordBGView = RecordsCircleView()
     var interstitial: GADInterstitial!
     var bannerView: GADBannerView!
@@ -265,6 +280,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
     @IBOutlet weak var timerOutlet: UILabel!
     @IBOutlet var dummyCollection: [UIView] = []
     @IBOutlet weak var timerView: UIView!
+    @IBOutlet weak var timerImageView: UIImageView!
     @IBOutlet var keypadCollection: [UIButton]!
     @IBOutlet weak var undoButtonOutlet: UIButton!
     @IBOutlet weak var redoButtonOutlet: UIButton!
@@ -295,7 +311,6 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
                     } else {
                         if appDelegate.sudoku.isConflictingEntryAt(row: row, column: col) {
                             lives.append(false)
-                            print(lives)
                             lifeCounter()
                             if lives.count == 3 {
                                 // Stop timer
@@ -308,7 +323,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
                                     self.shouldAnotherLife = true
                                     self.dismiss(animated: true, completion: {
                                         self.popRewardAD()
-                                        self.appDelegate.sudoku.userGrid(n: 0, row: row, col: col)
+//                                        self.appDelegate.sudoku.userGrid(n: 0, row: row, col: col)
                                         self.refresh()
                                     })
                                 })
@@ -370,7 +385,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
     
     @IBAction func homeButtonTapped(_ sender: Any) {
         instantiatingCustomAlertView()
-        delegate?.customAlertController(title: "IS IT AN END GAME?".localized(), message: "Would you leave the game or save for later?".localized(), option: .threeButtons)
+        delegate?.customAlertController(title: "END GAME?".localized(), message: "Would you leave the game or save it for later?".localized(), option: .threeButtons)
         delegate?.customAction1(title: "LEAVE".localized(), action: { action in
             self.abandon()
             DispatchQueue.main.async {
@@ -431,51 +446,6 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
         refresh()
     }
     
-    @IBAction func chanceButtonTapped(_ sender: Any) {
-        let row = puzzleArea.selected.row
-        let col = puzzleArea.selected.column
-        
-        // 1. 셀이 선택된 상태라면
-        if row > -1 || col > -1 {
-            // 1. chance가 있을 경우 : 바로 animation을 띄워서 정답을 알려준다
-            // 2. chance가 없을 경우 : 전면 광고를 한 번(혹은 2-3번) 띄운 후 정답을 알려준다
-            let chance = appDelegate.item?.chances
-            if !chance!.isEmpty {
-                if shouldRandomNum() {
-                    let randomNum = random(2) // random rate (1/4) // 4(25%)
-                    randomNums.append(randomNum)
-                    if randomNum == 1 || (randomNums.count >= 9 && blanksNums.count == 0) { // 3. randomNum이 3이면 꽝으로 한다, 2) 10회 찬스 사용할 동안 최소 1회는 꽝이 나오게 한다
-                        blanksNums.append(0)
-                        if col == 8 {
-                            animateChanceView(lottie: smoleSide, point: sudokuView.cgPointForSelectedBox, size: sudokuView.sizeForSelectedBox)
-                        } else {
-                            animateChanceView(lottie: smole, point: sudokuView.cgPointForSelectedBox, size: sudokuView.sizeForSelectedBox)
-                        }
-                        appDelegate.spendItem()
-                        self.chanceSetup()
-                    } else {
-                        chanceAction()
-                    }
-                } else {
-                    chanceAction()
-                }
-            } else {
-                shouldAddChance = true
-                timerStateInAction()
-                popRewardAD()
-            }
-        } else {
-            instantiatingCustomAlertView()
-            self.delegate?.customAlertController(title: "NO BOX SELECTED".localized(), message: "Select a box you want to use your chance for!".localized(), option: .oneButton)
-            self.delegate?.customAction1(title: "OK".localized(), action: { xx in
-                DispatchQueue.main.async {
-                    self.dismiss(animated: true, completion: nil)
-                }
-            })
-            self.present(self.customAlertView, animated: true, completion: nil)
-        }
-    }
-    
     @IBAction func menuButtonTapped(_ sender: Any) {
         // methods in order (for constraints)
         makeFadeView()
@@ -506,6 +476,118 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
             self.customAlertView.dismiss(animated: true, completion: nil)
         })
         present(customAlertView, animated: true, completion: nil)
+    }
+    
+    @IBAction func chanceButtonTapped(_ sender: Any) {
+        let row = puzzleArea.selected.row
+        let col = puzzleArea.selected.column
+        let grid = appDelegate.sudoku.grid
+        
+        // 0. fix값이 없고
+        //        if grid?.plistPuzzle[row][col] == 0 {
+        // 1. 셀이 선택된 상태라면
+        if row > -1 || col > -1 {
+            if grid?.plistPuzzle[row][col] == 0 {
+                // 1. chance가 있을 경우 : 바로 animation을 띄워서 정답을 알려준다
+                // 2. chance가 없을 경우 : 전면 광고를 한 번(혹은 2-3번) 띄운 후 정답을 알려준다
+                let chance = appDelegate.item?.chances
+                if !chance!.isEmpty {
+                    if shouldRandomNum() {
+                        let randomNum = random(4) // random rate (1/4) // 4(25%)
+                        randomNums.append(randomNum)
+                        if randomNum == 1 || (randomNums.count >= 9 && blanksNums.count == 0) { // 3. 1) randomNum이 3이면 꽝으로 한다, 2) 10회 찬스 사용할 동안 최소 1회는 꽝이 나오게 한다
+                            blanksNums.append(0)
+                            if col == 8 { // 3-1. 8th column은 다른 <Lottie>를 실행
+                                print("chance : \(appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col))")
+                                animateChance(answer: appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col), point: sudokuView.cgPointForSelectedBox, isColumn8: true)
+                            } else { // 3-2. 나머지 column은 <Lottie>를 실행
+                                print("chance : \(appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col))")
+                                animateChance(answer: appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col), point: sudokuView.cgPointForSelectedBox, isColumn8: false)
+                            }
+                            appDelegate.spendItem()
+                            self.chanceSetup()
+                        } else {
+                            playChance()
+                        }
+                    } else {
+                        playChance()
+                    }
+                } else {
+                    shouldAddChance = true
+                    timerStateInAction()
+                    popRewardAD()
+                }
+            } else {
+                instantiatingCustomAlertView()
+                self.delegate?.customAlertController(title: "WRONG BOX SELECTED".localized(), message: "Select a box you want to use your chance for!".localized(), option: .oneButton)
+                self.delegate?.customAction1(title: "OK".localized(), action: { xx in
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
+                self.present(self.customAlertView, animated: true, completion: nil)
+            }
+        } else {
+            instantiatingCustomAlertView()
+            self.delegate?.customAlertController(title: "NO BOX SELECTED".localized(), message: "Select a box you want to use your chance for!".localized(), option: .oneButton)
+            self.delegate?.customAction1(title: "OK".localized(), action: { xx in
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+            self.present(self.customAlertView, animated: true, completion: nil)
+        }
+    }
+    
+    func playChance() {
+        let row = puzzleArea.selected.row
+        let col = puzzleArea.selected.column
+        if col == 8 {
+            print("chance : \(appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col))")
+            animateChance(answer: appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col), point: sudokuView.cgPointForSelectedBox, isColumn8: true)
+        } else {
+            print("chance : \(appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col))")
+            animateChance(answer: appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col), point: sudokuView.cgPointForSelectedBox, isColumn8: false)
+        }
+        appDelegate.spendItem()
+        self.chanceSetup()
+    }
+    
+    func animateChance(answer: Int, point: CGPoint, isColumn8: Bool) {
+        self.chanceButtonOutlet.isUserInteractionEnabled = false
+        let boxSize = sudokuView.sizeForSelectedBox
+        let p = ((boxSize.width*1.35)-boxSize.width)/2
+        let frame = CGRect(x: point.x-p, y: point.y, width: boxSize.width*1.35, height: boxSize.height*1.35)
+        chanceView.frame = frame
+        chanceView.backgroundColor = .clear
+        
+        let side = "Side"
+        var lottieName = "Chance"
+        let lottieNumber = String(answer)
+        
+        if isColumn8 {
+            lottieName += lottieNumber + side
+            print(lottieName)
+        } else {
+            lottieName += lottieNumber
+            print(lottieName)
+        }
+        
+        let lottie = AnimationView(name: lottieName)
+        lottie.frame = frame
+        lottie.center = chanceView.center
+        lottie.contentMode = .scaleAspectFit
+        lottie.backgroundColor = .clear
+        
+        sudokuView.addSubview(chanceView)
+        sudokuView.addSubview(lottie)
+        
+        lottie.play { (finished) in
+            print("lottie finished")
+            self.chanceView.removeFromSuperview()
+            lottie.removeFromSuperview()
+            self.chanceButtonOutlet.isUserInteractionEnabled = true
+        }
     }
     
     // Methods for AD
@@ -610,41 +692,6 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
         return shouldBeRandom
     }
     
-    func chanceAction() {
-        let row = puzzleArea.selected.row
-        let col = puzzleArea.selected.column
-        if col == 8 {
-            animateChanceView(lottie: smoleSide, point: sudokuView.cgPointForSelectedBox, size: sudokuView.sizeForSelectedBox)
-        } else {
-            animateChanceView(lottie: smole, point: sudokuView.cgPointForSelectedBox, size: sudokuView.sizeForSelectedBox)
-        }
-        appDelegate.spendItem()
-        self.chanceSetup()
-        print("chance : \(appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col))")
-    }
-    
-    func animateChanceView(lottie: AnimationView, point: CGPoint, size: CGRect) {
-        self.chanceButtonOutlet.isUserInteractionEnabled = false
-        let p = ((size.width*1.35)-size.width)/2
-        let frame = CGRect(x: point.x-p, y: point.y, width: size.width*1.35, height: size.height*1.35)
-        chanceView.frame = frame
-        chanceView.backgroundColor = .clear
-        
-        lottie.frame = frame
-        lottie.center = chanceView.center
-        lottie.contentMode = .scaleAspectFit
-        lottie.backgroundColor = .clear
-        
-        sudokuView.addSubview(chanceView)
-        sudokuView.addSubview(lottie)
-        
-        lottie.play { (finished) in
-            self.chanceView.removeFromSuperview()
-            lottie.removeFromSuperview()
-            self.chanceButtonOutlet.isUserInteractionEnabled = true
-        }
-    }
-    
     func saveRecord() {
         // timer 종료
         timer.invalidate()
@@ -684,7 +731,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
         viewController.didMove(toParent: controller)
     }
     
-    func menumConsts() {
+    func menuConsts() {
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         let pageControlCenterConstraints = NSLayoutConstraint(item: self.pageControl, attribute: .centerX, relatedBy: .equal, toItem: menuView, attribute: .centerX, multiplier: 1, constant: -10)
         let pageControlTopConstraints = NSLayoutConstraint(item: self.pageControl, attribute: .top, relatedBy: .equal, toItem: recordsContainerView, attribute: .bottom, multiplier: 1, constant: -55)
@@ -706,6 +753,19 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
         let rightRecordIndicatorButtonLeftConstraints = NSLayoutConstraint(item: recordIndicatorButtonRight, attribute: .right, relatedBy: .equal, toItem: menuView, attribute: .right, multiplier: 1, constant: -17)
         
         self.menuView.addConstraints([centerXRecordIndicatorButtonLeftConstraints, leftRecordIndicatorButtonLeftConstraints, centerXRecordIndicatorButtonRightConstraints, rightRecordIndicatorButtonLeftConstraints])
+        
+        smoleMenuImage.translatesAutoresizingMaskIntoConstraints = false
+//        let smoleImageTopConstraints = NSLayoutConstraint(item: smoleMenuImage, attribute: .top, relatedBy: .greaterThanOrEqual, toItem: menuView, attribute: .top, multiplier: 1, constant: menuView.frame.size.height*0.35)
+        print("menuviewfram : \(menuView.frame)")
+        let smoleImageBottomConstraints = NSLayoutConstraint(item: smoleMenuImage, attribute: .bottom, relatedBy: .equal, toItem: menuView, attribute: .bottom, multiplier: 1, constant: 0)
+//        let smoleImageRightConstraints = NSLayoutConstraint(item: smoleMenuImage, attribute: .right, relatedBy: .equal, toItem: menuView, attribute: .right, multiplier: 1, constant: -95)
+        let smoleImageLeftConstraints = NSLayoutConstraint(item: smoleMenuImage, attribute: .left, relatedBy: .equal, toItem: menuView, attribute: .left, multiplier: 1, constant: 0)
+//        let smoleImageRightConstraints = NSLayoutConstraint(item: smoleMenuImage, attribute: .right, relatedBy: .equal, toItem: menuView, attribute: .right, multiplier: 1, constant: -menuView.frame.size.width*0.23)
+//
+        smoleMenuImage.heightAnchor.constraint(equalTo: smoleMenuImage.widthAnchor, multiplier: 498/334).isActive = true
+        smoleMenuImage.heightAnchor.constraint(equalTo: menuView.heightAnchor, multiplier: 3/5).isActive = true
+        
+        self.menuView.addConstraints([smoleImageBottomConstraints, smoleImageLeftConstraints])
     }
     
     func allSet() {
@@ -756,8 +816,13 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
     
     @objc func chanceSetup() {
         if !(appDelegate.item?.chances.isEmpty)! {
-            let chanceImage = UIImage(named: "chance"+String(appDelegate.item!.chances.count)+".png")
-            chanceButtonOutlet.setImage(chanceImage, for: .normal)
+            if (appDelegate.item?.chances.count)! > 10 {
+                let chanceImage = UIImage(named: "chance10+.png")
+                chanceButtonOutlet.setImage(chanceImage, for: .normal)
+            } else {
+                let chanceImage = UIImage(named: "chance"+String(appDelegate.item!.chances.count)+".png")
+                chanceButtonOutlet.setImage(chanceImage, for: .normal)
+            }
         } else {
             let chanceImage = UIImage(named: "chanceAD.png")
             chanceButtonOutlet.setImage(chanceImage, for: .normal)
@@ -768,13 +833,16 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
     @objc func timerStateInAction() {
         let play = UIImage(named: "icTimePlay.png")
         let pause = UIImage(named: "icTimeStop.png")
+//        timerImageView.contentMode = .scaleToFill
         
         isPlaying = !isPlaying
         if isPlaying == true {
-            timerSwitch.setImage(pause, for: .normal)
+            timerImageView.image = pause
+//            timerSwitch.setImage(pause, for: .normal)
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         } else {
-            timerSwitch.setImage(play, for: .normal)
+            timerImageView.image = play
+//            timerSwitch.setImage(play, for: .normal)
             timer.invalidate()
         }
     }

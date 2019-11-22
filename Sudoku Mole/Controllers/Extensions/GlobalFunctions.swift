@@ -16,7 +16,7 @@ func random(_ n:Int) -> Int {
 // Compute font size for target box.
 // http://goo.gl/jPL9Yu
 func fontSizeFor(_ string : NSString, fontName : String, targetSize : CGSize) -> CGFloat {
-    let testFontSize : CGFloat = 32
+    let testFontSize : CGFloat = 20//30
     let font = UIFont(name: fontName, size: testFontSize)
     let attr = [NSAttributedString.Key.font : font!]
     let strSize = string.size(withAttributes: attr)

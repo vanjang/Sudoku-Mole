@@ -1,9 +1,9 @@
 {
   "images" : [
     {
+      "filename" : "boardLeft.png",
       "scale" : "1x",
-      "idiom" : "universal",
-      "filename" : "boardLeft.png"
+      "idiom" : "universal"
     },
     {
       "idiom" : "universal",

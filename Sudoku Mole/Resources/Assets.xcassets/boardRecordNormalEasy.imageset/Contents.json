@@ -2,18 +2,18 @@
   "images" : [
     {
       "scale" : "1x",
-      "idiom" : "universal",
-      "filename" : "boardRecordNormalEasy.png"
-    },
-    {
-      "scale" : "2x",
-      "filename" : "boardRecordNormalEasy@2x.png",
+      "filename" : "boardRecordNormalEasy.png",
       "idiom" : "universal"
     },
     {
+      "filename" : "boardRecordNormalEasy@2x.png",
+      "scale" : "2x",
+      "idiom" : "universal"
+    },
+    {
+      "scale" : "3x",
       "filename" : "boardRecordNormalEasy@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {
