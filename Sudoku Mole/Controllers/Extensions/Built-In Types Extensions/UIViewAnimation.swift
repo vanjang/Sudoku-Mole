@@ -64,4 +64,16 @@ extension UIView {
         }
     }
     
+    func animateYPosition(target: UIView, targetPosition: CGFloat, completion: ((Bool) -> Void)? = nil) {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.5,
+                           delay: 0,
+                           usingSpringWithDamping: 0.8,
+                           initialSpringVelocity: 0,
+                           options: .curveEaseInOut, animations: {
+                            target.frame.origin.y = targetPosition
+            }, completion: completion)
+        }
+    }
+    
 }

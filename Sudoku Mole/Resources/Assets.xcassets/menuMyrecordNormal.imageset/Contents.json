@@ -2,18 +2,18 @@
   "images" : [
     {
       "scale" : "1x",
-      "filename" : "menuMyrecordNormal.png",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "menuMyrecordNormal.png"
     },
     {
       "scale" : "2x",
-      "filename" : "menuMyrecordNormal@2x.png",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "menuMyrecordNormal@2x.png"
     },
     {
+      "filename" : "menuMyrecordNormal@3x.png",
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "menuMyrecordNormal@3x.png"
+      "scale" : "3x"
     }
   ],
   "info" : {

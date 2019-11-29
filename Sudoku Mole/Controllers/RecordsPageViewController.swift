@@ -39,6 +39,7 @@ class RecordsPageViewController: UIPageViewController, UIPageViewControllerDataS
     }()
     
     @objc func forwardVC() {
+        print("forwardVC")
         if GameViewController.index == 3 {
             GameViewController.index = 0
         } else {
@@ -47,9 +48,11 @@ class RecordsPageViewController: UIPageViewController, UIPageViewControllerDataS
         pages.append(levelViewControllers[GameViewController.index])
         setViewControllers(pages, direction: .forward, animated: true, completion: nil)
         self.pages.remove(at: 0)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "pageControl"), object: nil, userInfo: nil)
     }
     
     @objc func reverseVC() {
+        print("reverseVC")
         if GameViewController.index == 0 {
             GameViewController.index = 3
         } else {
@@ -58,6 +61,7 @@ class RecordsPageViewController: UIPageViewController, UIPageViewControllerDataS
         pages.append(levelViewControllers[GameViewController.index])
         setViewControllers(pages, direction: .reverse, animated: true, completion: nil)
         self.pages.remove(at: 0)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "pageControl"), object: nil, userInfo: nil)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -77,9 +81,13 @@ class RecordsPageViewController: UIPageViewController, UIPageViewControllerDataS
         return levelViewControllers[nextIndex]
     }
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        print("dasdasd")
         let pageContentViewController = pageViewController.viewControllers![0]
         GameViewController.index = levelViewControllers.firstIndex(of: pageContentViewController)!
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "pageControl"), object: nil, userInfo: nil)
     }
     
 }

@@ -1,18 +1,18 @@
 {
   "images" : [
     {
-      "scale" : "1x",
       "filename" : "logoGame.png",
+      "scale" : "1x",
       "idiom" : "universal"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "logoGame@2x.png"
+      "filename" : "logoGame@2x.png",
+      "scale" : "2x"
     },
     {
-      "scale" : "3x",
       "filename" : "logoGame@3x.png",
+      "scale" : "3x",
       "idiom" : "universal"
     }
   ],

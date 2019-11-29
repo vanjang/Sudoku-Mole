@@ -59,7 +59,7 @@ class SudokuView: UIView {
         
         // Draw color attribute information
         let selectedCellColor = UIColor(red: 102/255, green: 52/255, blue: 0/255, alpha: 1)
-        let selectedStrokeColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.5)
+//        let selectedStrokeColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.5)//UIColor(red: 102/255, green: 52/255, blue: 0/255, alpha: 1)//
         let neighboringColor = UIColor(red: 135/255, green: 71/255, blue: 48/255, alpha: 1)
         let majorBorderColor = UIColor(red: 124.0 / 255.0, green: 63.0 / 255.0, blue: 41.0 / 255.0, alpha: 1.0)
         let minorBorderColor = UIColor(red: 122/255, green: 63/255, blue: 40/255, alpha: 1)
@@ -175,10 +175,12 @@ class SudokuView: UIView {
             // Fill cols and selected box
             for i in 0 ..< 9 {
                 if y == gridOrigin.y+CGFloat(i)*d {
+                    
                     selectedCellColor.setFill()
-                    selectedStrokeColor.setStroke()
+//                    selectedStrokeColor.setStroke()
                     context?.fill(CGRect(x: x, y: y, width: d, height: d))
-                    context?.stroke(CGRect(x: x, y: y, width: d, height: d))
+//                    context?.stroke(CGRect(x: x, y: y, width: d, height: d))
+//                    context?.setLineWidth(1)
                     
                     // send coordinates to play animation on
                     cgPointForSelectedBox.x = x

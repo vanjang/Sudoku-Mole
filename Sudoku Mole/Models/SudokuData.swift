@@ -20,4 +20,9 @@ struct SudokuData: Codable {
     var undonePencil: [[[[Bool]]]] = [[[[Bool]]]]()
     var savedOutletTime = ""
     var savedTime = Int()
+    
+    var lifeRemained = [Bool]()
+    var savedRow = Int()
+    var savedCol = Int()
+    
 }

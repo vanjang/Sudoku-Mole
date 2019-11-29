@@ -323,10 +323,10 @@
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="-6" translatesAutoresizingMaskIntoConstraints="NO" id="kLQ-sD-By6" userLabel="Keypad Stack View">
-                                        <rect key="frame" x="0.0" y="515.33333333333337" width="375" height="112"/>
+                                        <rect key="frame" x="0.0" y="515.33333333333337" width="375" height="117.33333333333337"/>
                                         <subviews>
                                             <button opaque="NO" tag="1" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xj-5k-hGh">
-                                                <rect key="frame" x="19.999999999999996" y="32.333333333333258" width="42.666666666666657" height="57"/>
+                                                <rect key="frame" x="19.999999999999996" y="35" width="42.666666666666657" height="57"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <edgeInsets key="layoutMargins" top="25" left="8" bottom="8" right="8"/>
                                                 <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="45"/>
@@ -339,7 +339,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOQ-uV-gP2">
-                                                <rect key="frame" x="56.666666666666657" y="32.333333333333258" width="42.333333333333343" height="57"/>
+                                                <rect key="frame" x="56.666666666666657" y="35" width="42.333333333333343" height="57"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <edgeInsets key="layoutMargins" top="25" left="8" bottom="8" right="8"/>
                                                 <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="45"/>
@@ -352,7 +352,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9i-MS-Bud">
-                                                <rect key="frame" x="93" y="32.333333333333258" width="42.666666666666657" height="57"/>
+                                                <rect key="frame" x="93" y="35" width="42.666666666666657" height="57"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <edgeInsets key="layoutMargins" top="25" left="8" bottom="8" right="8"/>
                                                 <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="45"/>
@@ -365,7 +365,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="4" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qER-Jc-lli">
-                                                <rect key="frame" x="129.66666666666666" y="32.333333333333258" width="42.666666666666657" height="57"/>
+                                                <rect key="frame" x="129.66666666666666" y="35" width="42.666666666666657" height="57"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <edgeInsets key="layoutMargins" top="25" left="8" bottom="8" right="8"/>
                                                 <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="45"/>
@@ -378,7 +378,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="5" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vb0-Gj-SJW">
-                                                <rect key="frame" x="166.33333333333334" y="32.333333333333258" width="42.333333333333343" height="57"/>
+                                                <rect key="frame" x="166.33333333333334" y="35" width="42.333333333333343" height="57"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <edgeInsets key="layoutMargins" top="25" left="8" bottom="8" right="8"/>
                                                 <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="45"/>
@@ -391,7 +391,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="6" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rrb-cP-HKV">
-                                                <rect key="frame" x="202.66666666666666" y="32.333333333333258" width="42.666666666666657" height="57"/>
+                                                <rect key="frame" x="202.66666666666666" y="35" width="42.666666666666657" height="57"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <edgeInsets key="layoutMargins" top="25" left="8" bottom="8" right="8"/>
                                                 <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="45"/>
@@ -404,7 +404,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="7" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIz-q5-Mwl">
-                                                <rect key="frame" x="239.33333333333334" y="32.333333333333258" width="42.666666666666657" height="57"/>
+                                                <rect key="frame" x="239.33333333333334" y="35" width="42.666666666666657" height="57"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <edgeInsets key="layoutMargins" top="25" left="8" bottom="8" right="8"/>
                                                 <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="45"/>
@@ -417,7 +417,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="8" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSP-8Z-Bfu">
-                                                <rect key="frame" x="276" y="32.333333333333258" width="42.333333333333314" height="57"/>
+                                                <rect key="frame" x="276" y="35" width="42.333333333333314" height="57"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <edgeInsets key="layoutMargins" top="25" left="8" bottom="8" right="8"/>
                                                 <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="45"/>
@@ -430,7 +430,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="9" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UjJ-en-I3B">
-                                                <rect key="frame" x="312.33333333333331" y="32.333333333333258" width="42.666666666666686" height="57"/>
+                                                <rect key="frame" x="312.33333333333331" y="35" width="42.666666666666686" height="57"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <edgeInsets key="layoutMargins" top="25" left="8" bottom="8" right="8"/>
                                                 <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="45"/>
@@ -456,11 +456,11 @@
                                         </constraints>
                                         <edgeInsets key="layoutMargins" top="10" left="20" bottom="0.0" right="20"/>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="tM8-BE-hWn" userLabel="Button Views">
-                                        <rect key="frame" x="0.0" y="628.33333333333337" width="375" height="105.66666666666663"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="bottom" spacing="-4" translatesAutoresizingMaskIntoConstraints="NO" id="tM8-BE-hWn" userLabel="Button Views">
+                                        <rect key="frame" x="0.0" y="633.66666666666663" width="375" height="100.33333333333337"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUE-NN-HWa">
-                                                <rect key="frame" x="10" y="19.333333333333258" width="66.333333333333329" height="66.333333333333329"/>
+                                                <rect key="frame" x="10" y="10" width="70.333333333333329" height="70.333333333333329"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="xUE-NN-HWa" secondAttribute="height" multiplier="1:1" id="dpa-3w-k2h"/>
                                                 </constraints>
@@ -472,7 +472,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDn-WU-SsO">
-                                                <rect key="frame" x="76.333333333333343" y="19.333333333333258" width="66.333333333333343" height="66.333333333333329"/>
+                                                <rect key="frame" x="76.333333333333343" y="10" width="70.333333333333343" height="70.333333333333329"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="QDn-WU-SsO" secondAttribute="height" multiplier="1:1" id="TqS-2v-bH8"/>
                                                 </constraints>
@@ -484,10 +484,10 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nie-sT-E6d">
-                                                <rect key="frame" x="142.66666666666666" y="0.0" width="89.666666666666657" height="85.666666666666671"/>
+                                                <rect key="frame" x="142.66666666666666" y="0.0" width="89.666666666666657" height="80.333333333333329"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="89.670000000000002" id="Fgb-5S-0Rm"/>
-                                                    <constraint firstAttribute="height" constant="85.670000000000002" id="Iae-p5-BnV"/>
+                                                    <constraint firstAttribute="height" constant="80.400000000000006" id="Iae-p5-BnV"/>
                                                 </constraints>
                                                 <state key="normal" image="chance1">
                                                     <color key="titleColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -497,7 +497,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3VW-sS-uXL">
-                                                <rect key="frame" x="232.33333333333334" y="19.333333333333258" width="66.333333333333343" height="66.333333333333329"/>
+                                                <rect key="frame" x="228.33333333333334" y="10" width="70.333333333333343" height="70.333333333333329"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="3VW-sS-uXL" secondAttribute="height" multiplier="1:1" id="lxP-kc-Raw"/>
                                                 </constraints>
@@ -509,7 +509,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mz2-qP-ueT">
-                                                <rect key="frame" x="298.66666666666669" y="19.333333333333258" width="66.333333333333314" height="66.333333333333329"/>
+                                                <rect key="frame" x="294.66666666666669" y="10" width="70.333333333333314" height="70.333333333333329"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="mz2-qP-ueT" secondAttribute="height" multiplier="1:1" id="WHk-PY-Lmc"/>
                                                 </constraints>
@@ -896,7 +896,7 @@
                                                         <rect key="frame" x="46" y="38.666666666666629" width="201" height="213"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECORDS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NX-Yu-Efa">
-                                                                <rect key="frame" x="0.0" y="0.0" width="201" height="32"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="201" height="37"/>
                                                                 <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="30"/>
                                                                 <color key="textColor" red="0.96725076440000002" green="0.7971089482" blue="0.74508732560000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
@@ -904,7 +904,7 @@
                                                                 <size key="shadowOffset" width="0.0" height="2"/>
                                                             </label>
                                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k0t-ZJ-5oz">
-                                                                <rect key="frame" x="0.0" y="54" width="201" height="159"/>
+                                                                <rect key="frame" x="0.0" y="59" width="201" height="154"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <prototypes>
@@ -1058,10 +1058,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="561-42-WWn">
-                                <rect key="frame" x="87.666666666666686" y="508" width="200" height="200"/>
+                                <rect key="frame" x="137.66666666666666" y="608" width="100" height="100"/>
                                 <state key="normal" image="pausePlay"/>
                                 <connections>
-                                    <action selector="pauseButtonTapped:" destination="vuJ-re-Hh3" eventType="touchUpInside" id="W2b-0G-eMc"/>
+                                    <action selector="pauseButtonTapped:" destination="vuJ-re-Hh3" eventType="touchUpInside" id="AGi-33-VQI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1105,10 +1105,10 @@
                                                 <rect key="frame" x="5" y="5" width="273" height="621"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RDD-hX-30J">
-                                                        <rect key="frame" x="41" y="14" width="191" height="593"/>
+                                                        <rect key="frame" x="41" y="31" width="191" height="559"/>
                                                         <subviews>
                                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HsO-qq-fAi">
-                                                                <rect key="frame" x="17" y="0.0" width="157" height="593"/>
+                                                                <rect key="frame" x="17" y="0.0" width="157" height="559"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <prototypes>
                                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recordCell" id="pWu-dk-oKR" customClass="RecordsTableViewCell" customModule="Sudoku_Mole" customModuleProvider="target">
@@ -1189,17 +1189,25 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boardLabelEasy" translatesAutoresizingMaskIntoConstraints="NO" id="Fn6-HA-LGL">
-                                <rect key="frame" x="42" y="74" width="150" height="150"/>
+                                <rect key="frame" x="42" y="74" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Fn6-HA-LGL" secondAttribute="height" multiplier="1:1" id="BiB-W9-ELN"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUo-W6-bTN" customClass="InsetLabel" customModule="Sudoku_Mole" customModuleProvider="target">
+                                <rect key="frame" x="187.66666666666666" y="406" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="RDD-hX-30J" firstAttribute="height" secondItem="nyP-4i-CHx" secondAttribute="height" multiplier="0.73" id="1IC-vJ-mLb"/>
+                            <constraint firstItem="RDD-hX-30J" firstAttribute="height" secondItem="mNV-4I-FlD" secondAttribute="height" multiplier="0.9" id="1IC-vJ-mLb"/>
+                            <constraint firstItem="mUo-W6-bTN" firstAttribute="centerX" secondItem="NrC-eq-7bk" secondAttribute="centerX" id="2Qq-6n-LPe"/>
                             <constraint firstItem="Fn6-HA-LGL" firstAttribute="leading" secondItem="NrC-eq-7bk" secondAttribute="leading" id="6bg-vZ-Kqp"/>
                             <constraint firstItem="Edp-km-Oar" firstAttribute="bottom" secondItem="NrC-eq-7bk" secondAttribute="bottom" constant="65" id="9qY-pr-vCu"/>
+                            <constraint firstItem="mUo-W6-bTN" firstAttribute="centerY" secondItem="NrC-eq-7bk" secondAttribute="centerY" constant="12.5" id="UlR-6t-aJt"/>
                             <constraint firstItem="NrC-eq-7bk" firstAttribute="leading" secondItem="Edp-km-Oar" secondAttribute="leading" constant="42" id="XgD-mM-YMD"/>
                             <constraint firstItem="Fn6-HA-LGL" firstAttribute="top" secondItem="NrC-eq-7bk" secondAttribute="top" id="ayI-Yg-0Cp"/>
                             <constraint firstItem="Edp-km-Oar" firstAttribute="trailing" secondItem="NrC-eq-7bk" secondAttribute="trailing" constant="42" id="f93-du-lU8"/>
@@ -1215,6 +1223,7 @@
                         <outlet property="easyRecordsView" destination="RDD-hX-30J" id="lnR-Hb-eSs"/>
                         <outlet property="easyTableView" destination="HsO-qq-fAi" id="eju-1i-OoQ"/>
                         <outlet property="gridView" destination="mNV-4I-FlD" id="Ghr-tn-fuk"/>
+                        <outlet property="noRecordView" destination="mUo-W6-bTN" id="SdT-ET-SC6"/>
                         <outlet property="shadow" destination="5d3-OM-3Qt" id="s3U-iZ-LOE"/>
                         <outletCollection property="views" destination="V4p-RQ-l8d" collectionClass="NSMutableArray" id="dhV-1P-knO"/>
                         <outletCollection property="views" destination="NrC-eq-7bk" collectionClass="NSMutableArray" id="UAa-F1-Q5V"/>
@@ -1250,10 +1259,10 @@
                                                 <rect key="frame" x="5" y="5" width="273" height="621"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cxc-C5-ksE">
-                                                        <rect key="frame" x="41" y="14" width="191" height="593"/>
+                                                        <rect key="frame" x="41" y="31" width="191" height="559"/>
                                                         <subviews>
                                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RbW-7u-uu1">
-                                                                <rect key="frame" x="17" y="0.0" width="157" height="593"/>
+                                                                <rect key="frame" x="17" y="0.0" width="157" height="559"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <prototypes>
                                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recordCell" id="Vq1-cY-HNw" customClass="RecordsTableViewCell" customModule="Sudoku_Mole" customModuleProvider="target">
@@ -1339,18 +1348,26 @@
                                     <constraint firstAttribute="width" secondItem="tZ2-Z4-Lsm" secondAttribute="height" multiplier="1:1" id="x5D-OE-1HJ"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NGy-UX-7ix" customClass="InsetLabel" customModule="Sudoku_Mole" customModuleProvider="target">
+                                <rect key="frame" x="187.66666666666666" y="406.33333333333331" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vWF-lf-ssV" firstAttribute="trailing" secondItem="B3I-bj-joM" secondAttribute="trailing" constant="42" id="3Ex-BZ-rWu"/>
                             <constraint firstItem="mQ7-uD-ehb" firstAttribute="width" secondItem="B3I-bj-joM" secondAttribute="width" id="86s-lE-M5y"/>
                             <constraint firstItem="B3I-bj-joM" firstAttribute="leading" secondItem="vWF-lf-ssV" secondAttribute="leading" constant="42" id="BzV-El-rWh"/>
+                            <constraint firstItem="NGy-UX-7ix" firstAttribute="centerX" secondItem="B3I-bj-joM" secondAttribute="centerX" id="Qoo-0B-t14"/>
                             <constraint firstItem="B3I-bj-joM" firstAttribute="top" secondItem="vWF-lf-ssV" secondAttribute="top" constant="30" id="TCT-DN-vV0"/>
                             <constraint firstItem="tZ2-Z4-Lsm" firstAttribute="top" secondItem="B3I-bj-joM" secondAttribute="top" id="bse-ul-6QC"/>
                             <constraint firstItem="B3I-bj-joM" firstAttribute="centerX" secondItem="hhL-us-wXj" secondAttribute="centerX" id="dEB-ml-Dzf"/>
                             <constraint firstItem="mQ7-uD-ehb" firstAttribute="top" secondItem="B3I-bj-joM" secondAttribute="bottom" constant="-1" id="ebv-cA-7Ik"/>
                             <constraint firstItem="vWF-lf-ssV" firstAttribute="bottom" secondItem="B3I-bj-joM" secondAttribute="bottom" constant="65" id="o3y-Vn-x2B"/>
-                            <constraint firstItem="cxc-C5-ksE" firstAttribute="height" secondItem="hhL-us-wXj" secondAttribute="height" multiplier="0.73" id="vSQ-70-Mj9"/>
+                            <constraint firstItem="NGy-UX-7ix" firstAttribute="centerY" secondItem="B3I-bj-joM" secondAttribute="centerY" constant="12.666666666666629" id="s7T-6O-4gH"/>
+                            <constraint firstItem="cxc-C5-ksE" firstAttribute="height" secondItem="xbo-A1-Ibe" secondAttribute="height" multiplier="0.9" id="vSQ-70-Mj9"/>
                             <constraint firstItem="tZ2-Z4-Lsm" firstAttribute="leading" secondItem="B3I-bj-joM" secondAttribute="leading" id="va5-R8-71k"/>
                             <constraint firstItem="mQ7-uD-ehb" firstAttribute="centerX" secondItem="hhL-us-wXj" secondAttribute="centerX" id="zav-ad-Jei"/>
                         </constraints>
@@ -1360,6 +1377,7 @@
                         <outlet property="expertRecordsView" destination="cxc-C5-ksE" id="uVS-AU-ukR"/>
                         <outlet property="expertTableView" destination="RbW-7u-uu1" id="qdr-EO-Och"/>
                         <outlet property="gridView" destination="xbo-A1-Ibe" id="4ej-ij-FyH"/>
+                        <outlet property="noRecordView" destination="NGy-UX-7ix" id="wZ4-rA-JAP"/>
                         <outlet property="shadow" destination="mQ7-uD-ehb" id="J0c-zt-XSc"/>
                         <outletCollection property="views" destination="nJR-oK-rWY" collectionClass="NSMutableArray" id="P5k-b4-7M0"/>
                         <outletCollection property="views" destination="B3I-bj-joM" collectionClass="NSMutableArray" id="HD2-ML-6WZ"/>
@@ -1395,10 +1413,10 @@
                                                 <rect key="frame" x="5" y="5" width="273" height="621"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2n-OU-wAb">
-                                                        <rect key="frame" x="41" y="14" width="191" height="593"/>
+                                                        <rect key="frame" x="41" y="31" width="191" height="559"/>
                                                         <subviews>
                                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nj9-NB-jbR">
-                                                                <rect key="frame" x="17" y="0.0" width="157" height="593"/>
+                                                                <rect key="frame" x="17" y="0.0" width="157" height="559"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <prototypes>
                                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recordCell" id="ioS-UY-Tr3" customClass="RecordsTableViewCell" customModule="Sudoku_Mole" customModuleProvider="target">
@@ -1484,6 +1502,12 @@
                                     <constraint firstAttribute="width" secondItem="1Ns-Oa-YXO" secondAttribute="height" multiplier="1:1" id="G2R-bZ-kWP"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pno-Xi-XTW" customClass="InsetLabel" customModule="Sudoku_Mole" customModuleProvider="target">
+                                <rect key="frame" x="187.66666666666666" y="406" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1492,10 +1516,12 @@
                             <constraint firstItem="1Ck-0w-dIZ" firstAttribute="top" secondItem="rFT-KX-o48" secondAttribute="bottom" constant="-1" id="CzD-XN-6Hg"/>
                             <constraint firstItem="1Ck-0w-dIZ" firstAttribute="centerX" secondItem="02T-jN-Lta" secondAttribute="centerX" id="I0U-ay-LhA"/>
                             <constraint firstItem="rFT-KX-o48" firstAttribute="top" secondItem="psG-m4-90V" secondAttribute="top" constant="30" id="MyL-iz-tax"/>
+                            <constraint firstItem="Pno-Xi-XTW" firstAttribute="centerX" secondItem="rFT-KX-o48" secondAttribute="centerX" id="Qa2-QD-1J1"/>
                             <constraint firstItem="psG-m4-90V" firstAttribute="trailing" secondItem="rFT-KX-o48" secondAttribute="trailing" constant="42" id="V8U-dZ-Y4y"/>
                             <constraint firstItem="rFT-KX-o48" firstAttribute="leading" secondItem="psG-m4-90V" secondAttribute="leading" constant="42" id="Vaa-As-XzV"/>
                             <constraint firstItem="1Ns-Oa-YXO" firstAttribute="top" secondItem="rFT-KX-o48" secondAttribute="top" id="fgx-Ds-OhG"/>
-                            <constraint firstItem="H2n-OU-wAb" firstAttribute="height" secondItem="02T-jN-Lta" secondAttribute="height" multiplier="0.73" id="pnr-8w-JdH"/>
+                            <constraint firstItem="Pno-Xi-XTW" firstAttribute="centerY" secondItem="rFT-KX-o48" secondAttribute="centerY" constant="12.5" id="fmk-i2-OfM"/>
+                            <constraint firstItem="H2n-OU-wAb" firstAttribute="height" secondItem="8zQ-sq-FoM" secondAttribute="height" multiplier="0.9" id="pnr-8w-JdH"/>
                             <constraint firstItem="psG-m4-90V" firstAttribute="bottom" secondItem="rFT-KX-o48" secondAttribute="bottom" constant="65" id="vBB-GK-yMV"/>
                             <constraint firstItem="1Ns-Oa-YXO" firstAttribute="leading" secondItem="rFT-KX-o48" secondAttribute="leading" id="yR0-VI-BfO"/>
                         </constraints>
@@ -1505,6 +1531,7 @@
                         <outlet property="gridView" destination="8zQ-sq-FoM" id="coH-Zd-IvU"/>
                         <outlet property="hardRecordsView" destination="H2n-OU-wAb" id="gyh-Cv-0H7"/>
                         <outlet property="hardTableView" destination="Nj9-NB-jbR" id="GjQ-DM-JMu"/>
+                        <outlet property="noRecordView" destination="Pno-Xi-XTW" id="8sb-T3-GVj"/>
                         <outlet property="shadow" destination="1Ck-0w-dIZ" id="b2U-CP-VDd"/>
                         <outletCollection property="views" destination="qfM-da-E80" collectionClass="NSMutableArray" id="Hxe-D6-uzz"/>
                         <outletCollection property="views" destination="rFT-KX-o48" collectionClass="NSMutableArray" id="HNN-dQ-9wX"/>
@@ -1540,10 +1567,10 @@
                                                 <rect key="frame" x="5" y="5" width="273" height="621"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9W5-yW-dT2" userLabel="Normal Record View">
-                                                        <rect key="frame" x="41" y="14" width="191" height="593"/>
+                                                        <rect key="frame" x="41" y="31" width="191" height="559"/>
                                                         <subviews>
                                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iZ4-OW-e1Q">
-                                                                <rect key="frame" x="17" y="0.0" width="157" height="593"/>
+                                                                <rect key="frame" x="17" y="0.0" width="157" height="559"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <prototypes>
                                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recordCell" id="l0M-L4-QEp" customClass="RecordsTableViewCell" customModule="Sudoku_Mole" customModuleProvider="target">
@@ -1629,25 +1656,34 @@
                                     <constraint firstAttribute="width" secondItem="pVm-fL-mZU" secondAttribute="height" multiplier="1:1" id="edO-hf-Rx5"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ym4-RY-vGA" customClass="InsetLabel" customModule="Sudoku_Mole" customModuleProvider="target">
+                                <rect key="frame" x="187.66666666666666" y="406" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Ym4-RY-vGA" firstAttribute="centerX" secondItem="znQ-GN-W5R" secondAttribute="centerX" id="08R-Fm-n8f"/>
                             <constraint firstItem="Wko-XN-q7s" firstAttribute="centerX" secondItem="VH5-GJ-Ioa" secondAttribute="centerX" id="21v-lY-hME"/>
                             <constraint firstItem="Wko-XN-q7s" firstAttribute="top" secondItem="znQ-GN-W5R" secondAttribute="bottom" constant="-1" id="CfM-5a-yFs"/>
                             <constraint firstItem="InD-Ul-Ptg" firstAttribute="bottom" secondItem="znQ-GN-W5R" secondAttribute="bottom" constant="65" id="KxG-RG-Mjp"/>
                             <constraint firstItem="InD-Ul-Ptg" firstAttribute="trailing" secondItem="znQ-GN-W5R" secondAttribute="trailing" constant="42" id="O4b-Zd-0UN"/>
-                            <constraint firstItem="9W5-yW-dT2" firstAttribute="height" secondItem="VH5-GJ-Ioa" secondAttribute="height" multiplier="0.73" id="adl-fy-KEL"/>
+                            <constraint firstItem="9W5-yW-dT2" firstAttribute="height" secondItem="FUd-2e-6Se" secondAttribute="height" multiplier="0.9" id="adl-fy-KEL"/>
                             <constraint firstItem="znQ-GN-W5R" firstAttribute="leading" secondItem="InD-Ul-Ptg" secondAttribute="leading" constant="42" id="gPk-QR-WKH"/>
                             <constraint firstItem="pVm-fL-mZU" firstAttribute="leading" secondItem="znQ-GN-W5R" secondAttribute="leading" id="nz7-GC-iUR"/>
                             <constraint firstItem="znQ-GN-W5R" firstAttribute="centerX" secondItem="VH5-GJ-Ioa" secondAttribute="centerX" id="uaM-f1-TBN"/>
                             <constraint firstItem="Wko-XN-q7s" firstAttribute="width" secondItem="znQ-GN-W5R" secondAttribute="width" id="ubL-iW-QgT"/>
                             <constraint firstItem="pVm-fL-mZU" firstAttribute="top" secondItem="znQ-GN-W5R" secondAttribute="top" id="wzm-o4-rkg"/>
                             <constraint firstItem="znQ-GN-W5R" firstAttribute="top" secondItem="InD-Ul-Ptg" secondAttribute="top" constant="30" id="zaf-pp-WoB"/>
+                            <constraint firstItem="Ym4-RY-vGA" firstAttribute="centerY" secondItem="znQ-GN-W5R" secondAttribute="centerY" constant="12.5" id="zfE-Bv-X5F"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="InD-Ul-Ptg"/>
                     </view>
                     <connections>
                         <outlet property="gridView" destination="FUd-2e-6Se" id="enJ-Aa-2VB"/>
+                        <outlet property="noRecordView" destination="Ym4-RY-vGA" id="Uy7-fB-yjG"/>
                         <outlet property="normalRecordsView" destination="9W5-yW-dT2" id="sDP-S3-GqO"/>
                         <outlet property="normalTableView" destination="iZ4-OW-e1Q" id="KUF-Oi-8Ud"/>
                         <outlet property="shadow" destination="Wko-XN-q7s" id="jhQ-RN-w3I"/>

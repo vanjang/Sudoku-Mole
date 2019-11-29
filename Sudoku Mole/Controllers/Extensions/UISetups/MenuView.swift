@@ -9,6 +9,28 @@
 import Foundation
 import UIKit
 
+class CustomButton: UIButton {
+
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        let newArea = CGRect(
+            x: self.bounds.origin.x - 5.0,
+            y: self.bounds.origin.y - 5.0,
+            width: self.bounds.size.width + 10.0,
+            height: self.bounds.size.height + 20.0
+        )
+        return newArea.contains(point)
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+
 extension GameViewController {
     func makeMenuView() {
         let menuWidth = self.view.frame.width//*0.8
@@ -45,7 +67,7 @@ extension GameViewController {
         menuStackview.axis = .vertical
         menuStackview.distribution = .equalSpacing
         menuStackview.alignment = .center
-        menuStackview.spacing = 15//25
+        menuStackview.spacing = view.frame.size.height*0.0187//0//15//25
         menuStackview.translatesAutoresizingMaskIntoConstraints = false
         menuStackview.addArrangedSubview(recordButton)
         menuStackview.addArrangedSubview(selfInstructionButton)
@@ -65,7 +87,7 @@ extension GameViewController {
         dummyView.backgroundColor = .clear
         menuView.addSubview(dummyView)
         
-        let verticalConstraint = NSLayoutConstraint(item: menuStackview, attribute: .centerY, relatedBy: .equal, toItem: menuView, attribute: .centerY, multiplier: 1, constant: 0)
+        let verticalConstraint = NSLayoutConstraint(item: menuStackview, attribute: .centerY, relatedBy: .equal, toItem: menuView, attribute: .centerY, multiplier: 1, constant: -15)
         let horizontalConstraint = NSLayoutConstraint(item: menuStackview, attribute: .centerX, relatedBy: .equal, toItem: dummyView, attribute: .centerX, multiplier: 1, constant: 0)
         self.view.addConstraints([verticalConstraint, horizontalConstraint])
     }
@@ -77,7 +99,7 @@ extension GameViewController {
         fadeView.frame = fadeFrame
         fadeView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.7)
         view.addSubview(fadeView)
-                
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(GameViewController.dismissButtonTapped))
         tap.cancelsTouchesInView = false
         fadeView.addGestureRecognizer(tap)
@@ -94,24 +116,24 @@ extension GameViewController {
         menuRewindButton.addTarget(self, action: #selector(menuRewindButtonTapped), for: .touchUpInside)
         menuView.addSubview(menuRewindButton)
     }
-    
+    //    100:350 - x:100
     func makeBannerCase() {
         bannerCase.addSubview(bannerView)
-        let width = menuView.frame.size.width*0.70
-        let height = width*0.23
+        let width = menuView.frame.size.width*0.72
+        let height = width*0.286
         let x = (dummyView.frame.size.width-width)/2
         let y = menuView.bounds.maxY-height-20
         let frame = CGRect(x: x, y: y, width: width, height: height)
         
         bannerView.frame = frame
-        bannerView.layer.cornerRadius = height/3.8
+        bannerView.layer.cornerRadius = height/3
         
         let caseWidth = menuView.frame.size.width*0.70
         let caseFrame = CGRect(x: x, y: y, width: caseWidth, height: height)
         bannerCase.frame = caseFrame
         bannerCase.backgroundColor = .white
         bannerCase.layer.borderWidth = 0
-        bannerCase.layer.cornerRadius = height/3.8
+        bannerCase.layer.cornerRadius = height/3
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         
         menuView.addSubview(bannerCase)
@@ -122,6 +144,7 @@ extension GameViewController {
     }
     
     @objc func leftButtonTapped() {
+        print("left")
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reverseVC"), object: nil, userInfo: nil)
     }
     
@@ -152,39 +175,39 @@ extension GameViewController {
         menuView.addSubview(recordLabel)
         
         // Page View Container view constraints
-        func superViewForConst() -> UIView {
-            var returningView = UIView()
-            
-            if !appDelegate.hasADRemoverBeenBought() {
-                returningView = bannerCase
-            } else {
-                returningView = menuView
-            }
-            
-            return returningView
-        }
-        
-        func constAttribute() -> NSLayoutConstraint.Attribute {
-            var attribute = NSLayoutConstraint.Attribute.top
-            
-            if !appDelegate.hasADRemoverBeenBought() {
-                attribute = .top
-            } else {
-                attribute = .bottom
-            }
-            return attribute
-        }
-        
-        func constConstant() -> CGFloat {
-            var constant = 0.0
-            
-            if !appDelegate.hasADRemoverBeenBought() {
-                constant = -20
-            } else {
-                constant = -60
-            }
-            return CGFloat(constant)
-        }
+        //        func superViewForConst() -> UIView {
+        //            var returningView = UIView()
+        //
+        //            if !appDelegate.hasADRemoverBeenBought() {
+        //                returningView = bannerCase
+        //            } else {
+        //                returningView = menuView
+        //            }
+        //
+        //            return returningView
+        //        }
+        //
+        //        func constAttribute() -> NSLayoutConstraint.Attribute {
+        //            var attribute = NSLayoutConstraint.Attribute.top
+        //
+        //            if !appDelegate.hasADRemoverBeenBought() {
+        //                attribute = .top
+        //            } else {
+        //                attribute = .bottom
+        //            }
+        //            return attribute
+        //        }
+        //
+        //        func constConstant() -> CGFloat {
+        //            var constant = 0.0
+        //
+        //            if !appDelegate.hasADRemoverBeenBought() {
+        //                constant = -20
+        //            } else {
+        //                constant = -60
+        //            }
+        //            return CGFloat(constant)
+        //        }
         
         self.recordsContainerView.backgroundColor = .clear
         self.menuView.addSubview(self.recordsContainerView)
@@ -241,10 +264,10 @@ extension GameViewController {
         let image = UIImage(named: "menuSmoleIntroHi.png")
         smoleMenuImage.image = image
         
-//        smoleMenuImage.contentMode = .left//.scaleAspectFit//.scaleAspectFill//self.view.frame.origin.x
+        //        smoleMenuImage.contentMode = .left//.scaleAspectFit//.scaleAspectFill//self.view.frame.origin.x
         smoleMenuImage.contentMode = .scaleAspectFit
-//        let imageViewFrame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.height*0.38, width: menuView.bounds.size.width*0.73, height: menuView.bounds.size.height*0.62)
-//        smoleMenuImage.frame = imageViewFrame
+        //        let imageViewFrame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.height*0.38, width: menuView.bounds.size.width*0.73, height: menuView.bounds.size.height*0.62)
+        //        smoleMenuImage.frame = imageViewFrame
         menuView.addSubview(smoleMenuImage)
         menuView.sendSubviewToBack(smoleMenuImage)
         
@@ -304,13 +327,48 @@ extension GameViewController {
         instructionView.addSubview(stackView)
         
         let topConstraint = NSLayoutConstraint(item: stackView, attribute: .top, relatedBy: .equal, toItem: menuView, attribute: .top, multiplier: 1, constant: instructionView.frame.size.height*0.16)
-//        let horizontalConstraint = NSLayoutConstraint(item: stackView, attribute: .centerX, relatedBy: .equal, toItem: menuView, attribute: .centerX, multiplier: 1, constant: 0)
+        //        let horizontalConstraint = NSLayoutConstraint(item: stackView, attribute: .centerX, relatedBy: .equal, toItem: menuView, attribute: .centerX, multiplier: 1, constant: 0)
         let horizontalConstraint = NSLayoutConstraint(item: stackView, attribute: .right, relatedBy: .equal, toItem: menuView, attribute: .right, multiplier: 1, constant: -29)
         self.view.addConstraints([topConstraint, horizontalConstraint])
         
         if !appDelegate.hasADRemoverBeenBought() {
             bannerCase.superview?.bringSubviewToFront(bannerCase)
         }
+    }
+    
+    // Page View Container view constraints
+    func superViewForConst() -> UIView {
+        var returningView = UIView()
+        
+        if !appDelegate.hasADRemoverBeenBought() {
+            returningView = bannerCase
+        } else {
+            returningView = menuView
+        }
+        
+        return returningView
+    }
+    
+    func constAttribute() -> NSLayoutConstraint.Attribute {
+        var attribute = NSLayoutConstraint.Attribute.top
+        
+        if !appDelegate.hasADRemoverBeenBought() {
+            attribute = .top
+        } else {
+            attribute = .bottom
+        }
+        return attribute
+    }
+    
+    func constConstant() -> CGFloat {
+        var constant = 0.0
+        
+        if !appDelegate.hasADRemoverBeenBought() {
+            constant = -20
+        } else {
+            constant = -60
+        }
+        return CGFloat(constant)
     }
     
     func makeIAPView() {
@@ -327,65 +385,162 @@ extension GameViewController {
         shopLabel.textColor = #colorLiteral(red: 1, green: 0.9337611198, blue: 0.2692891061, alpha: 1)
         menuView.addSubview(shopLabel)
         
+        iapView.backgroundColor = .clear
+        menuView.addSubview(iapView)
+        iapView.translatesAutoresizingMaskIntoConstraints = false
         
-        iapView.frame.size.width = (self.view.frame.size.width)*0.8
+        let topConstraints = NSLayoutConstraint(item: self.iapView, attribute: .top, relatedBy: .equal, toItem: self.shopLabel, attribute: .bottom, multiplier: 1, constant: -10)
+        let bottomConstraints = NSLayoutConstraint(item: self.iapView, attribute: .bottom, relatedBy: .equal, toItem: superViewForConst(), attribute: constAttribute(), multiplier: 1, constant: constConstant())
+        let leadingConstraints = NSLayoutConstraint(item: self.iapView, attribute: .leading, relatedBy: .equal, toItem: self.menuView, attribute: .leading, multiplier: 1, constant: 0)
+        let trailingConstraints = NSLayoutConstraint(item: self.iapView, attribute: .trailing, relatedBy: .equal, toItem: self.menuView, attribute: .trailing, multiplier: 1, constant: 0)
+        self.menuView.addConstraints([topConstraints, bottomConstraints, leadingConstraints, trailingConstraints])
         
-        if !appDelegate.hasADRemoverBeenBought() {
-            iapView.frame.size.height = (self.view.frame.size.height-(bannerCase.frame.size.height+dismissButton.frame.maxY+30))*0.8
+        let iapStackView = UIStackView()
+        iapStackView.axis = .vertical
+        iapStackView.distribution = .fillProportionally
+        iapStackView.alignment = .center
+        iapStackView.spacing = view.frame.size.height*0.07
+        iapView.addSubview(iapStackView)
+        
+        iapStackView.translatesAutoresizingMaskIntoConstraints = false
+        let verticalConstraints = NSLayoutConstraint(item: iapStackView, attribute: .centerY, relatedBy: .equal, toItem: iapView, attribute: .centerY, multiplier: 1, constant: view.frame.size.height*0.02)
+        let horizontalConstraints = NSLayoutConstraint(item: iapStackView, attribute: .centerX, relatedBy: .equal, toItem: iapView, attribute: .centerX, multiplier: 1, constant: 0)
+        self.menuView.addConstraints([horizontalConstraints, verticalConstraints])
+        
+        let iapHorizontalStackView = UIStackView()
+        iapHorizontalStackView.axis = .horizontal
+        iapHorizontalStackView.distribution = .fillEqually
+        iapHorizontalStackView.alignment = .center
+        iapHorizontalStackView.spacing = 55
+        
+        let chanceStackView = UIStackView()
+        chanceStackView.axis = .vertical
+        chanceStackView.distribution = .fillProportionally
+        chanceStackView.alignment = .center
+        chanceStackView.spacing = 5
+        chanceStackView.contentMode = .center
+        
+        let adFreeStackView = UIStackView()
+        adFreeStackView.axis = .vertical
+        adFreeStackView.distribution = .fillProportionally
+        adFreeStackView.alignment = .center
+        adFreeStackView.spacing = 5
+        adFreeStackView.contentMode = .center
+        
+        let chanceImageView = UIImageView()
+        let chanceImage = UIImage(named: "item5Chance.png")
+        chanceImageView.image = chanceImage
+        chanceImageView.contentMode = .scaleAspectFit
+        
+        let adFreeImageView = UIImageView()
+        let adFreeImage = UIImage(named: "itemClearAd.png")
+        adFreeImageView.image = adFreeImage
+        adFreeImageView.contentMode = .scaleAspectFit
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        var chanceTitle = String()
+        var chancePrice = String()
+        if productsArray.indices.contains(1) {
+            chanceTitle =  productsArray[1].localizedTitle+"\n"
+            formatter.locale = productsArray[1].priceLocale
+            chancePrice = formatter.string(from: productsArray[1].price)!
         } else {
-            iapView.frame.size.height = (self.view.frame.size.height-30)*0.8
+            chanceTitle = "5 CHANCE\n"
+            chancePrice = "-"
         }
         
-//        let frame = CGRect(x: (self.view.frame.size.width-iapView.frame.size.width)/2, y: (self.view.frame.size.height-iapView.frame.size.height)/2, width: iapView.frame.size.width, height: iapView.frame.size.height)
-        let frame = CGRect(x: view.frame.origin.x, y: view.frame.size.height*0.15, width: view.frame.size.width, height: iapView.frame.size.height)
-        iapView.frame = frame
-        iapView.backgroundColor = .clear//.red
-        menuView.addSubview(iapView)
-        
-        let iap1 = UIButton()
-        let iap2 = UIButton()
-        
-        let image1 = UIImage(named: "itemClearAd.png")
-        let image2 = UIImage(named: "item5Chance.png")
-        
-        iap1.setImage(image1, for: .normal)
-        iap1.contentMode = .scaleAspectFit
-        iap2.setImage(image2, for: .normal)
-        iap2.contentMode = .scaleAspectFit
-        iap1.addTarget(self, action: #selector(ADFreeButtonTapped), for: .touchUpInside)
-        iap2.addTarget(self, action: #selector(getChanceButtonTapped), for: .touchUpInside)
-        
-        let iap1LabelFrame = CGRect(x: iap1.frame.origin.x, y: iap1.frame.origin.y, width: iap1.frame.size.width, height: 50)
-        iap1Label.frame = iap1LabelFrame
-        iap1Label.backgroundColor = #colorLiteral(red: 1, green: 0.9337611198, blue: 0.2692891061, alpha: 1)
-        iap1Label.text = "5 CHANCE\n0.99" // web 연결 해야함
-        iapView.addSubview(iap1Label)
-        
-        let smoleImage = UIImage(named: "smoleShop.png")
-        iapSmoleImageView.image = smoleImage
-        iapSmoleImageView.contentMode = .scaleAspectFit
-        iapView.addSubview(iapSmoleImageView)
-        iapSmoleImageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        stackView.alignment = .top
-        stackView.spacing = 50
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.addArrangedSubview(iap2)
-        stackView.addArrangedSubview(iap1)
-        iapView.addSubview(stackView)
-        
-//        let verticalConstraint = NSLayoutConstraint(item: stackView, attribute: .centerY, relatedBy: .equal, toItem: iapView, attribute: .centerY, multiplier: 1, constant: 0)
-        let horizontalConstraint = NSLayoutConstraint(item: stackView, attribute: .centerX, relatedBy: .equal, toItem: iapView, attribute: .centerX, multiplier: 1, constant: 0)
-        let topConstraint = NSLayoutConstraint(item: stackView, attribute: .top, relatedBy: .equal, toItem: iapView, attribute: .top, multiplier: 1, constant: view.frame.size.height*0.16)
-        
-        let smoleTopConstraint = NSLayoutConstraint(item: iapSmoleImageView, attribute: .top, relatedBy: .equal, toItem: stackView, attribute: .bottom, multiplier: 1, constant: view.frame.size.height*0.08)
-        let smoleCentreConstraint = NSLayoutConstraint(item: iapSmoleImageView, attribute: .centerX, relatedBy: .equal, toItem: iapView, attribute: .centerX, multiplier: 1, constant: 0)
+        let chanceAttributes = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 14.0) as Any, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9364990592, green: 0.3447085321, blue: 0.3428477943, alpha: 1)] as [NSAttributedString.Key : Any]
+        let chanceMutableAttributedString = NSMutableAttributedString(string: chanceTitle, attributes: chanceAttributes as [NSAttributedString.Key : Any])
+        let chance2Attributes = [ NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 24.0)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9364990592, green: 0.3447085321, blue: 0.3428477943, alpha: 1)] as [NSAttributedString.Key : Any]
+        let chance2MutableAttributes = NSMutableAttributedString(string: chancePrice, attributes: chance2Attributes )
+        chanceMutableAttributedString.append(chance2MutableAttributes)
 
+        let chanceLabel = PaddedLabel()
+        chanceLabel.frame.size.width = 200
+        chanceLabel.frame.size.height = 160
+        chanceLabel.backgroundColor = #colorLiteral(red: 1, green: 0.9337611198, blue: 0.2692891061, alpha: 1)
+        chanceLabel.numberOfLines = 0
+        chanceLabel.contentMode = .center
+        chanceLabel.textAlignment = .center
+        chanceLabel.clipsToBounds = true
+        chanceLabel.layer.cornerRadius = 22
+        chanceLabel.adjustsFontSizeToFitWidth = true
+        chanceLabel.attributedText = chanceMutableAttributedString
         
-        self.view.addConstraints([horizontalConstraint, topConstraint, smoleTopConstraint, smoleCentreConstraint])
+        var adFreeTitle = String()
+        var adFreePrice = String()
+        if productsArray.indices.contains(0) {
+            adFreeTitle =  productsArray[0].localizedTitle+"\n"
+            formatter.locale = productsArray[0].priceLocale
+            adFreePrice = formatter.string(from: productsArray[0].price)!
+        } else {
+            adFreeTitle = "CLEAR AD\n"
+            adFreePrice = "-"
+        }
+        
+        let adFreeAttributes = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 14.0) as Any, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9364990592, green: 0.3447085321, blue: 0.3428477943, alpha: 1)] as [NSAttributedString.Key : Any]
+        let adFreeMutableAttributedString = NSMutableAttributedString(string: adFreeTitle, attributes: adFreeAttributes as [NSAttributedString.Key : Any])
+        let adFree2Attributes = [ NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 24.0)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9364990592, green: 0.3447085321, blue: 0.3428477943, alpha: 1)] as [NSAttributedString.Key : Any]
+        let adFree2MutableAttributes = NSMutableAttributedString(string: adFreePrice, attributes: adFree2Attributes )
+        adFreeMutableAttributedString.append(adFree2MutableAttributes)
+        
+        let adFreeLabel = PaddedLabel()
+        adFreeLabel.frame.size.width = 200
+        adFreeLabel.frame.size.height = 160
+        adFreeLabel.backgroundColor = #colorLiteral(red: 1, green: 0.9337611198, blue: 0.2692891061, alpha: 1)
+        adFreeLabel.numberOfLines = 0
+        adFreeLabel.contentMode = .center
+        adFreeLabel.textAlignment = .center
+        adFreeLabel.clipsToBounds = true
+        adFreeLabel.layer.cornerRadius = 22
+        adFreeLabel.adjustsFontSizeToFitWidth = true
+        adFreeLabel.attributedText = adFreeMutableAttributedString
+        
+        chanceStackView.addArrangedSubview(chanceImageView)
+        chanceStackView.addArrangedSubview(chanceLabel)
+        adFreeStackView.addArrangedSubview(adFreeImageView)
+        adFreeStackView.addArrangedSubview(adFreeLabel)
+        
+        iapHorizontalStackView.addArrangedSubview(chanceStackView)
+        iapHorizontalStackView.addArrangedSubview(adFreeStackView)
+        
+        let iapSmoleImageView = UIImageView()
+        let iapSmoleImage = UIImage(named: "smoleShop.png")
+        iapSmoleImageView.image = iapSmoleImage
+        iapSmoleImageView.contentMode = .scaleAspectFit
+        
+        iapStackView.alignment = .center
+        iapStackView.addArrangedSubview(iapHorizontalStackView)
+        iapStackView.addArrangedSubview(iapSmoleImageView)
+        
+        let chanceButton = UIButton()
+        chanceButton.backgroundColor = .clear
+        chanceButton.alpha = 0.5
+        chanceButton.addTarget(self, action: #selector(getChanceButtonTapped), for: .touchUpInside)
+        iapView.addSubview(chanceButton)
+        iapView.bringSubviewToFront(chanceButton)
+        
+        chanceButton.translatesAutoresizingMaskIntoConstraints = false
+        let chanceTopConstraint = NSLayoutConstraint(item: chanceButton, attribute: .top, relatedBy: .equal, toItem: chanceImageView, attribute: .top, multiplier: 1, constant: 0)
+        let chanceLeftConstraint = NSLayoutConstraint(item: chanceButton, attribute: .left, relatedBy: .equal, toItem: chanceImageView, attribute: .left, multiplier: 1, constant: 0)
+        let chanceRightConstraint = NSLayoutConstraint(item: chanceButton, attribute: .right, relatedBy: .equal, toItem: chanceImageView, attribute: .right, multiplier: 1, constant: 0)
+        let chanceBottomConstraint = NSLayoutConstraint(item: chanceButton, attribute: .bottom, relatedBy: .equal, toItem: chanceLabel, attribute: .bottom, multiplier: 1, constant: 0)
+        self.view.addConstraints([chanceTopConstraint, chanceLeftConstraint, chanceRightConstraint, chanceBottomConstraint])
+        
+        let adFreeButton = UIButton()
+        adFreeButton.backgroundColor = .clear
+        adFreeButton.alpha = 0.5
+        adFreeButton.addTarget(self, action: #selector(ADFreeButtonTapped), for: .touchUpInside)
+        iapView.addSubview(adFreeButton)
+        iapView.bringSubviewToFront(adFreeButton)
+        
+        adFreeButton.translatesAutoresizingMaskIntoConstraints = false
+        let adFreeTopConstraint = NSLayoutConstraint(item: adFreeButton, attribute: .top, relatedBy: .equal, toItem: adFreeImageView, attribute: .top, multiplier: 1, constant: 0)
+        let adFreeLeftConstraint = NSLayoutConstraint(item: adFreeButton, attribute: .left, relatedBy: .equal, toItem: adFreeImageView, attribute: .left, multiplier: 1, constant: 0)
+        let adFreeRightConstraint = NSLayoutConstraint(item: adFreeButton, attribute: .right, relatedBy: .equal, toItem: adFreeImageView, attribute: .right, multiplier: 1, constant: 0)
+        let adFreeBottomConstraint = NSLayoutConstraint(item: adFreeButton, attribute: .bottom, relatedBy: .equal, toItem: adFreeLabel, attribute: .bottom, multiplier: 1, constant: 0)
+        self.view.addConstraints([adFreeTopConstraint, adFreeLeftConstraint, adFreeRightConstraint, adFreeBottomConstraint])
         
         if !appDelegate.hasADRemoverBeenBought() {
             bannerCase.superview?.bringSubviewToFront(bannerCase)

@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "btnBottomChance10MoreNormal.png",
+      "scale" : "1x",
+      "idiom" : "universal"
+    },
+    {
+      "scale" : "2x",
+      "filename" : "btnBottomChance10MoreNormal@2x.png",
+      "idiom" : "universal"
+    },
+    {
+      "scale" : "3x",
+      "idiom" : "universal",
+      "filename" : "btnBottomChance10MoreNormal@3x.png"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

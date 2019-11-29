@@ -1,19 +1,19 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
+      "scale" : "1x",
       "filename" : "boardLabelNormal.png",
-      "scale" : "1x"
-    },
-    {
-      "scale" : "2x",
-      "idiom" : "universal",
-      "filename" : "boardLabelNormal@2x.png"
-    },
-    {
-      "filename" : "boardLabelNormal@3x.png",
-      "scale" : "3x",
       "idiom" : "universal"
+    },
+    {
+      "filename" : "boardLabelNormal@2x.png",
+      "scale" : "2x",
+      "idiom" : "universal"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "boardLabelNormal@3x.png",
+      "scale" : "3x"
     }
   ],
   "info" : {

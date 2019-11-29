@@ -39,7 +39,7 @@ extension GameSolvedViewController: GADInterstitialDelegate {
     
     /// Tells the delegate the interstitial is to be animated off the screen.
     func interstitialWillDismissScreen(_ ad: GADInterstitial) {
-        tappedButton()
+        implementButtonAction()
         //        print("interstitialWillDismissScreen")
     }
     

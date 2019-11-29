@@ -11,15 +11,21 @@ import GoogleMobileAds
 import Lottie
 
 class GameViewController: UIViewController, GADRewardedAdDelegate {
+
     
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
+//    let vc = PauseViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.didMove(toParent: self)
+                NotificationCenter.default.addObserver(self, selector: #selector(timerStateInAction),name:NSNotification.Name(rawValue: "resumeTimer"), object: nil)
+//        makeTipView()
+//        vc.delegate = self
         
+        self.navigationController?.didMove(toParent: self)
+    
         // IAP - written in order
         SKPaymentQueue.default().add(self)
         productIDs.append("ADRemover")
@@ -27,6 +33,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
         requestProductInfo()
         
         // Configurations
+        loadSavedLivesAndSelectedBoxIfSaved()
         keypadAutoResize()
         biTitleSetup()
         timerSetup()
@@ -48,28 +55,79 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
         interstitial = createAndLoadInterstitial()
         rewardedAD = createAndLoadRewardedAD()
         
-        // Double tap gesture setup
-        let doubleTapGestureRecognizer = CustomTapGestureRecognizer(target: self, action: #selector(doubleTapped(sender:)))
+        // tap gesture setup
+        if shouldTipView() {
+            singleTapGestureRecognizer = CustomTapGestureRecognizer(target: self, action: #selector(singleTapped(sender:)))
+            singleTapGestureRecognizer.numberOfTapsRequired = 1
+            sudokuView.addGestureRecognizer(singleTapGestureRecognizer)
+        }
+        
+        
+        doubleTapGestureRecognizer = CustomTapGestureRecognizer(target: self, action: #selector(doubleTapped(sender:)))
         doubleTapGestureRecognizer.numberOfTapsRequired = 2
         sudokuView.addGestureRecognizer(doubleTapGestureRecognizer)
+//        print("view did load")
+    }
+    
+    func shouldTipView() -> Bool {
+        let tipViewKey = "TipViewShownOnce3"
+        let userDefault = appDelegate.userDefault
+        
+        guard let value = userDefault.value(forKey: tipViewKey) as? Int else {
+            userDefault.set(0, forKey: tipViewKey)
+            return true
+        }
+        
+        if value < 2 {
+            return true
+        } else {
+            return false
+        }
+       
+        }
+
+    
+    var doubleTapGestureRecognizer = CustomTapGestureRecognizer()
+    var singleTapGestureRecognizer = CustomTapGestureRecognizer()
+    
+    override func viewWillLayoutSubviews() {
+//        print("view will layout subviews")
+//        pageControl.currentPage = GameViewController.index
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+//        print("view did appear")
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//        print("view will transition")
     }
     
     override func viewDidLayoutSubviews() {
-        pageControl.currentPage = GameViewController.index
+//        print("view did layout subviews")
+        NotificationCenter.default.addObserver(self, selector: #selector(pageController),name:NSNotification.Name(rawValue: "pageControl"), object: nil)
+        
+//        pageControl.currentPage = GameViewController.index
         let scale: CGFloat = 0.65
         for dot in pageControl.subviews{
             dot.transform = CGAffineTransform.init(scaleX: 1/scale, y: 1/scale)
         }
     }
     
+    @objc func pageController() {
+//        print("page control")
+         pageControl.currentPage = GameViewController.index
+    }
+        
     override func viewWillAppear(_ animated: Bool) {
+        print("view will appear")
         NotificationCenter.default.addObserver(self, selector: #selector(refresher),name:NSNotification.Name(rawValue: "refresher"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(abandon),name:NSNotification.Name(rawValue: "abandon"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(popAD),name:NSNotification.Name(rawValue: "popAD"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(chanceSetup),name:NSNotification.Name(rawValue: "userEarnedaChance"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(timerStateInAction),name:NSNotification.Name(rawValue: "resumeTimer"), object: nil)
+
     }
-    
+        
     // Switches
     var IAPPurchase: PurchasingIAP = .none {
         didSet {
@@ -78,14 +136,35 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
                 let removerKey = "ADRemover5"
                 let userDefault = appDelegate.userDefault
                 userDefault.set("ADRemoverBought", forKey: removerKey)
+                dismiss(animated: true) {
+                    self.instantiatingCustomAlertView()
+                    self.delegate?.customAlertController(title: "THANK YOU FOR PURCHASE".localized(), message: "Turn the app on and off to remove ADs forever!".localized(), option: .oneButton)
+                    self.delegate?.customAction1(title: "OK".localized(), action: { xx in
+                        DispatchQueue.main.async {
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    })
+                    self.present(self.customAlertView, animated: true, completion: nil)
+                }
+                
             case .Chances :
                 appDelegate.storeItems(5)
+                dismiss(animated: true) {
+                    self.instantiatingCustomAlertView()
+                    self.delegate?.customAlertController(title: "THANK YOU FOR PURCHASE".localized(), message: "You just got 5 chances!.".localized(), option: .oneButton)
+                    self.delegate?.customAction1(title: "OK".localized(), action: { xx in
+                        DispatchQueue.main.async {
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    })
+                    self.present(self.customAlertView, animated: true, completion: nil)
+                }
                 chanceSetup()
             default : break
             }
         }
     }
-    
+
     var menuState: MenuState = .collapsed {
         didSet {
             switch menuState {
@@ -118,6 +197,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
                 view.animateXPosition(target: menuView, targetPosition: self.view.frame.maxX-menuWidth)
                 view.animateXPosition(target: dismissButton, targetPosition: (menuView.bounds.maxX-40)-(self.view.frame.maxX-menuWidth))
                 view.animateXPosition(target: bannerCase, targetPosition: (dummyView.frame.size.width-bannerCase.frame.size.width)/2)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "recordsRefresher"), object: nil, userInfo: nil)
             case .fullyExpanded :
                 menuOptionSelected = .none
                 recordButton.isHidden = true
@@ -198,7 +278,87 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
         }
     }
     
+ @objc func tipViewButtonDismissButtonTapped() {
+        tipView.animateYPosition(target: tipView, targetPosition: view.frame.size.height+300, completion: { (action) in
+            self.tipView.removeFromSuperview()
+            self.sudokuView.removeGestureRecognizer(self.singleTapGestureRecognizer)
+            self.sudokuView.isUserInteractionEnabled = true
+        })
+    }
+    
+    func makeTipView() {
+        let width = self.view.frame.size.width*0.88
+        let height = width*0.50
+        
+//        let poppedFrame = CGRect(x: (view.frame.size.width-width)/2, y: view.frame.size.height-height-((view.frame.size.width-width)/2), width: width, height: height)
+        let dismissedFrame = CGRect(x: (view.frame.size.width-width)/2, y: view.frame.size.height+300, width: width, height: height)
+        tipView.frame = dismissedFrame
+        tipView.backgroundColor = #colorLiteral(red: 0.9364990592, green: 0.3447085321, blue: 0.3428477943, alpha: 1)
+        tipView.alpha = 0.98
+        tipView.layer.cornerRadius = tipView.frame.size.height/5.5
+        view.addSubview(tipView)
+        tipView.addSubview(tipLabel)
+        
+        tipLabel.text = "이 창 닫으면 병처리 바보 ㅎㅎ"
+//        tipLabel.text = "Tap the input field twice to delete the number you entered.".localized()
+        tipLabel.numberOfLines = 0
+        tipLabel.textColor = .white
+        tipLabel.font = UIFont(name: "SFProDisplay-Light", size: 18)
+        tipLabel.contentMode = .topLeft
+        tipLabel.textAlignment = .left
+        
+        tipLabel.translatesAutoresizingMaskIntoConstraints = false
+        let leftConstraint = NSLayoutConstraint(item: tipLabel, attribute: .left, relatedBy: .equal, toItem: tipView, attribute: .left, multiplier: 1, constant: 20)
+        let rightConstraint = NSLayoutConstraint(item: tipLabel, attribute: .right, relatedBy: .equal, toItem: tipView, attribute: .right, multiplier: 1, constant: -100)
+        let topConstraint = NSLayoutConstraint(item: tipLabel, attribute: .top, relatedBy: .equal, toItem: tipView, attribute: .top, multiplier: 1, constant: 0)
+        let bottomConstraint = NSLayoutConstraint(item: tipLabel, attribute: .bottom, relatedBy: .equal, toItem: tipView, attribute: .bottom, multiplier: 1, constant: -tipView.frame.size.height/3)
+        self.tipView.addConstraints([leftConstraint, rightConstraint, topConstraint, bottomConstraint])
+        
+        tipViewDismissImage = UIImage(named: "icSideClose.png")!
+        tipViewDismissButton.setImage(tipViewDismissImage, for: .normal)
+        tipViewDismissButton.frame.size.width = 20
+        tipViewDismissButton.frame.size.height = 20
+        tipViewDismissButton.addTarget(self, action: #selector(tipViewButtonDismissButtonTapped), for: .touchUpInside)
+        tipView.addSubview(tipViewDismissButton)
+        
+        tipViewDismissButton.translatesAutoresizingMaskIntoConstraints = false
+        let xRightConstraint = NSLayoutConstraint(item: tipViewDismissButton, attribute: .right, relatedBy: .equal, toItem: tipView, attribute: .right, multiplier: 1, constant: -10)
+        let xTopConstraint = NSLayoutConstraint(item: tipViewDismissButton, attribute: .top, relatedBy: .equal, toItem: tipView, attribute: .top, multiplier: 1, constant: 10)
+        self.tipView.addConstraints([xRightConstraint, xTopConstraint])
+        
+        tipSmoleImage = UIImage(named: "menuMyrecordSmolenote.png")!
+        tipSmole.image = tipSmoleImage
+        tipSmole.contentMode = .scaleAspectFit
+        tipView.addSubview(tipSmole)
+        
+        tipSmole.translatesAutoresizingMaskIntoConstraints = false
+        let smoleLeftConstraint = NSLayoutConstraint(item: tipSmole, attribute: .left, relatedBy: .equal, toItem: tipLabel, attribute: .right, multiplier: 1, constant: 10)
+        let smoleRightConstraint = NSLayoutConstraint(item: tipSmole, attribute: .right, relatedBy: .equal, toItem: tipView, attribute: .right, multiplier: 1, constant: -10)
+        let smoleTopConstraint = NSLayoutConstraint(item: tipSmole, attribute: .top, relatedBy: .equal, toItem: tipView, attribute: .top, multiplier: 1, constant: tipView.frame.size.height/3)
+        let smoleBottomConstraint = NSLayoutConstraint(item: tipSmole, attribute: .bottom, relatedBy: .equal, toItem: tipView, attribute: .bottom, multiplier: 1, constant: -10)
+        self.tipView.addConstraints([smoleLeftConstraint, smoleRightConstraint, smoleTopConstraint, smoleBottomConstraint])
+
+        tipView.animateYPosition(target: tipView, targetPosition: view.frame.size.height-height-((view.frame.size.width-width)/2), completion: nil)
+    }
+//
+//    func disableViewsWhileTipViewPopped() {
+//        sudokuView.isUserInteractionEnabled = false
+//
+//        for keypad in keypadCollection {
+//            keypad.isUserInteractionEnabled = false
+//        }
+//
+//    }
+//
+//
+    
     // Written Views
+    let tipView = UIView()
+    let tipLabel = UILabel()
+    let tipSmole = UIImageView()
+    var tipSmoleImage = UIImage()
+    let tipViewDismissButton = UIButton()
+    var tipViewDismissImage = UIImage()
     let menuView = UIView()
     let fadeView = UIView()
     let dummyView = UIView()
@@ -213,9 +373,9 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
     let iapButton = UIButton()
     let menuRewindButton = UIButton()
     let shopLabel = UILabel()
-    let iap1Label = UILabel()
-    let iap2Label = UILabel()
-    let iapSmoleImageView = UIImageView()
+//    let iap1Label = UILabel()
+//    let iap2Label = UILabel()
+//    let iapSmoleImageView = UIImageView()
 //    let smole = AnimationView(name: "159-servishero-loading")
 //    let smoleSide = AnimationView(name: "11282-bread-toaster")
     let chanceView = UIView()
@@ -226,8 +386,8 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
     let recordExpertBttn = UIButton()
     let recordHoriSV = UIStackView()
     let levelButtonsCollection = [UIButton]()
-    let recordIndicatorButtonLeft = UIButton()
-    let recordIndicatorButtonRight = UIButton()
+    let recordIndicatorButtonLeft = CustomButton()
+    let recordIndicatorButtonRight = CustomButton()
     let pageControl = UIPageControl()
     let recordsContainerView = UIView()
     let recordsPageVC = RecordsPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
@@ -242,6 +402,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
     
     // Properties
     static var difficultyTitle: String!
+    static var isPlayingSavedGame = false
     static var index = 0
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let yellow = UIColor(red: 236.0 / 255.0, green: 224.0 / 255.0, blue: 98.0 / 255.0, alpha: 1.0)
@@ -261,6 +422,8 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
     var randomNums = [Int]()
     var blanksNums = [Int]()
     var hasUserRewarded = false
+    var isADFreeIAPButtonTapped = false
+    var isChanceIAPButtonTapped = false
     
     // stop watch values
     var seconds = Int()
@@ -270,6 +433,13 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
     var counter = 0
     var timer = Timer()
     var isPlaying = false
+    
+//    var boardSelectedOnce:(row: Int, column: Int) = (row: Int(), column: Int()) {
+//        didSet {
+//            print("board selected")
+//            makeTipView()
+//        }
+//    }
     
     // IB Action & Outlets
     @IBOutlet weak var puzzleArea: SudokuView!
@@ -289,16 +459,17 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
     @IBOutlet weak var chanceButtonOutlet: UIButton!
     @IBOutlet weak var lifeSmole: UIImageView!
     @IBOutlet weak var lifeRemained: UILabel!
+
     
     @IBAction func keypad(_ sender: UIButton) {
         let grid = appDelegate.sudoku.grid
         let row = puzzleArea.selected.row
         let col = puzzleArea.selected.column
         if (row != -1 && col != -1) {
+//            boardSelectedOnce = puzzleArea.selected
             if pencilOn == false {
                 if grid?.plistPuzzle[row][col] == 0 && grid?.userPuzzle[row][col] == 0  {
                     appDelegate.sudoku.userGrid(n: sender.tag, row: row, col: col)
-                    
                     // Game Finish Check - 0 is solved / 1 is unsolved / 2 is not finished
                     if appDelegate.sudoku.isGameSet(row: row, column: col) == 2 {
                         saveRecord()
@@ -322,7 +493,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
                                     // AD PLAY
                                     self.shouldAnotherLife = true
                                     self.dismiss(animated: true, completion: {
-                                        self.popRewardAD()
+                                        self.popRewardADforLife()
 //                                        self.appDelegate.sudoku.userGrid(n: 0, row: row, col: col)
                                         self.refresh()
                                     })
@@ -393,8 +564,15 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
             }
         })
         delegate?.customAction2(title: "SAVE".localized(), action:  { action in
+            let row = self.puzzleArea.selected.row
+            let col = self.puzzleArea.selected.column
+            
             self.appDelegate.sudoku.grid.savedTime = self.counter
             self.appDelegate.sudoku.grid.savedOutletTime = self.timerOutlet.text!
+            self.appDelegate.sudoku.grid.lifeRemained = self.lives
+            self.appDelegate.sudoku.grid.savedCol = col
+            self.appDelegate.sudoku.grid.savedRow = row
+            
             self.appDelegate.saveLocalStorage(save: self.appDelegate.sudoku.grid)
             self.timer.invalidate()
             DispatchQueue.main.async {
@@ -448,6 +626,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
     
     @IBAction func menuButtonTapped(_ sender: Any) {
         // methods in order (for constraints)
+        timerStateInAction()
         makeFadeView()
         makeMenuRewindButton()
         makeMenuView()
@@ -463,7 +642,6 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
         makeIAPView()
         
         menuState = .expanded
-        
     }
     
     @IBAction func refreshButtonTapped(_ sender: Any) {
@@ -495,27 +673,30 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
                     if shouldRandomNum() {
                         let randomNum = random(4) // random rate (1/4) // 4(25%)
                         randomNums.append(randomNum)
-                        if randomNum == 1 || (randomNums.count >= 9 && blanksNums.count == 0) { // 3. 1) randomNum이 3이면 꽝으로 한다, 2) 10회 찬스 사용할 동안 최소 1회는 꽝이 나오게 한다
+                        if randomNum == 3 || (randomNums.count >= 9 && blanksNums.count == 0) { // 3. 1) randomNum이 3이면 꽝으로 한다, 2) 10회 찬스 사용할 동안 최소 1회는 꽝이 나오게 한다
                             blanksNums.append(0)
                             if col == 8 { // 3-1. 8th column은 다른 <Lottie>를 실행
                                 print("chance : \(appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col))")
-                                animateChance(answer: appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col), point: sudokuView.cgPointForSelectedBox, isColumn8: true)
+                                playAnimation(answer: appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col), point: sudokuView.cgPointForSelectedBox, isColumn8: true, isBlank: true)
                             } else { // 3-2. 나머지 column은 <Lottie>를 실행
                                 print("chance : \(appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col))")
-                                animateChance(answer: appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col), point: sudokuView.cgPointForSelectedBox, isColumn8: false)
+                                playAnimation(answer: appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col), point: sudokuView.cgPointForSelectedBox, isColumn8: false, isBlank: true)
                             }
                             appDelegate.spendItem()
                             self.chanceSetup()
                         } else {
-                            playChance()
+                            activateChance()
                         }
                     } else {
-                        playChance()
+                        activateChance()
                     }
                 } else {
                     shouldAddChance = true
                     timerStateInAction()
-                    popRewardAD()
+                    
+                    // check ad is avail first then play ad
+                    
+                    popRewardADforChance()
                 }
             } else {
                 instantiatingCustomAlertView()
@@ -539,61 +720,125 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
         }
     }
     
-    func playChance() {
+    func shouldRandomNum() -> Bool {
+        var shouldBeRandom = Bool()
+        if randomNums.count <= 5 && blanksNums.count >= 2 {
+            shouldBeRandom = false
+        } else if randomNums.count <= 10 && blanksNums.count >= 3 {
+            shouldBeRandom = false
+        } else {
+            shouldBeRandom = true
+        }
+        return shouldBeRandom
+    }
+    
+    func activateChance() {
         let row = puzzleArea.selected.row
         let col = puzzleArea.selected.column
         if col == 8 {
             print("chance : \(appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col))")
-            animateChance(answer: appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col), point: sudokuView.cgPointForSelectedBox, isColumn8: true)
+            playAnimation(answer: appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col), point: sudokuView.cgPointForSelectedBox, isColumn8: true, isBlank: false)
         } else {
             print("chance : \(appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col))")
-            animateChance(answer: appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col), point: sudokuView.cgPointForSelectedBox, isColumn8: false)
+            playAnimation(answer: appDelegate.sudoku.correctAnswerForSelectedBox(row: row, col: col), point: sudokuView.cgPointForSelectedBox, isColumn8: false, isBlank: false)
         }
         appDelegate.spendItem()
         self.chanceSetup()
     }
     
-    func animateChance(answer: Int, point: CGPoint, isColumn8: Bool) {
+    func playAnimation(answer: Int?, point: CGPoint, isColumn8: Bool, isBlank: Bool) {
         self.chanceButtonOutlet.isUserInteractionEnabled = false
         let boxSize = sudokuView.sizeForSelectedBox
-        let p = ((boxSize.width*1.35)-boxSize.width)/2
-        let frame = CGRect(x: point.x-p, y: point.y, width: boxSize.width*1.35, height: boxSize.height*1.35)
+        let frame = CGRect(x: point.x+3, y: (point.y-boxSize.height*0.75)+biOutlet.frame.size.height+view.safeAreaInsets.top+3, width: boxSize.width*1.75, height: boxSize.height*1.80)
+        let flippedFrame = CGRect(x: point.x-boxSize.width*0.72, y: (point.y-boxSize.height*0.75)+biOutlet.frame.size.height+view.safeAreaInsets.top+3, width: boxSize.width*1.75, height: boxSize.height*1.80)
         chanceView.frame = frame
         chanceView.backgroundColor = .clear
         
         let side = "Side"
         var lottieName = "Chance"
-        let lottieNumber = String(answer)
+        let lottieNumber = String(answer!)
         
-        if isColumn8 {
-            lottieName += lottieNumber + side
-            print(lottieName)
+        if isBlank == false {
+            if isColumn8 {
+                lottieName += lottieNumber + side
+                print(lottieName)
+            } else {
+                lottieName += lottieNumber
+                print(lottieName)
+            }
         } else {
-            lottieName += lottieNumber
+            //play 꽝
+            lottieName = "Blank"
             print(lottieName)
         }
         
         let lottie = AnimationView(name: lottieName)
-        lottie.frame = frame
+        
+        if isColumn8 {
+            print("it is 8")
+            if lottieName == "Blank" {
+                lottie.transform = CGAffineTransform(scaleX: -1, y: 1)
+                lottie.frame = flippedFrame
+                chanceView.frame = flippedFrame
+            } else {
+                lottie.frame = flippedFrame
+                chanceView.frame = flippedFrame
+            }
+        } else if !isColumn8 {
+            print("NOT 8")
+            
+            
+            lottie.transform = CGAffineTransform(scaleX: 1, y: 1)
+            lottie.frame = frame
+            chanceView.frame = frame
+        }
+        
         lottie.center = chanceView.center
         lottie.contentMode = .scaleAspectFit
         lottie.backgroundColor = .clear
-        
-        sudokuView.addSubview(chanceView)
-        sudokuView.addSubview(lottie)
+        view.addSubview(lottie)
         
         lottie.play { (finished) in
-            print("lottie finished")
             self.chanceView.removeFromSuperview()
             lottie.removeFromSuperview()
             self.chanceButtonOutlet.isUserInteractionEnabled = true
         }
+        // Build test code - infinite chances
+                appDelegate.storeItems(1)
+                self.chanceSetup()
     }
-    
+
     // Methods for AD
-    func popRewardAD() {
+    func popRewardADforChance() {
         if rewardedAD.isReady {
             rewardedAD.present(fromRootViewController: self, delegate: self)
+        } else {
+            instantiatingCustomAlertView()
+            self.delegate?.customAlertController(title: "AD NOT AVAILABLE".localized(), message: "Try later when network is connected.".localized(), option: .oneButton)
+            self.delegate?.customAction1(title: "OK".localized(), action: { xx in
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+            self.present(self.customAlertView, animated: true, completion: nil)
+        }
+    }
+    
+    func popRewardADforLife() {
+        if rewardedAD.isReady {
+            rewardedAD.present(fromRootViewController: self, delegate: self)
+        } else {
+            instantiatingCustomAlertView()
+            self.delegate?.customAlertController(title: "AD NOT AVAILABLE".localized(), message: "Sorry, game is terminated.".localized(), option: .oneButton)
+            self.delegate?.customAction1(title: "OK".localized(), action: { xx in
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: {
+                        self.dismiss(animated: true, completion: nil)
+                        self.abandon()
+                    })
+                }
+            })
+            self.present(self.customAlertView, animated: true, completion: nil)
         }
     }
     
@@ -601,7 +846,8 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
         let rewardedAD = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313")
         rewardedAD.load(GADRequest()) { (error) in
             if error != nil {
-                // No occured
+                print("error")
+                // Error occured
             } else {
                 // No error
             }
@@ -679,19 +925,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
             }
         }
     }
-    
-    func shouldRandomNum() -> Bool {
-        var shouldBeRandom = Bool()
-        if randomNums.count <= 5 && blanksNums.count >= 2 {
-            shouldBeRandom = false
-        } else if randomNums.count <= 10 && blanksNums.count >= 3 {
-            shouldBeRandom = false
-        } else {
-            shouldBeRandom = true
-        }
-        return shouldBeRandom
-    }
-    
+   
     func saveRecord() {
         // timer 종료
         timer.invalidate()
@@ -721,6 +955,17 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
         let sorted = load.sorted { $0.recordInSecond < $1.recordInSecond }
         
         Record.saveRecord(record: sorted, forKey: level)
+    }
+    
+    func loadSavedLivesAndSelectedBoxIfSaved() {
+        if GameViewController.isPlayingSavedGame == true {
+            if let load = appDelegate.load  {
+                lives = appDelegate.sudoku.grid.lifeRemained
+                sudokuView.selected.row = load.savedRow
+                sudokuView.selected.column = load.savedCol
+                GameViewController.isPlayingSavedGame = false
+            }
+        }
     }
     
     func embed(_ viewController:UIViewController, inParent controller:UIViewController, inView view:UIView){
@@ -794,6 +1039,31 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
         }
     }
     
+    @objc func singleTapped(sender: UITapGestureRecognizer) {
+        let tapPoint = sender.location(in: sudokuView)
+        let gridSize = sudokuView.bounds.width
+        let gridOrigin = CGPoint(x: (sudokuView.bounds.width - gridSize)/2, y: (sudokuView.bounds.height - gridSize)/2)
+        let d = gridSize/9
+        let col = Int((tapPoint.x - gridOrigin.x)/d)
+        let row = Int((tapPoint.y - gridOrigin.y)/d)
+        
+        if  0 <= col && col < 9 && 0 <= row && row < 9 {
+            makeTipView()
+            sudokuView.isUserInteractionEnabled = false
+            
+            let tipViewKey = "TipViewShownOnce3"
+            let userDefault = appDelegate.userDefault
+            var count = Int()//userDefault.value(forKey: tipViewKey) as? Int
+            
+            guard let tipViewCount = userDefault.value(forKey: tipViewKey) as? Int else {
+                userDefault.set(1, forKey: tipViewKey)
+                return
+            }
+            count = tipViewCount + 1
+            userDefault.set(count, forKey: tipViewKey)
+        }
+    }
+    
     @objc func doubleTapped(sender: UITapGestureRecognizer) {
         let tapPoint = sender.location(in: sudokuView)
         let gridSize = sudokuView.bounds.width
@@ -830,7 +1100,10 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
         self.view.layoutIfNeeded()
     }
     
+    // Timer Methods
     @objc func timerStateInAction() {
+        
+        print("###################timer state in action###################")
         let play = UIImage(named: "icTimePlay.png")
         let pause = UIImage(named: "icTimeStop.png")
 //        timerImageView.contentMode = .scaleToFill
@@ -845,12 +1118,9 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
 //            timerSwitch.setImage(play, for: .normal)
             timer.invalidate()
         }
+        
     }
-    
-    @objc func refresh() {
-        sudokuView.setNeedsDisplay()
-    }
-    
+ 
     @objc func updateTimer() {
         counter = counter + 1
         seconds = counter % 60
@@ -860,7 +1130,12 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
         timerOutlet.text = record
     }
     
+    @objc func refresh() {
+        sudokuView.setNeedsDisplay()
+    }
+    
     @objc func dismissButtonTapped() {
+        timerStateInAction()
         menuState = .collapsed
     }
     

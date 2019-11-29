@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		AB73DFF3604407128A815B1C /* Pods_Sudoku_Mole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14AE78D66C4288959B1217F7 /* Pods_Sudoku_Mole.framework */; };
+		F60A38C223900BD6001B7749 /* Blank.json in Resources */ = {isa = PBXBuildFile; fileRef = F60A38C123900BD6001B7749 /* Blank.json */; };
+		F60A38C423900DF4001B7749 /* NotificationCentre.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A38C323900DF4001B7749 /* NotificationCentre.swift */; };
+		F60A38C623900E01001B7749 /* AppReviewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A38C523900E01001B7749 /* AppReviewHelper.swift */; };
 		F619B9FA236F6A4D00DCEDF2 /* SudokuRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = F619B9F9236F6A4D00DCEDF2 /* SudokuRecords.swift */; };
 		F619B9FC2370CD7200DCEDF2 /* Normal.plist in Resources */ = {isa = PBXBuildFile; fileRef = F619B9FB2370CD7200DCEDF2 /* Normal.plist */; };
 		F619B9FE2370CD7900DCEDF2 /* Expert.plist in Resources */ = {isa = PBXBuildFile; fileRef = F619B9FD2370CD7900DCEDF2 /* Expert.plist */; };
@@ -23,6 +26,7 @@
 		F639B1E82334CA5E00CF921A /* LuckiestGuy-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F639B1E72334CA5E00CF921A /* LuckiestGuy-Regular.ttf */; };
 		F639B1EE233518F800CF921A /* UIViewAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639B1ED233518F800CF921A /* UIViewAnimation.swift */; };
 		F639B1F02336077700CF921A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639B1EF2336077700CF921A /* GameViewController.swift */; };
+		F6416A172389F14D00EC9A46 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6416A162389F14D00EC9A46 /* StoreKit.framework */; };
 		F6427E572375D63D0083C807 /* ExpertAnswers.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6427E542375D63C0083C807 /* ExpertAnswers.plist */; };
 		F6427E582375D63D0083C807 /* HardAnswers.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6427E552375D63C0083C807 /* HardAnswers.plist */; };
 		F64EBE572356865C0006094F /* SudokuClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64EBE562356865C0006094F /* SudokuClass.swift */; };
@@ -37,6 +41,7 @@
 		F6A05A852387177F00ED0428 /* SFProDisplay-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6A05A842387177A00ED0428 /* SFProDisplay-Light.ttf */; };
 		F6A05A862387178300ED0428 /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6A05A832387177900ED0428 /* SFProDisplay-Semibold.ttf */; };
 		F6A05A892387183600ED0428 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6A05A8B2387183600ED0428 /* Localizable.strings */; };
+		F6A05A982389BF5E00ED0428 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A05A972389BF5E00ED0428 /* PaddedLabel.swift */; };
 		F6A3409E237DB1AC00194C60 /* RecordsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A3409D237DB1AC00194C60 /* RecordsPageViewController.swift */; };
 		F6A340A0237DD56000194C60 /* EasyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A3409F237DD56000194C60 /* EasyViewController.swift */; };
 		F6A340A2237DD56E00194C60 /* NormalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A340A1237DD56E00194C60 /* NormalViewController.swift */; };
@@ -48,26 +53,27 @@
 		F6BBAAEB237248A4008B6059 /* SudokuIAP.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BBAAEA237248A4008B6059 /* SudokuIAP.swift */; };
 		F6CC944D237E407200F585AC /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CC944C237E407200F585AC /* GridView.swift */; };
 		F6CC944F237F08C900F585AC /* RecordsCircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CC944E237F08C900F585AC /* RecordsCircularView.swift */; };
+		F6D652F1238B542900E6D810 /* Chance6Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652DF238B542800E6D810 /* Chance6Side.json */; };
+		F6D652F2238B542900E6D810 /* Chance8.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652E0238B542800E6D810 /* Chance8.json */; };
+		F6D652F3238B542900E6D810 /* Chance5Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652E1238B542800E6D810 /* Chance5Side.json */; };
+		F6D652F4238B542900E6D810 /* Chance8Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652E2238B542800E6D810 /* Chance8Side.json */; };
+		F6D652F5238B542900E6D810 /* Chance4Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652E3238B542800E6D810 /* Chance4Side.json */; };
+		F6D652F6238B542900E6D810 /* Chance1Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652E4238B542800E6D810 /* Chance1Side.json */; };
+		F6D652F7238B542900E6D810 /* Chance9Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652E5238B542900E6D810 /* Chance9Side.json */; };
+		F6D652F8238B542900E6D810 /* Chance3.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652E6238B542900E6D810 /* Chance3.json */; };
+		F6D652F9238B542900E6D810 /* Chance2.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652E7238B542900E6D810 /* Chance2.json */; };
+		F6D652FA238B542900E6D810 /* Chance1.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652E8238B542900E6D810 /* Chance1.json */; };
+		F6D652FB238B542900E6D810 /* Chance9.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652E9238B542900E6D810 /* Chance9.json */; };
+		F6D652FC238B542900E6D810 /* Chance4.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652EA238B542900E6D810 /* Chance4.json */; };
+		F6D652FD238B542900E6D810 /* Chance7Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652EB238B542900E6D810 /* Chance7Side.json */; };
+		F6D652FE238B542900E6D810 /* Chance6.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652EC238B542900E6D810 /* Chance6.json */; };
+		F6D652FF238B542900E6D810 /* Chance5.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652ED238B542900E6D810 /* Chance5.json */; };
+		F6D65300238B542900E6D810 /* Chance7.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652EE238B542900E6D810 /* Chance7.json */; };
+		F6D65301238B542900E6D810 /* Chance2Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652EF238B542900E6D810 /* Chance2Side.json */; };
+		F6D65302238B542900E6D810 /* Chance3Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652F0238B542900E6D810 /* Chance3Side.json */; };
+		F6D65306238BC8B100E6D810 /* Firework.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D65305238BC8B100E6D810 /* Firework.json */; };
 		F6FAD105237CAD7B006BD55B /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FAD104237CAD7B006BD55B /* UIDevice.swift */; };
 		F6FC487D2385676F0033E358 /* EasyAnswers.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6FC487C2385676F0033E358 /* EasyAnswers.plist */; };
-		F6FC48B82385F1D50033E358 /* Chance6.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48A62385F1D40033E358 /* Chance6.json */; };
-		F6FC48B92385F1D50033E358 /* Chance3.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48A72385F1D40033E358 /* Chance3.json */; };
-		F6FC48BA2385F1D50033E358 /* Chance9.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48A82385F1D40033E358 /* Chance9.json */; };
-		F6FC48BB2385F1D50033E358 /* Chance2Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48A92385F1D40033E358 /* Chance2Side.json */; };
-		F6FC48BC2385F1D50033E358 /* Chance1Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48AA2385F1D40033E358 /* Chance1Side.json */; };
-		F6FC48BD2385F1D50033E358 /* Chance5Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48AB2385F1D40033E358 /* Chance5Side.json */; };
-		F6FC48BE2385F1D50033E358 /* Chance6Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48AC2385F1D40033E358 /* Chance6Side.json */; };
-		F6FC48BF2385F1D50033E358 /* Chance7Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48AD2385F1D50033E358 /* Chance7Side.json */; };
-		F6FC48C02385F1D50033E358 /* Chance7.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48AE2385F1D50033E358 /* Chance7.json */; };
-		F6FC48C12385F1D50033E358 /* Chance4.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48AF2385F1D50033E358 /* Chance4.json */; };
-		F6FC48C22385F1D50033E358 /* Chance4Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48B02385F1D50033E358 /* Chance4Side.json */; };
-		F6FC48C32385F1D50033E358 /* Chance3Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48B12385F1D50033E358 /* Chance3Side.json */; };
-		F6FC48C42385F1D50033E358 /* Chance2.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48B22385F1D50033E358 /* Chance2.json */; };
-		F6FC48C52385F1D50033E358 /* Chance8.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48B32385F1D50033E358 /* Chance8.json */; };
-		F6FC48C62385F1D50033E358 /* Chance9Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48B42385F1D50033E358 /* Chance9Side.json */; };
-		F6FC48C72385F1D50033E358 /* Chance1.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48B52385F1D50033E358 /* Chance1.json */; };
-		F6FC48C82385F1D50033E358 /* Chance5.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48B62385F1D50033E358 /* Chance5.json */; };
-		F6FC48C92385F1D50033E358 /* Chance8Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6FC48B72385F1D50033E358 /* Chance8Side.json */; };
 		F6FD9F8E2382288700A44649 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FD9F8D2382288700A44649 /* InsetLabel.swift */; };
 		F6FD9F902382B20A00A44649 /* DoubletapRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FD9F8F2382B20A00A44649 /* DoubletapRemover.swift */; };
 		F6FED28D2368542400D2BDD3 /* GAD.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FED28C2368542400D2BDD3 /* GAD.swift */; };
@@ -84,6 +90,10 @@
 		14AE78D66C4288959B1217F7 /* Pods_Sudoku_Mole.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sudoku_Mole.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16EA470BF123ACCED934E605 /* Pods-Sudoku Mole.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sudoku Mole.release.xcconfig"; path = "Target Support Files/Pods-Sudoku Mole/Pods-Sudoku Mole.release.xcconfig"; sourceTree = "<group>"; };
 		9957D428FBA3237F23B1A99A /* Pods-Sudoku Mole.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sudoku Mole.debug.xcconfig"; path = "Target Support Files/Pods-Sudoku Mole/Pods-Sudoku Mole.debug.xcconfig"; sourceTree = "<group>"; };
+		F60A38C123900BD6001B7749 /* Blank.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Blank.json; sourceTree = "<group>"; };
+		F60A38C323900DF4001B7749 /* NotificationCentre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCentre.swift; sourceTree = "<group>"; };
+		F60A38C523900E01001B7749 /* AppReviewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReviewHelper.swift; sourceTree = "<group>"; };
+		F60A38C723901A2C001B7749 /* Sudoku Mole.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sudoku Mole.entitlements"; sourceTree = "<group>"; };
 		F619B9F9236F6A4D00DCEDF2 /* SudokuRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuRecords.swift; sourceTree = "<group>"; };
 		F619B9FB2370CD7200DCEDF2 /* Normal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Normal.plist; sourceTree = "<group>"; };
 		F619B9FD2370CD7900DCEDF2 /* Expert.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expert.plist; sourceTree = "<group>"; };
@@ -101,6 +111,7 @@
 		F639B1E72334CA5E00CF921A /* LuckiestGuy-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LuckiestGuy-Regular.ttf"; sourceTree = "<group>"; };
 		F639B1ED233518F800CF921A /* UIViewAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewAnimation.swift; sourceTree = "<group>"; };
 		F639B1EF2336077700CF921A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		F6416A162389F14D00EC9A46 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		F6427E542375D63C0083C807 /* ExpertAnswers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ExpertAnswers.plist; sourceTree = "<group>"; };
 		F6427E552375D63C0083C807 /* HardAnswers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HardAnswers.plist; sourceTree = "<group>"; };
 		F64EBE562356865C0006094F /* SudokuClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuClass.swift; sourceTree = "<group>"; };
@@ -123,6 +134,7 @@
 		F6A05A9423871EFA00ED0428 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Main.strings"; sourceTree = "<group>"; };
 		F6A05A9523871EFB00ED0428 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		F6A05A9623871EFB00ED0428 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		F6A05A972389BF5E00ED0428 /* PaddedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		F6A3409D237DB1AC00194C60 /* RecordsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsPageViewController.swift; sourceTree = "<group>"; };
 		F6A3409F237DD56000194C60 /* EasyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyViewController.swift; sourceTree = "<group>"; };
 		F6A340A1237DD56E00194C60 /* NormalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalViewController.swift; sourceTree = "<group>"; };
@@ -134,26 +146,27 @@
 		F6BBAAEA237248A4008B6059 /* SudokuIAP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuIAP.swift; sourceTree = "<group>"; };
 		F6CC944C237E407200F585AC /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		F6CC944E237F08C900F585AC /* RecordsCircularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsCircularView.swift; sourceTree = "<group>"; };
+		F6D652DF238B542800E6D810 /* Chance6Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance6Side.json; sourceTree = "<group>"; };
+		F6D652E0238B542800E6D810 /* Chance8.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance8.json; sourceTree = "<group>"; };
+		F6D652E1238B542800E6D810 /* Chance5Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance5Side.json; sourceTree = "<group>"; };
+		F6D652E2238B542800E6D810 /* Chance8Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance8Side.json; sourceTree = "<group>"; };
+		F6D652E3238B542800E6D810 /* Chance4Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance4Side.json; sourceTree = "<group>"; };
+		F6D652E4238B542800E6D810 /* Chance1Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance1Side.json; sourceTree = "<group>"; };
+		F6D652E5238B542900E6D810 /* Chance9Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance9Side.json; sourceTree = "<group>"; };
+		F6D652E6238B542900E6D810 /* Chance3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance3.json; sourceTree = "<group>"; };
+		F6D652E7238B542900E6D810 /* Chance2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance2.json; sourceTree = "<group>"; };
+		F6D652E8238B542900E6D810 /* Chance1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance1.json; sourceTree = "<group>"; };
+		F6D652E9238B542900E6D810 /* Chance9.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance9.json; sourceTree = "<group>"; };
+		F6D652EA238B542900E6D810 /* Chance4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance4.json; sourceTree = "<group>"; };
+		F6D652EB238B542900E6D810 /* Chance7Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance7Side.json; sourceTree = "<group>"; };
+		F6D652EC238B542900E6D810 /* Chance6.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance6.json; sourceTree = "<group>"; };
+		F6D652ED238B542900E6D810 /* Chance5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance5.json; sourceTree = "<group>"; };
+		F6D652EE238B542900E6D810 /* Chance7.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance7.json; sourceTree = "<group>"; };
+		F6D652EF238B542900E6D810 /* Chance2Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance2Side.json; sourceTree = "<group>"; };
+		F6D652F0238B542900E6D810 /* Chance3Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance3Side.json; sourceTree = "<group>"; };
+		F6D65305238BC8B100E6D810 /* Firework.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Firework.json; sourceTree = "<group>"; };
 		F6FAD104237CAD7B006BD55B /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		F6FC487C2385676F0033E358 /* EasyAnswers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyAnswers.plist; sourceTree = "<group>"; };
-		F6FC48A62385F1D40033E358 /* Chance6.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance6.json; path = Lotties/Chance6.json; sourceTree = "<group>"; };
-		F6FC48A72385F1D40033E358 /* Chance3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance3.json; path = Lotties/Chance3.json; sourceTree = "<group>"; };
-		F6FC48A82385F1D40033E358 /* Chance9.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance9.json; path = Lotties/Chance9.json; sourceTree = "<group>"; };
-		F6FC48A92385F1D40033E358 /* Chance2Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance2Side.json; path = Lotties/Chance2Side.json; sourceTree = "<group>"; };
-		F6FC48AA2385F1D40033E358 /* Chance1Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance1Side.json; path = Lotties/Chance1Side.json; sourceTree = "<group>"; };
-		F6FC48AB2385F1D40033E358 /* Chance5Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance5Side.json; path = Lotties/Chance5Side.json; sourceTree = "<group>"; };
-		F6FC48AC2385F1D40033E358 /* Chance6Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance6Side.json; path = Lotties/Chance6Side.json; sourceTree = "<group>"; };
-		F6FC48AD2385F1D50033E358 /* Chance7Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance7Side.json; path = Lotties/Chance7Side.json; sourceTree = "<group>"; };
-		F6FC48AE2385F1D50033E358 /* Chance7.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance7.json; path = Lotties/Chance7.json; sourceTree = "<group>"; };
-		F6FC48AF2385F1D50033E358 /* Chance4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance4.json; path = Lotties/Chance4.json; sourceTree = "<group>"; };
-		F6FC48B02385F1D50033E358 /* Chance4Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance4Side.json; path = Lotties/Chance4Side.json; sourceTree = "<group>"; };
-		F6FC48B12385F1D50033E358 /* Chance3Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance3Side.json; path = Lotties/Chance3Side.json; sourceTree = "<group>"; };
-		F6FC48B22385F1D50033E358 /* Chance2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance2.json; path = Lotties/Chance2.json; sourceTree = "<group>"; };
-		F6FC48B32385F1D50033E358 /* Chance8.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance8.json; path = Lotties/Chance8.json; sourceTree = "<group>"; };
-		F6FC48B42385F1D50033E358 /* Chance9Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance9Side.json; path = Lotties/Chance9Side.json; sourceTree = "<group>"; };
-		F6FC48B52385F1D50033E358 /* Chance1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance1.json; path = Lotties/Chance1.json; sourceTree = "<group>"; };
-		F6FC48B62385F1D50033E358 /* Chance5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance5.json; path = Lotties/Chance5.json; sourceTree = "<group>"; };
-		F6FC48B72385F1D50033E358 /* Chance8Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Chance8Side.json; path = Lotties/Chance8Side.json; sourceTree = "<group>"; };
 		F6FD9F8D2382288700A44649 /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
 		F6FD9F8F2382B20A00A44649 /* DoubletapRemover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubletapRemover.swift; sourceTree = "<group>"; };
 		F6FED28C2368542400D2BDD3 /* GAD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAD.swift; sourceTree = "<group>"; };
@@ -172,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB73DFF3604407128A815B1C /* Pods_Sudoku_Mole.framework in Frameworks */,
+				F6416A172389F14D00EC9A46 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +195,7 @@
 		D3AC518DA67D8D79D427893F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F6416A162389F14D00EC9A46 /* StoreKit.framework */,
 				14AE78D66C4288959B1217F7 /* Pods_Sudoku_Mole.framework */,
 			);
 			name = Frameworks;
@@ -202,9 +217,9 @@
 				F6512DE6237B271C003997BA /* HalfCircleView.swift */,
 				F6CC944E237F08C900F585AC /* RecordsCircularView.swift */,
 				F6FED2A1236CC14F00D2BDD3 /* CircularLabel.swift */,
-				F6A608F52381E00100560E19 /* GameSolvedTableViewCell.swift */,
 				F62135D12385557500150686 /* DialogLabel.swift */,
 				F6FD9F8D2382288700A44649 /* InsetLabel.swift */,
+				F6A05A972389BF5E00ED0428 /* PaddedLabel.swift */,
 				F6CC944C237E407200F585AC /* GridView.swift */,
 			);
 			path = "Custom Classes";
@@ -213,6 +228,7 @@
 		F62135D6238558AA00150686 /* TableView Cells */ = {
 			isa = PBXGroup;
 			children = (
+				F6A608F52381E00100560E19 /* GameSolvedTableViewCell.swift */,
 				F6A608F72381E9E800560E19 /* RecordsTableViewCell.swift */,
 			);
 			path = "TableView Cells";
@@ -276,6 +292,7 @@
 		F639B1D32334C3D300CF921A /* Sudoku Mole */ = {
 			isa = PBXGroup;
 			children = (
+				F60A38C723901A2C001B7749 /* Sudoku Mole.entitlements */,
 				F639B1E62334CA4D00CF921A /* Resources */,
 				F639B1D42334C3D300CF921A /* AppDelegate.swift */,
 				F639B1EA2334CAAA00CF921A /* Views */,
@@ -290,24 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				F639B1DB2334C3D500CF921A /* Assets.xcassets */,
-				F6FC48B52385F1D50033E358 /* Chance1.json */,
-				F6FC48AA2385F1D40033E358 /* Chance1Side.json */,
-				F6FC48B22385F1D50033E358 /* Chance2.json */,
-				F6FC48A92385F1D40033E358 /* Chance2Side.json */,
-				F6FC48A72385F1D40033E358 /* Chance3.json */,
-				F6FC48B12385F1D50033E358 /* Chance3Side.json */,
-				F6FC48AF2385F1D50033E358 /* Chance4.json */,
-				F6FC48B02385F1D50033E358 /* Chance4Side.json */,
-				F6FC48B62385F1D50033E358 /* Chance5.json */,
-				F6FC48AB2385F1D40033E358 /* Chance5Side.json */,
-				F6FC48A62385F1D40033E358 /* Chance6.json */,
-				F6FC48AC2385F1D40033E358 /* Chance6Side.json */,
-				F6FC48AE2385F1D50033E358 /* Chance7.json */,
-				F6FC48AD2385F1D50033E358 /* Chance7Side.json */,
-				F6FC48B32385F1D50033E358 /* Chance8.json */,
-				F6FC48B72385F1D50033E358 /* Chance8Side.json */,
-				F6FC48A82385F1D40033E358 /* Chance9.json */,
-				F6FC48B42385F1D50033E358 /* Chance9Side.json */,
+				F6D652D9238B52D200E6D810 /* Lottie */,
 				F64EBE5B235690AA0006094F /* Easy.plist */,
 				F6FC487C2385676F0033E358 /* EasyAnswers.plist */,
 				F619B9FB2370CD7200DCEDF2 /* Normal.plist */,
@@ -361,8 +361,61 @@
 				F619B9F9236F6A4D00DCEDF2 /* SudokuRecords.swift */,
 				F6BBAAEA237248A4008B6059 /* SudokuIAP.swift */,
 				F62135D3238555D100150686 /* Protocols.swift */,
+				F60A38C323900DF4001B7749 /* NotificationCentre.swift */,
+				F60A38C523900E01001B7749 /* AppReviewHelper.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F6D652D9238B52D200E6D810 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				F6D652DC238B53BB00E6D810 /* Home */,
+				F6D652DB238B53A100E6D810 /* Chance */,
+				F6D652DA238B539D00E6D810 /* Firework */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
+		F6D652DA238B539D00E6D810 /* Firework */ = {
+			isa = PBXGroup;
+			children = (
+				F6D65305238BC8B100E6D810 /* Firework.json */,
+			);
+			path = Firework;
+			sourceTree = "<group>";
+		};
+		F6D652DB238B53A100E6D810 /* Chance */ = {
+			isa = PBXGroup;
+			children = (
+				F6D652E8238B542900E6D810 /* Chance1.json */,
+				F6D652E4238B542800E6D810 /* Chance1Side.json */,
+				F6D652E7238B542900E6D810 /* Chance2.json */,
+				F6D652EF238B542900E6D810 /* Chance2Side.json */,
+				F6D652E6238B542900E6D810 /* Chance3.json */,
+				F6D652F0238B542900E6D810 /* Chance3Side.json */,
+				F6D652EA238B542900E6D810 /* Chance4.json */,
+				F6D652E3238B542800E6D810 /* Chance4Side.json */,
+				F6D652ED238B542900E6D810 /* Chance5.json */,
+				F6D652E1238B542800E6D810 /* Chance5Side.json */,
+				F6D652EC238B542900E6D810 /* Chance6.json */,
+				F6D652DF238B542800E6D810 /* Chance6Side.json */,
+				F6D652EE238B542900E6D810 /* Chance7.json */,
+				F6D652EB238B542900E6D810 /* Chance7Side.json */,
+				F6D652E0238B542800E6D810 /* Chance8.json */,
+				F6D652E2238B542800E6D810 /* Chance8Side.json */,
+				F6D652E9238B542900E6D810 /* Chance9.json */,
+				F6D652E5238B542900E6D810 /* Chance9Side.json */,
+				F60A38C123900BD6001B7749 /* Blank.json */,
+			);
+			path = Chance;
+			sourceTree = "<group>";
+		};
+		F6D652DC238B53BB00E6D810 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		F6FED293236A0DE400D2BDD3 /* Extensions */ = {
@@ -442,39 +495,41 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6FC48C52385F1D50033E358 /* Chance8.json in Resources */,
+				F6D652FF238B542900E6D810 /* Chance5.json in Resources */,
 				F6427E572375D63D0083C807 /* ExpertAnswers.plist in Resources */,
-				F6FC48BB2385F1D50033E358 /* Chance2Side.json in Resources */,
-				F6FC48C32385F1D50033E358 /* Chance3Side.json in Resources */,
+				F6D652F8238B542900E6D810 /* Chance3.json in Resources */,
 				F619B9FE2370CD7900DCEDF2 /* Expert.plist in Resources */,
 				F639B1DF2334C3D500CF921A /* LaunchScreen.storyboard in Resources */,
-				F6FC48C12385F1D50033E358 /* Chance4.json in Resources */,
-				F6FC48C72385F1D50033E358 /* Chance1.json in Resources */,
+				F6D652F4238B542900E6D810 /* Chance8Side.json in Resources */,
+				F6D652FD238B542900E6D810 /* Chance7Side.json in Resources */,
 				F639B1DC2334C3D500CF921A /* Assets.xcassets in Resources */,
+				F60A38C223900BD6001B7749 /* Blank.json in Resources */,
+				F6D65306238BC8B100E6D810 /* Firework.json in Resources */,
+				F6D652F2238B542900E6D810 /* Chance8.json in Resources */,
 				F6A05A852387177F00ED0428 /* SFProDisplay-Light.ttf in Resources */,
+				F6D652F9238B542900E6D810 /* Chance2.json in Resources */,
 				F64EBE5C235690AA0006094F /* Hard.plist in Resources */,
-				F6FC48C82385F1D50033E358 /* Chance5.json in Resources */,
-				F6FC48C42385F1D50033E358 /* Chance2.json in Resources */,
+				F6D652FC238B542900E6D810 /* Chance4.json in Resources */,
+				F6D65300238B542900E6D810 /* Chance7.json in Resources */,
 				F6A05A892387183600ED0428 /* Localizable.strings in Resources */,
-				F6FC48BD2385F1D50033E358 /* Chance5Side.json in Resources */,
-				F6FC48C92385F1D50033E358 /* Chance8Side.json in Resources */,
+				F6D652F3238B542900E6D810 /* Chance5Side.json in Resources */,
+				F6D65302238B542900E6D810 /* Chance3Side.json in Resources */,
+				F6D652F7238B542900E6D810 /* Chance9Side.json in Resources */,
+				F6D652FB238B542900E6D810 /* Chance9.json in Resources */,
 				F639B1DA2334C3D300CF921A /* Main.storyboard in Resources */,
-				F6FC48BE2385F1D50033E358 /* Chance6Side.json in Resources */,
+				F6D65301238B542900E6D810 /* Chance2Side.json in Resources */,
 				F6A05A862387178300ED0428 /* SFProDisplay-Semibold.ttf in Resources */,
-				F6FC48B82385F1D50033E358 /* Chance6.json in Resources */,
+				F6D652F1238B542900E6D810 /* Chance6Side.json in Resources */,
 				F64EBE5D235690AA0006094F /* Easy.plist in Resources */,
-				F6FC48BC2385F1D50033E358 /* Chance1Side.json in Resources */,
+				F6D652F5238B542900E6D810 /* Chance4Side.json in Resources */,
 				F639B1E82334CA5E00CF921A /* LuckiestGuy-Regular.ttf in Resources */,
-				F6FC48C02385F1D50033E358 /* Chance7.json in Resources */,
-				F6FC48B92385F1D50033E358 /* Chance3.json in Resources */,
-				F6FC48C22385F1D50033E358 /* Chance4Side.json in Resources */,
-				F6FC48BF2385F1D50033E358 /* Chance7Side.json in Resources */,
+				F6D652F6238B542900E6D810 /* Chance1Side.json in Resources */,
 				F6BBAAE923722BAF008B6059 /* NormalAnswers.plist in Resources */,
+				F6D652FA238B542900E6D810 /* Chance1.json in Resources */,
 				F6427E582375D63D0083C807 /* HardAnswers.plist in Resources */,
 				F619B9FC2370CD7200DCEDF2 /* Normal.plist in Resources */,
-				F6FC48BA2385F1D50033E358 /* Chance9.json in Resources */,
+				F6D652FE238B542900E6D810 /* Chance6.json in Resources */,
 				F6FC487D2385676F0033E358 /* EasyAnswers.plist in Resources */,
-				F6FC48C62385F1D50033E358 /* Chance9Side.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +588,7 @@
 				F6FED28F2368CF6A00D2BDD3 /* CustomAlertViewController.swift in Sources */,
 				F62135D22385557500150686 /* DialogLabel.swift in Sources */,
 				F6512DE5237A1934003997BA /* IAP.swift in Sources */,
+				F60A38C423900DF4001B7749 /* NotificationCentre.swift in Sources */,
 				F6A340A2237DD56E00194C60 /* NormalViewController.swift in Sources */,
 				F6FED297236A0F3100D2BDD3 /* SudokuSwitches.swift in Sources */,
 				F6512DE32376FE23003997BA /* Built-In Types Extensions.swift in Sources */,
@@ -549,9 +605,11 @@
 				F6FED291236A0D9900D2BDD3 /* MenuView.swift in Sources */,
 				F6A608F62381E00100560E19 /* GameSolvedTableViewCell.swift in Sources */,
 				F6FD9F8E2382288700A44649 /* InsetLabel.swift in Sources */,
+				F6A05A982389BF5E00ED0428 /* PaddedLabel.swift in Sources */,
 				F639B1D52334C3D300CF921A /* AppDelegate.swift in Sources */,
 				F64EBE59235686780006094F /* SudokuView.swift in Sources */,
 				F6A3409E237DB1AC00194C60 /* RecordsPageViewController.swift in Sources */,
+				F60A38C623900E01001B7749 /* AppReviewHelper.swift in Sources */,
 				F62135CA2384B82300150686 /* UIButton.swift in Sources */,
 				F619B9FA236F6A4D00DCEDF2 /* SudokuRecords.swift in Sources */,
 				F62135CE2384F0BB00150686 /* GlobalFunctions.swift in Sources */,
@@ -728,8 +786,9 @@
 			baseConfigurationReference = 9957D428FBA3237F23B1A99A /* Pods-Sudoku Mole.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Sudoku Mole/Sudoku Mole.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = RF525HK56L;
 				INFOPLIST_FILE = "Sudoku Mole/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -748,8 +807,9 @@
 			baseConfigurationReference = 16EA470BF123ACCED934E605 /* Pods-Sudoku Mole.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Sudoku Mole/Sudoku Mole.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = RF525HK56L;
 				INFOPLIST_FILE = "Sudoku Mole/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -16,14 +16,7 @@ class NormalViewController: UIViewController, UITableViewDelegate, UITableViewDa
             view.layer.borderColor = UIColor.clear.cgColor
             view.layer.borderWidth = 0
         }
-        let empty = [Record(record: "", recordInSecond: 0, isNew: false)]
-        
-        if let records = Record.loadRecord(forKey: "Normal") {
-            self.records = records
-        } else {
-            self.records = empty
-        }
-        
+        loadRecords()
         normalRecordsView.backgroundColor = .clear
         normalTableView.delegate = self
         normalTableView.dataSource = self
@@ -36,9 +29,13 @@ class NormalViewController: UIViewController, UITableViewDelegate, UITableViewDa
         shadow.layer.cornerRadius = 4
         self.view.bringSubviewToFront(gridView)
     }
+
+    override func viewDidLayoutSubviews() {
+        NotificationCenter.default.addObserver(self, selector: #selector(loadRecords),name:NSNotification.Name(rawValue: "recordsRefresher"), object: nil)
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 37
+        return 36
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -54,8 +51,30 @@ class NormalViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath) as! RecordsTableViewCell
         cell.backgroundColor = .clear
+        
+
+        
         cell.cellUpdate(records: records!, indexPath: indexPath)
         return cell
+    }
+    
+    @objc func loadRecords() {
+        let empty = [Record(record: "", recordInSecond: 0, isNew: false)]
+        if let records = Record.loadRecord(forKey: "Normal") {
+            self.records = records
+        } else {
+            self.records = empty
+        }
+        
+        if records![0].record == "" {
+            noRecordView.font = UIFont(name: "LuckiestGuy-Regular", size: 24.0)
+            noRecordView.textColor = #colorLiteral(red: 1, green: 0.9337611198, blue: 0.2692891061, alpha: 1)
+            noRecordView.text = "NO RECORD"
+        } else {
+            noRecordView.isHidden = true
+        }
+        
+        normalTableView.reloadData()
     }
     
     @IBOutlet weak var shadow: UIView!
@@ -63,6 +82,7 @@ class NormalViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var normalRecordsView: UIView!
     @IBOutlet var views: [UIView]!
     @IBOutlet weak var normalTableView: UITableView!
+    @IBOutlet weak var noRecordView: InsetLabel!
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var records: [Record]?

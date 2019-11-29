@@ -12,8 +12,8 @@
     },
     {
       "scale" : "3x",
-      "filename" : "icSideBack@3x.png",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "icSideBack@3x.png"
     }
   ],
   "info" : {

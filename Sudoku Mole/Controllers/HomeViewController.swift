@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
         makeStartButton()
         makeLevelButtons()
         makeInstructionView()
-        lottieForHomeVC()
+        lottieForHomeVC() // will resume once Lottie file is handed over
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,7 +81,7 @@ class HomeViewController: UIViewController {
     let hardButton = UIButton()
     let expertButton = UIButton()
     let continueButton = UIButton()
-    var count = UILabel()
+    var count = InsetLabel()
     let levelButtonsStackView = UIStackView()
     let instructionStackView = UIStackView()
     let nameLabel = InsetLabel()
@@ -153,19 +153,26 @@ class HomeViewController: UIViewController {
     
     func deleteIfGameSaved() {
         var load = appDelegate.load
+        let puzzle = self.appDelegate.sudoku
         load = appDelegate.loadLocalStorage()
         if load != nil {
             // Game is currently saved
             appDelegate.sudoku.grid = load
-            let puzzle = self.appDelegate.sudoku
+            
             puzzle.clearUserPuzzle()
             puzzle.clearPlistPuzzle()
             puzzle.clearPencilPuzzle()
-            puzzle.grid.undonePuzzle.removeAll()
-            puzzle.grid.puzzleStack.removeAll()
+//            puzzle.grid.undonePuzzle.removeAll()
+//            puzzle.grid.puzzleStack.removeAll()
+//            puzzle.grid.undonePencil.removeAll()
+//            puzzle.grid.pencilStack.removeAll()
         } else {
             // Game is currently NOT saved
         }
+        puzzle.grid.undonePuzzle.removeAll()
+        puzzle.grid.puzzleStack.removeAll()
+        puzzle.grid.undonePencil.removeAll()
+        puzzle.grid.pencilStack.removeAll()
     }
     
     @objc func continueButtonTapped(sender: UIButton) {
@@ -173,6 +180,7 @@ class HomeViewController: UIViewController {
         var load = appDelegate.load
         load = appDelegate.loadLocalStorage()
         if load != nil {
+            GameViewController.isPlayingSavedGame = true
             appDelegate.sudoku.grid = load
             performSegue(withIdentifier: "toPuzzle", sender: sender)
         } else {
@@ -197,7 +205,7 @@ class HomeViewController: UIViewController {
     }
     
     func lottieForHomeVC() {
-        let ani = AnimationView(name: "Chance1Side")
+        let ani = AnimationView(name: "Blank")
         ani.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
         ani.center = self.view.center
         ani.contentMode = .scaleAspectFill

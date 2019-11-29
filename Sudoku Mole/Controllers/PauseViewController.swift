@@ -33,10 +33,18 @@ class PauseViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+
+//    var delegate: TimerResumeDelegate?
     
     @IBOutlet weak var pauseButton: UIButton!
+
+    
     @IBAction func pauseButtonTapped(_ sender: Any) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "resumeTimer"), object: nil, userInfo: nil)
+//        delegate = GameViewController.self as? TimerResumeDelegate
+//        delegate?.timerResume()
+        
+        print("pause button tapped")
         pauseImage.animateXPosition(target: pauseImage, targetPosition: -self.view.frame.size.width)
         dismiss(animated: true, completion: nil)
     }
@@ -45,3 +53,7 @@ class PauseViewController: UIViewController {
     let image = UIImage(named: "smolePauseBlindTilt.png")
     
 }
+
+//protocol TimerResumeDelegate {
+//    func timerResume()
+//}

@@ -23,7 +23,7 @@ class ExpertViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             self.records = empty
         }
-        
+        loadRecords()
         expertRecordsView.backgroundColor = .clear
         expertTableView.delegate = self
         expertTableView.dataSource = self
@@ -37,8 +37,12 @@ class ExpertViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.view.bringSubviewToFront(gridView)
     }
     
+    override func viewDidLayoutSubviews() {
+        NotificationCenter.default.addObserver(self, selector: #selector(loadRecords),name:NSNotification.Name(rawValue: "recordsRefresher"), object: nil)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 37
+        return 36
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -58,11 +62,29 @@ class ExpertViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    @objc func loadRecords() {
+         let empty = [Record(record: "", recordInSecond: 0, isNew: false)]
+         if let records = Record.loadRecord(forKey: "Expert") {
+             self.records = records
+         } else {
+             self.records = empty
+         }
+        
+         if records![0].record == "" {
+             noRecordView.font = UIFont(name: "LuckiestGuy-Regular", size: 24.0)
+             noRecordView.textColor = #colorLiteral(red: 1, green: 0.9337611198, blue: 0.2692891061, alpha: 1)
+             noRecordView.text = "NO RECORD"
+         }
+         
+         expertTableView.reloadData()
+     }
+    
     @IBOutlet weak var shadow: UIView!
     @IBOutlet weak var gridView: GridView!
     @IBOutlet weak var expertRecordsView: UIView!
     @IBOutlet var views: [UIView]!
     @IBOutlet weak var expertTableView: UITableView!
+    @IBOutlet weak var noRecordView: InsetLabel!
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var records: [Record]?

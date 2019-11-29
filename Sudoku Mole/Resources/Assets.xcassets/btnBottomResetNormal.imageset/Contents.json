@@ -2,8 +2,8 @@
   "images" : [
     {
       "filename" : "btnBottomResetNormal.png",
-      "scale" : "1x",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "scale" : "1x"
     },
     {
       "scale" : "2x",
