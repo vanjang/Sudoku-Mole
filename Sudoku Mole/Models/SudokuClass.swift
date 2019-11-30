@@ -100,7 +100,7 @@ class SudokuClass {
         return puzzle
     }
     
-    // setter
+    // Setter
     func userGrid(n: Int, row: Int, col: Int) {
         grid.userPuzzle[row][col] = n
         if !grid.undonePuzzle.isEmpty {
@@ -265,6 +265,5 @@ class SudokuClass {
     
     func correctAnswerForSelectedBox(row: Int, col: Int) -> Int {
         return grid.puzzleAnswer[row][col]
-    }
-    
+    }  
 }

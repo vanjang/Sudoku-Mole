@@ -2,17 +2,17 @@
   "images" : [
     {
       "filename" : "menuMyrecordSmolenote.png",
-      "scale" : "1x",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "scale" : "1x"
     },
     {
       "filename" : "menuMyrecordSmolenote@2x.png",
-      "scale" : "2x",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "scale" : "2x"
     },
     {
-      "idiom" : "universal",
       "scale" : "3x",
+      "idiom" : "universal",
       "filename" : "menuMyrecordSmolenote@3x.png"
     }
   ],

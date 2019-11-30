@@ -20,20 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let itemKey = "IAPKey33"
     let ADRemoverKey = "ADRemover5"
     
-    // ---------[ getPuzzles ]---------------------
-    func getPuzzles(_ name : String) -> [String] {
-        guard let url = Bundle.main.url(forResource: name, withExtension: "plist") else { return [] }
-        guard let data = try? Data(contentsOf: url) else { return [] }
-        guard let array = try? PropertyListDecoder().decode([String].self, from: data) else { return [] }
-        return array
-    }
-    // ---------
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         UserNotificationCentre.notificationCentre.requestAuthorization(options: [.alert, .sound])  { (didAllow, error) in
         }
-                UserNotificationCentre.notificationSetup()
+        UserNotificationCentre.notificationSetup()
         
         if retrieveItems() != nil {
             item = retrieveItems()
@@ -62,6 +53,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
     }
     
+    // ---------[ getPuzzles ]---------------------
+    func getPuzzles(_ name : String) -> [String] {
+        guard let url = Bundle.main.url(forResource: name, withExtension: "plist") else { return [] }
+        guard let data = try? Data(contentsOf: url) else { return [] }
+        guard let array = try? PropertyListDecoder().decode([String].self, from: data) else { return [] }
+        return array
+    } // ---------
     
     // ---------------------[ Save files ]----------------------------
     func saveLocalStorage(save: SudokuData) {

@@ -1,18 +1,18 @@
 {
   "images" : [
     {
+      "filename" : "boardLabelHard.png",
       "scale" : "1x",
-      "idiom" : "universal",
-      "filename" : "boardLabelHard.png"
+      "idiom" : "universal"
     },
     {
-      "filename" : "boardLabelHard@2x.png",
+      "scale" : "2x",
       "idiom" : "universal",
-      "scale" : "2x"
+      "filename" : "boardLabelHard@2x.png"
     },
     {
+      "idiom" : "universal",
       "filename" : "boardLabelHard@3x.png",
-      "idiom" : "universal",
       "scale" : "3x"
     }
   ],

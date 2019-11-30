@@ -7,7 +7,7 @@
 //
 
 import Foundation
-///
+
 struct SudokuData: Codable {
     var gameDiff: String = "Easy"
     var plistPuzzle: [[Int]] = [[Int]] (repeating: [Int] (repeating: 0, count: 9), count: 9) // the loaded puzzle
@@ -20,9 +20,7 @@ struct SudokuData: Codable {
     var undonePencil: [[[[Bool]]]] = [[[[Bool]]]]()
     var savedOutletTime = ""
     var savedTime = Int()
-    
     var lifeRemained = [Bool]()
     var savedRow = Int()
     var savedCol = Int()
-    
 }

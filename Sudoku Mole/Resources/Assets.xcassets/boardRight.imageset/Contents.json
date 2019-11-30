@@ -1,8 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "boardRight.png",
       "scale" : "1x",
+      "filename" : "boardRight.png",
       "idiom" : "universal"
     },
     {
@@ -11,9 +11,9 @@
       "filename" : "boardRight@2x.png"
     },
     {
-      "filename" : "boardRight@3x.png",
+      "idiom" : "universal",
       "scale" : "3x",
-      "idiom" : "universal"
+      "filename" : "boardRight@3x.png"
     }
   ],
   "info" : {

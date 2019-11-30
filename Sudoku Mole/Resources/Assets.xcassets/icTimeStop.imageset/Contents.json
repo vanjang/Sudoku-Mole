@@ -1,9 +1,9 @@
 {
   "images" : [
     {
-      "scale" : "1x",
       "idiom" : "universal",
-      "filename" : "icTimeStop.png"
+      "filename" : "icTimeStop.png",
+      "scale" : "1x"
     },
     {
       "scale" : "2x",
@@ -11,8 +11,8 @@
       "filename" : "icTimeStop@2x.png"
     },
     {
-      "idiom" : "universal",
       "filename" : "icTimeStop@3x.png",
+      "idiom" : "universal",
       "scale" : "3x"
     }
   ],

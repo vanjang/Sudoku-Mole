@@ -10,7 +10,7 @@ import Foundation
 import StoreKit
 
 struct AppStoreReviewOperator {
-//    AppStoreReviewOperator.checkAndAskForReviewWhenLaunched()
+    
     static let defaults = UserDefaults.standard
     static let userDefaultKey = "reviewOperator"
     
@@ -25,5 +25,5 @@ struct AppStoreReviewOperator {
             SKStoreReviewController.requestReview()
         }
     }
-   
+    
 }

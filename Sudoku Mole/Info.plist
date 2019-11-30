@@ -30,6 +30,9 @@
 	<string>To Share User Record</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>SFProDisplay-Medium.ttf</string>
+		<string>SFProDisplay-Bold.ttf</string>
+		<string>SFProDisplay-Regular.ttf</string>
 		<string>LuckiestGuy-Regular.ttf</string>
 		<string>SFProDisplay-Semibold.ttf</string>
 		<string>SFProDisplay-Light.ttf</string>

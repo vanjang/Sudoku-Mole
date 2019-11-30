@@ -13,7 +13,7 @@
 "You can continue the game later." = "저장 되었습니다.";
 "Tap OK to refresh." = "새로운 게임을 시작 하시겠습니까?";
 "Select a box you want to use your chance for!" = "빈 칸을 선택하면 찬스를 사용할 수 있습니다.";
-"Share Record and get free chance!" = "SNS로 스도쿠몰을 공유하고 Free Chance를 받으세요!";
+"Share record and get free chance!" = "SNS로 스도쿠몰을 공유하고 Free Chance를 받으세요!";
 "You earned a free chance." = "Free Chance가 추가 되었습니다.";
 "Processing" = "진행 중";
 "You can top up if chance is below 6." = "찬스 아이템은 6개 이하로 남은 상태에서만 구매가 가능합니다.";
@@ -27,3 +27,5 @@
 "Smole says: How was your lunch?" = "스몰: 점심 맛있게 드셨나요?";
 "What about having a cup of coffee and playing a 1 Sudoku Mole? Let's break your record!" = "커피 한 잔과 함께 스도쿠 몰 1 게임 어떠세요?";
 "Tap the input field twice to delete the number you entered." = "입력한 숫자를 두번 터치하면 삭제할 수 있습니다.";
+"SUDOKU MOLE is distributed by Apple App Store. SUDOKU MOLE is developed by COCHIPCHO Limited.\nSUDOKU MOLE and its content is copryright of COCHIPCHO Limited. - © COCHIPCHO Limited.\nAll rights reserved.\n\n\n" = "SUDOKU MOLE은 COCHIPCHO Limited에서 개발하고 Apple App Store를 통해 판매되는 iOS 어플리케이션입니다. SUDOKU MOLE에 대한 모든 권리는 COCHIPCHO Limited에 있습니다.";
+"You can use chances to know the answer! Please note chance may include \"Blank\"!." = "때때로 정답을 알기 힘들 때는 찬스를 사용해 보세요! 상점에서 구매하시는 찬스는 가끔은 꽝이 있지만 유용하게 쓰인답니다!";

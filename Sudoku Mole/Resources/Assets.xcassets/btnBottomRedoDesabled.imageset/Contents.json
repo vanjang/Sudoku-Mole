@@ -1,14 +1,14 @@
 {
   "images" : [
     {
-      "filename" : "btnBottomRedoDesabled.png",
       "scale" : "1x",
+      "filename" : "btnBottomRedoDesabled.png",
       "idiom" : "universal"
     },
     {
       "idiom" : "universal",
-      "filename" : "btnBottomRedoDesabled@2x.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "btnBottomRedoDesabled@2x.png"
     },
     {
       "scale" : "3x",
