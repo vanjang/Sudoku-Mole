@@ -896,7 +896,7 @@
                                                         <rect key="frame" x="46" y="38.666666666666629" width="201" height="213"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECORDS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NX-Yu-Efa">
-                                                                <rect key="frame" x="0.0" y="0.0" width="201" height="37"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="201" height="32"/>
                                                                 <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="30"/>
                                                                 <color key="textColor" red="0.96725076440000002" green="0.7971089482" blue="0.74508732560000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
@@ -904,7 +904,7 @@
                                                                 <size key="shadowOffset" width="0.0" height="2"/>
                                                             </label>
                                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k0t-ZJ-5oz">
-                                                                <rect key="frame" x="0.0" y="59" width="201" height="154"/>
+                                                                <rect key="frame" x="0.0" y="54" width="201" height="159"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <prototypes>

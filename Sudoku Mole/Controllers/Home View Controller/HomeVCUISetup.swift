@@ -22,34 +22,80 @@ extension HomeViewController {
         startImage = UIImage(named: "start.png")!
         startImageView.image = startImage
         startImageView.contentMode = .scaleAspectFit
-        startImageView.frame.size.width = view.frame.size.width
+        startImageView.frame.size.width = view.frame.size.width/2.5
         startImageView.frame.size.height = view.frame.size.width*0.8
-        startImageView.frame.origin.x = 0
-        startImageView.frame.origin.y = -startImageView.frame.size.height
+        startImageView.frame.origin.x = (self.view.bounds.size.width-self.startImageView.frame.size.width)/2
+        startImageView.frame.origin.y = (view.frame.size.height/2)-(self.startImageView.frame.size.height/2)
+//        startImageView.frame.origin.y = view.frame.maxY-startImageView.frame.size.height
         view.addSubview(startImageView)
         
         var topConstraintPerDevice = CGFloat()
         
         if UIDevice.modelName == "iPhone 6" || UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 7" || UIDevice.modelName == "iPhone 8" || UIDevice.modelName == "Simulator iPhone 8" || UIDevice.modelName == "Simulator iPhone 7" {
-            topConstraintPerDevice = view.frame.height*0.17
+            topConstraintPerDevice = view.frame.height*0.14
         } else {
-            topConstraintPerDevice = view.frame.height*0.23
+            topConstraintPerDevice = view.frame.height*0.17
         }
         
-        UIView.animate(withDuration: 1.2, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.75, delay: 1.15, usingSpringWithDamping: 0.95, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
             self.startImageView.frame.size.width = self.view.frame.size.width/2.5
             self.startImageView.frame.size.height = (self.startImageView.frame.size.width)*0.8///2.5
-            print(self.startImageView.frame.size.width)
-            print(self.startImageView.frame.size.height)
             self.startImageView.frame.origin.x = (self.view.bounds.size.width-self.startImageView.frame.size.width)/2
-            self.startImageView.frame.origin.y = topConstraintPerDevice//self.startImageView.frame.size.height
+            self.startImageView.frame.origin.y = topConstraintPerDevice
         }, completion: nil)
     }
     
+//    func makeStartImage() {
+//            startImage = UIImage(named: "start.png")!
+//            startImageView.image = startImage
+//            startImageView.contentMode = .scaleAspectFit
+//            startImageView.frame.size.width = view.frame.size.width
+//            startImageView.frame.size.height = view.frame.size.width*0.8
+//            startImageView.frame.origin.x = 0
+//            startImageView.frame.origin.y = -startImageView.frame.size.height
+//            view.addSubview(startImageView)
+//
+//            var topConstraintPerDevice = CGFloat()
+//
+//            if UIDevice.modelName == "iPhone 6" || UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 7" || UIDevice.modelName == "iPhone 8" || UIDevice.modelName == "Simulator iPhone 8" || UIDevice.modelName == "Simulator iPhone 7" {
+//                topConstraintPerDevice = view.frame.height*0.17
+//            } else {
+//                topConstraintPerDevice = view.frame.height*0.23
+//            }
+//
+//              UIView.animate(withDuration: 1.2, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+//                self.startImageView.frame.size.width = self.view.frame.size.width/2.5
+//                self.startImageView.frame.size.height = (self.startImageView.frame.size.width)*0.8///2.5
+//                print(self.startImageView.frame.size.width)
+//                print(self.startImageView.frame.size.height)
+//                self.startImageView.frame.origin.x = (self.view.bounds.size.width-self.startImageView.frame.size.width)/2
+//                self.startImageView.frame.origin.y = topConstraintPerDevice//self.startImageView.frame.size.height
+//            }, completion: nil)
+//
+//
+//    //        UIView.animate(withDuration: 1.2, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+//    //            self.startImageView.frame.size.width = self.view.frame.size.width/2.5
+//    //            self.startImageView.frame.size.height = (self.startImageView.frame.size.width)*0.8///2.5
+//    //            print(self.startImageView.frame.size.width)
+//    //            print(self.startImageView.frame.size.height)
+//    //            self.startImageView.frame.origin.x = (self.view.bounds.size.width-self.startImageView.frame.size.width)/2
+//    //            self.startImageView.frame.origin.y = topConstraintPerDevice//self.startImageView.frame.size.height
+//    //        }, completion: nil)
+//        }
+//
     func moveStartImageToLeft() {
         startImageView.animateXPosition(target: startImageView, targetPosition: -view.frame.size.width, completion: { (played) in
             self.startImageView.removeFromSuperview()
         })
+    }
+
+    func zoomOutStartImageToCentre() {
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            self.startImageView.frame.origin.x = self.view.frame.midX//(self.view.frame.size.width-self.startImageView.frame.size.width)/2
+            self.startImageView.frame.origin.y = self.startImageView.frame.midY
+            self.startImageView.frame.size.width = 1
+            self.startImageView.frame.size.height = 1
+        }, completion: nil)
     }
     
     func makeLevelButtons() {

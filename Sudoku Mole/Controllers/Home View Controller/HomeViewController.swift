@@ -42,11 +42,16 @@ class HomeViewController: UIViewController {
                 instructionStackView.isHidden = true
             case .level :
                 startButton.isHidden = true
+//                self.moveStartImageToLeft()
+                zoomOutStartImageToCentre()
+                self.levelButtonsStackView.isHidden = false
+                self.levelButtonsStackView.frame.origin.x = self.view.frame.maxX
+                self.view.animateXPosition(target: self.levelButtonsStackView, targetPosition: levelSVX)
                 playLevelLottie { () in
-                    self.moveStartImageToLeft()
-                    self.levelButtonsStackView.isHidden = false
-                    self.levelButtonsStackView.frame.origin.x = self.view.frame.maxX
-                    self.view.animateXPosition(target: self.levelButtonsStackView, targetPosition: levelSVX)
+//                    self.moveStartImageToLeft()
+//                    self.levelButtonsStackView.isHidden = false
+//                    self.levelButtonsStackView.frame.origin.x = self.view.frame.maxX
+//                    self.view.animateXPosition(target: self.levelButtonsStackView, targetPosition: levelSVX)
                 }
                 self.view.bringSubviewToFront(self.levelButtonsStackView)
             case .sudoji :

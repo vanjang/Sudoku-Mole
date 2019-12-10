@@ -1,9 +1,9 @@
 {
   "images" : [
     {
+      "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "btnBottomChance10MoreNormal.png",
-      "idiom" : "universal"
+      "filename" : "btnBottomChance10MoreNormal.png"
     },
     {
       "filename" : "btnBottomChance10MoreNormal@2x.png",

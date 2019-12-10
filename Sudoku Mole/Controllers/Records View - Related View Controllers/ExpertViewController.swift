@@ -87,7 +87,7 @@ class ExpertViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var expertTableView: UITableView!
     @IBOutlet weak var noRecordImageView: UIImageView!
     
-    let noRecordImage = UIImage(named: "icon.png")
+    let noRecordImage = UIImage(named: "boardNoRecord.png")
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var records: [Record]?
 }

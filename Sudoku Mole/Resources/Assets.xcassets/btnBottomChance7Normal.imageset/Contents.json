@@ -6,14 +6,14 @@
       "scale" : "1x"
     },
     {
-      "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "btnBottomChance7Normal@2x.png"
+      "filename" : "btnBottomChance7Normal@2x.png",
+      "idiom" : "universal"
     },
     {
-      "scale" : "3x",
+      "idiom" : "universal",
       "filename" : "btnBottomChance7Normal@3x.png",
-      "idiom" : "universal"
+      "scale" : "3x"
     }
   ],
   "info" : {

@@ -263,37 +263,18 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
                         
                         flag.textColor = #colorLiteral(red: 1, green: 0.9337611198, blue: 0.2692891061, alpha: 1)
                         
-                        //                        let firework = AnimationView(name: "Firework")
-                        ////                        let centreAni = AnimationView(name: "Firework")
-                        ////                        let rightAni = AnimationView(name: "Firework")
-                        //
-                        ////                        let leftFrame = CGRect(x: view.frame.minX, y: view.frame.height*0.22, width: view.frame.size.width*0.18, height: view.frame.size.width*0.18)
-                        ////                        let centreFrame = CGRect(x: view.frame.width*0.3, y: view.frame.height*0.01, width: view.frame.size.width*0.18, height: view.frame.size.width*0.18)
-                        ////                        let rightFrame = CGRect(x: view.frame.width*0.75, y: view.frame.height*0.1, width: view.frame.size.width*0.24, height: view.frame.size.width*0.24)
-                        ////
-                        //                        firework.frame = view.bounds
-                        ////                        firework.contentMode = .scaleAspectFill
-                        //                        view.addSubview(firework)
-                        ////                        view.addSubview(centreAni)
-                        ////                        view.addSubview(rightAni)
-                        //
-                        ////                        firework.frame = leftFrame
-                        //                        firework.backgroundColor = .clear
-                        //                        firework.animationSpeed = 1.00
-                        //                        firework.loopMode = .loop
-                        //                        firework.play()
+                        let firework = AnimationView(name: "Firework")
                         
-                        //                        centreAni.frame = centreFrame
-                        //                        centreAni.backgroundColor = .clear
-                        //                        centreAni.animationSpeed = 1.00
-                        //                        centreAni.loopMode = .loop
-                        //                        centreAni.play()
-                        //
-                        //                        rightAni.frame = rightFrame
-                        //                        rightAni.backgroundColor = .clear
-                        //                        rightAni.animationSpeed = 1.5
-                        //                        rightAni.loopMode = .loop
-                        //                        rightAni.play()
+                        view.addSubview(firework)
+                        firework.isUserInteractionEnabled = false
+//                        firework.frame = view.bounds
+                        firework.frame.origin.x = 0
+                        firework.frame.origin.y = 0
+                        firework.backgroundColor = .clear
+                        firework.animationSpeed = 1.00
+                        firework.loopMode = .loop
+                        firework.play()
+                        
                     } else {
                         let easy = UIImage(named: "boardRecordNormalEasy.png")
                         let normal = UIImage(named: "boardRecordNormalNormal.png")

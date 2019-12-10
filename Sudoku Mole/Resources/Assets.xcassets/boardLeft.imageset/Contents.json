@@ -2,13 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "boardLeft.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "boardLeft.png"
     },
     {
-      "scale" : "2x",
+      "filename" : "boardLeft@2x.png",
       "idiom" : "universal",
-      "filename" : "boardLeft@2x.png"
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",

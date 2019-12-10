@@ -83,7 +83,7 @@ class NormalViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var normalTableView: UITableView!
     @IBOutlet weak var noRecordImageView: UIImageView!
     
-    let noRecordImage = UIImage(named: "icon.png")
+    let noRecordImage = UIImage(named: "boardNoRecord.png")
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var records: [Record]?
 }

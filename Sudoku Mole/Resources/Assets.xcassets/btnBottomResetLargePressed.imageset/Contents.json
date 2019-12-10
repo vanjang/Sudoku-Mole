@@ -2,17 +2,17 @@
   "images" : [
     {
       "scale" : "1x",
-      "idiom" : "universal",
-      "filename" : "btnBottomResetLargePressed.png"
+      "filename" : "btnBottomResetLargePressed.png",
+      "idiom" : "universal"
     },
     {
-      "scale" : "2x",
       "idiom" : "universal",
-      "filename" : "btnBottomResetLargePressed@2x.png"
+      "filename" : "btnBottomResetLargePressed@2x.png",
+      "scale" : "2x"
     },
     {
+      "idiom" : "universal",
       "filename" : "btnBottomResetLargePressed@3x.png",
-      "idiom" : "universal",
       "scale" : "3x"
     }
   ],

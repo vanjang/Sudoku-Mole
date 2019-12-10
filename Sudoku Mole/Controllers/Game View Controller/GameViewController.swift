@@ -85,7 +85,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
                 userDefault.set("ADRemoverBought", forKey: removerKey)
                 dismiss(animated: true) {
                     self.instantiatingCustomAlertView()
-                    self.delegate?.customAlertController(title: "THANK YOU FOR PURCHASE".localized(), message: "Turn the app on and off to remove ADs forever!".localized(), option: .oneButton)
+                    self.delegate?.customAlertController(title: "THANK YOU FOR PURCHASE".localized(), message: "Turn the app off and on to remove ADs forever!".localized(), option: .oneButton)
                     self.delegate?.customAction1(title: "OK".localized(), action: { xx in
                         DispatchQueue.main.async {
                             self.dismiss(animated: true, completion: nil)
@@ -226,12 +226,12 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
     }
     
     // Written Views
-    let IAPtipView = UIView()
-    let IAPtipLabel = UILabel()
-    let IAPtipSmole = UIImageView()
-    var IAPtipSmoleImage = UIImage()
-    let IAPtipViewDismissButton = UIButton()
-    var IAPtipViewDismissImage = UIImage()
+//    let IAPtipView = UIView()
+//    let IAPtipLabel = UILabel()
+//    let IAPtipSmole = UIImageView()
+//    var IAPtipSmoleImage = UIImage()
+//    let IAPtipViewDismissButton = UIButton()
+//    var IAPtipViewDismissImage = UIImage()
     let tipView = UIView()
     let tipLabel = UILabel()
     let tipSmole = UIImageView()
@@ -331,6 +331,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate {
     
     
     @IBAction func keypad(_ sender: UIButton) {
+        playSound(soundFile: "sample1")
         let grid = appDelegate.sudoku.grid
         let row = puzzleArea.selected.row
         let col = puzzleArea.selected.column

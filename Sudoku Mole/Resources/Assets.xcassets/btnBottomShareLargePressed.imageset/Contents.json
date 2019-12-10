@@ -1,14 +1,14 @@
 {
   "images" : [
     {
-      "scale" : "1x",
       "filename" : "btnBottomShareLargePressed.png",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "scale" : "1x"
     },
     {
+      "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "btnBottomShareLargePressed@2x.png",
-      "idiom" : "universal"
+      "filename" : "btnBottomShareLargePressed@2x.png"
     },
     {
       "idiom" : "universal",

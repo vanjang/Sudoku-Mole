@@ -9,7 +9,7 @@
 // Home VC
 "No Saved Game." = "저장된 게임이 없습니다.";
 "Watch AD to get another life or leave the game." = "광고를 시청하시고 Free Life를 받으세요.";
-"Would you leave the game or save it for later?" = "게임을 종료하거나 저장 할 수 있습니다.";
+"Would you leave the game or save it for later?" = "게임을 종료하거나 저장 하시겠습니까?.";
 "You can continue the game later." = "저장 되었습니다.";
 "Tap OK to refresh." = "새로운 게임을 시작 하시겠습니까?";
 "Select a box you want to use your chance for!" = "빈 칸을 선택하면 찬스를 사용할 수 있습니다.";
@@ -22,10 +22,10 @@
 "Try later when network is connected." = "네트워크 상태를 확인 후 다시 시도해 주세요";
 "Sorry, check your network connection and try again." = "네트워크 상태를 확인 후 다시 시도해 주세요";
 "You just got 5 chances!." = "5개의 찬스를 구매 하셨습니다.";
-"Turn the app on and off to remove ADs forever!" = "앱을 종료 후 실행하시면 광고 없이 사용하실 수 있습니다.";
+"Turn the app off and on to remove ADs forever!" = "앱을 종료 후 실행하시면 광고 없이 사용하실 수 있습니다.";
 "Try again." = "다시 시도해 주세요.";
 "Smole says: How was your lunch?" = "스몰: 점심 맛있게 드셨나요?";
 "What about having a cup of coffee and playing a 1 Sudoku Mole? Let's break your record!" = "커피 한 잔과 함께 스도쿠 몰 1 게임 어떠세요?";
 "Tap the input field twice to delete the number you entered." = "입력한 숫자를 두번 터치하면 삭제할 수 있습니다.";
-"SUDOKU MOLE is distributed by Apple App Store. SUDOKU MOLE is developed by COCHIPCHO Limited.\nSUDOKU MOLE and its content is copryright of COCHIPCHO Limited. - © COCHIPCHO Limited.\nAll rights reserved.\n\n\n" = "SUDOKU MOLE은 COCHIPCHO Limited에서 개발하고 Apple App Store를 통해 판매되는 iOS 어플리케이션입니다. SUDOKU MOLE에 대한 모든 권리는 COCHIPCHO Limited에 있습니다.";
-"You can use chances to know the answer! Please note chance may include \"Blank\"!." = "때때로 정답을 알기 힘들 때는 찬스를 사용해 보세요! 상점에서 구매하시는 찬스는 가끔은 꽝이 있지만 유용하게 쓰인답니다!";
+"SUDOKU MOLE is distributed by Apple App Store. SUDOKU MOLE is developed by COCHIPCHO Limited.\nSUDOKU MOLE and its content is copryright of COCHIPCHO Limited. - © COCHIPCHO Limited.\nAll rights reserved.\n\n\n" = "SUDOKU MOLE은 COCHIPCHO Limited에서 개발하고 Apple App Store를 통해 배포되는 iOS 어플리케이션입니다. SUDOKU MOLE에 대한 모든 권리는 COCHIPCHO Limited에 있습니다.\n\n\n";
+"Tap Purchase to proceed. Please note it may include blanks!" = "Purchase를 선택하시면 구매가 진행됩니다. 찬스에는 꽝이 섞여 있을 수 있습니다.";

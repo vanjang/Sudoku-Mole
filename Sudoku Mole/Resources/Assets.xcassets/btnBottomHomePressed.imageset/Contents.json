@@ -1,9 +1,9 @@
 {
   "images" : [
     {
+      "idiom" : "universal",
       "filename" : "btnBottomHomePressed.png",
-      "scale" : "1x",
-      "idiom" : "universal"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
@@ -11,9 +11,9 @@
       "filename" : "btnBottomHomePressed@2x.png"
     },
     {
+      "scale" : "3x",
       "filename" : "btnBottomHomePressed@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {

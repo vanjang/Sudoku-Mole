@@ -58,60 +58,60 @@ extension GameViewController {
         let smoleBottomConstraint = NSLayoutConstraint(item: tipSmole, attribute: .bottom, relatedBy: .equal, toItem: tipView, attribute: .bottom, multiplier: 1, constant: 0)
         self.tipView.addConstraints([smoleLeftConstraint, smoleRightConstraint, smoleTopConstraint, smoleBottomConstraint])
         
-        tipView.animateXPosition(target: tipView, targetPosition: view.frame.size.height-height-((view.frame.size.width-width)/2), completion: nil)
+        tipView.animateYPosition(target: tipView, targetPosition: view.frame.size.height-height-((view.frame.size.width-width)/2), completion: nil)
     }
     
-    func makeIAPTipView() {
-        let width = self.view.frame.size.width*0.88
-        let height = width*0.50
-        
-        let dismissedFrame = CGRect(x: (view.frame.size.width-width)/2, y: view.frame.size.height+300, width: width, height: height)
-        IAPtipView.frame = dismissedFrame
-        IAPtipView.backgroundColor = #colorLiteral(red: 0.9364990592, green: 0.3447085321, blue: 0.3428477943, alpha: 1)
-        IAPtipView.layer.cornerRadius = 29
-        view.addSubview(IAPtipView)
-        IAPtipView.addSubview(IAPtipLabel)
-        
-        IAPtipLabel.text = "You can use chances to know the answer! Please note chance may include \"Blank\"!.".localized()
-        IAPtipLabel.numberOfLines = 0
-        IAPtipLabel.textColor = .white
-        IAPtipLabel.font = UIFont(name: "SFProDisplay-Regular", size: 18)
-        IAPtipLabel.contentMode = .topLeft
-        IAPtipLabel.textAlignment = .left
-        
-        IAPtipLabel.translatesAutoresizingMaskIntoConstraints = false
-        let leftConstraint = NSLayoutConstraint(item: IAPtipLabel, attribute: .left, relatedBy: .equal, toItem: IAPtipView, attribute: .left, multiplier: 1, constant: 20)
-        let rightConstraint = NSLayoutConstraint(item: IAPtipLabel, attribute: .right, relatedBy: .equal, toItem: IAPtipView, attribute: .right, multiplier: 1, constant: -width*0.38)
-        let topConstraint = NSLayoutConstraint(item: IAPtipLabel, attribute: .top, relatedBy: .equal, toItem: IAPtipView, attribute: .top, multiplier: 1, constant: 0)
-        let bottomConstraint = NSLayoutConstraint(item: IAPtipLabel, attribute: .bottom, relatedBy: .equal, toItem: IAPtipView, attribute: .bottom, multiplier: 1, constant: -tipView.frame.size.height/3)
-        self.IAPtipView.addConstraints([leftConstraint, rightConstraint, topConstraint, bottomConstraint])
-        
-        IAPtipViewDismissImage = UIImage(named: "tooltipClose.png")!
-        IAPtipViewDismissButton.setImage(IAPtipViewDismissImage, for: .normal)
-        IAPtipViewDismissButton.frame.size.width = 20
-        IAPtipViewDismissButton.frame.size.height = 20
-        IAPtipViewDismissButton.addTarget(self, action: #selector(IAPtipViewButtonDismissButtonTapped), for: .touchUpInside)
-        IAPtipView.addSubview(IAPtipViewDismissButton)
-        
-        IAPtipViewDismissButton.translatesAutoresizingMaskIntoConstraints = false
-        let xRightConstraint = NSLayoutConstraint(item: IAPtipViewDismissButton, attribute: .right, relatedBy: .equal, toItem: IAPtipView, attribute: .right, multiplier: 1, constant: -15)
-        let xTopConstraint = NSLayoutConstraint(item: IAPtipViewDismissButton, attribute: .top, relatedBy: .equal, toItem: IAPtipView, attribute: .top, multiplier: 1, constant: 15)
-        self.IAPtipView.addConstraints([xRightConstraint, xTopConstraint])
-        
-        IAPtipSmoleImage = UIImage(named: "smoleNotice.png")!
-        IAPtipSmole.image = IAPtipSmoleImage
-        IAPtipSmole.contentMode = .scaleAspectFit
-        IAPtipView.addSubview(IAPtipSmole)
-        
-        IAPtipSmole.translatesAutoresizingMaskIntoConstraints = false
-        let smoleLeftConstraint = NSLayoutConstraint(item: IAPtipSmole, attribute: .left, relatedBy: .equal, toItem: IAPtipLabel, attribute: .right, multiplier: 1, constant: 0)
-        let smoleRightConstraint = NSLayoutConstraint(item: IAPtipSmole, attribute: .right, relatedBy: .equal, toItem: IAPtipView, attribute: .right, multiplier: 1, constant: -10)
-        let smoleTopConstraint = NSLayoutConstraint(item: IAPtipSmole, attribute: .top, relatedBy: .equal, toItem: IAPtipView, attribute: .top, multiplier: 1, constant: tipView.frame.size.height/3.5)
-        let smoleBottomConstraint = NSLayoutConstraint(item: IAPtipSmole, attribute: .bottom, relatedBy: .equal, toItem: IAPtipView, attribute: .bottom, multiplier: 1, constant: 0)
-        self.IAPtipView.addConstraints([smoleLeftConstraint, smoleRightConstraint, smoleTopConstraint, smoleBottomConstraint])
-        
-        IAPtipView.animateYPosition(target: IAPtipView, targetPosition: view.frame.size.height-height-((view.frame.size.width-width)/2), completion: nil)
-    }
+//    func makeIAPTipView() {
+//        let width = self.view.frame.size.width*0.88
+//        let height = width*0.50
+//        
+//        let dismissedFrame = CGRect(x: (view.frame.size.width-width)/2, y: view.frame.size.height+300, width: width, height: height)
+//        IAPtipView.frame = dismissedFrame
+//        IAPtipView.backgroundColor = #colorLiteral(red: 0.9364990592, green: 0.3447085321, blue: 0.3428477943, alpha: 1)
+//        IAPtipView.layer.cornerRadius = 29
+//        view.addSubview(IAPtipView)
+//        IAPtipView.addSubview(IAPtipLabel)
+//        
+//        IAPtipLabel.text = "You can use chances to know the answer! Please note chance may include \"Blank\"!".localized()
+//        IAPtipLabel.numberOfLines = 0
+//        IAPtipLabel.textColor = .white
+//        IAPtipLabel.font = UIFont(name: "SFProDisplay-Regular", size: 18)
+//        IAPtipLabel.contentMode = .topLeft
+//        IAPtipLabel.textAlignment = .left
+//        
+//        IAPtipLabel.translatesAutoresizingMaskIntoConstraints = false
+//        let leftConstraint = NSLayoutConstraint(item: IAPtipLabel, attribute: .left, relatedBy: .equal, toItem: IAPtipView, attribute: .left, multiplier: 1, constant: 20)
+//        let rightConstraint = NSLayoutConstraint(item: IAPtipLabel, attribute: .right, relatedBy: .equal, toItem: IAPtipView, attribute: .right, multiplier: 1, constant: -width*0.38)
+//        let topConstraint = NSLayoutConstraint(item: IAPtipLabel, attribute: .top, relatedBy: .equal, toItem: IAPtipView, attribute: .top, multiplier: 1, constant: 0)
+//        let bottomConstraint = NSLayoutConstraint(item: IAPtipLabel, attribute: .bottom, relatedBy: .equal, toItem: IAPtipView, attribute: .bottom, multiplier: 1, constant: -tipView.frame.size.height/3)
+//        self.IAPtipView.addConstraints([leftConstraint, rightConstraint, topConstraint, bottomConstraint])
+//        
+//        IAPtipViewDismissImage = UIImage(named: "tooltipClose.png")!
+//        IAPtipViewDismissButton.setImage(IAPtipViewDismissImage, for: .normal)
+//        IAPtipViewDismissButton.frame.size.width = 20
+//        IAPtipViewDismissButton.frame.size.height = 20
+//        IAPtipViewDismissButton.addTarget(self, action: #selector(IAPtipViewButtonDismissButtonTapped), for: .touchUpInside)
+//        IAPtipView.addSubview(IAPtipViewDismissButton)
+//        
+//        IAPtipViewDismissButton.translatesAutoresizingMaskIntoConstraints = false
+//        let xRightConstraint = NSLayoutConstraint(item: IAPtipViewDismissButton, attribute: .right, relatedBy: .equal, toItem: IAPtipView, attribute: .right, multiplier: 1, constant: -15)
+//        let xTopConstraint = NSLayoutConstraint(item: IAPtipViewDismissButton, attribute: .top, relatedBy: .equal, toItem: IAPtipView, attribute: .top, multiplier: 1, constant: 15)
+//        self.IAPtipView.addConstraints([xRightConstraint, xTopConstraint])
+//        
+//        IAPtipSmoleImage = UIImage(named: "smoleNotice.png")!
+//        IAPtipSmole.image = IAPtipSmoleImage
+//        IAPtipSmole.contentMode = .scaleAspectFit
+//        IAPtipView.addSubview(IAPtipSmole)
+//        
+//        IAPtipSmole.translatesAutoresizingMaskIntoConstraints = false
+//        let smoleLeftConstraint = NSLayoutConstraint(item: IAPtipSmole, attribute: .left, relatedBy: .equal, toItem: IAPtipLabel, attribute: .right, multiplier: 1, constant: 0)
+//        let smoleRightConstraint = NSLayoutConstraint(item: IAPtipSmole, attribute: .right, relatedBy: .equal, toItem: IAPtipView, attribute: .right, multiplier: 1, constant: -10)
+//        let smoleTopConstraint = NSLayoutConstraint(item: IAPtipSmole, attribute: .top, relatedBy: .equal, toItem: IAPtipView, attribute: .top, multiplier: 1, constant: tipView.frame.size.height/3.5)
+//        let smoleBottomConstraint = NSLayoutConstraint(item: IAPtipSmole, attribute: .bottom, relatedBy: .equal, toItem: IAPtipView, attribute: .bottom, multiplier: 1, constant: 0)
+//        self.IAPtipView.addConstraints([smoleLeftConstraint, smoleRightConstraint, smoleTopConstraint, smoleBottomConstraint])
+//        
+//        IAPtipView.animateYPosition(target: IAPtipView, targetPosition: view.frame.size.height-height-((view.frame.size.width-width)/2), completion: nil)
+//    }
     
     func keypadAutoResize() {
         for button in keypadCollection {

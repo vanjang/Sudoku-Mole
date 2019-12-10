@@ -1,9 +1,9 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
+      "filename" : "btnBottomResetNormal.png",
       "scale" : "1x",
-      "filename" : "btnBottomResetNormal.png"
+      "idiom" : "universal"
     },
     {
       "scale" : "2x",
@@ -11,8 +11,8 @@
       "filename" : "btnBottomResetNormal@2x.png"
     },
     {
-      "filename" : "btnBottomResetNormal@3x.png",
       "idiom" : "universal",
+      "filename" : "btnBottomResetNormal@3x.png",
       "scale" : "3x"
     }
   ],

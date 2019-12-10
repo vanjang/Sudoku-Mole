@@ -79,6 +79,8 @@
 		F6D65301238B542900E6D810 /* Chance2Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652EF238B542900E6D810 /* Chance2Side.json */; };
 		F6D65302238B542900E6D810 /* Chance3Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652F0238B542900E6D810 /* Chance3Side.json */; };
 		F6D65306238BC8B100E6D810 /* Firework.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D65305238BC8B100E6D810 /* Firework.json */; };
+		F6ED15BC239E00CA005E1DD7 /* SoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ED15BB239E00CA005E1DD7 /* SoundEffect.swift */; };
+		F6ED15C0239E0108005E1DD7 /* sample1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6ED15BE239E0108005E1DD7 /* sample1.mp3 */; };
 		F6F8F1922390B7E400F65449 /* LicensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F8F1912390B7E400F65449 /* LicensesViewController.swift */; };
 		F6F8F19423912B1500F65449 /* Intro.json in Resources */ = {isa = PBXBuildFile; fileRef = F6F8F19323912B1500F65449 /* Intro.json */; };
 		F6F8F1992391493800F65449 /* Blank0.json in Resources */ = {isa = PBXBuildFile; fileRef = F6F8F1972391493800F65449 /* Blank0.json */; };
@@ -192,6 +194,8 @@
 		F6D652EF238B542900E6D810 /* Chance2Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance2Side.json; sourceTree = "<group>"; };
 		F6D652F0238B542900E6D810 /* Chance3Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance3Side.json; sourceTree = "<group>"; };
 		F6D65305238BC8B100E6D810 /* Firework.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Firework.json; sourceTree = "<group>"; };
+		F6ED15BB239E00CA005E1DD7 /* SoundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
+		F6ED15BE239E0108005E1DD7 /* sample1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sample1.mp3; path = ../../../../../Sound/sample1.mp3; sourceTree = "<group>"; };
 		F6F8F1912390B7E400F65449 /* LicensesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensesViewController.swift; sourceTree = "<group>"; };
 		F6F8F19323912B1500F65449 /* Intro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Intro.json; sourceTree = "<group>"; };
 		F6F8F1972391493800F65449 /* Blank0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Blank0.json; sourceTree = "<group>"; };
@@ -302,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				F639B1DB2334C3D500CF921A /* Assets.xcassets */,
+				F6ED15BD239E00F0005E1DD7 /* Sound Effect */,
 				F6D652D9238B52D200E6D810 /* Lottie */,
 				F65DCF1523925518002BF3D1 /* Levels */,
 				F65DCF1623925522002BF3D1 /* Fonts */,
@@ -389,6 +394,7 @@
 				F66AEA1B23925127006E598B /* String.swift */,
 				F66AEA1D23925130006E598B /* Substring.swift */,
 				F66AEA1F23925136006E598B /* Array.swift */,
+				F6ED15BB239E00CA005E1DD7 /* SoundEffect.swift */,
 			);
 			path = "Built-In Types";
 			sourceTree = "<group>";
@@ -444,6 +450,14 @@
 				F6F8F19323912B1500F65449 /* Intro.json */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		F6ED15BD239E00F0005E1DD7 /* Sound Effect */ = {
+			isa = PBXGroup;
+			children = (
+				F6ED15BE239E0108005E1DD7 /* sample1.mp3 */,
+			);
+			path = "Sound Effect";
 			sourceTree = "<group>";
 		};
 		F6F8F1AD23924AD900F65449 /* Game View Controller */ = {
@@ -624,6 +638,7 @@
 				F6F8F19423912B1500F65449 /* Intro.json in Resources */,
 				F65DCF282392DFF1002BF3D1 /* SFProDisplay-Semibold.ttf in Resources */,
 				F6427E582375D63D0083C807 /* HardAnswers.plist in Resources */,
+				F6ED15C0239E0108005E1DD7 /* sample1.mp3 in Resources */,
 				F619B9FC2370CD7200DCEDF2 /* Normal.plist in Resources */,
 				F6D652FE238B542900E6D810 /* Chance6.json in Resources */,
 				F6FC487D2385676F0033E358 /* EasyAnswers.plist in Resources */,
@@ -689,6 +704,7 @@
 				F6512DE5237A1934003997BA /* Game VC IAP.swift in Sources */,
 				F60A38C423900DF4001B7749 /* NotificationCentre.swift in Sources */,
 				F6A340A2237DD56E00194C60 /* NormalViewController.swift in Sources */,
+				F6ED15BC239E00CA005E1DD7 /* SoundEffect.swift in Sources */,
 				F6FED297236A0F3100D2BDD3 /* SudokuSwitches.swift in Sources */,
 				F66AEA1A23925120006E598B /* UIButton.swift in Sources */,
 				F6F8F1A6239249C900F65449 /* GameVC Timer.swift in Sources */,
@@ -900,7 +916,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Sudoku Mole/Sudoku Mole.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = RF525HK56L;
 				INFOPLIST_FILE = "Sudoku Mole/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -921,7 +937,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Sudoku Mole/Sudoku Mole.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = RF525HK56L;
 				INFOPLIST_FILE = "Sudoku Mole/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
