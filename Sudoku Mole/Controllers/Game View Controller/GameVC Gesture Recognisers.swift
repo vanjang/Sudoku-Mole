@@ -48,6 +48,7 @@ extension GameViewController {
         if  0 <= col && col < 9 && 0 <= row && row < 9 {
             if (!puzzle.numberIsFixedAt(row: row, column: col)) {
                 if puzzle.grid?.userPuzzle[row][col] != 0 {
+                    playSound(soundFile: "inGameMenuAndButtons", lag: 0.0, numberOfLoops: 0)
                     appDelegate.sudoku.userGrid(n: 0, row: row, col: col)
                     refresh()
                 }

@@ -21,7 +21,6 @@ class GameSolvedTableViewCell: UITableViewCell {
     @IBOutlet weak var recordsLabel: InsetLabel!
     
     func cellUpdate(records: [Record], indexPath: IndexPath) {
-        
         var number = 1
         var numbers = [String]()
         
@@ -32,24 +31,21 @@ class GameSolvedTableViewCell: UITableViewCell {
         
         var size = CGFloat()
         
-        if UIDevice.modelName == "iPhone 6" || UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 7" || UIDevice.modelName == "iPhone 8" || UIDevice.modelName == "Simulator iPhone 8" || UIDevice.modelName == "Simulator iPhone 7" {
+        if !deviceScreenHasNotch() {
             size = 28
         } else {
             size = 30
         }
         
         let font = UIFont(name: "LuckiestGuy-Regular", size: size)
-        
         numberLabel.font = font
         recordsLabel.font = font
-        
         numberLabel.backgroundColor = .clear
         recordsLabel.backgroundColor = .clear
         numberLabel.adjustsFontSizeToFitWidth = true
         recordsLabel.adjustsFontSizeToFitWidth = true
         numberLabel.sizeToFit()
         recordsLabel.sizeToFit()
-        
         numberLabel.text = numbers[indexPath.row]
         recordsLabel.text = records[indexPath.row].record
         

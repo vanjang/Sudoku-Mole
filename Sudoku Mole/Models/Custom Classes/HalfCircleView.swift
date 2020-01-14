@@ -24,5 +24,4 @@ class HalfCircleView: UIView {
         #colorLiteral(red: 0, green: 0.5206592083, blue: 0.2923181951, alpha: 1).setFill()
         ovalPath.fill()
     }
-
 }

@@ -61,5 +61,4 @@ class GridView: UIView {
         borderColor.setStroke()
         path.stroke()
     }
-    
 }

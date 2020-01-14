@@ -8,24 +8,30 @@
 
 // Home VC
 "No Saved Game." = "저장된 게임이 없습니다.";
-"Watch AD to get another life or leave the game." = "광고를 시청하시고 Free Life를 받으세요.";
-"Would you leave the game or save it for later?" = "게임을 종료하거나 저장 하시겠습니까?.";
+"Watch AD to get another life and continue solving!" = "광고를 시청하시고 무료 라이프를 받으세요!";
+"Would you leave the game or save it for later?" = "게임을 종료하거나 저장 하시겠습니까?";
 "You can continue the game later." = "저장 되었습니다.";
 "Tap OK to refresh." = "새로운 게임을 시작 하시겠습니까?";
 "Select a box you want to use your chance for!" = "빈 칸을 선택하면 찬스를 사용할 수 있습니다.";
-"Share record and get free chance!" = "SNS로 스도쿠몰을 공유하고 Free Chance를 받으세요!";
-"You earned a free chance." = "Free Chance가 추가 되었습니다.";
+"Share record and get free chance!" = "기록을 공유하고 무료 찬스를 받으세요!";
+"You earned a free chance." = "찬스가 추가 되었습니다.";
 "Processing" = "진행 중";
 "You can top up if chance is below 6." = "찬스 아이템은 6개 이하로 남은 상태에서만 구매가 가능합니다.";
 "My Records" = "내 기록";
 "Sorry, game is terminated." = "광고를 불러올 수 없습니다. 게임을 종료합니다";
 "Try later when network is connected." = "네트워크 상태를 확인 후 다시 시도해 주세요";
 "Sorry, check your network connection and try again." = "네트워크 상태를 확인 후 다시 시도해 주세요";
-"You just got 5 chances!." = "5개의 찬스를 구매 하셨습니다.";
+"You just got 5 chances!." = "찬스 5개를 구매 하셨습니다.";
 "Turn the app off and on to remove ADs forever!" = "앱을 종료 후 실행하시면 광고 없이 사용하실 수 있습니다.";
 "Try again." = "다시 시도해 주세요.";
 "Smole says: How was your lunch?" = "스몰: 점심 맛있게 드셨나요?";
-"What about having a cup of coffee and playing a 1 Sudoku Mole? Let's break your record!" = "커피 한 잔과 함께 스도쿠 몰 1 게임 어떠세요?";
+"What about having a cup of coffee and playing a 1 Sudoku Mole? Let's break your record!" = "커피 한 잔과 함께 스도쿠 몰 한판 어떠세요?";
 "Tap the input field twice to delete the number you entered." = "입력한 숫자를 두번 터치하면 삭제할 수 있습니다.";
 "SUDOKU MOLE is distributed by Apple App Store. SUDOKU MOLE is developed by COCHIPCHO Limited.\nSUDOKU MOLE and its content is copryright of COCHIPCHO Limited. - © COCHIPCHO Limited.\nAll rights reserved.\n\n\n" = "SUDOKU MOLE은 COCHIPCHO Limited에서 개발하고 Apple App Store를 통해 배포되는 iOS 어플리케이션입니다. SUDOKU MOLE에 대한 모든 권리는 COCHIPCHO Limited에 있습니다.\n\n\n";
 "Tap Purchase to proceed. Please note it may include blanks!" = "Purchase를 선택하시면 구매가 진행됩니다. 찬스에는 꽝이 섞여 있을 수 있습니다.";
+"Leave a review on App Store and get 3 chances for free!" = "앱스토어에 사용후기를 남기고 찬스 3개를 무료로 받으세요!";
+"You earned free 3 chances." = "찬스 3개가 추가 되었습니다.";
+"You were in the middle of\n" = "진행 중인 게임:\n";
+")!" = ")";
+"NO AD AVAILABLE\nAT THE MOMENT" = "잠시 광고를\n이용할 수 없습니다";
+"Network connection might be unstable. Please try later." = "네트워크 상태를 확인 후 다시 시도해 주세요";

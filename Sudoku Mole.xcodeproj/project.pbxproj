@@ -11,9 +11,8 @@
 		F60A38C423900DF4001B7749 /* NotificationCentre.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A38C323900DF4001B7749 /* NotificationCentre.swift */; };
 		F60A38C623900E01001B7749 /* AppReviewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A38C523900E01001B7749 /* AppReviewHelper.swift */; };
 		F619B9FA236F6A4D00DCEDF2 /* SudokuRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = F619B9F9236F6A4D00DCEDF2 /* SudokuRecords.swift */; };
-		F619B9FC2370CD7200DCEDF2 /* Normal.plist in Resources */ = {isa = PBXBuildFile; fileRef = F619B9FB2370CD7200DCEDF2 /* Normal.plist */; };
 		F619B9FE2370CD7900DCEDF2 /* Expert.plist in Resources */ = {isa = PBXBuildFile; fileRef = F619B9FD2370CD7900DCEDF2 /* Expert.plist */; };
-		F62135CE2384F0BB00150686 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62135CD2384F0BB00150686 /* GlobalFunctions.swift */; };
+		F62135CE2384F0BB00150686 /* GlobalSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62135CD2384F0BB00150686 /* GlobalSpace.swift */; };
 		F62135D22385557500150686 /* DialogLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62135D12385557500150686 /* DialogLabel.swift */; };
 		F62135D4238555D100150686 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62135D3238555D100150686 /* Protocols.swift */; };
 		F639B1D52334C3D300CF921A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639B1D42334C3D300CF921A /* AppDelegate.swift */; };
@@ -37,7 +36,6 @@
 		F65DCF22239255E2002BF3D1 /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F65DCF1823925556002BF3D1 /* SFProDisplay-Medium.ttf */; };
 		F65DCF2423925B0B002BF3D1 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65DCF2323925B0B002BF3D1 /* CustomButton.swift */; };
 		F65DCF272392DFF1002BF3D1 /* SFProDisplay-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F65DCF252392DFF1002BF3D1 /* SFProDisplay-Light.ttf */; };
-		F65DCF282392DFF1002BF3D1 /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F65DCF262392DFF1002BF3D1 /* SFProDisplay-Semibold.ttf */; };
 		F65DCF2A2392E913002BF3D1 /* Game Solved VC UIActivityVC Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65DCF292392E913002BF3D1 /* Game Solved VC UIActivityVC Delegate.swift */; };
 		F66AEA1623925102006E598B /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66AEA1523925102006E598B /* UIDevice.swift */; };
 		F66AEA1823925112006E598B /* UIView Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66AEA1723925112006E598B /* UIView Animations.swift */; };
@@ -45,10 +43,25 @@
 		F66AEA1C23925127006E598B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66AEA1B23925127006E598B /* String.swift */; };
 		F66AEA1E23925130006E598B /* Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66AEA1D23925130006E598B /* Substring.swift */; };
 		F66AEA2023925136006E598B /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66AEA1F23925136006E598B /* Array.swift */; };
+		F66D598523ACD4F30089B358 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F66D598423ACD4F30089B358 /* GoogleService-Info.plist */; };
 		F66E70A0238305FF0056528F /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E709F238305FF0056528F /* PauseViewController.swift */; };
 		F6784F3D23630E61008171AC /* SudokuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6784F3C23630E61008171AC /* SudokuData.swift */; };
+		F68DADDB23AB4143002D6753 /* NoADLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68DADDA23AB4143002D6753 /* NoADLabel.swift */; };
 		F6A05A892387183600ED0428 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6A05A8B2387183600ED0428 /* Localizable.strings */; };
 		F6A05A982389BF5E00ED0428 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A05A972389BF5E00ED0428 /* PaddedLabel.swift */; };
+		F6A1833223CD33590014915C /* Normal.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6A1833123CD33590014915C /* Normal.plist */; };
+		F6A1833423CD4AB70014915C /* Game VC SaveAndLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A1833323CD4AB70014915C /* Game VC SaveAndLoad.swift */; };
+		F6A1834223CDD1830014915C /* BGM0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6A1833723CDD1830014915C /* BGM0.mp3 */; };
+		F6A1834323CDD1830014915C /* inGameMenuAndButtons.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6A1833823CDD1830014915C /* inGameMenuAndButtons.mp3 */; };
+		F6A1834423CDD1830014915C /* countdown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6A1833923CDD1830014915C /* countdown.mp3 */; };
+		F6A1834523CDD1830014915C /* startAndLevel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6A1833A23CDD1830014915C /* startAndLevel.mp3 */; };
+		F6A1834623CDD1830014915C /* inGameKeypad.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6A1833B23CDD1830014915C /* inGameKeypad.mp3 */; };
+		F6A1834723CDD1830014915C /* inGameBoardTouch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6A1833C23CDD1830014915C /* inGameBoardTouch.mp3 */; };
+		F6A1834823CDD1830014915C /* inGameChance.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6A1833D23CDD1830014915C /* inGameChance.mp3 */; };
+		F6A1834923CDD1830014915C /* inGameWrong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6A1833E23CDD1830014915C /* inGameWrong.mp3 */; };
+		F6A1834A23CDD1830014915C /* gameSolvedFirework.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6A1833F23CDD1830014915C /* gameSolvedFirework.mp3 */; };
+		F6A1834B23CDD1830014915C /* inGamePause.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6A1834023CDD1830014915C /* inGamePause.mp3 */; };
+		F6A1834C23CDD1830014915C /* BGM1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6A1834123CDD1830014915C /* BGM1.mp3 */; };
 		F6A3409E237DB1AC00194C60 /* RecordsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A3409D237DB1AC00194C60 /* RecordsPageViewController.swift */; };
 		F6A340A0237DD56000194C60 /* EasyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A3409F237DD56000194C60 /* EasyViewController.swift */; };
 		F6A340A2237DD56E00194C60 /* NormalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A340A1237DD56E00194C60 /* NormalViewController.swift */; };
@@ -79,8 +92,6 @@
 		F6D65301238B542900E6D810 /* Chance2Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652EF238B542900E6D810 /* Chance2Side.json */; };
 		F6D65302238B542900E6D810 /* Chance3Side.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D652F0238B542900E6D810 /* Chance3Side.json */; };
 		F6D65306238BC8B100E6D810 /* Firework.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D65305238BC8B100E6D810 /* Firework.json */; };
-		F6ED15BC239E00CA005E1DD7 /* SoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ED15BB239E00CA005E1DD7 /* SoundEffect.swift */; };
-		F6ED15C0239E0108005E1DD7 /* sample1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6ED15BE239E0108005E1DD7 /* sample1.mp3 */; };
 		F6F8F1922390B7E400F65449 /* LicensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F8F1912390B7E400F65449 /* LicensesViewController.swift */; };
 		F6F8F19423912B1500F65449 /* Intro.json in Resources */ = {isa = PBXBuildFile; fileRef = F6F8F19323912B1500F65449 /* Intro.json */; };
 		F6F8F1992391493800F65449 /* Blank0.json in Resources */ = {isa = PBXBuildFile; fileRef = F6F8F1972391493800F65449 /* Blank0.json */; };
@@ -116,9 +127,8 @@
 		F60A38C523900E01001B7749 /* AppReviewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReviewHelper.swift; sourceTree = "<group>"; };
 		F60A38C723901A2C001B7749 /* Sudoku Mole.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sudoku Mole.entitlements"; sourceTree = "<group>"; };
 		F619B9F9236F6A4D00DCEDF2 /* SudokuRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuRecords.swift; sourceTree = "<group>"; };
-		F619B9FB2370CD7200DCEDF2 /* Normal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Normal.plist; sourceTree = "<group>"; };
 		F619B9FD2370CD7900DCEDF2 /* Expert.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expert.plist; sourceTree = "<group>"; };
-		F62135CD2384F0BB00150686 /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
+		F62135CD2384F0BB00150686 /* GlobalSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSpace.swift; sourceTree = "<group>"; };
 		F62135D12385557500150686 /* DialogLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogLabel.swift; sourceTree = "<group>"; };
 		F62135D3238555D100150686 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		F639B1D12334C3D300CF921A /* Sudoku Mole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sudoku Mole.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,7 +154,6 @@
 		F65DCF1923925557002BF3D1 /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		F65DCF2323925B0B002BF3D1 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		F65DCF252392DFF1002BF3D1 /* SFProDisplay-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Light.ttf"; sourceTree = "<group>"; };
-		F65DCF262392DFF1002BF3D1 /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
 		F65DCF292392E913002BF3D1 /* Game Solved VC UIActivityVC Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game Solved VC UIActivityVC Delegate.swift"; sourceTree = "<group>"; };
 		F66AEA1523925102006E598B /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		F66AEA1723925112006E598B /* UIView Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView Animations.swift"; sourceTree = "<group>"; };
@@ -152,8 +161,10 @@
 		F66AEA1B23925127006E598B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		F66AEA1D23925130006E598B /* Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Substring.swift; sourceTree = "<group>"; };
 		F66AEA1F23925136006E598B /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		F66D598423ACD4F30089B358 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F66E709F238305FF0056528F /* PauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewController.swift; sourceTree = "<group>"; };
 		F6784F3C23630E61008171AC /* SudokuData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuData.swift; sourceTree = "<group>"; };
+		F68DADDA23AB4143002D6753 /* NoADLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoADLabel.swift; sourceTree = "<group>"; };
 		F6A05A7F2387164600ED0428 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		F6A05A802387164700ED0428 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F6A05A812387168C00ED0428 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -164,6 +175,19 @@
 		F6A05A9523871EFB00ED0428 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		F6A05A9623871EFB00ED0428 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F6A05A972389BF5E00ED0428 /* PaddedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
+		F6A1833123CD33590014915C /* Normal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Normal.plist; sourceTree = "<group>"; };
+		F6A1833323CD4AB70014915C /* Game VC SaveAndLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game VC SaveAndLoad.swift"; sourceTree = "<group>"; };
+		F6A1833723CDD1830014915C /* BGM0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = BGM0.mp3; path = "Sound Effects in Use/BGM0.mp3"; sourceTree = "<group>"; };
+		F6A1833823CDD1830014915C /* inGameMenuAndButtons.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = inGameMenuAndButtons.mp3; path = "Sound Effects in Use/inGameMenuAndButtons.mp3"; sourceTree = "<group>"; };
+		F6A1833923CDD1830014915C /* countdown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = countdown.mp3; path = "Sound Effects in Use/countdown.mp3"; sourceTree = "<group>"; };
+		F6A1833A23CDD1830014915C /* startAndLevel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = startAndLevel.mp3; path = "Sound Effects in Use/startAndLevel.mp3"; sourceTree = "<group>"; };
+		F6A1833B23CDD1830014915C /* inGameKeypad.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = inGameKeypad.mp3; path = "Sound Effects in Use/inGameKeypad.mp3"; sourceTree = "<group>"; };
+		F6A1833C23CDD1830014915C /* inGameBoardTouch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = inGameBoardTouch.mp3; path = "Sound Effects in Use/inGameBoardTouch.mp3"; sourceTree = "<group>"; };
+		F6A1833D23CDD1830014915C /* inGameChance.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = inGameChance.mp3; path = "Sound Effects in Use/inGameChance.mp3"; sourceTree = "<group>"; };
+		F6A1833E23CDD1830014915C /* inGameWrong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = inGameWrong.mp3; path = "Sound Effects in Use/inGameWrong.mp3"; sourceTree = "<group>"; };
+		F6A1833F23CDD1830014915C /* gameSolvedFirework.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gameSolvedFirework.mp3; path = "Sound Effects in Use/gameSolvedFirework.mp3"; sourceTree = "<group>"; };
+		F6A1834023CDD1830014915C /* inGamePause.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = inGamePause.mp3; path = "Sound Effects in Use/inGamePause.mp3"; sourceTree = "<group>"; };
+		F6A1834123CDD1830014915C /* BGM1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = BGM1.mp3; path = "Sound Effects in Use/BGM1.mp3"; sourceTree = "<group>"; };
 		F6A3409D237DB1AC00194C60 /* RecordsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsPageViewController.swift; sourceTree = "<group>"; };
 		F6A3409F237DD56000194C60 /* EasyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyViewController.swift; sourceTree = "<group>"; };
 		F6A340A1237DD56E00194C60 /* NormalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalViewController.swift; sourceTree = "<group>"; };
@@ -194,8 +218,6 @@
 		F6D652EF238B542900E6D810 /* Chance2Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance2Side.json; sourceTree = "<group>"; };
 		F6D652F0238B542900E6D810 /* Chance3Side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chance3Side.json; sourceTree = "<group>"; };
 		F6D65305238BC8B100E6D810 /* Firework.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Firework.json; sourceTree = "<group>"; };
-		F6ED15BB239E00CA005E1DD7 /* SoundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
-		F6ED15BE239E0108005E1DD7 /* sample1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sample1.mp3; path = ../../../../../Sound/sample1.mp3; sourceTree = "<group>"; };
 		F6F8F1912390B7E400F65449 /* LicensesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensesViewController.swift; sourceTree = "<group>"; };
 		F6F8F19323912B1500F65449 /* Intro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Intro.json; sourceTree = "<group>"; };
 		F6F8F1972391493800F65449 /* Blank0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Blank0.json; sourceTree = "<group>"; };
@@ -264,6 +286,7 @@
 				F62135D12385557500150686 /* DialogLabel.swift */,
 				F6FD9F8D2382288700A44649 /* InsetLabel.swift */,
 				F6A05A972389BF5E00ED0428 /* PaddedLabel.swift */,
+				F68DADDA23AB4143002D6753 /* NoADLabel.swift */,
 				F6CC944C237E407200F585AC /* GridView.swift */,
 				F65DCF2323925B0B002BF3D1 /* CustomButton.swift */,
 			);
@@ -294,10 +317,11 @@
 				F60A38C723901A2C001B7749 /* Sudoku Mole.entitlements */,
 				F639B1E62334CA4D00CF921A /* Resources */,
 				F639B1D42334C3D300CF921A /* AppDelegate.swift */,
+				F639B1E02334C3D500CF921A /* Info.plist */,
+				F66D598423ACD4F30089B358 /* GoogleService-Info.plist */,
 				F639B1EA2334CAAA00CF921A /* Views */,
 				F639B1EB2334CAAE00CF921A /* Models */,
 				F639B1E92334CAA100CF921A /* Controllers */,
-				F639B1E02334C3D500CF921A /* Info.plist */,
 			);
 			path = "Sudoku Mole";
 			sourceTree = "<group>";
@@ -350,7 +374,7 @@
 				F62135D3238555D100150686 /* Protocols.swift */,
 				F60A38C323900DF4001B7749 /* NotificationCentre.swift */,
 				F60A38C523900E01001B7749 /* AppReviewHelper.swift */,
-				F62135CD2384F0BB00150686 /* GlobalFunctions.swift */,
+				F62135CD2384F0BB00150686 /* GlobalSpace.swift */,
 				F66AEA14239250DC006E598B /* Built-In Types */,
 				F62135D52385587800150686 /* Custom Classes */,
 			);
@@ -362,7 +386,7 @@
 			children = (
 				F64EBE5B235690AA0006094F /* Easy.plist */,
 				F6FC487C2385676F0033E358 /* EasyAnswers.plist */,
-				F619B9FB2370CD7200DCEDF2 /* Normal.plist */,
+				F6A1833123CD33590014915C /* Normal.plist */,
 				F6BBAAE823722BAF008B6059 /* NormalAnswers.plist */,
 				F619B9FD2370CD7900DCEDF2 /* Expert.plist */,
 				F6427E542375D63C0083C807 /* ExpertAnswers.plist */,
@@ -376,7 +400,6 @@
 			isa = PBXGroup;
 			children = (
 				F65DCF252392DFF1002BF3D1 /* SFProDisplay-Light.ttf */,
-				F65DCF262392DFF1002BF3D1 /* SFProDisplay-Semibold.ttf */,
 				F65DCF1923925557002BF3D1 /* SFProDisplay-Regular.ttf */,
 				F65DCF1723925556002BF3D1 /* SFProDisplay-Bold.ttf */,
 				F65DCF1823925556002BF3D1 /* SFProDisplay-Medium.ttf */,
@@ -394,7 +417,6 @@
 				F66AEA1B23925127006E598B /* String.swift */,
 				F66AEA1D23925130006E598B /* Substring.swift */,
 				F66AEA1F23925136006E598B /* Array.swift */,
-				F6ED15BB239E00CA005E1DD7 /* SoundEffect.swift */,
 			);
 			path = "Built-In Types";
 			sourceTree = "<group>";
@@ -455,7 +477,17 @@
 		F6ED15BD239E00F0005E1DD7 /* Sound Effect */ = {
 			isa = PBXGroup;
 			children = (
-				F6ED15BE239E0108005E1DD7 /* sample1.mp3 */,
+				F6A1833723CDD1830014915C /* BGM0.mp3 */,
+				F6A1834123CDD1830014915C /* BGM1.mp3 */,
+				F6A1833923CDD1830014915C /* countdown.mp3 */,
+				F6A1833F23CDD1830014915C /* gameSolvedFirework.mp3 */,
+				F6A1833C23CDD1830014915C /* inGameBoardTouch.mp3 */,
+				F6A1833D23CDD1830014915C /* inGameChance.mp3 */,
+				F6A1833B23CDD1830014915C /* inGameKeypad.mp3 */,
+				F6A1833823CDD1830014915C /* inGameMenuAndButtons.mp3 */,
+				F6A1834023CDD1830014915C /* inGamePause.mp3 */,
+				F6A1833E23CDD1830014915C /* inGameWrong.mp3 */,
+				F6A1833A23CDD1830014915C /* startAndLevel.mp3 */,
 			);
 			path = "Sound Effect";
 			sourceTree = "<group>";
@@ -469,12 +501,13 @@
 				F6F8F1A5239249C900F65449 /* GameVC Timer.swift */,
 				F6F8F1A7239249F300F65449 /* Game VC Life.swift */,
 				F6F8F1AB23924A4600F65449 /* Game VC Chance.swift */,
+				F6F8F1B823924DFF00F65449 /* Game VC GAD.swift */,
 				F6F8F1A923924A1E00F65449 /* Game VC AD.swift */,
 				F6F8F1A12392441C00F65449 /* GameVC Constraints.swift */,
 				F6FED294236A0E9300D2BDD3 /* GameVC UISetup.swift */,
 				F6FED290236A0D9900D2BDD3 /* GameVC MenuView.swift */,
 				F6512DE4237A1934003997BA /* Game VC IAP.swift */,
-				F6F8F1B823924DFF00F65449 /* Game VC GAD.swift */,
+				F6A1833323CD4AB70014915C /* Game VC SaveAndLoad.swift */,
 			);
 			path = "Game View Controller";
 			sourceTree = "<group>";
@@ -550,6 +583,7 @@
 				F639B1CE2334C3D300CF921A /* Frameworks */,
 				F639B1CF2334C3D300CF921A /* Resources */,
 				AE189C20F680A2D50D102244 /* [CP] Embed Pods Frameworks */,
+				DC3F30A4499F919895686408 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -605,17 +639,24 @@
 				F6427E572375D63D0083C807 /* ExpertAnswers.plist in Resources */,
 				F6D652F8238B542900E6D810 /* Chance3.json in Resources */,
 				F619B9FE2370CD7900DCEDF2 /* Expert.plist in Resources */,
+				F6A1834B23CDD1830014915C /* inGamePause.mp3 in Resources */,
 				F639B1DF2334C3D500CF921A /* LaunchScreen.storyboard in Resources */,
 				F6D652F4238B542900E6D810 /* Chance8Side.json in Resources */,
 				F65DCF21239255DF002BF3D1 /* SFProDisplay-Bold.ttf in Resources */,
 				F6D652FD238B542900E6D810 /* Chance7Side.json in Resources */,
+				F6A1834723CDD1830014915C /* inGameBoardTouch.mp3 in Resources */,
 				F639B1DC2334C3D500CF921A /* Assets.xcassets in Resources */,
+				F66D598523ACD4F30089B358 /* GoogleService-Info.plist in Resources */,
+				F6A1834A23CDD1830014915C /* gameSolvedFirework.mp3 in Resources */,
 				F65DCF22239255E2002BF3D1 /* SFProDisplay-Medium.ttf in Resources */,
+				F6A1834623CDD1830014915C /* inGameKeypad.mp3 in Resources */,
 				F6D65306238BC8B100E6D810 /* Firework.json in Resources */,
 				F6D652F2238B542900E6D810 /* Chance8.json in Resources */,
+				F6A1834823CDD1830014915C /* inGameChance.mp3 in Resources */,
 				F6F8F19A2391493800F65449 /* Blank1.json in Resources */,
 				F6D652F9238B542900E6D810 /* Chance2.json in Resources */,
 				F64EBE5C235690AA0006094F /* Hard.plist in Resources */,
+				F6A1834523CDD1830014915C /* startAndLevel.mp3 in Resources */,
 				F6D652FC238B542900E6D810 /* Chance4.json in Resources */,
 				F6D65300238B542900E6D810 /* Chance7.json in Resources */,
 				F6F8F1992391493800F65449 /* Blank0.json in Resources */,
@@ -625,9 +666,12 @@
 				F6D652F7238B542900E6D810 /* Chance9Side.json in Resources */,
 				F6D652FB238B542900E6D810 /* Chance9.json in Resources */,
 				F639B1DA2334C3D300CF921A /* Main.storyboard in Resources */,
+				F6A1833223CD33590014915C /* Normal.plist in Resources */,
 				F65DCF20239255DC002BF3D1 /* SFProDisplay-Regular.ttf in Resources */,
 				F65DCF272392DFF1002BF3D1 /* SFProDisplay-Light.ttf in Resources */,
+				F6A1834323CDD1830014915C /* inGameMenuAndButtons.mp3 in Resources */,
 				F6D65301238B542900E6D810 /* Chance2Side.json in Resources */,
+				F6A1834423CDD1830014915C /* countdown.mp3 in Resources */,
 				F6D652F1238B542900E6D810 /* Chance6Side.json in Resources */,
 				F64EBE5D235690AA0006094F /* Easy.plist in Resources */,
 				F6D652F5238B542900E6D810 /* Chance4Side.json in Resources */,
@@ -636,10 +680,10 @@
 				F6BBAAE923722BAF008B6059 /* NormalAnswers.plist in Resources */,
 				F6D652FA238B542900E6D810 /* Chance1.json in Resources */,
 				F6F8F19423912B1500F65449 /* Intro.json in Resources */,
-				F65DCF282392DFF1002BF3D1 /* SFProDisplay-Semibold.ttf in Resources */,
+				F6A1834923CDD1830014915C /* inGameWrong.mp3 in Resources */,
+				F6A1834223CDD1830014915C /* BGM0.mp3 in Resources */,
 				F6427E582375D63D0083C807 /* HardAnswers.plist in Resources */,
-				F6ED15C0239E0108005E1DD7 /* sample1.mp3 in Resources */,
-				F619B9FC2370CD7200DCEDF2 /* Normal.plist in Resources */,
+				F6A1834C23CDD1830014915C /* BGM1.mp3 in Resources */,
 				F6D652FE238B542900E6D810 /* Chance6.json in Resources */,
 				F6FC487D2385676F0033E358 /* EasyAnswers.plist in Resources */,
 			);
@@ -687,6 +731,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Sudoku Mole/Pods-Sudoku Mole-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DC3F30A4499F919895686408 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Sudoku Mole/Pods-Sudoku Mole-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Sudoku Mole/Pods-Sudoku Mole-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Sudoku Mole/Pods-Sudoku Mole-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -701,10 +762,10 @@
 				F639B1F02336077700CF921A /* GameViewController.swift in Sources */,
 				F6FED28F2368CF6A00D2BDD3 /* CustomAlertViewController.swift in Sources */,
 				F62135D22385557500150686 /* DialogLabel.swift in Sources */,
+				F68DADDB23AB4143002D6753 /* NoADLabel.swift in Sources */,
 				F6512DE5237A1934003997BA /* Game VC IAP.swift in Sources */,
 				F60A38C423900DF4001B7749 /* NotificationCentre.swift in Sources */,
 				F6A340A2237DD56E00194C60 /* NormalViewController.swift in Sources */,
-				F6ED15BC239E00CA005E1DD7 /* SoundEffect.swift in Sources */,
 				F6FED297236A0F3100D2BDD3 /* SudokuSwitches.swift in Sources */,
 				F66AEA1A23925120006E598B /* UIButton.swift in Sources */,
 				F6F8F1A6239249C900F65449 /* GameVC Timer.swift in Sources */,
@@ -722,6 +783,7 @@
 				F6F8F1A02392440700F65449 /* GameVC TipViews.swift in Sources */,
 				F6A340A4237DD57600194C60 /* HardViewController.swift in Sources */,
 				F66AEA1E23925130006E598B /* Substring.swift in Sources */,
+				F6A1833423CD4AB70014915C /* Game VC SaveAndLoad.swift in Sources */,
 				F66AEA2023925136006E598B /* Array.swift in Sources */,
 				F6FD9F902382B20A00A44649 /* DoubletapRemover.swift in Sources */,
 				F6A340A0237DD56000194C60 /* EasyViewController.swift in Sources */,
@@ -736,7 +798,7 @@
 				F66AEA1623925102006E598B /* UIDevice.swift in Sources */,
 				F6F8F1B223924C6200F65449 /* Home VC Puzzle Generator.swift in Sources */,
 				F619B9FA236F6A4D00DCEDF2 /* SudokuRecords.swift in Sources */,
-				F62135CE2384F0BB00150686 /* GlobalFunctions.swift in Sources */,
+				F62135CE2384F0BB00150686 /* GlobalSpace.swift in Sources */,
 				F6FED295236A0E9300D2BDD3 /* GameVC UISetup.swift in Sources */,
 				F64EBE572356865C0006094F /* SudokuClass.swift in Sources */,
 				F6F8F1A22392441C00F65449 /* GameVC Constraints.swift in Sources */,
@@ -843,7 +905,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -899,7 +961,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -916,13 +978,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Sudoku Mole/Sudoku Mole.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = RF525HK56L;
 				INFOPLIST_FILE = "Sudoku Mole/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cochipcho.SudokuMole;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -937,13 +1000,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Sudoku Mole/Sudoku Mole.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = RF525HK56L;
 				INFOPLIST_FILE = "Sudoku Mole/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cochipcho.SudokuMole;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

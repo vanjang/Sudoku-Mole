@@ -11,19 +11,17 @@ import UIKit
 
 extension HomeViewController {
     func playStartLottie() {
-        var progress = CGFloat()
+        var progress = Double()
         intro.contentMode = .scaleAspectFit
-//        intro.frame = view.bounds
         view.addSubview(intro)
-     
+        
         var bttmConstant = CGFloat()
         
-        if UIDevice.modelName == "iPhone 6" || UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 7" || UIDevice.modelName == "iPhone 8" || UIDevice.modelName == "Simulator iPhone 8" || UIDevice.modelName == "Simulator iPhone 7" {
+        if !deviceScreenHasNotch() {
             bttmConstant = 50
         } else {
             bttmConstant = 0
         }
-        
         
         intro.translatesAutoresizingMaskIntoConstraints = false
         let bottomConstraint = NSLayoutConstraint(item: intro, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: bttmConstant)
@@ -31,20 +29,16 @@ extension HomeViewController {
         let rightConstraint = NSLayoutConstraint(item: intro, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: 0)
         self.view.addConstraints([bottomConstraint, leftConstraint, rightConstraint])
         
-        
-        
         if !isFromGameVC {
             progress = 0.00
-//            progress = 0.06
         } else {
-            progress = -0.20
+            progress = 0.08
         }
-        DispatchQueue.main.async {
-            self.intro.play(fromProgress: progress, toProgress: 0.33, loopMode: .none) { (played) in
-//                self.intro.play(fromProgress: 0.14, toProgress: 0.34, loopMode: .loop, completion: nil)
-            }//, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + progress) {
+            self.intro.backgroundBehavior = .pauseAndRestore
+            self.intro.play(fromProgress: 0.00, toProgress: 0.33, loopMode: .none) { (played) in
+            }
         }
-        
         view.bringSubviewToFront(startButton)
     }
     
@@ -60,5 +54,4 @@ extension HomeViewController {
             completion()
         }
     }
-    
 }

@@ -98,29 +98,53 @@ extension GameViewController {
     func makeBannerCase() {
         bannerCase.addSubview(bannerView)
         let width = menuView.frame.size.width*0.72
-        let height = width*0.286
+        let height = width*0.29
         let x = (dummyView.frame.size.width-width)/2
         let y = menuView.bounds.maxY-height-20
         let frame = CGRect(x: x, y: y, width: width, height: height)
         
         bannerView.frame = frame
-        bannerView.layer.cornerRadius = height/3
+        bannerView.layer.cornerRadius = height/8
         
         let caseWidth = menuView.frame.size.width*0.70
         let caseFrame = CGRect(x: x, y: y, width: caseWidth, height: height)
         bannerCase.frame = caseFrame
         bannerCase.backgroundColor = .white
         bannerCase.layer.borderWidth = 0
-        bannerCase.layer.cornerRadius = height/3
+        bannerCase.layer.cornerRadius = height/8
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         
         menuView.addSubview(bannerCase)
         
+        let noADImageView = UIImageView()
+        let image = UIImage(named: "icNoti.png")
+        noADImageView.image = image
+        noADImageView.frame.size.width = 34
+        noADImageView.frame.size.height = 34
+        
+        let textWhenNoADAvailable = "NO AD AVAILABLE\nAT THE MOMENT".localized()
+        let noADLabel = NoADLabel()
+        noADLabel.font = UIFont(name: "ArialRoundedMTBold", size: 16.0)
+        noADLabel.textColor = UIColor(red: 255/255, green: 171/255, blue: 151/255, alpha: 1)// #colorLiteral(red: 1, green: 0.7889312506, blue: 0.7353969216, alpha: 1)
+        noADLabel.numberOfLines = 0
+        noADLabel.textAlignment = .center
+        noADLabel.sizeToFit()
+        noADLabel.text = textWhenNoADAvailable
+        noADLabel.frame = bannerCase.bounds
+        bannerCase.addSubview(noADLabel)
+        noADLabel.addSubview(noADImageView)
+        
+        noADImageView.translatesAutoresizingMaskIntoConstraints = false
+        let leftConstraint = NSLayoutConstraint(item: noADImageView, attribute: .left, relatedBy: .equal, toItem: noADLabel, attribute: .left, multiplier: 1, constant: 30)
+        let verticaltConstraint = NSLayoutConstraint(item: noADImageView, attribute: .centerY, relatedBy: .equal, toItem: noADLabel, attribute: .centerY, multiplier: 1, constant: 0)
+        self.view.addConstraints([leftConstraint, verticaltConstraint])
+        
+        bannerCase.bringSubviewToFront(bannerView)
         let verticalConstraint = NSLayoutConstraint(item: bannerView!, attribute: .centerY, relatedBy: .equal, toItem: bannerCase, attribute: .centerY, multiplier: 1, constant: 0)
         let horizontalConstraint = NSLayoutConstraint(item: bannerView!, attribute: .centerX, relatedBy: .equal, toItem: bannerCase, attribute: .centerX, multiplier: 1, constant: 0)
         self.view.addConstraints([verticalConstraint, horizontalConstraint])
     }
-    
+
     @objc func leftButtonTapped() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reverseVC"), object: nil, userInfo: nil)
     }
@@ -296,7 +320,6 @@ extension GameViewController {
         self.present(licenseVC!, animated: true, completion: nil)
     }
     
-    
     // Page View Container view constraints
     func superViewForConst() -> UIView {
         var returningView = UIView()
@@ -306,7 +329,6 @@ extension GameViewController {
         } else {
             returningView = menuView
         }
-        
         return returningView
     }
     

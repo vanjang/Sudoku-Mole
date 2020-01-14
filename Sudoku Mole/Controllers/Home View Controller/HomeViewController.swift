@@ -18,7 +18,12 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        stopBGM()
         homeViewControllerTransition = .start
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        isPlayingGame = true
     }
     
     @IBOutlet weak var aniView: UIView!
@@ -42,19 +47,15 @@ class HomeViewController: UIViewController {
                 instructionStackView.isHidden = true
             case .level :
                 startButton.isHidden = true
-//                self.moveStartImageToLeft()
                 zoomOutStartImageToCentre()
                 self.levelButtonsStackView.isHidden = false
                 self.levelButtonsStackView.frame.origin.x = self.view.frame.maxX
                 self.view.animateXPosition(target: self.levelButtonsStackView, targetPosition: levelSVX)
                 playLevelLottie { () in
-//                    self.moveStartImageToLeft()
-//                    self.levelButtonsStackView.isHidden = false
-//                    self.levelButtonsStackView.frame.origin.x = self.view.frame.maxX
-//                    self.view.animateXPosition(target: self.levelButtonsStackView, targetPosition: levelSVX)
                 }
                 self.view.bringSubviewToFront(self.levelButtonsStackView)
             case .sudoji :
+                playSound(soundFile: "countdown", lag: 0.91, numberOfLoops: 0)
                 self.playSudoji { () in
                     self.performSegue(withIdentifier: "toPuzzle", sender: self)
                 }
@@ -65,7 +66,6 @@ class HomeViewController: UIViewController {
                 instructionStackView.frame.origin.x = view.frame.maxX
                 instructionStackView.isHidden = false
                 self.view.animateXPosition(target: instructionStackView, targetPosition: instructionX) { action in
-                    
                 }
                 levelButtonsStackView.layoutIfNeeded()
                 instructionStackView.layoutIfNeeded()
@@ -100,67 +100,50 @@ class HomeViewController: UIViewController {
     let intro = AnimationView(name: "Intro")
     
     @objc func startButtonTapped(sender: UIButton) {
+        playLevelSound(soundFile: "startAndLevel", lag: -0.2, numberOfLoops: 0)
         homeViewControllerTransition = .level
+        isFromGameVC = true
     }
-    
+
     @objc func easyButtonTapped(sender: UIButton) {
-        deleteIfGameSaved()
-        homeViewControllerTransition = .sudoji
-        let puzzle = appDelegate.sudoku
-        puzzle.grid.gameDiff = "Easy"
-        let array = appDelegate.getPuzzles(puzzle.grid.gameDiff)
-        let answerArray = appDelegate.getPuzzles(puzzle.grid.gameDiff+"Answers")
-        let puzzleIndex = random(array.count)
-        puzzle.grid.plistPuzzle = puzzle.plistToPuzzle(plist: array[puzzleIndex], toughness: puzzle.grid.gameDiff)
-        puzzle.grid.puzzleAnswer = puzzle.plistToPuzzle(plist: answerArray[puzzleIndex], toughness: puzzle.grid.gameDiff+"Answers")
+        initialiseLevel(level: "Easy")
     }
     
     @objc func normalButtonTapped(sender: UIButton) {
-        deleteIfGameSaved()
-        homeViewControllerTransition = .sudoji
-        let puzzle = appDelegate.sudoku
-        puzzle.grid.gameDiff = "Normal"
-        let array = appDelegate.getPuzzles(puzzle.grid.gameDiff)
-        let answerArray = appDelegate.getPuzzles(puzzle.grid.gameDiff+"Answers")
-        let puzzleIndex = random(array.count)
-        puzzle.grid.plistPuzzle = puzzle.plistToPuzzle(plist: array[puzzleIndex], toughness: puzzle.grid.gameDiff)
-        puzzle.grid.puzzleAnswer = puzzle.plistToPuzzle(plist: answerArray[puzzleIndex], toughness: puzzle.grid.gameDiff+"Answers")
+        initialiseLevel(level: "Normal")
     }
     
     @objc func hardButtonTapped(sender: UIButton) {
-        deleteIfGameSaved()
-        homeViewControllerTransition = .sudoji
-        let puzzle = appDelegate.sudoku
-        puzzle.grid.gameDiff = "Hard"
-        let array = appDelegate.getPuzzles(puzzle.grid.gameDiff)
-        let answerArray = appDelegate.getPuzzles(puzzle.grid.gameDiff+"Answers")
-        let puzzleIndex = random(array.count)
-        puzzle.grid.plistPuzzle = puzzle.plistToPuzzle(plist: array[puzzleIndex], toughness: puzzle.grid.gameDiff)
-        puzzle.grid.puzzleAnswer = puzzle.plistToPuzzle(plist: answerArray[puzzleIndex], toughness: puzzle.grid.gameDiff+"Answers")
+        initialiseLevel(level: "Hard")
     }
     
     @objc func expertButtonTapped(sender: UIButton) {
-        deleteIfGameSaved()
-        homeViewControllerTransition = .sudoji
-        let puzzle = appDelegate.sudoku
-        puzzle.grid.gameDiff = "Expert"
-        let array = appDelegate.getPuzzles(puzzle.grid.gameDiff)
-        let answerArray = appDelegate.getPuzzles(puzzle.grid.gameDiff+"Answers")
-        let puzzleIndex = random(array.count)
-        puzzle.grid.plistPuzzle = puzzle.plistToPuzzle(plist: array[puzzleIndex], toughness: puzzle.grid.gameDiff)
-        puzzle.grid.puzzleAnswer = puzzle.plistToPuzzle(plist: answerArray[puzzleIndex], toughness: puzzle.grid.gameDiff+"Answers")
+        initialiseLevel(level: "Expert")
     }
     
     @objc func continueButtonTapped(sender: UIButton) {
         startButton.isHidden = true
         var load = appDelegate.load
         load = appDelegate.loadLocalStorage()
+        
         if load != nil {
-            GameViewController.isPlayingSavedGame = true
-            appDelegate.sudoku.grid = load
-            dump(appDelegate.sudoku.grid.plistPuzzle)
-            dump(appDelegate.sudoku.grid.puzzleAnswer)
-            performSegue(withIdentifier: "toPuzzle", sender: sender)
+            let savedLevel = load!.gameDiff
+            let timeProgressed = load!.savedOutletTime
+            let message = "You were in the middle of\n".localized() + savedLevel + "(" + timeProgressed + ")!".localized()
+            instantiatingCustomAlertView()
+            delegate?.customAlertController(title: "RESUME GAME?".localized(), message: message, option: .twoButtons)
+            delegate?.customAction1(title: "CONTINUE".localized(), action:  { action in
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                    isPlayingSavedGame = true
+                    self.appDelegate.sudoku.grid = load
+                    self.performSegue(withIdentifier: "toPuzzle", sender: sender)
+                }
+            })
+            delegate?.customAction2(title: "CANCEL".localized(), action : { action in
+                self.customAlertView.dismiss(animated: true, completion: nil)
+            })
+            present(customAlertView, animated: true, completion: nil)
         } else {
             instantiatingCustomAlertView()
             self.delegate?.customAlertController(title: "UH-OH".localized(), message: "No Saved Game.".localized(), option: .oneButton)
@@ -173,21 +156,30 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func deleteIfGameSaved() {
-        var load = appDelegate.load
+    func initialiseLevel(level: String) {
+        isPlayingSavedGame = false
+        playLevelSound(soundFile: "startAndLevel", lag: -0.3, numberOfLoops: 0)
+        setupGameData()
+        homeViewControllerTransition = .sudoji
+        let puzzle = appDelegate.sudoku
+        puzzle.grid.gameDiff = level
+        let array = appDelegate.getPuzzles(puzzle.grid.gameDiff)
+        let answerArray = appDelegate.getPuzzles(puzzle.grid.gameDiff+"Answers")
+        let puzzleIndex = random(array.count)
+        puzzle.grid.plistPuzzle = puzzle.plistToPuzzle(plist: array[puzzleIndex], toughness: puzzle.grid.gameDiff)
+        puzzle.grid.puzzleAnswer = puzzle.plistToPuzzle(plist: answerArray[puzzleIndex], toughness: puzzle.grid.gameDiff+"Answers")
+    }
+    
+    func setupGameData() {
         let puzzle = self.appDelegate.sudoku
-        load = appDelegate.loadLocalStorage()
-        if load != nil {
-            // Game is currently saved
-            appDelegate.sudoku.grid = load
-            
-            puzzle.clearUserPuzzle()
-            puzzle.clearPlistPuzzle()
-            puzzle.clearPencilPuzzle()
-            
-        } else {
-            // Game is currently NOT saved
-        }
+        puzzle.grid.savedOutletTime = "00:00:00"
+        puzzle.grid.savedTime = 0
+        puzzle.grid.lifeRemained = []
+        puzzle.grid.savedRow = -1
+        puzzle.grid.savedCol = -1
+        puzzle.clearUserPuzzle()
+        puzzle.clearPlistPuzzle()
+        puzzle.clearPencilPuzzle()
         puzzle.grid.undonePuzzle.removeAll()
         puzzle.grid.puzzleStack.removeAll()
         puzzle.grid.undonePencil.removeAll()
@@ -202,5 +194,4 @@ class HomeViewController: UIViewController {
         customAlertView.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         self.delegate = customAlertView
     }
-    
 }

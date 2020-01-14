@@ -14,8 +14,8 @@ extension GameViewController {
         let play = UIImage(named: "icTimePlay.png")
         let pause = UIImage(named: "icTimeStop.png")
         
-        isPlaying = !isPlaying
-        if isPlaying == true {
+        isTimerInMotion = !isTimerInMotion
+        if isTimerInMotion == true {
             timerImageView.image = pause
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         } else {
@@ -31,5 +31,7 @@ extension GameViewController {
         hours = (counter / 3600)
         record = String(format: "%02d:%02d:%02d", hours, minutes, seconds)
         timerOutlet.text = record
+        //Auto saving point
+        autoSaving()
     }
 }

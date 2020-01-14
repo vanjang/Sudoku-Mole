@@ -21,6 +21,8 @@ extension GameViewController {
     
     func popRewardADforChance() {
         if rewardedAD.isReady {
+            pauseBGM()
+            timerStateInAction()
             rewardedAD.present(fromRootViewController: self, delegate: self)
         } else {
             instantiatingCustomAlertView()
@@ -36,6 +38,8 @@ extension GameViewController {
     
     func popRewardADforLife() {
         if rewardedAD.isReady {
+            pauseBGM()
+            timerStateInAction()
             rewardedAD.present(fromRootViewController: self, delegate: self)
         } else {
             instantiatingCustomAlertView()
@@ -52,8 +56,27 @@ extension GameViewController {
         }
     }
     
+    // new admob id cochipcho.director@gmail.com IDs
+    func createAndLoadInterstitial() -> GADInterstitial {
+//        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")// TestID
+        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-2341224352662975/2139600458")// Actual
+        interstitial.delegate = self
+        interstitial.load(GADRequest())
+        return interstitial
+    }
+    
+    func createAndLoadBanner() {
+        bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)//kGADAdSizeBanner)
+//        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"// TestID
+        bannerView.adUnitID = "ca-app-pub-2341224352662975/6078845467"// Actual
+        bannerView.rootViewController = self
+        bannerView.delegate = self
+        bannerView.load(GADRequest())
+    }
+    
     func createAndLoadRewardedAD() -> GADRewardedAd {
-        let rewardedAD = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313")
+//        let rewardedAD = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313")// TestID
+        let rewardedAD = GADRewardedAd(adUnitID: "ca-app-pub-2341224352662975/5887273778")// Actual
         rewardedAD.load(GADRequest()) { (error) in
             if error != nil {
                 // Error occured

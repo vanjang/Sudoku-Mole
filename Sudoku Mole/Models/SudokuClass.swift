@@ -120,7 +120,7 @@ class SudokuClass {
     }
     
     // User undo
-    func undoGrid() {//row: Int, col: Int) {
+    func undoGrid() {
         if !grid.puzzleStack.isEmpty {
             grid.undonePuzzle.insert(grid.puzzleStack.removeLast(), at: 0)
             if !grid.puzzleStack.isEmpty {

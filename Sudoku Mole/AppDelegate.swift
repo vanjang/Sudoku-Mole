@@ -8,6 +8,11 @@
 
 import UIKit
 import GoogleMobileAds
+import Firebase
+import AVFoundation
+/// To delete
+//import AppLovinAdapter
+//import AppLovinSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let ADRemoverKey = "ADRemover5"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        /// To delete
+        //ALSdk.initializeSdk()
+        FirebaseApp.configure()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         UserNotificationCentre.notificationCentre.requestAuthorization(options: [.alert, .sound])  { (didAllow, error) in
         }
@@ -30,11 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             item = retrieveItems()
         } else {
             let iap = SudokuIAP()
-            iap.chances = ["CHANCE", "CHANCE", "CHANCE", "CHANCE", "CHANCE"]
+            iap.chances = ["CHANCE", "CHANCE"]
             item = iap
             storeItems(nil)
         }
-        
         return true
     }
     
@@ -42,6 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
+        stopFirework()
+        firework.stop()
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -51,50 +60,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
+        if isPlayingGame == true {
+            saveLocalStorage(save: sudoku.grid)
+        }
     }
     
-    // ---------[ getPuzzles ]---------------------
+    // ---------------------[ Get puzzles ]-----------------------------
     func getPuzzles(_ name : String) -> [String] {
         guard let url = Bundle.main.url(forResource: name, withExtension: "plist") else { return [] }
         guard let data = try? Data(contentsOf: url) else { return [] }
         guard let array = try? PropertyListDecoder().decode([String].self, from: data) else { return [] }
         return array
-    } // ---------
+    }
     
-    // ---------------------[ Save files ]----------------------------
+    // ---------------------[ Save game ]-----------------------------
     func saveLocalStorage(save: SudokuData) {
-        // Use Filemanager to store Local files
-        let documentsDirectory =
-            FileManager.default.urls(for: .documentDirectory,
-                                     in: .userDomainMask).first!
-        let saveURL = documentsDirectory.appendingPathComponent("sudoku_save")
-            .appendingPathExtension("plist")
-        // Encode and save to Local Storage
-        //let propertyListEncoder = PropertyListEncoder()
-        let saveGame = try? PropertyListEncoder().encode(save) // TODO: error here -- notes
-        ((try? saveGame?.write(to: saveURL)) as ()??)
-    } // end saveLocalStorage()
-    
-    // ---------------------[ Load Files ]-----------------------------
-    func loadLocalStorage() -> SudokuData? {
-        let documentsDirectory =
-            FileManager.default.urls(for: .documentDirectory,
-                                     in: .userDomainMask).first!
-        let loadURL = documentsDirectory.appendingPathComponent("sudoku_save").appendingPathExtension("plist")
-        // Decode and Load from Local Storage
-        if let data = try? Data(contentsOf: loadURL) {
-            let decoder = PropertyListDecoder()
-            load = try? decoder.decode(SudokuData.self, from: data)
-            // once loaded, delete save
-            try? FileManager.default.removeItem(at: loadURL)
+        let jsonEncoder = JSONEncoder()
+        let data = try? jsonEncoder.encode(save)
+        let saveKey = "saveData"
+        if let savingData = data {
+            userDefault.set(savingData, forKey: saveKey)
+        } else {
+            // Encoding failed
         }
-        
+    }
+    
+    // ---------------------[ Load saved game ]-----------------------------
+    func loadLocalStorage() -> SudokuData? {
+        let saveKey = "saveData"
+        guard let retrievedItem = userDefault.data(forKey: saveKey) else {
+            return nil }
+        let jsonDecoder = JSONDecoder()
+        do {
+            let decoded = try jsonDecoder.decode(SudokuData.self, from: retrievedItem)
+            load = decoded
+        }
+        catch {
+            load = nil
+        }
         return load
     }
     
-    // ---------------------[ Save Items ]-----------------------------
+    // ---------------------[ Save Chances ]-----------------------------
     func storeItems(_ chances: Int?) {
-        
         if chances != nil {
             for _ in 1 ... chances! {
                 item?.chances.append("CHANCE")
@@ -106,7 +114,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let savingData = data {
             userDefault.set(savingData, forKey: itemKey)
-            dump(item?.chances)
         } else {
             // Encoding failed
         }
@@ -148,5 +155,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         bought = true
         return bought
     }
-    
 }

@@ -23,7 +23,7 @@ extension GameViewController: SKProductsRequestDelegate, SKPaymentTransactionObs
             // Identifier is invalid
         }
     }
-   
+    
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
             switch transaction.transactionState {
@@ -93,49 +93,60 @@ extension GameViewController: SKProductsRequestDelegate, SKPaymentTransactionObs
     
     @objc func ADFreeButtonTapped() {
         if !transactionInProgress {
-            let payment = SKPayment(product: self.productsArray[0] as SKProduct)
-            SKPaymentQueue.default().add(payment)
-            isADFreeIAPButtonTapped = true
-            self.transactionInProgress = true
+            if self.productsArray.indices.contains(0) {
+                let payment = SKPayment(product: self.productsArray[0] as SKProduct)
+                SKPaymentQueue.default().add(payment)
+                isADFreeIAPButtonTapped = true
+                self.transactionInProgress = true
+            } else {
+                self.delegate?.customAlertController(title: "PURCHASE UNAVAILABLE".localized(), message: "Network connection might be unstable. Please try later.".localized(), option: .oneButton)
+                self.delegate?.customAction1(title: "OK".localized(), action: { xx in
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
+                self.present(self.customAlertView, animated: true, completion: nil)
+            }
         }
     }
-
+    
     @objc func getChanceButtonTapped() {
         instantiatingCustomAlertView()
         delegate?.customAlertController(title: "PURCHASE 5 CHANCES?".localized(), message: "Tap Purchase to proceed. Please note it may include blanks!".localized(), option: .twoButtons)
         delegate?.customAction1(title: "PURCHASE".localized(), action:  { action in
             self.customAlertView.dismiss(animated: true, completion: nil)
-            if !self.transactionInProgress {
-                if (self.appDelegate.item?.chances.count)! > 5 {
-                    self.delegate?.customAlertController(title: "CHANCE SLOTS ARE FULL".localized(), message: "You can top up if chance is below 6.".localized(), option: .oneButton)
-                    self.delegate?.customAction1(title: "OK".localized(), action: { xx in
-                        DispatchQueue.main.async {
-                            self.dismiss(animated: true, completion: nil)
-                        }
-                    })
-                    self.present(self.customAlertView, animated: true, completion: nil)
-                } else {
-                    let payment = SKPayment(product: self.productsArray[1] as SKProduct)
-                    SKPaymentQueue.default().add(payment)
-                    self.isChanceIAPButtonTapped = true
-                    self.transactionInProgress = true
+            if self.productsArray.indices.contains(1) {
+                if !self.transactionInProgress {
+                    if (self.appDelegate.item?.chances.count)! > 5 {
+                        self.delegate?.customAlertController(title: "CHANCE SLOTS ARE FULL".localized(), message: "You can top up if chance is below 6.".localized(), option: .oneButton)
+                        self.delegate?.customAction1(title: "OK".localized(), action: { xx in
+                            DispatchQueue.main.async {
+                                self.dismiss(animated: true, completion: nil)
+                            }
+                        })
+                        self.present(self.customAlertView, animated: true, completion: nil)
+                    } else {
+                        let payment = SKPayment(product: self.productsArray[1] as SKProduct)
+                        SKPaymentQueue.default().add(payment)
+                        self.isChanceIAPButtonTapped = true
+                        self.transactionInProgress = true
+                    }
                 }
+            } else {
+                self.delegate?.customAlertController(title: "PURCHASE UNAVAILABLE".localized(), message: "Network connection might be unstable. Please try later.".localized(), option: .oneButton)
+                self.delegate?.customAction1(title: "OK".localized(), action: { xx in
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
+                self.present(self.customAlertView, animated: true, completion: nil)
             }
         })
         delegate?.customAction2(title: "CANCEL".localized(), action : { action in
             self.customAlertView.dismiss(animated: true, completion: nil)
         })
         present(customAlertView, animated: true, completion: nil)
-        
-       }
-       
-//    @objc func getChanceButtonTapped() {
-//        if shouldIAPTipView() {
-//            makeIAPTipView()
-//        } else {
-//         chanceButtonAction()
-//        }
-//    }
+    }
     
     func chanceButtonAction() {
         if !transactionInProgress {

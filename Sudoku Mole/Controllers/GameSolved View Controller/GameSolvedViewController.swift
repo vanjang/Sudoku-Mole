@@ -14,23 +14,38 @@ import LinkPresentation
 class GameSolvedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
+        isPlayingGame = false
         tableView.delegate = self
         tableView.dataSource = self
         buttonSetup()
+        
         if !appDelegate.hasADRemoverBeenBought() {
             interstitial = createAndLoadInterstitial()
         }
         
-        if UIDevice.modelName == "iPhone 6" || UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 7" || UIDevice.modelName == "iPhone 8" || UIDevice.modelName == "Simulator iPhone 8" || UIDevice.modelName == "Simulator iPhone 7" {
+        if !deviceScreenHasNotch() {
             flag.font = UIFont(name: "LuckiestGuy-Regular", size: 39)
         }
+        recordViewSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        recordViewSetup()
+        stopBGM()
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if shouldPopDialogue {
+            popDialogueForReview()
+        }
+        shouldPopDialogue = false
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        stopFirework()
+        firework.stop()
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let index = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: index, animated: false)
@@ -46,7 +61,7 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
         cell.cellUpdate(records: records!, indexPath: indexPath)
         return cell
     }
-
+    
     @IBOutlet weak var flag: CircularLabel!
     @IBOutlet weak var boardImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
@@ -58,9 +73,11 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
     @IBAction func refreshTapped(_ sender: Any) {
         self.selectedButton = .refreshTapped
         if appDelegate.hasADRemoverBeenBought() {
+            stopFirework()
             implementButtonAction()
         } else {
             DispatchQueue.main.async {
+                stopFirework()
                 self.popAD()
             }
         }
@@ -69,9 +86,11 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
     @IBAction func homeTapped(_ sender: Any) {
         self.selectedButton = .homeTapped
         if appDelegate.hasADRemoverBeenBought() {
+            stopFirework()
             implementButtonAction()
         } else {
             DispatchQueue.main.async {
+                stopFirework()
                 self.popAD()
             }
         }
@@ -95,6 +114,7 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
     var delegate: GameViewControllerDelegate?
     var thumbnailImage: URL?
     var recordsImage: URL?
+    var shouldPopDialogue = false
     
     func buttonSetup() {
         let refreshNormal = UIImage(named: "btnBottomResetLargeNormal.png")
@@ -179,6 +199,10 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
     func implementButtonAction() {
         if selectedButton == .refreshTapped {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refresher"), object: nil, userInfo: nil)
+            playBGM(soundFile: "BGM", lag: 0.0, numberOfLoops: -1)
+            self.dismiss(animated: true) {
+                self.dismiss(animated: true, completion: nil)
+            }
         } else if selectedButton == .homeTapped {
             self.dismiss(animated: true) {
                 self.dismiss(animated: true) {
@@ -186,23 +210,20 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
                 }
             }
         } else if selectedButton == .SNSTapped {
-            let url = URL(string: "SudokuMole://test")!
-            //            let url = URL(string: "https://apps.apple.com/kr/app/keep-password-diary/id1482176404")! // FLAGED - CHANGE TO ACTUAL LINK
-            
+            // Keep URL for example - let url = URL(string: "https://apps.apple.com/kr/app/keep-password-diary/id1482176404")! // FLAGED - CHANGE TO ACTUAL LINK
+            // SUDOKU MOLE URL: https://apps.apple.com/app/id1487378544
+            let sudokuMoleURL = "https://apps.apple.com/app/id1487378544"
+            let url = URL(string: sudokuMoleURL)!
             let recordComponentKey = "thumbnail.png"
             let thumbnailCompenentKey = "MyRecords.png"
             saveImage(image: UIImage(named: "icon.png")!, compomentName: thumbnailCompenentKey)
             thumbnailImage = getSavedImageURL(named: "MyRecords.png", from: thumbnailCompenentKey)
-            
             saveImage(image: takeScreenshot()!, compomentName: recordComponentKey)
             recordsImage = getSavedImageURL(named: "MyRecords.png", from: recordComponentKey)
             
             var items = [Any]()
-            
             if UIApplication.shared.canOpenURL(url as URL) {
-                items = [self]
-            } else {
-                items = [self, url]
+                items = [self, sudokuMoleURL]
             }
             
             let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
@@ -213,7 +234,7 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
                 }
                 self.appDelegate.storeItems(1)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userEarnedaChance"), object: nil, userInfo: nil)
-
+                
                 self.instantiatingCustomAlertView()
                 self.delegate?.customAlertController(title: "THANK YOU FOR SHARING!".localized(), message: "You earned a free chance.".localized(), option: .oneButton)
                 self.delegate?.customAction1(title: "OK".localized(), action: { xx in
@@ -227,6 +248,31 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
         } else if selectedButton == .none {
             // None Tapped
         }
+    }
+    
+    func popDialogueForReview() {
+        self.instantiatingCustomAlertView()
+        self.delegate?.customAlertController(title: "YOU SET THE NEW RECORD!".localized(), message: "Leave a review on App Store and get 3 chances for free!".localized(), option: .twoButtons)
+        self.delegate?.customAction1(title: "Let's Get It".localized(), action:  { action in
+            AppStoreReviewOperator.requestReview()
+            DispatchQueue.main.async {
+                self.appDelegate.storeItems(3)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userEarnedaChance"), object: nil, userInfo: nil)
+                self.dismiss(animated: true, completion: nil)
+                self.instantiatingCustomAlertView()
+                self.delegate?.customAlertController(title: "THANK YOU FOR A REVIEW!".localized(), message: "You earned free 3 chances.".localized(), option: .oneButton)
+                self.delegate?.customAction1(title: "OK".localized(), action: { xx in
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
+                self.present(self.customAlertView, animated: true, completion: nil)
+            }
+        })
+        self.delegate?.customAction2(title: "Later".localized(), action : { action in
+            self.customAlertView.dismiss(animated: true, completion: nil)
+        })
+        self.present(self.customAlertView, animated: true, completion: nil)
     }
     
     func recordViewSetup() {
@@ -243,11 +289,11 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
                     let index = self.records!.firstIndex(of: r)
                     let indexPath = IndexPath(row: index!, section: 0)
                     tableView.scrollToRow(at: indexPath, at: .top, animated: true)
-                    
-                    //                    if index != 0 {
+
                     if index == 0 {
-                        AppStoreReviewOperator.incrementNewRecordCountAndRequestReview()
-                        
+                        AppStoreReviewOperator.incrementNewRecordCountAndRequestReview { () in
+                            self.shouldPopDialogue = true
+                        }
                         let easy = UIImage(named: "boardRecordNewEasy.png")
                         let normal = UIImage(named: "boardRecordNewNormal.png")
                         let hard = UIImage(named: "boardRecordNewHard.png")
@@ -262,19 +308,15 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
                         }
                         
                         flag.textColor = #colorLiteral(red: 1, green: 0.9337611198, blue: 0.2692891061, alpha: 1)
-                        
-                        let firework = AnimationView(name: "Firework")
-                        
                         view.addSubview(firework)
                         firework.isUserInteractionEnabled = false
-//                        firework.frame = view.bounds
                         firework.frame.origin.x = 0
                         firework.frame.origin.y = 0
                         firework.backgroundColor = .clear
-                        firework.animationSpeed = 1.00
+                        firework.animationSpeed = 1.01
                         firework.loopMode = .loop
                         firework.play()
-                        
+                        playFirework()
                     } else {
                         let easy = UIImage(named: "boardRecordNormalEasy.png")
                         let normal = UIImage(named: "boardRecordNormalNormal.png")
@@ -296,5 +338,4 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
             self.records = [Record(record: "", recordInSecond: 0, isNew: false)]
         }
     }
-    
 }

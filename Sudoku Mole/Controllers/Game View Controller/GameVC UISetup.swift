@@ -61,58 +61,6 @@ extension GameViewController {
         tipView.animateYPosition(target: tipView, targetPosition: view.frame.size.height-height-((view.frame.size.width-width)/2), completion: nil)
     }
     
-//    func makeIAPTipView() {
-//        let width = self.view.frame.size.width*0.88
-//        let height = width*0.50
-//        
-//        let dismissedFrame = CGRect(x: (view.frame.size.width-width)/2, y: view.frame.size.height+300, width: width, height: height)
-//        IAPtipView.frame = dismissedFrame
-//        IAPtipView.backgroundColor = #colorLiteral(red: 0.9364990592, green: 0.3447085321, blue: 0.3428477943, alpha: 1)
-//        IAPtipView.layer.cornerRadius = 29
-//        view.addSubview(IAPtipView)
-//        IAPtipView.addSubview(IAPtipLabel)
-//        
-//        IAPtipLabel.text = "You can use chances to know the answer! Please note chance may include \"Blank\"!".localized()
-//        IAPtipLabel.numberOfLines = 0
-//        IAPtipLabel.textColor = .white
-//        IAPtipLabel.font = UIFont(name: "SFProDisplay-Regular", size: 18)
-//        IAPtipLabel.contentMode = .topLeft
-//        IAPtipLabel.textAlignment = .left
-//        
-//        IAPtipLabel.translatesAutoresizingMaskIntoConstraints = false
-//        let leftConstraint = NSLayoutConstraint(item: IAPtipLabel, attribute: .left, relatedBy: .equal, toItem: IAPtipView, attribute: .left, multiplier: 1, constant: 20)
-//        let rightConstraint = NSLayoutConstraint(item: IAPtipLabel, attribute: .right, relatedBy: .equal, toItem: IAPtipView, attribute: .right, multiplier: 1, constant: -width*0.38)
-//        let topConstraint = NSLayoutConstraint(item: IAPtipLabel, attribute: .top, relatedBy: .equal, toItem: IAPtipView, attribute: .top, multiplier: 1, constant: 0)
-//        let bottomConstraint = NSLayoutConstraint(item: IAPtipLabel, attribute: .bottom, relatedBy: .equal, toItem: IAPtipView, attribute: .bottom, multiplier: 1, constant: -tipView.frame.size.height/3)
-//        self.IAPtipView.addConstraints([leftConstraint, rightConstraint, topConstraint, bottomConstraint])
-//        
-//        IAPtipViewDismissImage = UIImage(named: "tooltipClose.png")!
-//        IAPtipViewDismissButton.setImage(IAPtipViewDismissImage, for: .normal)
-//        IAPtipViewDismissButton.frame.size.width = 20
-//        IAPtipViewDismissButton.frame.size.height = 20
-//        IAPtipViewDismissButton.addTarget(self, action: #selector(IAPtipViewButtonDismissButtonTapped), for: .touchUpInside)
-//        IAPtipView.addSubview(IAPtipViewDismissButton)
-//        
-//        IAPtipViewDismissButton.translatesAutoresizingMaskIntoConstraints = false
-//        let xRightConstraint = NSLayoutConstraint(item: IAPtipViewDismissButton, attribute: .right, relatedBy: .equal, toItem: IAPtipView, attribute: .right, multiplier: 1, constant: -15)
-//        let xTopConstraint = NSLayoutConstraint(item: IAPtipViewDismissButton, attribute: .top, relatedBy: .equal, toItem: IAPtipView, attribute: .top, multiplier: 1, constant: 15)
-//        self.IAPtipView.addConstraints([xRightConstraint, xTopConstraint])
-//        
-//        IAPtipSmoleImage = UIImage(named: "smoleNotice.png")!
-//        IAPtipSmole.image = IAPtipSmoleImage
-//        IAPtipSmole.contentMode = .scaleAspectFit
-//        IAPtipView.addSubview(IAPtipSmole)
-//        
-//        IAPtipSmole.translatesAutoresizingMaskIntoConstraints = false
-//        let smoleLeftConstraint = NSLayoutConstraint(item: IAPtipSmole, attribute: .left, relatedBy: .equal, toItem: IAPtipLabel, attribute: .right, multiplier: 1, constant: 0)
-//        let smoleRightConstraint = NSLayoutConstraint(item: IAPtipSmole, attribute: .right, relatedBy: .equal, toItem: IAPtipView, attribute: .right, multiplier: 1, constant: -10)
-//        let smoleTopConstraint = NSLayoutConstraint(item: IAPtipSmole, attribute: .top, relatedBy: .equal, toItem: IAPtipView, attribute: .top, multiplier: 1, constant: tipView.frame.size.height/3.5)
-//        let smoleBottomConstraint = NSLayoutConstraint(item: IAPtipSmole, attribute: .bottom, relatedBy: .equal, toItem: IAPtipView, attribute: .bottom, multiplier: 1, constant: 0)
-//        self.IAPtipView.addConstraints([smoleLeftConstraint, smoleRightConstraint, smoleTopConstraint, smoleBottomConstraint])
-//        
-//        IAPtipView.animateYPosition(target: IAPtipView, targetPosition: view.frame.size.height-height-((view.frame.size.width-width)/2), completion: nil)
-//    }
-    
     func keypadAutoResize() {
         for button in keypadCollection {
             button.titleLabel?.numberOfLines = 1
@@ -120,7 +68,7 @@ extension GameViewController {
             button.titleLabel?.contentMode = .scaleToFill
             button.titleLabel?.baselineAdjustment = .alignBaselines
             button.titleLabel?.adjustsFontForContentSizeCategory = true
-            if UIDevice.modelName == "iPhone 6" || UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 7" || UIDevice.modelName == "iPhone 8" || UIDevice.modelName == "Simulator iPhone 8" || UIDevice.modelName == "Simulator iPhone 7" {
+            if !deviceScreenHasNotch() {
                 button.titleLabel?.font = UIFont(name: "LuckiestGuy-Regular", size: 39.0)
             }
         }
@@ -142,7 +90,7 @@ extension GameViewController {
         redoButtonOutlet.setImage(redoPressed, for: .highlighted)
     }
     
-    func undoRedoButtonState() {
+    func redoUndoButtonState() {
         let puzzle = self.appDelegate.sudoku
         if pencilOn {
             if puzzle.grid.pencilStack.isEmpty {
@@ -187,19 +135,6 @@ extension GameViewController {
         biOutlet.attributedText = attribute
         biOutlet.layer.shadowColor = UIColor(red: 69.0/255.0, green: 99.0/255.0, blue: 54.0/255.0, alpha: 1.0).cgColor
         biOutlet.layer.shadowOffset.height = 3
-    }
-    
-    func timerSetup() {
-        timerView.bringSubviewToFront(timerOutlet)
-        timerView.bringSubviewToFront(timerSwitch)
-        
-        if let load = appDelegate.loadLocalStorage() {
-            timerOutlet.text = load.savedOutletTime
-            counter = load.savedTime
-        } else {
-            timerOutlet.text = "00:00:00"
-        }
-        timerStateInAction()
     }
     
     func boardSetup() {

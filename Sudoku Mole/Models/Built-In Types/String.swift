@@ -59,5 +59,4 @@ extension String {
         let end = index(startIndex, offsetBy: bounds.upperBound)
         return self[startIndex ..< end]
     }
-    
 }

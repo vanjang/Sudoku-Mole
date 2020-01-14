@@ -27,25 +27,6 @@ extension GameViewController {
         }
     }
     
-//    func shouldIAPTipView() -> Bool {
-//        let tipViewKey = "IAPTipViewShownOnce1" // FLAGED "IAPTipViewShownOnce1"
-//        let userDefault = appDelegate.userDefault
-//        var count = Int()
-//
-//        guard let value = userDefault.value(forKey: tipViewKey) as? Int else {
-//            userDefault.set(0, forKey: tipViewKey)
-//            return true
-//        }
-//
-//        if value < 1 {
-//            count = value + 1
-//            userDefault.set(count, forKey: tipViewKey)
-//            return true
-//        } else {
-//            return false
-//        }
-//    }
-    
     @objc func tipViewButtonDismissButtonTapped() {
         tipView.animateYPosition(target: tipView, targetPosition: view.frame.size.height+300, completion: { (action) in
             self.tipView.removeFromSuperview()
@@ -53,12 +34,4 @@ extension GameViewController {
             self.sudokuView.isUserInteractionEnabled = true
         })
     }
-    
-//    @objc func IAPtipViewButtonDismissButtonTapped() {
-//        IAPtipView.animateYPosition(target: IAPtipView, targetPosition: view.frame.size.height+300, completion: { (action) in
-//            self.IAPtipView.removeFromSuperview()
-//            self.chanceButtonAction()
-//        })
-//    }
-    
 }

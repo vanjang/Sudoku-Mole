@@ -52,6 +52,7 @@ extension GameViewController {
     }
     
     func playAnimation(answer: Int?, point: CGPoint, isColumn8: Bool, isBlank: Bool) {
+        playSound(soundFile: "inGameChance", lag: 0.0, numberOfLoops: 0)
         self.chanceButtonOutlet.isUserInteractionEnabled = false
         let boxSize = sudokuView.sizeForSelectedBox
         let frame = CGRect(x: point.x+3, y: (point.y-boxSize.height*0.75)+biOutlet.frame.size.height+view.safeAreaInsets.top+3, width: boxSize.width*1.75, height: boxSize.height*1.80)
@@ -66,16 +67,13 @@ extension GameViewController {
         if isBlank == false {
             if isColumn8 {
                 lottieName += lottieNumber + side
-                print(lottieName)
             } else {
                 lottieName += lottieNumber
-                print(lottieName)
             }
         } else {
             //play Blank
             let randomBlank = random(2)
             lottieName = "Blank" + String(randomBlank)
-            print(lottieName)
         }
         
         let lottie = AnimationView(name: lottieName)
@@ -100,15 +98,11 @@ extension GameViewController {
         lottie.backgroundColor = .clear
         view.addSubview(lottie)
         
+        lottie.backgroundBehavior = .pauseAndRestore
         lottie.play { (finished) in
             self.chanceView.removeFromSuperview()
             lottie.removeFromSuperview()
             self.chanceButtonOutlet.isUserInteractionEnabled = true
         }
-        // FLAGED - Build test code - infinite chances
-//        appDelegate.storeItems(1)
-//        self.chanceSetup()
     }
-    
-    
 }

@@ -7,8 +7,7 @@
 //
 
 import Foundation
-extension Array where Element : Collection,
-Element.Iterator.Element : Equatable, Element.Index == Int {
+extension Array where Element : Collection,Element.Iterator.Element : Equatable, Element.Index == Int {
     func indices(of x: Element.Iterator.Element) -> (Int, Int)? {
         for (i, row) in self.enumerated() {
             if let j = row.firstIndex(of: x) {

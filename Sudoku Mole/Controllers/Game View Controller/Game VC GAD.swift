@@ -10,14 +10,8 @@ import Foundation
 import UIKit
 import GoogleMobileAds
 
+// Interstitial delegates
 extension GameViewController: GADInterstitialDelegate {
-    func createAndLoadInterstitial() -> GADInterstitial {
-        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
-        interstitial.delegate = self
-        interstitial.load(GADRequest())
-        return interstitial
-    }
-    
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
         interstitial = createAndLoadInterstitial()
     }
@@ -30,44 +24,29 @@ extension GameViewController: GADInterstitialDelegate {
 
 // Banner delegates
 extension GameViewController {
+    // Tells the delegate an ad request loaded an ad.
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {}
     
-    /// Tells the delegate an ad request loaded an ad.
-    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-        //      print("adViewDidReceiveAd")
-    }
+    // Tells the delegate an ad request failed.
+    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {}
     
-    /// Tells the delegate an ad request failed.
-    func adView(_ bannerView: GADBannerView,
-                didFailToReceiveAdWithError error: GADRequestError) {
-        //      print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
-    }
+    // Tells the delegate that a full-screen view will be presented in response
+    // to the user clicking on an ad.
+    func adViewWillPresentScreen(_ bannerView: GADBannerView) {}
     
-    /// Tells the delegate that a full-screen view will be presented in response
-    /// to the user clicking on an ad.
-    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
-        //      print("adViewWillPresentScreen")
-    }
+    // Tells the delegate that the full-screen view will be dismissed.
+    func adViewWillDismissScreen(_ bannerView: GADBannerView) {}
     
-    /// Tells the delegate that the full-screen view will be dismissed.
-    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
-        //      print("adViewWillDismissScreen")
-    }
+    // Tells the delegate that the full-screen view has been dismissed.
+    func adViewDidDismissScreen(_ bannerView: GADBannerView) {}
     
-    /// Tells the delegate that the full-screen view has been dismissed.
-    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
-        //      print("adViewDidDismissScreen")
-    }
-    
-    /// Tells the delegate that a user click will open another app (such as
-    /// the App Store), backgrounding the current app.
-    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
-        //      print("adViewWillLeaveApplication")
-    }
-    
+    // Tells the delegate that a user click will open another app (such as the App Store), backgrounding the current app.
+    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {}
 }
 
+// Rewarded delegate
 extension GameViewController {
-    /// Tells the delegate that the user earned a reward.
+    // Tells the delegate that the user earned a reward.
     func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
         isRewarded = true
         
@@ -80,29 +59,30 @@ extension GameViewController {
             lives.removeLast()
             lifeCounter()
             shouldAnotherLife = false
+            lifeChanceFlagUp = false
         }
     }
     
-    /// Tells the delegate that the rewarded ad was presented.
-    func rewardedAdDidPresent(_ rewardedAd: GADRewardedAd) {
-        //        print("rewardedAdDidPresent")
-    }
+    // Tells the delegate that the rewarded ad was presented.
+    func rewardedAdDidPresent(_ rewardedAd: GADRewardedAd) {}
     
-    /// Tells the delegate that the rewarded ad failed to present.
-    func rewardedAd(_ rewardedAd: GADRewardedAd, didFailToPresentWithError error: Error) {
-        //        print("rewardedAd:didFailToPresentWithError")
-    }
+    // Tells the delegate that the rewarded ad failed to present.
+    func rewardedAd(_ rewardedAd: GADRewardedAd, didFailToPresentWithError error: Error) {}
     
-    /// Tells the delegate that the rewarded ad was dismissed.
+    // Tells the delegate that the rewarded ad was dismissed.
     func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) {
-        //        print("rewardedAdDidDismiss")
         rewardedAD = createAndLoadRewardedAD()
         self.chanceSetup()
         self.timerStateInAction()
         
         if !isRewarded {
-            abandon()
+            // Call ONLY When terminating
+            if lifeChanceFlagUp {
+                abandon()
+            }
             isRewarded = !isRewarded
+        } else {
+            resumeBGM()
         }
         isRewarded = false
     }

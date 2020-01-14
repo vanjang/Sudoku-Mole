@@ -19,6 +19,7 @@ class SudokuView: UIView {
     
     // Allow user to "select" a non-fixed cell in the puzzle's 9x9 grid.
     @IBAction func handleTap(_ sender : UIGestureRecognizer) {
+        playBoardSound(soundFile: "inGameBoardTouch", lag: 0.0, numberOfLoops: 0)
         let tapPoint = sender.location(in: self)
         let gridSize = (self.bounds.width < self.bounds.height) ? self.bounds.width : self.bounds.height
         let gridOrigin = CGPoint(x: (self.bounds.width - gridSize)/2, y: (self.bounds.height - gridSize)/2)
@@ -27,13 +28,11 @@ class SudokuView: UIView {
         let row = Int((tapPoint.y - gridOrigin.y)/d)
         
         if  0 <= col && col < 9 && 0 <= row && row < 9 {              // if inside puzzle bounds
-//            if (!puzzle.numberIsFixedAt(row: row, column: col)) {       // and not a "fixed number"
-                if (row != selected.row || col != selected.column) {  // and not already selected
-                    selected.row = row                                // then select cell
-                    selected.column = col
-                    setNeedsDisplay()                                 // request redraw ***** PuzzleView
-                }
-//            }
+            if (row != selected.row || col != selected.column) {  // and not already selected
+                selected.row = row                                // then select cell
+                selected.column = col
+                setNeedsDisplay()                                 // request redraw ***** PuzzleView
+            }
         }
     }
     
@@ -84,7 +83,7 @@ class SudokuView: UIView {
         if selected.row >= 0 && selected.column >= 0 {
             let x = gridOrigin.x + CGFloat(selected.column)*d
             let y = gridOrigin.y + CGFloat(selected.row)*d
-//            let numberAtSelectedBox = puzzle.userEntry(row: selected.row, column: selected.column)
+            //            let numberAtSelectedBox = puzzle.userEntry(row: selected.row, column: selected.column)
             let numberAtSelectedBox = puzzle.numberAt(row: selected.row, column: selected.column)
             var selectedThird = -1
             
@@ -175,7 +174,7 @@ class SudokuView: UIView {
                 if y == gridOrigin.y+CGFloat(i)*d {
                     selectedCellColor.setFill()
                     context?.fill(CGRect(x: x, y: y, width: d, height: d))
-
+                    
                     // send coordinates to play animation on
                     cgPointForSelectedBox.x = x
                     cgPointForSelectedBox.y = y
@@ -255,13 +254,13 @@ class SudokuView: UIView {
                     if iteratingBox.row >= 6 && iteratingBox.row < 9 && iteratingBox.column >= 6 && iteratingBox.column < 9 {
                         iteratingThird = 8
                     }
-
+                    
                     if numberAtSelectedBox != 0 && selected != iteratingBox && (puzzle.userEntry(row: r, column: c) == numberAtSelectedBox || puzzle.grid.plistPuzzle[r][c] == numberAtSelectedBox) {
                         sameNumberColor.setFill()
                         sameNumberStrokeColor.setStroke()
                         context?.fill(CGRect(x: gridOrigin.x + CGFloat(c)*d, y: gridOrigin.y + CGFloat(r)*d, width: d, height: d))
                         context?.stroke(CGRect(x: gridOrigin.x + CGFloat(c)*d, y: gridOrigin.y + CGFloat(r)*d, width: d, height: d))
-
+                        
                         // - 선택한 칸에 숫자가 채워졌고
                         // - 선택한 칸이 아닌 다른 모든 칸이며(looping)(선택한 칸이 아닌 다른 칸을 draw해야 하므로)
                         // - 아래 creteria중 하나가 true이며
@@ -343,7 +342,7 @@ class SudokuView: UIView {
             context?.strokePath()
         }
         
-        // Stroke minor grid lines.
+        // Stroke minor grid lines
         for i in 0 ..< 3 {
             minorBorderColor.setStroke()
             for j in 1 ..< 3 {
@@ -359,7 +358,7 @@ class SudokuView: UIView {
             }
         }
         
-        // Fill in puzzle numbers.
+        // Fill in puzzle numbers
         for row in 0 ..< 9 {
             for col in 0 ..< 9 {
                 var number : Int
@@ -447,5 +446,4 @@ class SudokuView: UIView {
             }
         }
     }
-    
 }

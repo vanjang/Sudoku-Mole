@@ -16,7 +16,7 @@ class PauseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         var y:CGFloat = 0.0
-        if UIDevice.modelName == "iPhone 6" || UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 7" || UIDevice.modelName == "iPhone 8" || UIDevice.modelName == "Simulator iPhone 8" || UIDevice.modelName == "Simulator iPhone 7" {
+        if !deviceScreenHasNotch() {
             y = 35.0
         } else {
             y = 20.0
@@ -33,12 +33,18 @@ class PauseViewController: UIViewController {
     @IBOutlet weak var pauseButton: UIButton!
     
     @IBAction func pauseButtonTapped(_ sender: Any) {
+        guard let bgmPlayer = bgmPlayer else { return }
+        if bgmPlayer.isPlaying {
+            pauseBGM()
+        } else {
+            resumeBGM()
+        }
+        playLevelSound(soundFile: "inGamePause", lag: -0.2, numberOfLoops: 0)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "resumeTimer"), object: nil, userInfo: nil)
         pauseImage.animateXPosition(target: pauseImage, targetPosition: -self.view.frame.size.width)
         dismiss(animated: true, completion: nil)
     }
-    
-    
+     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
