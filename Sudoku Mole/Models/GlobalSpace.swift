@@ -24,6 +24,14 @@ var bgmPlayer: AVAudioPlayer?
 var levelPlayer: AVAudioPlayer?
 var fireworkPlayer: AVAudioPlayer?
 var boardPlayer: AVAudioPlayer?
+var isBGMMute = Bool()
+var isSoundEffectMute = Bool()
+// Sound Volume
+var bgmVolume:Float = 0.05
+var fireworkVolume:Float = 0.1
+var levelVolume:Float = 0.4
+var soundVolume:Float = 0.2
+var boardVolume:Float = 0.05
 
 // Return random Int
 func random(_ n:Int) -> Int {
@@ -61,8 +69,8 @@ func playFirework() {
         fireworkPlayer?.numberOfLoops = -1
         
         guard let player = fireworkPlayer else { return }
+        player.volume = fireworkVolume
         player.play()
-        player.setVolume(0.4, fadeDuration: 1)
     } catch let error {
         print(error.localizedDescription)
     }
@@ -91,8 +99,8 @@ func playBGM(soundFile: String, lag: Double, numberOfLoops: Int) {
         
         guard let player = bgmPlayer else { return }
         DispatchQueue.main.asyncAfter(deadline: when) {
+            player.volume = bgmVolume
             player.play()
-            player.setVolume(0.2, fadeDuration: 1)
         }
     } catch let error {
         print(error.localizedDescription)
@@ -128,8 +136,8 @@ func playLevelSound(soundFile: String, lag: Double, numberOfLoops: Int) {
         
         guard let player = levelPlayer else { return }
         DispatchQueue.main.asyncAfter(deadline: when) {
+            player.volume = levelVolume
             player.play()
-            player.setVolume(0.2, fadeDuration: 10)
         }
     } catch let error {
         print(error.localizedDescription)
@@ -155,8 +163,8 @@ func playSound(soundFile: String, lag: Double, numberOfLoops: Int) {
         
         guard let player = player else { return }
         DispatchQueue.main.asyncAfter(deadline: when) {
+            player.volume = soundVolume
             player.play()
-            player.setVolume(0.3, fadeDuration: 1)
         }
     } catch let error {
         print(error.localizedDescription)
@@ -177,7 +185,7 @@ func playBoardSound(soundFile: String, lag: Double, numberOfLoops: Int) {
         
         guard let player = boardPlayer else { return }
         DispatchQueue.main.asyncAfter(deadline: when) {
-            player.volume = 0.05
+            player.volume = boardVolume
             player.play()
         }
     } catch let error {

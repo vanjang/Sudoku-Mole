@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1064,15 +1064,35 @@
                                     <action selector="pauseButtonTapped:" destination="vuJ-re-Hh3" eventType="touchUpInside" id="AGi-33-VQI"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1u-pQ-o3y">
+                                <rect key="frame" x="51.666666666666657" y="633" width="70" height="50"/>
+                                <state key="normal" image="btnSoundOn"/>
+                                <connections>
+                                    <action selector="muteBGMButtonTapped:" destination="vuJ-re-Hh3" eventType="touchUpInside" id="5qs-ks-mBA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Wy-dL-ag9">
+                                <rect key="frame" x="253.66666666666663" y="633" width="70" height="50"/>
+                                <state key="normal" image="btnBgnOn"/>
+                                <connections>
+                                    <action selector="muteSoundEffectsButtonTapped:" destination="vuJ-re-Hh3" eventType="touchUpInside" id="WnL-HG-J1W"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="561-42-WWn" firstAttribute="leading" secondItem="d1u-pQ-o3y" secondAttribute="trailing" constant="16" id="4gJ-nU-1d4"/>
                             <constraint firstItem="rDy-Xp-oAJ" firstAttribute="bottom" secondItem="561-42-WWn" secondAttribute="bottom" constant="70" id="99n-Qr-uwg"/>
+                            <constraint firstItem="3Wy-dL-ag9" firstAttribute="leading" secondItem="561-42-WWn" secondAttribute="trailing" constant="16" id="LVP-DV-ngf"/>
+                            <constraint firstItem="3Wy-dL-ag9" firstAttribute="centerY" secondItem="561-42-WWn" secondAttribute="centerY" id="TcZ-mY-hR4"/>
+                            <constraint firstItem="d1u-pQ-o3y" firstAttribute="centerY" secondItem="561-42-WWn" secondAttribute="centerY" id="VoK-5Z-ypm"/>
                             <constraint firstItem="561-42-WWn" firstAttribute="centerX" secondItem="alR-bZ-s8L" secondAttribute="centerX" id="d1b-4a-Mpk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rDy-Xp-oAJ"/>
                     </view>
                     <connections>
+                        <outlet property="muteBGMButton" destination="d1u-pQ-o3y" id="Lhg-EX-WpL"/>
+                        <outlet property="muteSoundEffectsButton" destination="3Wy-dL-ag9" id="Ay3-V9-q7g"/>
                         <outlet property="pauseButton" destination="561-42-WWn" id="eEA-KZ-gBF"/>
                     </connections>
                 </viewController>
@@ -1756,6 +1776,7 @@
         <image name="boardLabelHard" width="75" height="75"/>
         <image name="boardLabelNormal" width="75" height="75"/>
         <image name="boardRecordNormal" width="333" height="521"/>
+        <image name="btnBgnOn" width="70" height="50"/>
         <image name="btnBottomHomeLargeNormal" width="72" height="72"/>
         <image name="btnBottomMemoNormal" width="58" height="58"/>
         <image name="btnBottomRedoNormal" width="58" height="58"/>
@@ -1763,6 +1784,7 @@
         <image name="btnBottomResetNormal" width="58" height="58"/>
         <image name="btnBottomShareLargeNormal" width="72" height="72"/>
         <image name="btnBottomUndoNormal" width="58" height="58"/>
+        <image name="btnSoundOn" width="70" height="50"/>
         <image name="chance1" width="96" height="86"/>
         <image name="icHomeNormal" width="32" height="32"/>
         <image name="icSidemenuNormal" width="32" height="32"/>
