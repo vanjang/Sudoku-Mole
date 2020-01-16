@@ -45,12 +45,10 @@ extension GameViewController: SKProductsRequestDelegate, SKPaymentTransactionObs
                     IAPPurchase = .ADRemover
                     isADFreeIAPButtonTapped = false
                 }
-                
                 if isChanceIAPButtonTapped == true {
                     IAPPurchase = .Chances
                     isChanceIAPButtonTapped = false
                 }
-                
                 transactionInProgress = false
                 dismiss(animated: true, completion: nil)
                 SKPaymentQueue.default().finishTransaction(transaction)
@@ -85,13 +83,16 @@ extension GameViewController: SKProductsRequestDelegate, SKPaymentTransactionObs
             let productRequest = SKProductsRequest(productIdentifiers: productIdentifiers)
             productRequest.delegate = self
             productRequest.start()
-        }
-        else {
-            // Cannot perform In App Purchases
+        } else {
+            purchaseUnavailablePops()
         }
     }
-    
+
     @objc func ADFreeButtonTapped() {
+        guard !appDelegate.hasADRemoverBeenBought() else {
+            alreadyADFreePops()
+            return
+        }
         if !transactionInProgress {
             if self.productsArray.indices.contains(0) {
                 let payment = SKPayment(product: self.productsArray[0] as SKProduct)
@@ -99,48 +100,38 @@ extension GameViewController: SKProductsRequestDelegate, SKPaymentTransactionObs
                 isADFreeIAPButtonTapped = true
                 self.transactionInProgress = true
             } else {
-                self.delegate?.customAlertController(title: "PURCHASE UNAVAILABLE".localized(), message: "Network connection might be unstable. Please try later.".localized(), option: .oneButton)
-                self.delegate?.customAction1(title: "OK".localized(), action: { xx in
-                    DispatchQueue.main.async {
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                })
-                self.present(self.customAlertView, animated: true, completion: nil)
+                purchaseUnavailablePops()
             }
         }
     }
-    
+ 
     @objc func getChanceButtonTapped() {
         instantiatingCustomAlertView()
         delegate?.customAlertController(title: "PURCHASE 5 CHANCES?".localized(), message: "Tap Purchase to proceed. Please note it may include blanks!".localized(), option: .twoButtons)
         delegate?.customAction1(title: "PURCHASE".localized(), action:  { action in
-            self.customAlertView.dismiss(animated: true, completion: nil)
-            if self.productsArray.indices.contains(1) {
+            self.customAlertView.dismiss(animated: true) {
                 if !self.transactionInProgress {
-                    if (self.appDelegate.item?.chances.count)! > 5 {
-                        self.delegate?.customAlertController(title: "CHANCE SLOTS ARE FULL".localized(), message: "You can top up if chance is below 6.".localized(), option: .oneButton)
-                        self.delegate?.customAction1(title: "OK".localized(), action: { xx in
-                            DispatchQueue.main.async {
-                                self.dismiss(animated: true, completion: nil)
-                            }
-                        })
-                        self.present(self.customAlertView, animated: true, completion: nil)
+                    if self.productsArray.indices.contains(1) {
+                        if (self.appDelegate.item?.chances.count)! > 5 {
+                            self.delegate?.customAlertController(title: "CHANCE SLOTS ARE FULL".localized(), message: "You can top up if chances are below 5.".localized(), option: .oneButton)
+                            self.delegate?.customAction1(title: "OK".localized(), action: { xx in
+                                DispatchQueue.main.async {
+                                    self.dismiss(animated: true, completion: nil)
+                                }
+                            })
+                            self.present(self.customAlertView, animated: true, completion: nil)
+                        } else {
+                            let payment = SKPayment(product: self.productsArray[1] as SKProduct)
+                            SKPaymentQueue.default().add(payment)
+                            self.isChanceIAPButtonTapped = true
+                            self.transactionInProgress = true
+                        }
                     } else {
-                        let payment = SKPayment(product: self.productsArray[1] as SKProduct)
-                        SKPaymentQueue.default().add(payment)
-                        self.isChanceIAPButtonTapped = true
-                        self.transactionInProgress = true
+                        self.purchaseUnavailablePops()
                     }
                 }
-            } else {
-                self.delegate?.customAlertController(title: "PURCHASE UNAVAILABLE".localized(), message: "Network connection might be unstable. Please try later.".localized(), option: .oneButton)
-                self.delegate?.customAction1(title: "OK".localized(), action: { xx in
-                    DispatchQueue.main.async {
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                })
-                self.present(self.customAlertView, animated: true, completion: nil)
             }
+            
         })
         delegate?.customAction2(title: "CANCEL".localized(), action : { action in
             self.customAlertView.dismiss(animated: true, completion: nil)
@@ -152,7 +143,7 @@ extension GameViewController: SKProductsRequestDelegate, SKPaymentTransactionObs
         if !transactionInProgress {
             if (appDelegate.item?.chances.count)! > 5 {
                 instantiatingCustomAlertView()
-                self.delegate?.customAlertController(title: "CHANCE SLOTS ARE FULL".localized(), message: "You can top up if chance is below 6.".localized(), option: .oneButton)
+                self.delegate?.customAlertController(title: "CHANCE SLOTS ARE FULL".localized(), message: "You can top up if chances are below 5.".localized(), option: .oneButton)
                 self.delegate?.customAction1(title: "OK".localized(), action: { xx in
                     DispatchQueue.main.async {
                         self.dismiss(animated: true, completion: nil)
@@ -166,5 +157,61 @@ extension GameViewController: SKProductsRequestDelegate, SKPaymentTransactionObs
                 self.transactionInProgress = true
             }
         }
+    }
+    
+    func purchaseUnavailablePops() {
+        instantiatingCustomAlertView()
+        self.delegate?.customAlertController(title: "PURCHASE UNAVAILABLE".localized(), message: "Network connection might be unstable. Please try later.".localized(), option: .oneButton)
+        self.delegate?.customAction1(title: "OK".localized(), action: { xx in
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
+        })
+        self.present(self.customAlertView, animated: true, completion: nil)
+    }
+    
+    // IAP AD-FREE RESTORATION
+    @objc func restoreButtonTapped() {
+        SKPaymentQueue.default().restoreCompletedTransactions()
+    }
+    
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        guard appDelegate.hasADRemoverBeenBought() else {
+            let removerKey = "ADRemover"
+            let userDefault = appDelegate.userDefault
+            userDefault.set("ADRemoverBought", forKey: removerKey)
+            self.instantiatingCustomAlertView()
+            self.delegate?.customAlertController(title: "RESTORED SUCCESSFULLY".localized(), message: "Turn the app off and on to remove ADs!".localized(), option: .oneButton)
+            self.delegate?.customAction1(title: "OK".localized(), action: { xx in
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+            self.present(self.customAlertView, animated: true, completion: nil)
+            return
+        }
+        alreadyADFreePops()
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        self.instantiatingCustomAlertView()
+        self.delegate?.customAlertController(title: "RESTORATION FAILED".localized(), message: "Sorry, please check your purchase history.".localized(), option: .oneButton)
+        self.delegate?.customAction1(title: "OK".localized(), action: { xx in
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
+        })
+        self.present(self.customAlertView, animated: true, completion: nil)
+    }
+    
+    func alreadyADFreePops() {
+        self.instantiatingCustomAlertView()
+        self.delegate?.customAlertController(title: "ALREADY AD-FREE".localized(), message: "If you still see ADs please turn the app off and on.".localized(), option: .oneButton)
+        self.delegate?.customAction1(title: "OK".localized(), action: { xx in
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
+        })
+        self.present(self.customAlertView, animated: true, completion: nil)
     }
 }

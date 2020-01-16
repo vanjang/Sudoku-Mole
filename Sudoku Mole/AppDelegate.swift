@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var item: SudokuIAP?
     let userDefault = UserDefaults.standard
     let itemKey = "IAPKey33"
-    let ADRemoverKey = "ADRemover5"
+    let ADRemoverKey = "ADRemover"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         /// To delete

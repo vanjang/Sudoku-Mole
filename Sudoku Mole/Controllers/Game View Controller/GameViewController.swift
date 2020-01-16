@@ -99,12 +99,12 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
         didSet {
             switch IAPPurchase {
             case .ADRemover :
-                let removerKey = "ADRemover5"
+                let removerKey = "ADRemover"
                 let userDefault = appDelegate.userDefault
                 userDefault.set("ADRemoverBought", forKey: removerKey)
                 dismiss(animated: true) {
                     self.instantiatingCustomAlertView()
-                    self.delegate?.customAlertController(title: "THANK YOU FOR PURCHASE".localized(), message: "Turn the app off and on to remove ADs forever!".localized(), option: .oneButton)
+                    self.delegate?.customAlertController(title: "THANK YOU FOR PURCHASE".localized(), message: "Turn the app off and on to remove ADs!".localized(), option: .oneButton)
                     self.delegate?.customAction1(title: "OK".localized(), action: { xx in
                         DispatchQueue.main.async {
                             self.dismiss(animated: true, completion: nil)

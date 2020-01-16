@@ -525,6 +525,31 @@ extension GameViewController {
         let adFreeBottomConstraint = NSLayoutConstraint(item: adFreeButton, attribute: .bottom, relatedBy: .equal, toItem: adFreeLabel, attribute: .bottom, multiplier: 1, constant: 0)
         self.view.addConstraints([adFreeTopConstraint, adFreeLeftConstraint, adFreeRightConstraint, adFreeBottomConstraint])
         
+        
+        let topInset = CGFloat(8)
+        let bottomInset = CGFloat(4)
+        let leftInset = CGFloat(7)
+        let rightInset = CGFloat(7)
+        let insets: UIEdgeInsets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
+        let attribute = [NSAttributedString.Key.font: UIFont(name: "LuckiestGuy-Regular", size: 14.0)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1708971262, green: 0.1805572212, blue: 0.189113766, alpha: 1)] as [NSAttributedString.Key : Any]
+        let restoreAttributedTitle = NSAttributedString(string: "RESTORE".localized(), attributes: attribute as [NSAttributedString.Key : Any])
+        let adFreeRestoreButton = UIButton()
+        adFreeRestoreButton.setAttributedTitle(restoreAttributedTitle, for: .normal)
+        adFreeRestoreButton.layer.backgroundColor = #colorLiteral(red: 0.9229427576, green: 0.8786703944, blue: 0.381549418, alpha: 1)
+        adFreeRestoreButton.frame.size.width = 72
+        adFreeRestoreButton.frame.size.height = 28
+        adFreeRestoreButton.layer.cornerRadius = 10
+        adFreeRestoreButton.contentMode = .center
+        adFreeRestoreButton.contentEdgeInsets = insets
+        adFreeRestoreButton.addTarget(self, action: #selector(restoreButtonTapped), for: .touchUpInside)
+        iapView.addSubview(adFreeRestoreButton)
+        adFreeRestoreButton.translatesAutoresizingMaskIntoConstraints = false
+        let restoreTopConstraint = NSLayoutConstraint(item: adFreeRestoreButton, attribute: .top, relatedBy: .equal, toItem: adFreeButton, attribute: .bottom, multiplier: 1, constant: 8)
+        let restoreCentreConstraint = NSLayoutConstraint(item: adFreeRestoreButton, attribute: .centerX, relatedBy: .equal, toItem: adFreeButton, attribute: .centerX, multiplier: 1, constant: 0)
+//        let restoreWidthConstraint = NSLayoutConstraint(item: adFreeRestoreButton, attribute: .width, relatedBy: .equal, toItem: adFreeLabel, attribute: .width, multiplier: 0.7, constant: 0)
+//        let restoreHeightConstraint = NSLayoutConstraint(item: adFreeRestoreButton, attribute: .height, relatedBy: .equal, toItem: adFreeLabel, attribute: .height, multiplier: 0.5, constant: 0)
+        self.view.addConstraints([restoreTopConstraint, restoreCentreConstraint])//], restoreWidthConstraint, restoreHeightConstraint])
+        
         if !appDelegate.hasADRemoverBeenBought() {
             bannerCase.superview?.bringSubviewToFront(bannerCase)
         }

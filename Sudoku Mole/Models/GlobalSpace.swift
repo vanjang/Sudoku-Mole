@@ -47,11 +47,17 @@ func fontSizeFor(_ string : NSString, fontName : String, targetSize : CGSize) ->
     let strSize = string.size(withAttributes: attr)
     return testFontSize*min(targetSize.width/strSize.width, targetSize.height/strSize.height)
 }
+func ddd() {
+    let iPad = "iPad"
+    if UIDevice.modelName.contains(iPad) {
+
+}
+}
 
 // Screen Type Checker
 func deviceScreenHasNotch() -> Bool {
     var hasNotch = Bool()
-    if UIDevice.modelName == "iPhone 6" || UIDevice.modelName == "iPhone 6 Plus"  || UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 6s Plus" || UIDevice.modelName == "iPhone SE" || UIDevice.modelName == "iPhone 7" || UIDevice.modelName == "iPhone 7 Plus" || UIDevice.modelName == "iPhone 8" || UIDevice.modelName == "iPhone 8 Plus" || UIDevice.modelName == "Simulator iPhone 8" || UIDevice.modelName == "Simulator iPhone 8 Plus" || UIDevice.modelName == "Simulator iPhone 7" {
+    if UIDevice.modelName == "iPhone 6" || UIDevice.modelName == "iPhone 6 Plus"  || UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 6s Plus" || UIDevice.modelName == "iPhone SE" || UIDevice.modelName == "iPhone 7" || UIDevice.modelName == "iPhone 7 Plus" || UIDevice.modelName == "iPhone 8" || UIDevice.modelName == "iPhone 8 Plus" || UIDevice.modelName == "Simulator iPhone 8" || UIDevice.modelName == "Simulator iPhone 8 Plus" || UIDevice.modelName == "Simulator iPhone 7" || UIDevice.modelName.contains("iPad") {
         hasNotch = false
     } else {
         hasNotch = true

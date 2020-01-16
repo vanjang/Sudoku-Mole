@@ -16,13 +16,15 @@
 "Share record and get free chance!" = "기록을 공유하고 무료 찬스를 받으세요!";
 "You earned a free chance." = "찬스가 추가 되었습니다.";
 "Processing" = "진행 중";
-"You can top up if chance is below 6." = "찬스 아이템은 6개 이하로 남은 상태에서만 구매가 가능합니다.";
+"You can top up if chances are below 5." = "찬스 아이템은 5개 이하로 남은\n상태에서만 구매가 가능합니다.";
 "My Records" = "내 기록";
 "Sorry, game is terminated." = "광고를 불러올 수 없습니다. 게임을 종료합니다";
 "Try later when network is connected." = "네트워크 상태를 확인 후 다시 시도해 주세요";
 "Sorry, check your network connection and try again." = "네트워크 상태를 확인 후 다시 시도해 주세요";
 "You just got 5 chances!." = "찬스 5개를 구매 하셨습니다.";
-"Turn the app off and on to remove ADs forever!" = "앱을 종료 후 실행하시면 광고 없이 사용하실 수 있습니다.";
+"Turn the app off and on to remove ADs!" = "앱을 종료 후 다시 실행하시면\n광고 없이 사용하실 수 있습니다.";
+"If you still see ADs please turn the app off and on." = "이미 무광고 기능을 사용 중\n입니다. 광고가 보이신다면 앱을 종료 후 다시 실행시켜 주세요.";
+"Sorry, please check your purchase history." = "복구가 불가능합니다. 구매 기록을 확인해 주세요.";
 "Try again." = "다시 시도해 주세요.";
 "Smole says: How was your lunch?" = "스몰: 점심 맛있게 드셨나요?";
 "What about having a cup of coffee and playing a 1 Sudoku Mole? Let's break your record!" = "커피 한 잔과 함께 스도쿠 몰 한판 어떠세요?";
