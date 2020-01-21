@@ -42,6 +42,6 @@ enum DialogOption {
 
 enum PurchasingIAP {
     case ADRemover
-    case Chances
+    case chances
     case none
 }

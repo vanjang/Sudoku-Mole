@@ -17,8 +17,10 @@ extension GameViewController {
         self.appDelegate.sudoku.grid.lifeRemained = lives
         self.appDelegate.sudoku.grid.savedCol = self.puzzleArea.selected.row
         self.appDelegate.sudoku.grid.savedRow = self.puzzleArea.selected.column
+        //Keypad data is being saved directly from keypad ibaction when needing its state update
     }
     
+    // New & Saved game data load - ALL DATA IS INITIALISED IN Home VC
     func loadGameData() {
         timerView.bringSubviewToFront(timerOutlet)
         timerView.bringSubviewToFront(timerSwitch)
@@ -31,7 +33,7 @@ extension GameViewController {
         sudokuView.selected.column = grid!.savedCol
         timerStateInAction()
     }
-
+    
     func saveRecord() {
         // timer 종료
         timer.invalidate()

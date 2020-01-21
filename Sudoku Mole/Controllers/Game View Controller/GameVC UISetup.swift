@@ -117,6 +117,11 @@ extension GameViewController {
                 redoButtonOutlet.isEnabled = true
             }
         }
+        
+        for i in 1...9 {
+            appDelegate.sudoku.numberFillingChecker(num: i)
+        }
+        keypadStateInAction()
     }
     
     func instantiatingCustomAlertView() {

@@ -4,6 +4,8 @@
 <dict>
 	<key>App Uses Non-Exempt Encryption </key>
 	<string>NO</string>
+	<key>AppLovinSdkKey</key>
+	<string>fdALp1T7DaeJXsTg5C3-Te3smUTNNGP07MMiFyFs2Rcy7caRT0Dh_uk2PqdF3XMB60lx_KITpdlH_VkcRIUxMN</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

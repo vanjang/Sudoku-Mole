@@ -13,7 +13,6 @@ import Lottie
 class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(timerStateInAction),name:NSNotification.Name(rawValue: "resumeTimer"), object: nil)
         self.navigationController?.didMove(toParent: self)
         
@@ -38,6 +37,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
         redoUndoStateSetup()
         chanceSetup()
         lifeCounter()
+        refreshKeypad()
         difficultyLabelOutlet.text = appDelegate.sudoku.grid.gameDiff
         pencilOn = false
         autoSaving()
@@ -112,7 +112,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
                     })
                     self.present(self.customAlertView, animated: true, completion: nil)
                 }
-            case .Chances :
+            case .chances :
                 appDelegate.storeItems(5)
                 dismiss(animated: true) {
                     self.instantiatingCustomAlertView()
@@ -317,6 +317,9 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
     let pinkPencilPressed = UIImage(named: "btnBottomMemoSelectedPressed.png")
     let yellowPencil = UIImage(named: "btnBottomMemoNormal.png")
     let yellowPencilPressed = UIImage(named: "btnBottomMemoPressed.png")
+    let userDefault = UserDefaults.standard
+    let saveKey = "saveData"
+    var solvedTimer = Timer()
     
     // stop watch values
     var seconds = Int()
@@ -345,9 +348,6 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
     @IBOutlet weak var lifeSmole: UIImageView!
     @IBOutlet weak var lifeRemained: UILabel!
     
-    let userDefault = UserDefaults.standard
-    let saveKey = "saveData"
-    
     @IBAction func keypad(_ sender: UIButton) {
         let grid = appDelegate.sudoku.grid
         let row = puzzleArea.selected.row
@@ -357,21 +357,24 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
                 if grid?.plistPuzzle[row][col] == 0 && grid?.userPuzzle[row][col] == 0  {
                     playSound(soundFile: "inGameKeypad", lag: 0.0, numberOfLoops: 0)  // When tap a keypad
                     appDelegate.sudoku.userGrid(n: sender.tag, row: row, col: col) //  SAVE POINT
+                    
+                    // check if row/col/3x3 is filled without conflicts
+                    if appDelegate.sudoku.isRowFilledWithoutConflict(row: row) {
+                        isRowSpinningInMotion = true
+                    }
+                    
+                    if appDelegate.sudoku.isColFilledWithoutConflict(col: col) {
+                        isColSpinningInMotion = true
+                    }
+                    
+                    if appDelegate.sudoku.is3X3FilledWithoutConflict(row : row, col: col) {
+                        is3X3SpinningInMotion = true
+                    }
+                    
                     // Game Finish Check - 0 : game not finished / 1 : game finished but not correctly / 2 : game finished and correct
                     if appDelegate.sudoku.isGameSet(row: row, column: col) == 2 {
-                        // Remove saved game if the puzzle user solved is the saved game
-                        if isPlayingSavedGame {
-                            userDefault.removeObject(forKey: saveKey)
-                            isPlayingSavedGame = false
-                        }
-                        stopBGM()
-                        saveRecord()
-                        let gameSolvedVC = storyboard?.instantiateViewController(withIdentifier: "GameSolvedVC") as? GameSolvedViewController
-                        gameSolvedVC!.providesPresentationContextTransitionStyle = true
-                        gameSolvedVC!.definesPresentationContext = true
-                        gameSolvedVC!.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-                        gameSolvedVC!.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-                        self.present(gameSolvedVC!, animated: true, completion: nil)
+                        // pop solved VC with a little bit delay to show spinning animation completely
+                        solvedTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(solveDialogPops), userInfo: nil, repeats: true)
                     } else {
                         if appDelegate.sudoku.isConflictingEntryAt(row: row, column: col) {
                             playSound(soundFile: "inGameWrong", lag: 0.0, numberOfLoops: 0) // When tap a wrong answer
@@ -399,11 +402,18 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
                                 })
                                 self.present(self.customAlertView, animated: true, completion: nil)
                             }
+                        } else {
+                            if appDelegate.sudoku.isThisNumAllFilled(num: sender.tag) {
+                                keypadStateInAction()
+                            }
                         }
                     }
                 } else if grid?.plistPuzzle[row][col] == 0 || grid?.userPuzzle[row][col] == sender.tag {
                     playSound(soundFile: "inGameKeypad", lag: 0.0, numberOfLoops: 0)  // When deleting by a keypad
                     appDelegate.sudoku.userGrid(n: 0, row: row, col: col)
+                    if !appDelegate.sudoku.isThisNumAllFilled(num: sender.tag) {
+                        keypadStateInAction()
+                    }
                 }
             } else {
                 playSound(soundFile: "inGameKeypad", lag: 0.0, numberOfLoops: 0)  // When tapping a keypad in pencil mode
@@ -445,7 +455,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
             setPencilButtonStateWhenUnselected()
         }
     }
-  
+    
     @IBAction func homeButtonTapped(_ sender: Any) {
         playSound(soundFile: "inGameMenuAndButtons", lag: 0.0, numberOfLoops: 0)
         instantiatingCustomAlertView()
@@ -628,6 +638,63 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
         }
     }
     
+    func keypadStateInAction() {
+        let filledNum = appDelegate.sudoku.grid.savedFilledNum
+        var fontSize = CGFloat()
+        let fontColor = #colorLiteral(red: 0.8421699405, green: 0.9555736184, blue: 1, alpha: 1)
+        let clearColor = UIColor.clear
+        var keypadNumber = Int()
+        
+        if deviceScreenHasNotch() {
+            fontSize = 45.0
+        } else {
+            fontSize = 39.0
+        }
+        
+        let font = UIFont(name: "LuckiestGuy-Regular", size: fontSize)
+        var attributeKey = [NSAttributedString.Key : Any]()
+        let clearAttributes: [NSAttributedString.Key : Any] = [ .font : font as Any ,.foregroundColor: clearColor ,.strokeWidth: 2.0, .strokeColor: fontColor]
+        let normalAttributes: [NSAttributedString.Key : Any] = [ .font : font as Any ,.foregroundColor: fontColor]
+        
+        for button in keypadCollection {
+            keypadNumber = button.tag
+            
+            if filledNum[keypadNumber] == true {
+                attributeKey = clearAttributes
+            } else {
+                attributeKey = normalAttributes
+            }
+            
+            let attribute = NSAttributedString(string: String(keypadNumber), attributes: attributeKey)
+            button.setAttributedTitle(attribute, for: .normal)
+        }
+        
+    }
+    
+    func refreshKeypad() {
+        for i in 1...9 {
+            if appDelegate.sudoku.isThisNumAllFilled(num: i) {
+                keypadStateInAction()
+            }
+        }
+    }
+    
+    @objc func solveDialogPops() {
+        if isPlayingSavedGame {
+            userDefault.removeObject(forKey: saveKey)
+            isPlayingSavedGame = false
+        }
+        stopBGM()
+        saveRecord()
+        let gameSolvedVC = storyboard?.instantiateViewController(withIdentifier: "GameSolvedVC") as? GameSolvedViewController
+        gameSolvedVC!.providesPresentationContextTransitionStyle = true
+        gameSolvedVC!.definesPresentationContext = true
+        gameSolvedVC!.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        gameSolvedVC!.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        self.present(gameSolvedVC!, animated: true, completion: nil)
+        solvedTimer.invalidate()
+    }
+    
     @objc func refresh() {
         sudokuView.setNeedsDisplay()
     }
@@ -655,7 +722,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
     @objc func menuRewindButtonTapped() {
         menuState = .expanded
     }
-
+    
     // CRASH POINT - abandon된 후에 appdelegate의 didenterbg가 실행되어 save되면 퍼즐은 모두 0으로 save된다 - 주의!!
     @objc func abandon() {
         let puzzle = self.appDelegate.sudoku
@@ -700,6 +767,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
         counter = 0
         isTimerInMotion = false
         timerStateInAction()
+        refreshKeypad()
         self.sudokuView.selected = (row: -1, column: -1)
         self.sudokuView.setNeedsDisplay()
         redoUndoButtonState()

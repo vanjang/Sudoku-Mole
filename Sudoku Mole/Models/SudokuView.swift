@@ -38,6 +38,13 @@ class SudokuView: UIView {
     
     // Draw sudoku board. The current puzzle state is stored in the "sudoku" property
     override func draw(_ rect: CGRect) {
+        
+        for v in self.subviews {
+           if v is UIImageView {
+              v.removeFromSuperview()
+           }
+        }
+
         let context = UIGraphicsGetCurrentContext()
         
         // Fetch Sudoku puzzle model object from app delegate.
@@ -74,16 +81,17 @@ class SudokuView: UIView {
         // Box font attributes
         let fontSize = fontSizeFor("0", fontName: fontName, targetSize: CGSize(width: d, height: d))
         let font = UIFont(name: fontName, size: 31)
+        let anotherFont = UIFont(name: "LuckiestGuy-Regular", size: 61)
         let pencilFont = UIFont(name: fontName, size: fontSize/3.5)
         let fixedAttributes = [NSAttributedString.Key.font : font!, NSAttributedString.Key.foregroundColor : fixedFontColor]
         let userAttributes = [NSAttributedString.Key.font : font!, NSAttributedString.Key.foregroundColor : userFontColor]
         let pencilAttributes = [NSAttributedString.Key.font : pencilFont!, NSAttributedString.Key.foregroundColor : pencilFontColor]
         
-        // Fill selected cell (if one is selected by tap gesture recognizer).
+        // ####Fill selected cell (if one is selected by tap gesture recognizer).####
+        // A cell is selected
         if selected.row >= 0 && selected.column >= 0 {
             let x = gridOrigin.x + CGFloat(selected.column)*d
             let y = gridOrigin.y + CGFloat(selected.row)*d
-            //            let numberAtSelectedBox = puzzle.userEntry(row: selected.row, column: selected.column)
             let numberAtSelectedBox = puzzle.numberAt(row: selected.row, column: selected.column)
             var selectedThird = -1
             
@@ -212,7 +220,7 @@ class SudokuView: UIView {
                 }
             }
             
-            // Fill same numbers with the number drawn in selected cell - ### FILL THE OTHER BOXES - NOT THE SELECTED BOX
+            // Fill same numbered cells with the number drawn in a selected cell - ### FILL THE OTHER CELLS - NOT THE SELECTED CELL
             for r in 0 ..< 9 {
                 for c in 0 ..< 9 {
                     let iteratingBox = (row : r, column : c)
@@ -358,10 +366,11 @@ class SudokuView: UIView {
             }
         }
         
-        // Fill in puzzle numbers
+        // #######Fill in puzzle numbers######
         for row in 0 ..< 9 {
             for col in 0 ..< 9 {
                 var number : Int
+                var numberType = String()
                 // 정리 : 각각의 칸(81칸)에 유저값이 있다면(!=0) 채워넣고 없다면 fix값 채워넣는다
                 // 보드판 숫자 채워넣기위해 number에 유저 숫자 or 기본 숫자를 넣어준다
                 if puzzle.userEntry(row: row, column: col) != 0 {
@@ -375,28 +384,84 @@ class SudokuView: UIView {
                     // 1. 가장 먼저 퍼즐 기본 숫자 넣어주기 (fixed)
                     if puzzle.numberIsFixedAt(row: row, column: col) {
                         attributes = fixedAttributes
-                        // 2. 그리고 해당 셀이 오답이면 오답 폰트 넣기 (근데 오답 메소드가 뭔가 잘못됨, 확인해야 함)
-                        
+                        numberType = ""
                     } else if puzzle.isConflictingEntryAt(row: row, column: col) {
-                        // Conflicting number font attribute
+                        // 2. Conflicting number font attribute
                         attributes = userAttributes
-                        
+                        numberType = "B"
                         // 3. 기본 숫자 들어가고 오답도 들어갔으면 유저 숫자 넣기
                     } else if puzzle.userEntry(row: row, column: col) != 0 {
                         if puzzle.isConflictingEntryAt(row: row, column: col) {
                         } else {
                             attributes = userAttributes
+                            numberType = "B"
+                        }
+                    }
+
+                    // Number PNG initialise
+                    let text = "\(number)" as NSString
+                    let textSize = d * 0.52
+                    let x = gridOrigin.x + CGFloat(col)*d + 0.5*(d - textSize)
+                    let y = gridOrigin.y + CGFloat(row)*d + 0.5*(d - textSize)
+                    let textRect = CGRect(x: x, y: y, width: textSize, height: textSize)
+                    let numberImage = UIImage(named: numberType+String(number) + ".png")
+                    let numberView = UIImageView(image: numberImage)
+                    numberView.contentMode = .scaleAspectFit
+                    numberView.frame = textRect
+                    self.addSubview(numberView)
+                    
+                    //향상심
+                    func spinning() {
+                        DispatchQueue.main.async {
+                            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+                                numberView.transform = CGAffineTransform(scaleX: -1, y: 1)
+                            }) { (_) in
+                                UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+                                    numberView.transform = CGAffineTransform(scaleX: 1, y: 1)
+                                })
+                            }
                         }
                     }
                     
-                    // 4. Fill numbers
-                    let text = "\(number)" as NSString
-                    let textSize = text.size(withAttributes: attributes)
-                    let x = gridOrigin.x + CGFloat(col)*d + 0.5*(d - textSize.width)
-                    let y = gridOrigin.y + CGFloat(row)*d + 0.5*(d - textSize.height)
-                    let textRect = CGRect(x: x, y: y, width: textSize.width, height: textSize.height)
-                    text.draw(in: textRect, withAttributes: attributes)
-                    
+                    // Spin complete row/col/3x3
+                    if isRowSpinningInMotion || isColSpinningInMotion || is3X3SpinningInMotion {
+                        // check all 3x3s - row, col = (0,0)-(8,8)
+                        let threeByThreeRow : Int = selected.row / 3 // forced division
+                        let threeByThreeCol : Int = selected.column / 3 // forced division
+
+                        if isRowSpinningInMotion && isColSpinningInMotion && is3X3SpinningInMotion {
+                            if row == selected.row || col == selected.column || (row / 3 == threeByThreeRow && col / 3 == threeByThreeCol) {
+                                spinning()
+                            }
+                        } else if isColSpinningInMotion && is3X3SpinningInMotion {
+                            if col == selected.column || (row / 3 == threeByThreeRow && col / 3 == threeByThreeCol) {
+                                spinning()
+                            }
+                        } else if isRowSpinningInMotion && isColSpinningInMotion {
+                            if row == selected.row || col == selected.column {
+                                spinning()
+                            }
+                        } else if isRowSpinningInMotion && is3X3SpinningInMotion {
+                            if row == selected.row || (row / 3 == threeByThreeRow && col / 3 == threeByThreeCol) {
+                                spinning()
+                            }
+                        } else if isRowSpinningInMotion {
+                            if row == selected.row {
+                                spinning()
+                            }
+                        } else
+                        if isColSpinningInMotion {
+                            if col == selected.column {
+                                spinning()
+                            }
+                        } else
+                        if is3X3SpinningInMotion {
+                            
+                            if row / 3 == threeByThreeRow && col / 3 == threeByThreeCol {
+                                spinning()
+                            }
+                        }
+                    }
                     // number가 0보다 작은 경우 : 해당 칸에 유저가 넣은 값이 없는 경우가 된다. 유저값이 없는 경우에만 pencil값을 그려준다
                 } else if puzzle.anyPencilSetAt(row: row, column: col) {
                     let s = d/3
@@ -445,5 +510,8 @@ class SudokuView: UIView {
                 }
             }
         }
+        isRowSpinningInMotion = false
+        isColSpinningInMotion = false
+        is3X3SpinningInMotion = false
     }
 }

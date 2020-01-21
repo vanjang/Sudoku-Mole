@@ -265,5 +265,124 @@ class SudokuClass {
     
     func correctAnswerForSelectedBox(row: Int, col: Int) -> Int {
         return grid.puzzleAnswer[row][col]
-    }  
+    }
+    
+    // Row/Col/3X3 Fill Check
+    func isRowFilledWithoutConflict(row : Int) -> Bool {
+        var n: Int
+        
+        for c in 0...8 {
+            if grid.plistPuzzle[row][c] == 0 {
+                n = grid.userPuzzle[row][c]
+            } else {
+                n = grid.plistPuzzle[row][c]
+            }
+            
+            if n == 0 {
+                return false
+            }
+            
+            if isConflictingEntryAt(row: row, column: c) {
+                return false
+            }
+        }
+        return true
+    }
+    
+    func isColFilledWithoutConflict(col : Int) -> Bool {
+        var n: Int
+        
+        for r in 0...8 {
+            if grid.plistPuzzle[r][col] == 0 {
+                n = grid.userPuzzle[r][col]
+            } else {
+                n = grid.plistPuzzle[r][col]
+            }
+            
+            if n == 0 {
+                return false
+            }
+            
+            if isConflictingEntryAt(row: r, column: col) {
+                return false
+            }
+        }
+        return true
+    }
+    
+    func is3X3FilledWithoutConflict(row : Int, col: Int) -> Bool {
+        // check all 3x3s - row, col = (0,0)-(8,8)
+        let threeByThreeRow : Int = row / 3 // forced division
+        let threeByThreeCol : Int = col / 3 // forced division
+        // 0-2 = 0, 3-5 = 1, 6-8 = 2  ----> 0 + (0*3), 1 + (0*3), 2 + (0*3)
+        // check rows and columns in these areas
+        let startRow = threeByThreeRow * 3 // 0 or 3 or 6
+        let startCol = threeByThreeCol * 3 // 0 or 3 or 6
+        let endRow = 2 + (threeByThreeRow * 3) // 2 or 5 or 8
+        let endCol = 2 + (threeByThreeCol * 3) // 2 or 5 or 8
+        for r in startRow...endRow {
+            for c in startCol...endCol {
+                var n: Int
+                
+                if grid.plistPuzzle[r][c] == 0 {
+                    n = grid.userPuzzle[r][c]
+                } else {
+                    n = grid.plistPuzzle[r][c]
+                }
+                
+                // if no value exists in entry -- no conflict
+                if n == 0 { return false }
+                
+                if isConflictingEntryAt(row: r, column: c) {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+    
+    // Check # of numbers are complete at 9
+    func isThisNumAllFilled(num: Int) -> Bool {
+        var sameNumArray = [Int]()
+        var isFilled = Bool()
+        for r in 0...8 {
+            for c in 0...8 {
+                if grid.plistPuzzle[r][c] == num {
+                    sameNumArray.append(num)
+                }
+                if grid.userPuzzle[r][c] == num {
+                    sameNumArray.append(num)
+                }
+                
+                if sameNumArray.count == 9 {
+                    grid.savedFilledNum[num] = true
+                    isFilled = true
+                } else {
+                    grid.savedFilledNum[num] = false
+                    isFilled = false
+                }
+            }
+        }
+        return isFilled
+    }
+    
+    func numberFillingChecker(num: Int) {
+        var sameNumArray = [Int]()
+        for r in 0...8 {
+            for c in 0...8 {
+                if grid.plistPuzzle[r][c] == num {
+                    sameNumArray.append(num)
+                }
+                if grid.userPuzzle[r][c] == num {
+                    sameNumArray.append(num)
+                }
+                
+                if sameNumArray.count == 9 {
+                    grid.savedFilledNum[num] = true
+                } else {
+                    grid.savedFilledNum[num] = false
+                }
+            }
+        }
+    }
 }

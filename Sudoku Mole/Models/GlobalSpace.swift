@@ -11,6 +11,11 @@ import UIKit
 import AVFoundation
 import Lottie
 
+// should spinning animation be in motion?
+var isRowSpinningInMotion = Bool()
+var isColSpinningInMotion = Bool()
+var is3X3SpinningInMotion = Bool()
+
 // Timer
 var timer = Timer()
 // Game in play checkin & checkout
@@ -24,8 +29,32 @@ var bgmPlayer: AVAudioPlayer?
 var levelPlayer: AVAudioPlayer?
 var fireworkPlayer: AVAudioPlayer?
 var boardPlayer: AVAudioPlayer?
-var isBGMMute = Bool()
-var isSoundEffectMute = Bool()
+var isBGMMute = Bool() {
+    didSet {
+        if isBGMMute {
+            bgmVolume = 0.0
+        } else {
+            bgmVolume = 0.05
+        }
+    }
+}
+
+var isSoundEffectMute = Bool() {
+    didSet {
+        if isSoundEffectMute {
+            soundVolume = 0.0
+            levelVolume = 0.0
+            fireworkVolume = 0.0
+            boardVolume = 0.0
+        } else {
+            soundVolume = 0.2
+            levelVolume = 0.4
+            fireworkVolume = 0.1
+            boardVolume = 0.05
+        }
+    }
+}
+
 // Sound Volume
 var bgmVolume:Float = 0.05
 var fireworkVolume:Float = 0.1
@@ -46,12 +75,6 @@ func fontSizeFor(_ string : NSString, fontName : String, targetSize : CGSize) ->
     let attr = [NSAttributedString.Key.font : font!]
     let strSize = string.size(withAttributes: attr)
     return testFontSize*min(targetSize.width/strSize.width, targetSize.height/strSize.height)
-}
-func ddd() {
-    let iPad = "iPad"
-    if UIDevice.modelName.contains(iPad) {
-
-}
 }
 
 // Screen Type Checker

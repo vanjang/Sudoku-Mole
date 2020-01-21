@@ -170,7 +170,7 @@ class CustomAlertViewController: UIViewController, GameViewControllerDelegate {
     }
     
     func action3(action:((Any) -> Void)!) {
-        action!(action!)// ?? nil!)
+        action!(action!)
     }
     
 }

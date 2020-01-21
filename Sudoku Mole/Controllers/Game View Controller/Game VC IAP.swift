@@ -46,7 +46,7 @@ extension GameViewController: SKProductsRequestDelegate, SKPaymentTransactionObs
                     isADFreeIAPButtonTapped = false
                 }
                 if isChanceIAPButtonTapped == true {
-                    IAPPurchase = .Chances
+                    IAPPurchase = .chances
                     isChanceIAPButtonTapped = false
                 }
                 transactionInProgress = false

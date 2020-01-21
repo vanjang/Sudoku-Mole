@@ -40,11 +40,13 @@ class PauseViewController: UIViewController {
     @IBAction func muteBGMButtonTapped(_ sender: Any) {
         isBGMMute = !isBGMMute
         muteBGMState()
+        appDelegate.saveBGMMuting(isMute: isBGMMute)
     }
     
     @IBAction func muteSoundEffectsButtonTapped(_ sender: Any) {
         isSoundEffectMute = !isSoundEffectMute
         muteSoundEffectsState()
+        appDelegate.saveSoundEffectsMute(isSoundEffectMute: isSoundEffectMute)
     }
     
     @IBAction func pauseButtonTapped(_ sender: Any) {
@@ -66,6 +68,7 @@ class PauseViewController: UIViewController {
     
     let pauseImage = UIImageView()
     let image = UIImage(named: "smolePauseBlindTilt.png")
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     func muteBGMState() {
         let on = UIImage(named: "btnSoundOn.png")

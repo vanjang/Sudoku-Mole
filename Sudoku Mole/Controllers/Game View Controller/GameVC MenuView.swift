@@ -525,7 +525,6 @@ extension GameViewController {
         let adFreeBottomConstraint = NSLayoutConstraint(item: adFreeButton, attribute: .bottom, relatedBy: .equal, toItem: adFreeLabel, attribute: .bottom, multiplier: 1, constant: 0)
         self.view.addConstraints([adFreeTopConstraint, adFreeLeftConstraint, adFreeRightConstraint, adFreeBottomConstraint])
         
-        
         let topInset = CGFloat(8)
         let bottomInset = CGFloat(4)
         let leftInset = CGFloat(7)
@@ -546,9 +545,7 @@ extension GameViewController {
         adFreeRestoreButton.translatesAutoresizingMaskIntoConstraints = false
         let restoreTopConstraint = NSLayoutConstraint(item: adFreeRestoreButton, attribute: .top, relatedBy: .equal, toItem: adFreeButton, attribute: .bottom, multiplier: 1, constant: 8)
         let restoreCentreConstraint = NSLayoutConstraint(item: adFreeRestoreButton, attribute: .centerX, relatedBy: .equal, toItem: adFreeButton, attribute: .centerX, multiplier: 1, constant: 0)
-//        let restoreWidthConstraint = NSLayoutConstraint(item: adFreeRestoreButton, attribute: .width, relatedBy: .equal, toItem: adFreeLabel, attribute: .width, multiplier: 0.7, constant: 0)
-//        let restoreHeightConstraint = NSLayoutConstraint(item: adFreeRestoreButton, attribute: .height, relatedBy: .equal, toItem: adFreeLabel, attribute: .height, multiplier: 0.5, constant: 0)
-        self.view.addConstraints([restoreTopConstraint, restoreCentreConstraint])//], restoreWidthConstraint, restoreHeightConstraint])
+        self.view.addConstraints([restoreTopConstraint, restoreCentreConstraint])
         
         if !appDelegate.hasADRemoverBeenBought() {
             bannerCase.superview?.bringSubviewToFront(bannerCase)
