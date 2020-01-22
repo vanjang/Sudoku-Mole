@@ -11,8 +11,8 @@ import GoogleMobileAds
 import Firebase
 import AVFoundation
 /// To delete
-import AppLovinAdapter
-import AppLovinSDK
+//import AppLovinAdapter
+//import AppLovinSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         /// To delete
-        ALSdk.initializeSdk()
+//        ALSdk.initializeSdk()
         FirebaseApp.configure()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         UserNotificationCentre.notificationCentre.requestAuthorization(options: [.alert, .sound])  { (didAllow, error) in
@@ -54,17 +54,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
+        stopFirework()
+        firework.stop()
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        stopFirework()
-        firework.stop()
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
+        if let bgmPlayer = player {
+            if !bgmPlayer.isPlaying {
+                resumeBGM()
+            }
+        }
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
@@ -169,17 +174,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         userDefault.set(isMute, forKey: bgmKey)
     }
     
-    func retrieveBGMMuting() -> Bool {
-        let isMute = userDefault.bool(forKey: bgmKey)
-        return isMute
-    }
-    
     func saveSoundEffectsMute(isSoundEffectMute: Bool) {
         userDefault.set(isSoundEffectMute, forKey: soundEffectsKey)
     }
+
+    func retrieveBGMMuting() -> Bool {
+        return userDefault.bool(forKey: bgmKey)
+    }
     
     func retrieveSoundEffectMuting() -> Bool {
-        let isMute = userDefault.bool(forKey: soundEffectsKey)
-        return isMute
+        return userDefault.bool(forKey: soundEffectsKey)
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -325,7 +325,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="-6" translatesAutoresizingMaskIntoConstraints="NO" id="kLQ-sD-By6" userLabel="Keypad Stack View">
                                         <rect key="frame" x="0.0" y="515.33333333333337" width="375" height="117.33333333333337"/>
                                         <subviews>
-                                            <button opaque="NO" tag="1" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xj-5k-hGh">
+                                            <button opaque="NO" tag="1" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="right" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xj-5k-hGh" customClass="KeypadButton" customModule="Sudoku_Mole" customModuleProvider="target">
                                                 <rect key="frame" x="19.999999999999996" y="35" width="42.666666666666657" height="57"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <edgeInsets key="layoutMargins" top="25" left="8" bottom="8" right="8"/>
@@ -1273,7 +1273,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boardLabelEasy" translatesAutoresizingMaskIntoConstraints="NO" id="Fn6-HA-LGL">
-                                <rect key="frame" x="42" y="74" width="75" height="75"/>
+                                <rect key="frame" x="42" y="74" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Fn6-HA-LGL" secondAttribute="height" multiplier="1:1" id="BiB-W9-ELN"/>
                                 </constraints>
@@ -1426,7 +1426,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boardLabelExpert" translatesAutoresizingMaskIntoConstraints="NO" id="tZ2-Z4-Lsm">
-                                <rect key="frame" x="42" y="74" width="75" height="75"/>
+                                <rect key="frame" x="42" y="74" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tZ2-Z4-Lsm" secondAttribute="height" multiplier="1:1" id="x5D-OE-1HJ"/>
                                 </constraints>
@@ -1579,7 +1579,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boardLabelHard" translatesAutoresizingMaskIntoConstraints="NO" id="1Ns-Oa-YXO">
-                                <rect key="frame" x="42" y="74" width="75" height="75"/>
+                                <rect key="frame" x="42" y="74" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="1Ns-Oa-YXO" secondAttribute="height" multiplier="1:1" id="G2R-bZ-kWP"/>
                                 </constraints>
@@ -1732,7 +1732,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boardLabelNormal" translatesAutoresizingMaskIntoConstraints="NO" id="pVm-fL-mZU">
-                                <rect key="frame" x="42" y="74" width="75" height="75"/>
+                                <rect key="frame" x="42" y="74" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="pVm-fL-mZU" secondAttribute="height" multiplier="1:1" id="edO-hf-Rx5"/>
                                 </constraints>

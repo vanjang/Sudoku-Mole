@@ -33,8 +33,14 @@ var isBGMMute = Bool() {
     didSet {
         if isBGMMute {
             bgmVolume = 0.0
+            if let player = bgmPlayer {
+                player.volume = 0
+            }
         } else {
             bgmVolume = 0.05
+            if let player = bgmPlayer {
+                player.volume = 0.05
+            }
         }
     }
 }
@@ -56,11 +62,11 @@ var isSoundEffectMute = Bool() {
 }
 
 // Sound Volume
-var bgmVolume:Float = 0.05
-var fireworkVolume:Float = 0.1
-var levelVolume:Float = 0.4
-var soundVolume:Float = 0.2
-var boardVolume:Float = 0.05
+var bgmVolume = Float()//0.05
+var fireworkVolume = Float()//0.1
+var levelVolume = Float()//0.4
+var soundVolume = Float()//0.2
+var boardVolume = Float()//0.05
 
 // Return random Int
 func random(_ n:Int) -> Int {
@@ -98,8 +104,10 @@ func playFirework() {
         fireworkPlayer?.numberOfLoops = -1
         
         guard let player = fireworkPlayer else { return }
-        player.volume = fireworkVolume
-        player.play()
+        DispatchQueue.main.async {
+            player.volume = fireworkVolume
+            player.play()
+        }
     } catch let error {
         print(error.localizedDescription)
     }
@@ -200,6 +208,16 @@ func playSound(soundFile: String, lag: Double, numberOfLoops: Int) {
     }
 }
 
+func pauseSound() {
+    guard let player = player else { return }
+    player.pause()
+}
+
+func resumeSound() {
+    guard let player = player else { return }
+    player.play()
+}
+
 func playBoardSound(soundFile: String, lag: Double, numberOfLoops: Int) {
     guard let url = Bundle.main.url(forResource: soundFile, withExtension: "mp3") else { return }
     do {
@@ -220,4 +238,14 @@ func playBoardSound(soundFile: String, lag: Double, numberOfLoops: Int) {
     } catch let error {
         print(error.localizedDescription)
     }
+}
+
+func pauseBoardSound() {
+    guard let player = boardPlayer else { return }
+    player.pause()
+}
+
+func resumeBoardSound() {
+    guard let player = boardPlayer else { return }
+    player.play()
 }

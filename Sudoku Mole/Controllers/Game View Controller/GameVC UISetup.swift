@@ -60,20 +60,7 @@ extension GameViewController {
         
         tipView.animateYPosition(target: tipView, targetPosition: view.frame.size.height-height-((view.frame.size.width-width)/2), completion: nil)
     }
-    
-    func keypadAutoResize() {
-        for button in keypadCollection {
-            button.titleLabel?.numberOfLines = 1
-            button.titleLabel?.adjustsFontSizeToFitWidth = true
-            button.titleLabel?.contentMode = .scaleToFill
-            button.titleLabel?.baselineAdjustment = .alignBaselines
-            button.titleLabel?.adjustsFontForContentSizeCategory = true
-            if !deviceScreenHasNotch() {
-                button.titleLabel?.font = UIFont(name: "LuckiestGuy-Regular", size: 39.0)
-            }
-        }
-    }
-    
+
     func redoUndoStateSetup() {
         let undoNormal = UIImage(named: "btnBottomUndoNormal.png")
         let undoDisabled = UIImage(named: "btnBottomUndoDisabled.png")

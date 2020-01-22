@@ -15,6 +15,7 @@
 		F62135CE2384F0BB00150686 /* GlobalSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62135CD2384F0BB00150686 /* GlobalSpace.swift */; };
 		F62135D22385557500150686 /* DialogLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62135D12385557500150686 /* DialogLabel.swift */; };
 		F62135D4238555D100150686 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62135D3238555D100150686 /* Protocols.swift */; };
+		F62BD2B523D7A48C002E4594 /* PaddedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62BD2B423D7A48C002E4594 /* PaddedButton.swift */; };
 		F639B1D52334C3D300CF921A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639B1D42334C3D300CF921A /* AppDelegate.swift */; };
 		F639B1D72334C3D300CF921A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639B1D62334C3D300CF921A /* HomeViewController.swift */; };
 		F639B1DA2334C3D300CF921A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F639B1D82334C3D300CF921A /* Main.storyboard */; };
@@ -131,6 +132,7 @@
 		F62135CD2384F0BB00150686 /* GlobalSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSpace.swift; sourceTree = "<group>"; };
 		F62135D12385557500150686 /* DialogLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogLabel.swift; sourceTree = "<group>"; };
 		F62135D3238555D100150686 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		F62BD2B423D7A48C002E4594 /* PaddedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedButton.swift; sourceTree = "<group>"; };
 		F639B1D12334C3D300CF921A /* Sudoku Mole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sudoku Mole.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F639B1D42334C3D300CF921A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F639B1D62334C3D300CF921A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				F68DADDA23AB4143002D6753 /* NoADLabel.swift */,
 				F6CC944C237E407200F585AC /* GridView.swift */,
 				F65DCF2323925B0B002BF3D1 /* CustomButton.swift */,
+				F62BD2B423D7A48C002E4594 /* PaddedButton.swift */,
 			);
 			path = "Custom Classes";
 			sourceTree = "<group>";
@@ -766,6 +769,7 @@
 				F6512DE5237A1934003997BA /* Game VC IAP.swift in Sources */,
 				F60A38C423900DF4001B7749 /* NotificationCentre.swift in Sources */,
 				F6A340A2237DD56E00194C60 /* NormalViewController.swift in Sources */,
+				F62BD2B523D7A48C002E4594 /* PaddedButton.swift in Sources */,
 				F6FED297236A0F3100D2BDD3 /* SudokuSwitches.swift in Sources */,
 				F66AEA1A23925120006E598B /* UIButton.swift in Sources */,
 				F6F8F1A6239249C900F65449 /* GameVC Timer.swift in Sources */,
@@ -978,14 +982,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Sudoku Mole/Sudoku Mole.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RF525HK56L;
 				INFOPLIST_FILE = "Sudoku Mole/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = "1.2(1)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cochipcho.SudokuMole;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1000,14 +1004,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Sudoku Mole/Sudoku Mole.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RF525HK56L;
 				INFOPLIST_FILE = "Sudoku Mole/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = "1.2(1)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cochipcho.SudokuMole;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

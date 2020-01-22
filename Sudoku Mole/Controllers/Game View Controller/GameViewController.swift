@@ -29,7 +29,6 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
         requestProductInfo()
         
         // Configurations
-        keypadAutoResize()
         biTitleSetup()
         loadGameData()
         boardSetup()
@@ -83,7 +82,6 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
         NotificationCenter.default.addObserver(self, selector: #selector(abandon),name:NSNotification.Name(rawValue: "abandon"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(popAD),name:NSNotification.Name(rawValue: "popAD"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(chanceSetup),name:NSNotification.Name(rawValue: "userEarnedaChance"), object: nil)
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -646,17 +644,25 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
         var keypadNumber = Int()
         
         if deviceScreenHasNotch() {
-            fontSize = 45.0
+            fontSize = 42.0
         } else {
-            fontSize = 39.0
+            fontSize = 35.0
         }
         
         let font = UIFont(name: "LuckiestGuy-Regular", size: fontSize)
         var attributeKey = [NSAttributedString.Key : Any]()
         let clearAttributes: [NSAttributedString.Key : Any] = [ .font : font as Any ,.foregroundColor: clearColor ,.strokeWidth: 2.0, .strokeColor: fontColor]
-        let normalAttributes: [NSAttributedString.Key : Any] = [ .font : font as Any ,.foregroundColor: fontColor]
+        let normalAttributes: [NSAttributedString.Key : Any] = [ .font : font as Any ,.foregroundColor: fontColor,.strokeWidth: -2.0]//, .strokeColor: fontColor]
+//        let normalAttributes: [NSAttributedString.Key : Any] = [ .font : font as Any ,.foregroundColor: fontColor]
         
         for button in keypadCollection {
+            
+            button.titleLabel?.numberOfLines = 1
+            button.titleLabel?.adjustsFontSizeToFitWidth = true
+            button.titleLabel?.contentMode = .scaleToFill
+            button.titleLabel?.baselineAdjustment = .alignBaselines
+            button.titleLabel?.adjustsFontForContentSizeCategory = true
+            
             keypadNumber = button.tag
             
             if filledNum[keypadNumber] == true {
