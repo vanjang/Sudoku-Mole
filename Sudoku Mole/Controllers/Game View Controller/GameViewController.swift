@@ -623,17 +623,13 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
     func setPencilButtonStateWhenSelected() {
         pencilButton.setImage(pinkPencilPressed, for: .normal)
         pencilButton.setImage(pinkPencil, for: .selected)
-        for keypad in keypadCollection {
-            keypad.setTitleColor(pink, for: .normal)
-        }
+        keypadStateInAction()
     }
     
     func setPencilButtonStateWhenUnselected() {
         pencilButton.setImage(yellowPencil, for: .normal)
         pencilButton.setImage(yellowPencilPressed, for: .selected)
-        for keypad in keypadCollection {
-            keypad.setTitleColor(mintKeypad, for: .normal)
-        }
+        keypadStateInAction()
     }
     
     func keypadStateInAction() {
@@ -653,8 +649,9 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
         var attributeKey = [NSAttributedString.Key : Any]()
         let clearAttributes: [NSAttributedString.Key : Any] = [ .font : font as Any ,.foregroundColor: clearColor ,.strokeWidth: 2.0, .strokeColor: fontColor]
         let normalAttributes: [NSAttributedString.Key : Any] = [ .font : font as Any ,.foregroundColor: fontColor,.strokeWidth: -2.0]//, .strokeColor: fontColor]
-//        let normalAttributes: [NSAttributedString.Key : Any] = [ .font : font as Any ,.foregroundColor: fontColor]
-        
+        let penciledAttribute: [NSAttributedString.Key : Any] = [ .font : font as Any ,.foregroundColor: pink,.strokeWidth: -2.0]//, .strokeColor: fontColor]
+        let clearPenciledAttribute: [NSAttributedString.Key : Any] = [ .font : font as Any ,.foregroundColor: clearColor ,.strokeWidth: 2.0, .strokeColor: pink]
+
         for button in keypadCollection {
             
             button.titleLabel?.numberOfLines = 1
@@ -666,9 +663,18 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
             keypadNumber = button.tag
             
             if filledNum[keypadNumber] == true {
-                attributeKey = clearAttributes
+                if pencilOn {
+                    attributeKey = clearPenciledAttribute
+                } else {
+                    attributeKey = clearAttributes
+                }
+                
             } else {
-                attributeKey = normalAttributes
+                if pencilOn {
+                    attributeKey = penciledAttribute
+                } else {
+                    attributeKey = normalAttributes
+                }
             }
             
             let attribute = NSAttributedString(string: String(keypadNumber), attributes: attributeKey)
