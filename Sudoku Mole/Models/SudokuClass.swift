@@ -169,7 +169,56 @@ class SudokuClass {
     
     // setter - reverse
     func pencilGrid(n: Int, row: Int, col: Int) {
+        // 해당 row/col의 nth칸이 pencil value
+        // 123
+        // 456
+        // 789
+        // 해당 칸의 value 여부를 bool로 파악
         grid.pencilPuzzle[row][col][n] = !grid.pencilPuzzle[row][col][n]
+        if !grid.undonePencil.isEmpty {
+            for i in grid.undonePencil {
+                grid.pencilStack.append(i)
+            }
+            grid.pencilStack.append(grid.pencilPuzzle)
+            grid.undonePencil.removeAll()
+        } else {
+            grid.pencilStack.append(grid.pencilPuzzle)
+        }
+    }
+    
+    func deleteSamePencil(n: Int, row: Int, col: Int) {
+        
+        for i in 0...8 {
+            // check if row has any penciled value
+            if anyPencilSetAt(row: row, column: i) {
+                if isSetPencil(n: n, row: row, column: i) {
+                    grid.pencilPuzzle[row][i][n] = !grid.pencilPuzzle[row][i][n]
+                }
+            }
+            
+            // check if col has any penciled value
+            if anyPencilSetAt(row: i, column: col) {
+                if isSetPencil(n: n, row: i, column: col) {
+                    grid.pencilPuzzle[i][col][n] = !grid.pencilPuzzle[i][col][n]
+                }
+            }
+        }
+        
+        let threeByThreeRow : Int = row / 3
+        let threeByThreeCol : Int = col / 3
+        let startRow = threeByThreeRow * 3
+        let startCol = threeByThreeCol * 3
+        let endRow = 2 + (threeByThreeRow * 3)
+        let endCol = 2 + (threeByThreeCol * 3)
+        for r in startRow...endRow {
+            for c in startCol...endCol {
+                if anyPencilSetAt(row: r, column: c) {
+                    if isSetPencil(n: n, row: r, column: c) {
+                        grid.pencilPuzzle[r][c][n] = !grid.pencilPuzzle[r][c][n]
+                    }
+                }
+            }
+        }
         
         if !grid.undonePencil.isEmpty {
             for i in grid.undonePencil {

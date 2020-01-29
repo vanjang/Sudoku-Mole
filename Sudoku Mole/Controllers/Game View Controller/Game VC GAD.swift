@@ -17,8 +17,7 @@ extension GameViewController: GADInterstitialDelegate {
     }
     
     func interstitialWillDismissScreen(_ ad: GADInterstitial) {
-        appDelegate.storeItems(1)
-        self.chanceSetup()
+        self.refresher()
     }
 }
 

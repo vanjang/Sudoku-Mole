@@ -356,6 +356,9 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
                     playSound(soundFile: "inGameKeypad", lag: 0.0, numberOfLoops: 0)  // When tap a keypad
                     appDelegate.sudoku.userGrid(n: sender.tag, row: row, col: col) //  SAVE POINT
                     
+                    // delete pencil value if the same number is inserted
+                    appDelegate.sudoku.deleteSamePencil(n: sender.tag, row: row, col: col)
+                    
                     // check if row/col/3x3 is filled without conflicts
                     if appDelegate.sudoku.isRowFilledWithoutConflict(row: row) {
                         isRowSpinningInMotion = true
@@ -372,7 +375,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
                     // Game Finish Check - 0 : game not finished / 1 : game finished but not correctly / 2 : game finished and correct
                     if appDelegate.sudoku.isGameSet(row: row, column: col) == 2 {
                         // pop solved VC with a little bit delay to show spinning animation completely
-                        solvedTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(solveDialogPops), userInfo: nil, repeats: true)
+                        solvedTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(solveDialogPops), userInfo: nil, repeats: true)
                     } else {
                         if appDelegate.sudoku.isConflictingEntryAt(row: row, column: col) {
                             playSound(soundFile: "inGameWrong", lag: 0.0, numberOfLoops: 0) // When tap a wrong answer
@@ -490,11 +493,8 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
     
     @IBAction func undoButtonTapped(_ sender: Any) {
         playSound(soundFile: "inGameMenuAndButtons", lag: 0.0, numberOfLoops: 0)
-        if pencilOn {
-            appDelegate.sudoku.undoPencil()
-        } else {
-            appDelegate.sudoku.undoGrid()
-        }
+        appDelegate.sudoku.undoPencil()
+        appDelegate.sudoku.undoGrid()
         redoUndoButtonState()
         refresh()
     }
@@ -502,18 +502,15 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
     @IBAction func redoButtonTapped(_ sender: Any) {
         playSound(soundFile: "inGameMenuAndButtons", lag: 0.0, numberOfLoops: 0)
         let puzzle = self.appDelegate.sudoku
-        if pencilOn {
-            if !puzzle.grid.undonePencil.isEmpty {
-                let redo = puzzle.grid.undonePencil.removeFirst()
-                puzzle.grid.pencilPuzzle = redo
-                puzzle.grid.pencilStack.append(redo)
-            }
-        } else {
-            if !puzzle.grid.undonePuzzle.isEmpty {
-                let redo = puzzle.grid.undonePuzzle.removeFirst()
-                puzzle.grid.userPuzzle = redo
-                puzzle.grid.puzzleStack.append(redo)
-            }
+        if !puzzle.grid.undonePencil.isEmpty {
+            let redo = puzzle.grid.undonePencil.removeFirst()
+            puzzle.grid.pencilPuzzle = redo
+            puzzle.grid.pencilStack.append(redo)
+        }
+        if !puzzle.grid.undonePuzzle.isEmpty {
+            let redo = puzzle.grid.undonePuzzle.removeFirst()
+            puzzle.grid.userPuzzle = redo
+            puzzle.grid.puzzleStack.append(redo)
         }
         redoUndoButtonState()
         refresh()
@@ -543,8 +540,16 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
         instantiatingCustomAlertView()
         delegate?.customAlertController(title: "REFRESH GAME?".localized(), message: "Tap OK to refresh.".localized(), option: .twoButtons)
         delegate?.customAction1(title: "OK".localized(), action:  { action in
-            self.refresher()
-            self.dismiss(animated: true, completion: nil)
+            
+            if self.appDelegate.hasADRemoverBeenBought() {
+                self.refresher()
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                self.dismiss(animated: true) {
+                    self.popAD()
+                }
+            }
+            
         })
         delegate?.customAction2(title: "CANCEL".localized(), action : { action in
             self.customAlertView.dismiss(animated: true, completion: nil)

@@ -79,30 +79,16 @@ extension GameViewController {
     
     func redoUndoButtonState() {
         let puzzle = self.appDelegate.sudoku
-        if pencilOn {
-            if puzzle.grid.pencilStack.isEmpty {
-                undoButtonOutlet.isEnabled = false
-            } else {
-                undoButtonOutlet.isEnabled = true
-            }
-            
-            if puzzle.grid.undonePencil.isEmpty {
-                redoButtonOutlet.isEnabled = false
-            } else {
-                redoButtonOutlet.isEnabled = true
-            }
-        } else {
-            if puzzle.grid.puzzleStack.isEmpty {
-                undoButtonOutlet.isEnabled = false
-            } else {
-                undoButtonOutlet.isEnabled = true
-            }
-            
-            if puzzle.grid.undonePuzzle.isEmpty {
-                redoButtonOutlet.isEnabled = false
-            } else {
-                redoButtonOutlet.isEnabled = true
-            }
+        if puzzle.grid.pencilStack.isEmpty && puzzle.grid.puzzleStack.isEmpty {
+            undoButtonOutlet.isEnabled = false
+        } else if !puzzle.grid.pencilStack.isEmpty || !puzzle.grid.puzzleStack.isEmpty {
+            undoButtonOutlet.isEnabled = true
+        }
+        
+        if puzzle.grid.undonePencil.isEmpty && puzzle.grid.undonePuzzle.isEmpty {
+            redoButtonOutlet.isEnabled = false
+        } else if !puzzle.grid.undonePencil.isEmpty || !puzzle.grid.undonePuzzle.isEmpty {
+            redoButtonOutlet.isEnabled = true
         }
         
         for i in 1...9 {
@@ -110,7 +96,7 @@ extension GameViewController {
         }
         keypadStateInAction()
     }
-    
+
     func instantiatingCustomAlertView() {
         customAlertView = self.storyboard?.instantiateViewController(withIdentifier: "CustomAlertID") as! CustomAlertViewController
         customAlertView.providesPresentationContextTransitionStyle = true

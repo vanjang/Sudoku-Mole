@@ -16,6 +16,7 @@ extension GameViewController {
             interstitial.present(fromRootViewController: self)
         } else {
             // Ad wasn't ready
+            refresher()
         }
     }
     
