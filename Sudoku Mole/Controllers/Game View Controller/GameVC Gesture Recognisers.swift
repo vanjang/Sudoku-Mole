@@ -50,6 +50,7 @@ extension GameViewController {
                 if puzzle.grid?.userPuzzle[row][col] != 0 {
                     playSound(soundFile: "inGameMenuAndButtons", lag: 0.0, numberOfLoops: 0)
                     appDelegate.sudoku.userGrid(n: 0, row: row, col: col)
+                    appDelegate.sudoku.pencilGrid(n: nil, row: nil, col: nil)
                     for i in 1...9 {
                         appDelegate.sudoku.numberFillingChecker(num: i)
                     }

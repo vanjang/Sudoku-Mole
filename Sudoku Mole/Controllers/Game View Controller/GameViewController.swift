@@ -354,7 +354,9 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
             if pencilOn == false {
                 if grid?.plistPuzzle[row][col] == 0 && grid?.userPuzzle[row][col] == 0  {
                     playSound(soundFile: "inGameKeypad", lag: 0.0, numberOfLoops: 0)  // When tap a keypad
+                    // Save user's puzzle value & pencil value together so undo/redo can operate in order it is inserted - Operation is executed under userGrid(n:,row:,col:) & pencilGrid(n:,row:,col:)
                     appDelegate.sudoku.userGrid(n: sender.tag, row: row, col: col) //  SAVE POINT
+                    appDelegate.sudoku.pencilGrid(n: nil, row: nil, col: nil)
                     
                     // delete pencil value if the same number is inserted
                     appDelegate.sudoku.deleteSamePencil(n: sender.tag, row: row, col: col)
@@ -412,13 +414,19 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
                 } else if grid?.plistPuzzle[row][col] == 0 || grid?.userPuzzle[row][col] == sender.tag {
                     playSound(soundFile: "inGameKeypad", lag: 0.0, numberOfLoops: 0)  // When deleting by a keypad
                     appDelegate.sudoku.userGrid(n: 0, row: row, col: col)
+                    appDelegate.sudoku.pencilGrid(n: nil, row: nil, col: nil)
                     if !appDelegate.sudoku.isThisNumAllFilled(num: sender.tag) {
                         keypadStateInAction()
                     }
                 }
             } else {
-                playSound(soundFile: "inGameKeypad", lag: 0.0, numberOfLoops: 0)  // When tapping a keypad in pencil mode
-                appDelegate.sudoku.pencilGrid(n: sender.tag, row: row, col: col)
+                if grid?.plistPuzzle[row][col] != 0 || grid?.userPuzzle[row][col] != 0 {
+                    playSound(soundFile: "inGameWrong", lag: 0.0, numberOfLoops: 0)  // When tapping a keypad in pencil mode : When there's a user value it is not allowed to insert pencil value
+                } else {
+                    playSound(soundFile: "inGameKeypad", lag: 0.0, numberOfLoops: 0)  // When tapping a keypad in pencil mode : When there's no user value it is allowerd to insert pencil value
+                    appDelegate.sudoku.pencilGrid(n: sender.tag, row: row, col: col)
+                    appDelegate.sudoku.userGrid(n: nil, row: nil, col: nil)
+                }
             }
             redoUndoButtonState()
             refresh()
@@ -493,8 +501,9 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
     
     @IBAction func undoButtonTapped(_ sender: Any) {
         playSound(soundFile: "inGameMenuAndButtons", lag: 0.0, numberOfLoops: 0)
-        appDelegate.sudoku.undoPencil()
-        appDelegate.sudoku.undoGrid()
+        appDelegate.sudoku.undoPuzzle()
+//        appDelegate.sudoku.undoPencil()
+//        appDelegate.sudoku.undoGrid()
         redoUndoButtonState()
         refresh()
     }

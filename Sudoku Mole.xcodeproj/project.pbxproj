@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AB73DFF3604407128A815B1C /* Pods_Sudoku_Mole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14AE78D66C4288959B1217F7 /* Pods_Sudoku_Mole.framework */; };
+		F607D13523E3629400C06D6A /* GameSolved VC TipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607D13423E3629400C06D6A /* GameSolved VC TipView.swift */; };
 		F60A38C423900DF4001B7749 /* NotificationCentre.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A38C323900DF4001B7749 /* NotificationCentre.swift */; };
 		F60A38C623900E01001B7749 /* AppReviewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A38C523900E01001B7749 /* AppReviewHelper.swift */; };
 		F619B9FA236F6A4D00DCEDF2 /* SudokuRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = F619B9F9236F6A4D00DCEDF2 /* SudokuRecords.swift */; };
@@ -97,7 +98,7 @@
 		F6F8F19423912B1500F65449 /* Intro.json in Resources */ = {isa = PBXBuildFile; fileRef = F6F8F19323912B1500F65449 /* Intro.json */; };
 		F6F8F1992391493800F65449 /* Blank0.json in Resources */ = {isa = PBXBuildFile; fileRef = F6F8F1972391493800F65449 /* Blank0.json */; };
 		F6F8F19A2391493800F65449 /* Blank1.json in Resources */ = {isa = PBXBuildFile; fileRef = F6F8F1982391493800F65449 /* Blank1.json */; };
-		F6F8F1A02392440700F65449 /* GameVC TipViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F8F19F2392440700F65449 /* GameVC TipViews.swift */; };
+		F6F8F1A02392440700F65449 /* GameVC TipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F8F19F2392440700F65449 /* GameVC TipView.swift */; };
 		F6F8F1A22392441C00F65449 /* GameVC Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F8F1A12392441C00F65449 /* GameVC Constraints.swift */; };
 		F6F8F1A42392498400F65449 /* GameVC Gesture Recognisers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F8F1A32392498400F65449 /* GameVC Gesture Recognisers.swift */; };
 		F6F8F1A6239249C900F65449 /* GameVC Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F8F1A5239249C900F65449 /* GameVC Timer.swift */; };
@@ -124,6 +125,7 @@
 		14AE78D66C4288959B1217F7 /* Pods_Sudoku_Mole.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sudoku_Mole.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16EA470BF123ACCED934E605 /* Pods-Sudoku Mole.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sudoku Mole.release.xcconfig"; path = "Target Support Files/Pods-Sudoku Mole/Pods-Sudoku Mole.release.xcconfig"; sourceTree = "<group>"; };
 		9957D428FBA3237F23B1A99A /* Pods-Sudoku Mole.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sudoku Mole.debug.xcconfig"; path = "Target Support Files/Pods-Sudoku Mole/Pods-Sudoku Mole.debug.xcconfig"; sourceTree = "<group>"; };
+		F607D13423E3629400C06D6A /* GameSolved VC TipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameSolved VC TipView.swift"; sourceTree = "<group>"; };
 		F60A38C323900DF4001B7749 /* NotificationCentre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCentre.swift; sourceTree = "<group>"; };
 		F60A38C523900E01001B7749 /* AppReviewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReviewHelper.swift; sourceTree = "<group>"; };
 		F60A38C723901A2C001B7749 /* Sudoku Mole.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sudoku Mole.entitlements"; sourceTree = "<group>"; };
@@ -224,7 +226,7 @@
 		F6F8F19323912B1500F65449 /* Intro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Intro.json; sourceTree = "<group>"; };
 		F6F8F1972391493800F65449 /* Blank0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Blank0.json; sourceTree = "<group>"; };
 		F6F8F1982391493800F65449 /* Blank1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Blank1.json; sourceTree = "<group>"; };
-		F6F8F19F2392440700F65449 /* GameVC TipViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameVC TipViews.swift"; sourceTree = "<group>"; };
+		F6F8F19F2392440700F65449 /* GameVC TipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameVC TipView.swift"; sourceTree = "<group>"; };
 		F6F8F1A12392441C00F65449 /* GameVC Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameVC Constraints.swift"; sourceTree = "<group>"; };
 		F6F8F1A32392498400F65449 /* GameVC Gesture Recognisers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameVC Gesture Recognisers.swift"; sourceTree = "<group>"; };
 		F6F8F1A5239249C900F65449 /* GameVC Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameVC Timer.swift"; sourceTree = "<group>"; };
@@ -499,7 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				F639B1EF2336077700CF921A /* GameViewController.swift */,
-				F6F8F19F2392440700F65449 /* GameVC TipViews.swift */,
+				F6F8F19F2392440700F65449 /* GameVC TipView.swift */,
 				F6F8F1A32392498400F65449 /* GameVC Gesture Recognisers.swift */,
 				F6F8F1A5239249C900F65449 /* GameVC Timer.swift */,
 				F6F8F1A7239249F300F65449 /* Game VC Life.swift */,
@@ -531,6 +533,7 @@
 			children = (
 				F6FED2A3236CC8B900D2BDD3 /* GameSolvedViewController.swift */,
 				F6A608F52381E00100560E19 /* GameSolvedTableViewCell.swift */,
+				F607D13423E3629400C06D6A /* GameSolved VC TipView.swift */,
 				F6FED28C2368542400D2BDD3 /* Game Solved VC GAD.swift */,
 				F65DCF292392E913002BF3D1 /* Game Solved VC UIActivityVC Delegate.swift */,
 			);
@@ -784,7 +787,7 @@
 				F66E70A0238305FF0056528F /* PauseViewController.swift in Sources */,
 				F6784F3D23630E61008171AC /* SudokuData.swift in Sources */,
 				F6F8F1AC23924A4600F65449 /* Game VC Chance.swift in Sources */,
-				F6F8F1A02392440700F65449 /* GameVC TipViews.swift in Sources */,
+				F6F8F1A02392440700F65449 /* GameVC TipView.swift in Sources */,
 				F6A340A4237DD57600194C60 /* HardViewController.swift in Sources */,
 				F66AEA1E23925130006E598B /* Substring.swift in Sources */,
 				F6A1833423CD4AB70014915C /* Game VC SaveAndLoad.swift in Sources */,
@@ -814,6 +817,7 @@
 				F6FED2A0236A8B0E00D2BDD3 /* HomeVCUISetup.swift in Sources */,
 				F6F8F1B023924C5200F65449 /* Home VC Lottie.swift in Sources */,
 				F6F8F1A42392498400F65449 /* GameVC Gesture Recognisers.swift in Sources */,
+				F607D13523E3629400C06D6A /* GameSolved VC TipView.swift in Sources */,
 				F6CC944F237F08C900F585AC /* RecordsCircularView.swift in Sources */,
 				F65DCF2A2392E913002BF3D1 /* Game Solved VC UIActivityVC Delegate.swift in Sources */,
 			);
@@ -982,14 +986,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Sudoku Mole/Sudoku Mole.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = RF525HK56L;
 				INFOPLIST_FILE = "Sudoku Mole/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cochipcho.SudokuMole;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1004,14 +1008,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Sudoku Mole/Sudoku Mole.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = RF525HK56L;
 				INFOPLIST_FILE = "Sudoku Mole/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cochipcho.SudokuMole;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

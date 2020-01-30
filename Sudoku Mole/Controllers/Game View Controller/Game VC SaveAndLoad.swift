@@ -15,8 +15,8 @@ extension GameViewController {
         self.appDelegate.sudoku.grid.savedTime = counter
         self.appDelegate.sudoku.grid.savedOutletTime = record
         self.appDelegate.sudoku.grid.lifeRemained = lives
-        self.appDelegate.sudoku.grid.savedCol = self.puzzleArea.selected.row
-        self.appDelegate.sudoku.grid.savedRow = self.puzzleArea.selected.column
+        self.appDelegate.sudoku.grid.savedRow = self.puzzleArea.selected.row
+        self.appDelegate.sudoku.grid.savedCol = self.puzzleArea.selected.column
         //Keypad data is being saved directly from keypad ibaction when needing its state update
     }
     

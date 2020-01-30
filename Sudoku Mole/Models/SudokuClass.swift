@@ -101,8 +101,11 @@ class SudokuClass {
     }
     
     // Setter
-    func userGrid(n: Int, row: Int, col: Int) {
-        grid.userPuzzle[row][col] = n
+    func userGrid(n: Int?, row: Int?, col: Int?) {
+        if n != nil && row != nil && col != nil {
+        grid.userPuzzle[row!][col!] = n!
+        }
+
         if !grid.undonePuzzle.isEmpty {
             for i in grid.undonePuzzle {
                 grid.puzzleStack.append(i)
@@ -120,6 +123,11 @@ class SudokuClass {
     }
     
     // User undo
+    func undoPuzzle() {
+        undoGrid()
+        undoPencil()
+    }
+    
     func undoGrid() {
         if !grid.puzzleStack.isEmpty {
             grid.undonePuzzle.insert(grid.puzzleStack.removeLast(), at: 0)
@@ -168,13 +176,16 @@ class SudokuClass {
     }
     
     // setter - reverse
-    func pencilGrid(n: Int, row: Int, col: Int) {
+    func pencilGrid(n: Int?, row: Int?, col: Int?) {
         // 해당 row/col의 nth칸이 pencil value
         // 123
         // 456
         // 789
         // 해당 칸의 value 여부를 bool로 파악
-        grid.pencilPuzzle[row][col][n] = !grid.pencilPuzzle[row][col][n]
+        if n != nil && row != nil && col != nil {
+            grid.pencilPuzzle[row!][col!][n!] = !grid.pencilPuzzle[row!][col!][n!]
+        }
+//        grid.pencilPuzzle[row][col][n] = !grid.pencilPuzzle[row][col][n]
         if !grid.undonePencil.isEmpty {
             for i in grid.undonePencil {
                 grid.pencilStack.append(i)
@@ -219,16 +230,16 @@ class SudokuClass {
                 }
             }
         }
-        
-        if !grid.undonePencil.isEmpty {
-            for i in grid.undonePencil {
-                grid.pencilStack.append(i)
-            }
-            grid.pencilStack.append(grid.pencilPuzzle)
-            grid.undonePencil.removeAll()
-        } else {
-            grid.pencilStack.append(grid.pencilPuzzle)
-        }
+// Below NOT needed if pencil value is stacked into pencilStack array on everytime keypad value is updated
+//        if !grid.undonePencil.isEmpty {
+//            for i in grid.undonePencil {
+//                grid.pencilStack.append(i)
+//            }
+//            grid.pencilStack.append(grid.pencilPuzzle)
+//            grid.undonePencil.removeAll()
+//        } else {
+//            grid.pencilStack.append(grid.pencilPuzzle)
+//        }
     }
     
     // setter - blank

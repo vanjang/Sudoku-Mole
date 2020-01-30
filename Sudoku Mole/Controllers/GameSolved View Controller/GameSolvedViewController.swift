@@ -19,6 +19,10 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
         tableView.dataSource = self
         buttonSetup()
         
+        if shouldTipView() {
+            makeTipView()
+        }
+        
         if !appDelegate.hasADRemoverBeenBought() {
             interstitial = createAndLoadInterstitial()
         }
@@ -115,6 +119,13 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
     var thumbnailImage: URL?
     var recordsImage: URL?
     var shouldPopDialogue = false
+    // Tipview
+    let tipView = UIView()
+    let tipLabel = UILabel()
+    let tipSmole = UIImageView()
+    var tipSmoleImage = UIImage()
+    let tipViewDismissButton = UIButton()
+    var tipViewDismissImage = UIImage()
     
     func buttonSetup() {
         let refreshNormal = UIImage(named: "btnBottomResetLargeNormal.png")
