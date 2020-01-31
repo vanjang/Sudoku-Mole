@@ -28,7 +28,7 @@
 "Try again." = "다시 시도해 주세요.";
 "Smole says: How was your lunch?" = "스몰: 점심 맛있게 드셨나요?";
 "What about having a cup of coffee and playing a 1 Sudoku Mole? Let's break your record!" = "커피 한 잔과 함께 스도쿠 몰 한판 어떠세요?";
-"Tap the input field twice to delete the number you entered." = "입력한 숫자를 두번 터치하면 삭제할 수 있습니다.";
+"Tap the number you entered twice to delete." = "입력한 숫자를 두 번 터치하면 삭제할 수 있습니다.";
 "SUDOKU MOLE is distributed by Apple App Store. SUDOKU MOLE is developed by COCHIPCHO Limited.\nSUDOKU MOLE and its content is copryright of COCHIPCHO Limited. - © COCHIPCHO Limited.\nAll rights reserved.\n\n\n" = "SUDOKU MOLE은 COCHIPCHO Limited에서 개발하고 Apple App Store를 통해 배포되는 iOS 어플리케이션입니다. SUDOKU MOLE에 대한 모든 권리는 COCHIPCHO Limited에 있습니다.\n\n\n";
 "Tap Purchase to proceed. Please note it may include blanks!" = "Purchase를 선택하시면 구매가 진행됩니다. 찬스에는 꽝이 섞여 있을 수 있습니다.";
 "Leave a review on App Store and get 3 chances for free!" = "앱스토어에 사용후기를 남기고 찬스 3개를 무료로 받으세요!";
@@ -37,4 +37,4 @@
 ")!" = ")";
 "NO AD AVAILABLE\nAT THE MOMENT" = "잠시 광고를\n이용할 수 없습니다";
 "Network connection might be unstable. Please try later." = "네트워크 상태를 확인 후 다시 시도해 주세요";
-"Share your record with friends on SNS and get a free chance!🌟" = "SNS로 친구들과 기록을 공유하고 무료 찬스를 받으세요!🌟";
+"Share your record with friends on SNS and get a free chance!🌟" = "SNS로 친구들과 기록을 공유하고 무료 찬스를\n받으세요!🌟";
