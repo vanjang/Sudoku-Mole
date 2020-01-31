@@ -19,7 +19,7 @@ extension GameViewController {
         tipView.layer.cornerRadius = 29
         view.addSubview(tipView)
         tipView.addSubview(tipLabel)
-        tipLabel.text = "Tap the number you entered twice to delete.".localized()// you entered.".localized()
+        tipLabel.text = "Tap twice the number you entered to delete.".localized()// you entered.".localized()
         tipLabel.numberOfLines = 0
         tipLabel.textColor = .white
         tipLabel.font = UIFont(name: "SFProDisplay-Regular", size: 18)
