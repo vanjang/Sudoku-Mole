@@ -64,13 +64,16 @@ extension GameSolvedViewController {
     func shouldTipView() -> Bool {
         let tipViewKey = "TipViewShownForGameSolvedVC"
         let userDefault = appDelegate.userDefault
+        var count = Int()
         
         guard let value = userDefault.value(forKey: tipViewKey) as? Int else {
             userDefault.set(0, forKey: tipViewKey)
             return true
         }
+        count = value + 1
+        userDefault.set(count, forKey: tipViewKey)
         
-        if value < 2 {
+        if value < 5 {
             return true
         } else {
             return false
@@ -80,8 +83,6 @@ extension GameSolvedViewController {
     @objc func tipViewButtonDismissButtonTapped() {
         tipView.animateYPosition(target: tipView, targetPosition: view.frame.size.height+300, completion: { (action) in
             self.tipView.removeFromSuperview()
-//            self.sudokuView.removeGestureRecognizer(self.singleTapGestureRecognizer)
-//            self.sudokuView.isUserInteractionEnabled = true
         })
     }
 }
