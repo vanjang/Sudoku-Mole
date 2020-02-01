@@ -73,7 +73,7 @@ extension GameSolvedViewController {
         count = value + 1
         userDefault.set(count, forKey: tipViewKey)
         
-        if value < 5 {
+        if value < 3 {
             return true
         } else {
             return false
