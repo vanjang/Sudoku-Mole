@@ -21,6 +21,7 @@ extension GameSolvedViewController: GADInterstitialDelegate {
     
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
         interstitial = createAndLoadInterstitial()
+        implementButtonAction()
     }
     
     // Tells the delegate an ad request succeeded.
@@ -34,7 +35,6 @@ extension GameSolvedViewController: GADInterstitialDelegate {
     
     // Tells the delegate the interstitial is to be animated off the screen.
     func interstitialWillDismissScreen(_ ad: GADInterstitial) {
-        implementButtonAction()
     }
     
     // Tells the delegate that a user click will open another app(such as the App Store), backgrounding the current app.

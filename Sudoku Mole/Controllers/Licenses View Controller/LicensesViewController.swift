@@ -47,7 +47,7 @@ class LicensesViewController: UIViewController {
     let license = "Licenses\n\n".localized()
     let licensesContent = "1. Luckiest Guy font\n\nLuckiest Guy is a friendly heavyweight sans-serif font inspired by custom hand lettered 1950's advertisements. Large and in charge, this offbeat, lovably legible font lends itself to all sorts of uses. Luckiest Guy is allowed to be distributed for commercial purpose for free. Luckiest Guy is licensed under Apache License, Version 2.0.\n\n2. Lottie\n\nPlease find at : https://lottiefiles.com/page/terms-and-conditions\n\n\n".localized()
     let version = "Sudoku Mole Version\n\n".localized()
-    let versionNumber = "Version 1.2.10(10)\n\n\n".localized()
+    let versionNumber = "Version 1.2.11(11)\n\n\n".localized()
     let contact = "Contact\n\n".localized()
     let contactContent = "Please contact at : http://cochipcho.com".localized()
     

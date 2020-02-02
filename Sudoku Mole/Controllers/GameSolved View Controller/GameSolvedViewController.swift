@@ -328,6 +328,7 @@ class GameSolvedViewController: UIViewController, UITableViewDataSource, UITable
                         firework.loopMode = .loop
                         firework.play()
                         playFirework()
+                        stopBGM()
                     } else {
                         let easy = UIImage(named: "boardRecordNormalEasy.png")
                         let normal = UIImage(named: "boardRecordNormalNormal.png")

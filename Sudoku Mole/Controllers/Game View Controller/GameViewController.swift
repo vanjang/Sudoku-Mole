@@ -77,7 +77,7 @@ class GameViewController: UIViewController, GADRewardedAdDelegate, GADBannerView
         stopLevelSound()
         // if user terminated app while in the Game VC, sound will not resume when resuming game - So should explict play here
         playBGM(soundFile: "BGM", lag: 0.0, numberOfLoops: -1)
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(refresher),name:NSNotification.Name(rawValue: "refresher"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(abandon),name:NSNotification.Name(rawValue: "abandon"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(popAD),name:NSNotification.Name(rawValue: "popAD"), object: nil)
