@@ -65,9 +65,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        if let bgmPlayer = player {
-            if !bgmPlayer.isPlaying {
-                resumeBGM()
+        if isPlayingGame == true {
+            if let bgmPlayer = player {
+                if !bgmPlayer.isPlaying {
+                    resumeBGM()
+                }
             }
         }
     }
