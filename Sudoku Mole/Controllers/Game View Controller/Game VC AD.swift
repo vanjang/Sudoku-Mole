@@ -67,7 +67,7 @@ extension GameViewController {
     }
     
     func createAndLoadBanner() {
-        bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)//kGADAdSizeBanner)
+        bannerView = GADBannerView()
 //        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"// TestID
         bannerView.adUnitID = "ca-app-pub-2341224352662975/6078845467"// Actual
         bannerView.rootViewController = self

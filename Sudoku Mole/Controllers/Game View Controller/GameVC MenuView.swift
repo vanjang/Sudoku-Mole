@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import GoogleMobileAds
 
 extension GameViewController {
     func makeMenuView() {
@@ -100,21 +101,24 @@ extension GameViewController {
         let width = menuView.frame.size.width*0.72
         let height = width*0.29
         let x = (dummyView.frame.size.width-width)/2
-        let y = menuView.bounds.maxY-height-20
-        let frame = CGRect(x: x, y: y, width: width, height: height)
-        
-        bannerView.frame = frame
+        let y = menuView.bounds.maxY-height-5
+        bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(width)
         bannerView.layer.cornerRadius = height/8
         
-        let caseWidth = menuView.frame.size.width*0.70
-        let caseFrame = CGRect(x: x, y: y, width: caseWidth, height: height)
+        let caseWidth = bannerView.frame.size.width+10//1.03
+        let caseHeight = bannerView.frame.size.height+10//*1.06
+        let caseFrame = CGRect(x: x, y: y, width: caseWidth, height: caseHeight)
         bannerCase.frame = caseFrame
         bannerCase.backgroundColor = .white
         bannerCase.layer.borderWidth = 0
-        bannerCase.layer.cornerRadius = height/8
+        bannerCase.layer.cornerRadius = height/7.0
         bannerView.translatesAutoresizingMaskIntoConstraints = false
-        
         menuView.addSubview(bannerCase)
+        
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        let xConstraint = NSLayoutConstraint(item: bannerView!, attribute: .centerX, relatedBy: .equal, toItem: bannerCase, attribute: .centerX, multiplier: 1, constant: 0)
+        let yConstraint = NSLayoutConstraint(item: bannerView!, attribute: .centerY, relatedBy: .equal, toItem: bannerCase, attribute: .centerY, multiplier: 1, constant: 0)
+        self.view.addConstraints([xConstraint, yConstraint])
         
         let noADImageView = UIImageView()
         let image = UIImage(named: "icNoti.png")
