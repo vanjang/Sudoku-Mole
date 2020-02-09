@@ -10,6 +10,7 @@ import UIKit
 import GoogleMobileAds
 import Firebase
 import AVFoundation
+import FBSDKCoreKit
 /// To delete
 //import AppLovinAdapter
 //import AppLovinSDK
@@ -30,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         /// To delete
 //        ALSdk.initializeSdk()
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         FirebaseApp.configure()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         UserNotificationCentre.notificationCentre.requestAuthorization(options: [.alert, .sound])  { (didAllow, error) in
@@ -51,6 +53,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         isSoundEffectMute = retrieveSoundEffectMuting()
         
         return true
+    }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        let handled = ApplicationDelegate.shared.application(app, open: url, options: options)
+      // Add any custom logic here.
+      return handled
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
